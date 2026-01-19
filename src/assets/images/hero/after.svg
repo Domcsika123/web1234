@@ -1,0 +1,11 @@
+<svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="after-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6366f1;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#0ea5e9;stop-opacity:0.8" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#after-grad)"/>
+  <text x="300" y="200" font-family="Arial, sans-serif" font-size="28" fill="white" text-anchor="middle" dominant-baseline="middle" font-weight="bold">Új Dizájn</text>
+  <text x="300" y="240" font-family="Arial, sans-serif" font-size="14" fill="rgba(255,255,255,0.95)" text-anchor="middle">Modern, gyors, 95+ PageSpeed</text>
+</svg>

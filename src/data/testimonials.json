@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Kiss Gábor",
+    "role": "Cégvezető, TechFlow",
+    "quote": "Nem csak egy weboldal készült, hanem egy konverziós gép. Az első hónapban már 40% több érdeklődés."
+  },
+  {
+    "name": "Nagy Anna",
+    "role": "Marketing Lead, Luxe Design",
+    "quote": "A team profi volt. Világos kommunikáció, gyors kézbesítés, és olyan design, ami lebilincsel."
+  },
+  {
+    "name": "Kovács Péter",
+    "role": "Founder, EcoShop",
+    "quote": "95 PageSpeed és +28% kosárérték egy hónapban. Ez nem csak szép design, ez üzleti eredmény."
+  },
+  {
+    "name": "Szarka Márton",
+    "role": "CEO, FinanceHub",
+    "quote": "Az SEO, a trust signals, és a user experience szintje magasan felette van a konkurenciának."
+  },
+  {
+    "name": "Molnár Éva",
+    "role": "Art Director, Creative Agency",
+    "quote": "Végre olyan fejlesztő, aki a designt és az üzleti célt is érti. Kitűnő az egész munka."
+  },
+  {
+    "name": "Tóth István",
+    "role": "Product Manager, Wellness App",
+    "quote": "A landing page miatt a download számunk meghétszereződött. Köszönhetően az animációknak és a conversion copynak."
+  },
+  {
+    "name": "Fehér Zsuzsanna",
+    "role": "Business Owner, E-commerce",
+    "quote": "Nem hittem, hogy egy weboldal ennyi különbséget tud tenni az eladásokban. Ajánlom mindenkinek."
+  },
+  {
+    "name": "Bodnár László",
+    "role": "Marketing Manager, SaaS Startup",
+    "quote": "Profi, gyors, és megtérül. Pont azt kaptam, amit kerestem."
+  }
+]

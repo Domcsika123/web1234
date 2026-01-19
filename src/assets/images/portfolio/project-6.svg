@@ -1,0 +1,51 @@
+<svg viewBox="0 0 1200 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g6" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#fff" />
+      <stop offset="100%" style="stop-color:#f8f8f8" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="600" fill="url(#g6)"/>
+  
+  <!-- Header -->
+  <rect width="1200" height="80" fill="#fff" stroke="#ddd" stroke-width="1"/>
+  <text x="50" y="50" font-size="20" font-weight="bold" fill="#000">MARKETPLACE</text>
+  <line x1="850" y1="20" x2="1100" y2="20" stroke="#333" stroke-width="1"/>
+  <line x1="850" y1="50" x2="1100" y2="50" stroke="#333" stroke-width="1"/>
+  <line x1="850" y1="80" x2="1100" y2="80" stroke="#333" stroke-width="1"/>
+  
+  <!-- Search/Filter -->
+  <rect x="50" y="110" width="1100" height="50" fill="#f5f5f5" rx="4"/>
+  <text x="70" y="140" font-size="13" fill="#999">Search products...</text>
+  <line x1="1000" y1="120" x2="1080" y2="120" stroke="#333" stroke-width="1"/>
+  <line x1="1000" y1="150" x2="1080" y2="150" stroke="#333" stroke-width="1"/>
+  
+  <!-- Product cards -->
+  <rect x="50" y="190" width="220" height="350" fill="#fff" stroke="#ddd" stroke-width="1" rx="2"/>
+  <rect x="50" y="190" width="220" height="180" fill="#e8e8e8"/>
+  <text x="65" y="400" font-size="13" font-weight="bold" fill="#000">Premium Item</text>
+  <text x="65" y="420" font-size="12" fill="#999">$199.00</text>
+  <rect x="65" y="435" width="190" height="30" fill="#000" rx="2"/>
+  <text x="105" y="455" font-size="12" fill="#fff" font-weight="bold">Add to Cart</text>
+  
+  <rect x="310" y="190" width="220" height="350" fill="#fff" stroke="#ddd" stroke-width="1" rx="2"/>
+  <rect x="310" y="190" width="220" height="180" fill="#f0f0f0"/>
+  <text x="325" y="400" font-size="13" font-weight="bold" fill="#000">Deluxe Edition</text>
+  <text x="325" y="420" font-size="12" fill="#999">$249.00</text>
+  <rect x="325" y="435" width="190" height="30" fill="#000" rx="2"/>
+  <text x="365" y="455" font-size="12" fill="#fff" font-weight="bold">Add to Cart</text>
+  
+  <rect x="570" y="190" width="220" height="350" fill="#fff" stroke="#ddd" stroke-width="1" rx="2"/>
+  <rect x="570" y="190" width="220" height="180" fill="#e0e0e0"/>
+  <text x="585" y="400" font-size="13" font-weight="bold" fill="#000">Exclusive Pro</text>
+  <text x="585" y="420" font-size="12" fill="#999">$349.00</text>
+  <rect x="585" y="435" width="190" height="30" fill="#000" rx="2"/>
+  <text x="625" y="455" font-size="12" fill="#fff" font-weight="bold">Add to Cart</text>
+  
+  <rect x="830" y="190" width="220" height="350" fill="#fff" stroke="#ddd" stroke-width="1" rx="2"/>
+  <rect x="830" y="190" width="220" height="180" fill="#f5f5f5"/>
+  <text x="845" y="400" font-size="13" font-weight="bold" fill="#000">Bundle Deal</text>
+  <text x="845" y="420" font-size="12" fill="#999">$499.00</text>
+  <rect x="845" y="435" width="190" height="30" fill="#000" rx="2"/>
+  <text x="885" y="455" font-size="12" fill="#fff" font-weight="bold">Add to Cart</text>
+</svg>

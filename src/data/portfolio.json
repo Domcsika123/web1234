@@ -1,0 +1,92 @@
+[
+  {
+    "title": "TechFlow — SaaS Landing",
+    "tag": "SaaS",
+    "result": "+47% konverzió",
+    "image": "/src/assets/images/portfolio/project-1.svg",
+    "summary": "Egy B2B SaaS cég számára high-converting landing page. Clean design, szóció, conversion fókusz.",
+    "bullets": [
+      "Luxury dark design with gradients",
+      "Video hero section",
+      "Interactive pricing calculator",
+      "Free trial CTA optimization",
+      "95+ PageSpeed Score"
+    ],
+    "stack": ["TypeScript", "React", "Tailwind CSS", "Stripe API"]
+  },
+  {
+    "title": "Luxe Design — Portfolio Site",
+    "tag": "Portfolio",
+    "result": "50+ client leads / hó",
+    "image": "/src/assets/images/portfolio/project-2.svg",
+    "summary": "Premium design agency weboldala. Case studies, testimonials, conversion funnel.",
+    "bullets": [
+      "Custom motion design",
+      "Before/After slider",
+      "Client testimonials carousel",
+      "Interactive case studies",
+      "Email newsletter integration"
+    ],
+    "stack": ["Vite", "TypeScript", "CSS Animations", "Figma"]
+  },
+  {
+    "title": "EcoShop — E-commerce Redesign",
+    "tag": "E-commerce",
+    "result": "+28% kosár érték",
+    "image": "/src/assets/images/portfolio/project-3.svg",
+    "summary": "Fenntartható termékeket árusító webshop modernizálása. Performance, UX, conversion.",
+    "bullets": [
+      "Product filter system",
+      "Fast checkout (2-step)",
+      "Image optimization",
+      "Cart abandonment recovery",
+      "92 PageSpeed Score"
+    ],
+    "stack": ["Next.js", "PostgreSQL", "Stripe", "Image CDN"]
+  },
+  {
+    "title": "FinanceHub — Corporate Site",
+    "tag": "Corporate",
+    "result": "98% uptime",
+    "image": "/src/assets/images/portfolio/project-4.svg",
+    "summary": "Pénzügyi tanácsadó cég weboldala. Trust signals, SEO, lead generation.",
+    "bullets": [
+      "Interactive calculators",
+      "Blog system",
+      "SEO optimized",
+      "Schema markup",
+      "Analytics dashboard"
+    ],
+    "stack": ["TypeScript", "Next.js", "GraphQL", "PostgreSQL"]
+  },
+  {
+    "title": "Creative Agency Website",
+    "tag": "Agency",
+    "result": "Top 10 design sites",
+    "image": "/src/assets/images/portfolio/project-5.svg",
+    "summary": "Kreatív ügynökség saját weboldala. Portfolió, case studies, munkatársak.",
+    "bullets": [
+      "Smooth scroll animations",
+      "Portfolio grid with filters",
+      "Team member profiles",
+      "Project case study modals",
+      "Dark mode support"
+    ],
+    "stack": ["React", "Framer Motion", "Vite", "TypeScript"]
+  },
+  {
+    "title": "Wellness App Landing",
+    "tag": "App",
+    "result": "10K+ downloads / hó",
+    "image": "/src/assets/images/portfolio/project-6.svg",
+    "summary": "Wellness alkalmazás promóciós oldala. App store optimization, video hero.",
+    "bullets": [
+      "Video background hero",
+      "Feature showcase carousel",
+      "App store download buttons",
+      "User testimonials",
+      "FAQ accordion"
+    ],
+    "stack": ["Vue 3", "TailwindCSS", "Vite", "EmailJS"]
+  }
+]
