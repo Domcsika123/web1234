@@ -11,6 +11,7 @@ import { initReveal } from "./lib/animate";
 import { initTheme } from "./lib/theme";
 import { initModal } from "./components/modal";
 import { initToast } from "./components/toast";
+import { initCounters } from "./components/counter";
 
 import { renderHero } from "./sections/hero";
 import { renderClients } from "./sections/clients";
@@ -47,6 +48,7 @@ initTheme();
 initNav();
 initModal();
 initReveal();
+initCounters();
 
 initPortfolio();
 initCalculator();

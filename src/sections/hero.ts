@@ -19,15 +19,15 @@ export function renderHero() {
 
         <div class="hero-stats">
           <div class="stat">
-            <b>95+</b>
+            <b class="js-counter" data-target="95" data-suffix="+">0</b>
             <div>PageSpeed Score</div>
           </div>
           <div class="stat">
-            <b>3–7</b>
+            <b class="js-counter" data-start-target="3" data-target="7">0</b>
             <div>Nap alatt kész</div>
           </div>
           <div class="stat">
-            <b>50+</b>
+            <b class="js-counter" data-target="50" data-suffix="+">0</b>
             <div>Elégedett kliens</div>
           </div>
         </div>
@@ -49,9 +49,9 @@ export function renderHero() {
           </div>
 
           <div class="ba-foot">
-            <span>Előtte</span>
+            <span>Before</span>
             <input class="ba-range" type="range" min="0" max="100" value="55" aria-label="Csúszka" />
-            <span>Után</span>
+            <span>After</span>
           </div>
         </div>
       </div>

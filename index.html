@@ -5,7 +5,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Webfejlssssssssesztés — Premium Weboldalak, Amik Eladnak</title>
+  <title>Webfejlesztés — Premium Weboldalak, Amik Eladnak</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      // 1. Előtag hozzáadása (pl. "tw-"), hogy ne akadjon össze a te kódoddal.
+      // Így pl. a "flex" helyett "tw-flex"-et kell írnod.
+      prefix: 'tw-',
+
+      corePlugins: {
+        // 2. A Tailwind alap resetjének kikapcsolása.
+        // Ez menti meg a jelenlegi designodat!
+        preflight: false,
+      }
+    }
+  </script>
   <meta name="description"
     content="Modern webtervezés és fejlesztés. 95+ PageSpeed, konverzió-optimalizált design, 3–7 nap alatt kész. Profi ügynökség, mérhető eredmények." />
   <meta name="keywords" content="webfejlesztés, webtervezés, agency, landing page, webshop, TypeScript, design, SEO" />
