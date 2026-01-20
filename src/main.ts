@@ -12,6 +12,7 @@ import { initTheme } from "./lib/theme";
 import { initModal } from "./components/modal";
 import { initToast } from "./components/toast";
 import { initCounters } from "./components/counter";
+import { initLang } from "./lib/lang";
 
 import { renderHero } from "./sections/hero";
 import { renderClients } from "./sections/clients";
@@ -45,6 +46,7 @@ app.innerHTML = `
 // init (DOM után)
 initToast();
 initTheme();
+initLang();
 initNav();
 initModal();
 initReveal();

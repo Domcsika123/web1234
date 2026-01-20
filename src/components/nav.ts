@@ -16,7 +16,11 @@ export function renderNav() {
       </nav>
 
       <div class="nav-actions">
-        <button class="icon-btn" id="themeToggle" aria-label="Téma váltás" title="Sötét/Világos">◐</button>
+        <div class="lang-switcher" id="langSwitcher">
+          <button class="lang-btn active" data-lang="hu">🇭🇺</button>
+          <button class="lang-btn" data-lang="en">🇬🇧</button>
+          <button class="lang-btn" data-lang="de">🇩🇪</button>
+        </div>
         <button class="btn btn-primary" data-modal-open="quote">Konzultáció</button>
         <button class="icon-btn burger" id="burger" aria-label="Menü">☰</button>
       </div>
