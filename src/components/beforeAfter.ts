@@ -9,7 +9,7 @@ export function initBeforeAfter(rootSelector = ".ba") {
     let value = 0;
     let direction: 1 | -1 = 1;
     let lastTime = performance.now();
-    const durationMs = Number(root.dataset.duration ?? 12000); // slow, gentle sweep across full width
+    const durationMs = Number(root.dataset.duration ?? 8000); // slow, gentle sweep across full width
     const min = 0;
     const max = 100;
 

@@ -3,6 +3,7 @@ import "./style.css";
 import { initScrollProgress } from "./components/scrollProgress";
 import { initBeforeAfter } from "./components/beforeAfter";
 import { initCaseStudy } from "./components/caseStudy";
+import { initProcessSteps } from "./components/processSteps";
 
 import { initNav, renderNav } from "./components/nav";
 import { renderFooter } from "./components/footer";
@@ -15,8 +16,6 @@ import { initCounters } from "./components/counter";
 import { initLang } from "./lib/lang";
 
 import { renderHero } from "./sections/hero";
-import { renderClients } from "./sections/clients";
-import { renderServices } from "./sections/services";
 import { renderProcess } from "./sections/process";
 import { initPortfolio, renderPortfolio } from "./sections/portfolio";
 import { initCalculator, renderCalculator } from "./sections/calculator";
@@ -31,8 +30,6 @@ app.innerHTML = `
   ${renderNav()}
   <main>
     ${renderHero()}
-    ${renderClients()}
-    ${renderServices()}
     ${renderProcess()}
     ${renderPortfolio()}
     ${renderCalculator()}
@@ -57,6 +54,7 @@ initCalculator();
 initTestimonials();
 initFaq();
 initContact();
+initProcessSteps();
 
 initScrollProgress();
 initBeforeAfter();

@@ -88,7 +88,7 @@ export function initNav() {
     });
   });
 
-  const sectionIds = ["services", "process", "portfolio", "pricing", "contact"];
+  const sectionIds = ["process", "portfolio", "contact"];
   const sections = sectionIds.map((id) => document.getElementById(id)).filter(Boolean) as HTMLElement[];
 
   const setActive = (id: string) => {

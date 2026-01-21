@@ -19,10 +19,6 @@ export function renderHero() {
 
         <div class="hero-stats">
           <div class="stat">
-            <b class="js-counter" data-target="95" data-suffix="+">0</b>
-            <div>PageSpeed Score</div>
-          </div>
-          <div class="stat">
             <b class="js-counter" data-start-target="3" data-target="7">0</b>
             <div>Nap alatt kész</div>
           </div>
@@ -32,11 +28,23 @@ export function renderHero() {
           </div>
         </div>
 
-        <div class="hero-features">
-          <div class="feature-badge">✓ Mobil-first</div>
-          <div class="feature-badge">✓ SEO-ready</div>
-          <div class="feature-badge">✓ Accessible</div>
-          <div class="feature-badge">✓ Converter</div>
+        <div class="hero-features" style="margin-top: 32px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
+          <div style="padding: 16px; border-radius: 8px; border: 1px solid var(--border);">
+            <h4 style="font-size: 16px; font-weight: 600; margin-bottom: 8px;">⏱️ Gyorsaság</h4>
+            <p style="font-size: 14px; color: var(--muted);">Egy héten belül live. Nincs hosszú "development" szörnyetegség.</p>
+          </div>
+          <div style="padding: 16px; border-radius: 8px; border: 1px solid var(--border);">
+            <h4 style="font-size: 16px; font-weight: 600; margin-bottom: 8px;">🤝 Transzparencia</h4>
+            <p style="font-size: 14px; color: var(--muted);">Slack/email hozzáférés, Figma draft, git repository. Látod, mi történik.</p>
+          </div>
+          <div style="padding: 16px; border-radius: 8px; border: 1px solid var(--border);">
+            <h4 style="font-size: 16px; font-weight: 600; margin-bottom: 8px;">✅ Korlátlan Revízió</h4>
+            <p style="font-size: 14px; color: var(--muted);">Amíg teljesen elégedett nem vagy, addig javítunk. Véglegesen.</p>
+          </div>
+          <div style="padding: 16px; border-radius: 8px; border: 1px solid var(--border);">
+            <h4 style="font-size: 16px; font-weight: 600; margin-bottom: 8px;">📊 Mérés</h4>
+            <p style="font-size: 14px; color: var(--muted);">Pixel tracking, conversion goal setup, havi reporting dashboard.</p>
+          </div>
         </div>
       </div>
 
