@@ -15,27 +15,14 @@
     "ctaPrimary": "Konzultáció kérése",
     "ctaSecondary": "Portfólió megtekintése",
     "stats": {
-      "days": "Nap alatt kész",
-      "clients": "Elégedett kliens"
+      "pagespeedValue": "95+",
+      "pagespeedLabel": "PageSpeed Score",
+      "daysValue": "3–7",
+      "daysLabel": "Nap alatt kész",
+      "clientsValue": "50+",
+      "clientsLabel": "Elégedett kliens"
     },
-    "features": [
-      {
-        "title": "⏱️ Gyorsaság",
-        "text": "Egy héten belül live. Nincs hosszú fejlesztési rémálom."
-      },
-      {
-        "title": "🤝 Transzparencia",
-        "text": "Slack/email hozzáférés, Figma draft, git repository. Látod, mi történik."
-      },
-      {
-        "title": "✅ Korlátlan Revízió",
-        "text": "Amíg teljesen elégedett nem vagy, addig javítunk. Véglegesen."
-      },
-      {
-        "title": "📊 Mérés",
-        "text": "Pixel tracking, conversion goal setup, havi reporting dashboard."
-      }
-    ],
+    "badges": ["Mobile-first", "SEO + Schema", "WCAG AA", "Konverzió fókusz"],
     "before": "Before",
     "after": "After",
     "sliderLabel": "Csúszka"
@@ -197,6 +184,30 @@
     "pagesMin": "1 (landing)",
     "pagesMax": "12+ (nagy oldal)",
     "typeLabel": "Típus",
+    "complexity": {
+      "label": "Komplexitás",
+      "options": {
+        "simple": "Egyszerű",
+        "standard": "Normál",
+        "advanced": "Összetett"
+      }
+    },
+    "speed": {
+      "label": "Átadás sebessége",
+      "options": {
+        "standard": "Standard",
+        "fast": "Gyorsított",
+        "rush": "Sürgős"
+      }
+    },
+    "support": {
+      "label": "Támogatás",
+      "options": {
+        "none": "Nincs",
+        "standard": "Standard",
+        "premium": "Prémium"
+      }
+    },
     "types": {
       "landing": "Landing page",
       "corporate": "Céges oldal",

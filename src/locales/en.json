@@ -15,27 +15,14 @@
     "ctaPrimary": "Request consultation",
     "ctaSecondary": "View portfolio",
     "stats": {
-      "days": "Days to launch",
-      "clients": "Happy clients"
+      "pagespeedValue": "95+",
+      "pagespeedLabel": "PageSpeed Score",
+      "daysValue": "3–7",
+      "daysLabel": "Days to launch",
+      "clientsValue": "50+",
+      "clientsLabel": "Happy clients"
     },
-    "features": [
-      {
-        "title": "⏱️ Speed",
-        "text": "Live within a week. No long development nightmare."
-      },
-      {
-        "title": "🤝 Transparency",
-        "text": "Slack/email access, Figma draft, git repository. You see everything."
-      },
-      {
-        "title": "✅ Unlimited revisions",
-        "text": "We iterate until you’re 100% satisfied. Final."
-      },
-      {
-        "title": "📊 Measurement",
-        "text": "Pixel tracking, conversion goal setup, monthly reporting dashboard."
-      }
-    ],
+    "badges": ["Mobile-first", "SEO + Schema", "WCAG AA", "Conversion-led"],
     "before": "Before",
     "after": "After",
     "sliderLabel": "Slider"
@@ -197,6 +184,30 @@
     "pagesMin": "1 (landing)",
     "pagesMax": "12+ (large site)",
     "typeLabel": "Type",
+    "complexity": {
+      "label": "Complexity",
+      "options": {
+        "simple": "Simple",
+        "standard": "Standard",
+        "advanced": "Advanced"
+      }
+    },
+    "speed": {
+      "label": "Delivery speed",
+      "options": {
+        "standard": "Standard",
+        "fast": "Fast",
+        "rush": "Rush"
+      }
+    },
+    "support": {
+      "label": "Support",
+      "options": {
+        "none": "None",
+        "standard": "Standard",
+        "premium": "Premium"
+      }
+    },
     "types": {
       "landing": "Landing page",
       "corporate": "Business website",

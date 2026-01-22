@@ -15,27 +15,14 @@
     "ctaPrimary": "Beratung anfragen",
     "ctaSecondary": "Portfolio ansehen",
     "stats": {
-      "days": "Tage bis live",
-      "clients": "Zufriedene Kunden"
+      "pagespeedValue": "95+",
+      "pagespeedLabel": "PageSpeed Score",
+      "daysValue": "3–7",
+      "daysLabel": "Tage bis live",
+      "clientsValue": "50+",
+      "clientsLabel": "Zufriedene Kunden"
     },
-    "features": [
-      {
-        "title": "⏱️ Geschwindigkeit",
-        "text": "Innerhalb einer Woche live. Kein langer Entwicklungs‑Albtraum."
-      },
-      {
-        "title": "🤝 Transparenz",
-        "text": "Slack/E‑Mail‑Zugang, Figma‑Entwurf, Git‑Repo. Du siehst alles."
-      },
-      {
-        "title": "✅ Unbegrenzte Revisionen",
-        "text": "Wir optimieren, bis du 100 % zufrieden bist."
-      },
-      {
-        "title": "📊 Messbarkeit",
-        "text": "Pixel‑Tracking, Conversion‑Ziele, monatliches Reporting‑Dashboard."
-      }
-    ],
+    "badges": ["Mobile-first", "SEO + Schema", "WCAG AA", "Conversion-fokussiert"],
     "before": "Vorher",
     "after": "Nachher",
     "sliderLabel": "Schieberegler"
@@ -197,6 +184,30 @@
     "pagesMin": "1 (Landing)",
     "pagesMax": "12+ (große Seite)",
     "typeLabel": "Typ",
+    "complexity": {
+      "label": "Komplexität",
+      "options": {
+        "simple": "Einfach",
+        "standard": "Standard",
+        "advanced": "Komplex"
+      }
+    },
+    "speed": {
+      "label": "Liefergeschwindigkeit",
+      "options": {
+        "standard": "Standard",
+        "fast": "Schnell",
+        "rush": "Express"
+      }
+    },
+    "support": {
+      "label": "Support",
+      "options": {
+        "none": "Kein",
+        "standard": "Standard",
+        "premium": "Premium"
+      }
+    },
     "types": {
       "landing": "Landingpage",
       "corporate": "Business‑Website",

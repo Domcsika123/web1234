@@ -4,6 +4,7 @@ import { t, ta } from "../lib/i18n";
 export function renderCalculator() {
   const types = ta<Record<string, string>>("calculator.types");
   const extras = ta<Record<string, string>>("calculator.extras");
+  const speed = ta<Record<string, string>>("calculator.speed.options");
 
   return `
   <section class="section" id="calculator">
@@ -36,12 +37,26 @@ export function renderCalculator() {
             </select>
           </div>
 
+          <div class="field">
+            <label for="speed">${t("calculator.speed.label")}</label>
+            <select id="speed" class="calc-select">
+              ${Object.entries(speed)
+                .map(([value, label]) => {
+                  const selected = value === "standard" ? " selected" : "";
+                  return `<option value="${value}"${selected}>${label}</option>`;
+                })
+                .join("")}
+            </select>
+          </div>
+
           <div class="checks">
-            <h4 style="margin: 16px 0 12px; font-size: 13px; color: var(--muted); text-transform: uppercase; font-weight: 700;">${t("calculator.extrasTitle")}</h4>
-            <label class="check"><input id="opt_seo" type="checkbox" /><span>${extras.seo}</span></label>
-            <label class="check"><input id="opt_copy" type="checkbox" /><span>${extras.copy}</span></label>
-            <label class="check"><input id="opt_cms" type="checkbox" /><span>${extras.cms}</span></label>
-            <label class="check"><input id="opt_ecommerce" type="checkbox" /><span>${extras.ecommerce}</span></label>
+            <h4 class="checks-title">${t("calculator.extrasTitle")}</h4>
+            <div class="check-grid">
+              <label class="check-chip"><input id="opt_seo" type="checkbox" /><span>${extras.seo}</span></label>
+              <label class="check-chip"><input id="opt_copy" type="checkbox" /><span>${extras.copy}</span></label>
+              <label class="check-chip"><input id="opt_cms" type="checkbox" /><span>${extras.cms}</span></label>
+              <label class="check-chip"><input id="opt_ecommerce" type="checkbox" /><span>${extras.ecommerce}</span></label>
+            </div>
           </div>
         </div>
 
@@ -76,9 +91,10 @@ export function initCalculator() {
   const priceOut = document.querySelector<HTMLElement>("#priceOut");
   const timeOut = document.querySelector<HTMLElement>("#timeOut");
   const typeSelect = document.querySelector<HTMLSelectElement>("#type");
+  const speedSelect = document.querySelector<HTMLSelectElement>("#speed");
   const explain = document.querySelector<HTMLButtonElement>("#calcExplain");
 
-  if (!pages || !priceOut || !timeOut) return;
+  if (!pages || !priceOut || !timeOut || !typeSelect || !speedSelect) return;
 
   const opts = {
     seo: document.querySelector<HTMLInputElement>("#opt_seo"),
@@ -92,7 +108,8 @@ export function initCalculator() {
 
   const recalc = () => {
     const pageCount = Number(pages.value);
-    const type = typeSelect?.value || "corporate";
+    const type = typeSelect.value;
+    const speed = speedSelect.value;
 
     // Base price by type
     let base = 180_000;
@@ -103,8 +120,20 @@ export function initCalculator() {
     // Add per-page cost
     base += pageCount * 45_000;
 
+
     // Days calculation
     let days = 4 + Math.ceil(pageCount * 0.6);
+
+    // Speed option
+    if (speed === "rush") {
+      base *= 1.2;
+      days = Math.max(2, Math.ceil(days * 0.6));
+    }
+    if (speed === "fast") {
+      base *= 1.1;
+      days = Math.max(3, Math.ceil(days * 0.8));
+    }
+
 
     // Add extras
     if (opts.seo?.checked) { base += 45_000; days += 1; }
@@ -118,7 +147,8 @@ export function initCalculator() {
   };
 
   pages.addEventListener("input", recalc);
-  typeSelect?.addEventListener("change", recalc);
+  typeSelect.addEventListener("change", recalc);
+  speedSelect.addEventListener("change", recalc);
   Object.values(opts).forEach((x) => x?.addEventListener("change", recalc));
 
   explain?.addEventListener("click", () => {

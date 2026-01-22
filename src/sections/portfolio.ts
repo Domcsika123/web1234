@@ -57,12 +57,85 @@ export function renderPortfolio() {
           border-radius: 12px;
           box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
           transform-style: preserve-3d;
-          transition: all 0.8s cubic-bezier(0.23, 1, 0.320, 1);
+          transition: transform 0.8s cubic-bezier(0.23, 1, 0.320, 1), opacity 0.8s cubic-bezier(0.23, 1, 0.320, 1), filter 0.8s cubic-bezier(0.23, 1, 0.320, 1);
           cursor: pointer;
           border: 1px solid var(--border);
           overflow: hidden;
           display: flex;
           flex-direction: column;
+          will-change: transform, opacity, filter;
+        }
+
+        .portfolio-card-3d.is-anim {
+          animation-duration: 0.7s;
+          animation-timing-function: cubic-bezier(0.23, 1, 0.320, 1);
+          animation-fill-mode: both;
+        }
+
+        .portfolio-card-3d[data-role="active"][data-move="next"].is-anim {
+          animation-name: card-enter-from-right;
+        }
+
+        .portfolio-card-3d[data-role="active"][data-move="prev"].is-anim {
+          animation-name: card-enter-from-left;
+        }
+
+        .portfolio-card-3d[data-role="left"].is-anim {
+          animation-name: card-shift-left;
+        }
+
+        .portfolio-card-3d[data-role="right"].is-anim {
+          animation-name: card-shift-right;
+        }
+
+        @keyframes card-enter-from-right {
+          0% {
+            transform: translateX(20%) translateZ(0px) rotateY(-10deg) rotateX(2deg);
+            opacity: 0;
+          }
+          100% {
+            transform: translateX(-50%) translateZ(50px) scale(1.05) rotateY(0deg) rotateX(0deg);
+            opacity: 1;
+          }
+        }
+
+        @keyframes card-enter-from-left {
+          0% {
+            transform: translateX(-120%) translateZ(0px) rotateY(10deg) rotateX(2deg);
+            opacity: 0;
+          }
+          100% {
+            transform: translateX(-50%) translateZ(50px) scale(1.05) rotateY(0deg) rotateX(0deg);
+            opacity: 1;
+          }
+        }
+
+        @keyframes card-shift-left {
+          0% {
+            transform: translateX(-35%) translateZ(10px) rotateY(15deg) rotateX(2deg);
+            opacity: 0.3;
+          }
+          100% {
+            transform: translateZ(0px) rotateY(25deg) rotateX(2deg) translateZ(-30px);
+            opacity: 0.65;
+          }
+        }
+
+        @keyframes card-shift-right {
+          0% {
+            transform: translateX(35%) translateZ(10px) rotateY(-15deg) rotateX(2deg);
+            opacity: 0.3;
+          }
+          100% {
+            transform: translateZ(0px) rotateY(-25deg) rotateX(2deg) translateZ(-30px);
+            opacity: 0.65;
+          }
+        }
+
+        .portfolio-card-3d.is-enter {
+          transform: translateZ(-120px) scale(0.9);
+          opacity: 0;
+          filter: blur(2px);
         }
         
         .portfolio-card-3d.active {
@@ -183,6 +256,8 @@ export function initPortfolio() {
 
   let active = "Összes";
   let currentIndex = 0;
+  let prevIndex = 0;
+  let pendingDirection: "next" | "prev" | "none" = "none";
 
   const renderControls = () => {
     controls.innerHTML = allTags
@@ -195,7 +270,9 @@ export function initPortfolio() {
     controls.querySelectorAll<HTMLButtonElement>("[data-tag]").forEach((b) => {
       b.addEventListener("click", () => {
         active = b.dataset.tag || "Összes";
+        prevIndex = 0;
         currentIndex = 0;
+        pendingDirection = "none";
         renderControls();
         render3dGallery();
       });
@@ -205,7 +282,10 @@ export function initPortfolio() {
   const render3dGallery = () => {
     const filtered = active === "Összes" ? items : items.filter((x) => x.tag === active);
 
+    const direction = pendingDirection;
+
     wrapper.innerHTML = "";
+    wrapper.parentElement?.querySelector("#portfolio3dNav")?.remove();
 
     if (filtered.length === 0) {
       wrapper.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 60px 20px; color: var(--muted);">${t("portfolio.empty")}</div>`;
@@ -226,14 +306,18 @@ export function initPortfolio() {
         })
       );
 
-      let className = "portfolio-card-3d";
+      let className = "portfolio-card-3d is-enter";
+      let role: "active" | "left" | "right" | "hidden" = "hidden";
 
       if (idx === currentIndex) {
         className += " active";
+        role = "active";
       } else if (idx === (currentIndex - 1 + filtered.length) % filtered.length) {
         className += " left";
+        role = "left";
       } else if (idx === (currentIndex + 1) % filtered.length) {
         className += " right";
+        role = "right";
       } else {
         // csak 3 kártya legyen látható
         return;
@@ -241,6 +325,9 @@ export function initPortfolio() {
 
       const card = document.createElement("article");
       card.className = className;
+      card.dataset.role = role;
+      if (direction !== "none") card.dataset.move = direction;
+      card.classList.add("is-anim");
       card.dataset.case = payload;
       card.setAttribute("role", "button");
       card.setAttribute("tabindex", "0");
@@ -278,12 +365,21 @@ export function initPortfolio() {
       wrapper.appendChild(card);
     });
 
+    requestAnimationFrame(() => {
+      wrapper.querySelectorAll<HTMLElement>(".portfolio-card-3d.is-enter").forEach((el) => {
+        el.classList.remove("is-enter");
+      });
+    });
+
+    pendingDirection = "none";
+
     // Carousel kezelés
     if (filtered.length > 1) {
       wrapper.style.position = "relative";
 
       // Nyíl gomboknak külön container
       const navContainer = document.createElement("div");
+      navContainer.id = "portfolio3dNav";
       navContainer.style.cssText = `
         position: absolute;
         bottom: -60px;
@@ -313,7 +409,9 @@ export function initPortfolio() {
         prevBtn.style.transform = "scale(1)";
       });
       prevBtn.addEventListener("click", () => {
+        prevIndex = currentIndex;
         currentIndex = (currentIndex - 1 + filtered.length) % filtered.length;
+        pendingDirection = "prev";
         render3dGallery();
       });
 
@@ -336,7 +434,9 @@ export function initPortfolio() {
         nextBtn.style.transform = "scale(1)";
       });
       nextBtn.addEventListener("click", () => {
+        prevIndex = currentIndex;
         currentIndex = (currentIndex + 1) % filtered.length;
+        pendingDirection = "next";
         render3dGallery();
       });
 

@@ -1,10 +1,6 @@
 import { t, ta } from "../lib/i18n";
 
-type Feature = { title: string; text: string };
-
 export function renderHero() {
-  const features = ta<Feature[]>("hero.features");
-
   return `
   <section class="hero" id="top">
     <div class="container hero-grid">
@@ -24,27 +20,25 @@ export function renderHero() {
 
         <div class="hero-stats">
           <div class="stat">
-            <b class="js-counter" data-start-target="3" data-target="7">0</b>
-            <div>${t("hero.stats.days")}</div>
+            <b class="js-counter" data-target="95" data-suffix="+">${t("hero.stats.pagespeedValue")}</b>
+            <div>${t("hero.stats.pagespeedLabel")}</div>
           </div>
           <div class="stat">
-            <b class="js-counter" data-target="50" data-suffix="+">0</b>
-            <div>${t("hero.stats.clients")}</div>
+            <b
+              class="js-counter"
+              data-start-target="3"
+              data-target="7"
+              data-start-from="0"
+              data-from="0"
+            >${t("hero.stats.daysValue")}</b>
+            <div>${t("hero.stats.daysLabel")}</div>
+          </div>
+          <div class="stat">
+            <b class="js-counter" data-target="50" data-suffix="+">${t("hero.stats.clientsValue")}</b>
+            <div>${t("hero.stats.clientsLabel")}</div>
           </div>
         </div>
 
-        <div class="hero-features" style="margin-top: 32px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
-          ${features
-            .map(
-              (f) => `
-            <div style="padding: 16px; border-radius: 8px; border: 1px solid var(--border);">
-              <h4 style="font-size: 16px; font-weight: 600; margin-bottom: 8px;">${f.title}</h4>
-              <p style="font-size: 14px; color: var(--muted);">${f.text}</p>
-            </div>
-          `
-            )
-            .join("")}
-        </div>
       </div>
 
       <div class="hero-visual" data-reveal>

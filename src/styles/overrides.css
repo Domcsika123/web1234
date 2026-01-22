@@ -419,6 +419,16 @@ select:focus {
   border-color: var(--text);
 }
 
+.calc-result {
+  position: sticky;
+  top: 120px;
+  align-self: start;
+}
+
+.calc-result.card {
+  overflow: visible;
+}
+
 .chip.is-active {
   background: var(--accent);
   border-color: var(--accent);
