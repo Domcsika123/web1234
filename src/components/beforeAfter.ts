@@ -1,4 +1,7 @@
+let runId = 0;
+
 export function initBeforeAfter(rootSelector = ".ba") {
+  const currentRun = ++runId;
   document.querySelectorAll<HTMLElement>(rootSelector).forEach((root) => {
     const before = root.querySelector<HTMLElement>(".ba-before");
     const handle = root.querySelector<HTMLElement>(".ba-handle");
@@ -19,6 +22,7 @@ export function initBeforeAfter(rootSelector = ".ba") {
     };
 
     const tick = (now: number) => {
+      if (currentRun !== runId) return;
       const delta = now - lastTime;
       lastTime = now;
 

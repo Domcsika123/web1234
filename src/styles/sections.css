@@ -576,14 +576,14 @@ html[data-theme="dark"] .faq-item.is-open {
 .ba-after {
   position: absolute;
   inset: 0;
-  background: #0b1424 url('/src/assets/images/beforeAfter/after.svg') center/contain no-repeat;
+  background: var(--bg3) url('/src/assets/images/beforeAfter/after.svg') center/contain no-repeat;
 }
 
 .ba-before {
   position: absolute;
   inset: 0;
   clip-path: inset(0 50% 0 0);
-  background: #0b1424 url('/src/assets/images/beforeAfter/before.svg') center/contain no-repeat;
+  background: var(--bg3) url('/src/assets/images/beforeAfter/before.svg') center/contain no-repeat;
 }
 
 .ba-handle {

@@ -203,7 +203,7 @@ html[data-theme="dark"] .nav {
   align-items: center;
   justify-content: center;
   opacity: 0.5;
-  color: #000000;
+  color: var(--text);
   line-height: 1;
   padding: 0;
 }
@@ -215,7 +215,7 @@ html[data-theme="dark"] .nav {
 }
 
 .lang-btn.active {
-  background: #000000;
+  background: var(--accent);
   opacity: 1;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   color: #ffffff;

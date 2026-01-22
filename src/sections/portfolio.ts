@@ -1,6 +1,6 @@
 // src/sections/portfolio.ts
-import portfolio from "../data/portfolio.json";
 import { openCaseStudy } from "../components/caseStudy";
+import { t, ta } from "../lib/i18n";
 
 type Item = {
   title: string;
@@ -19,9 +19,9 @@ export function renderPortfolio() {
   <section class="section" id="work">
     <div class="container">
       <div class="section-head" data-reveal>
-        <div class="h2">Portfólió</div>
+        <div class="h2">${t("portfolio.title")}</div>
         <p class="p">
-          50+ sikeres projekt. E-commerce, SaaS, landing oldalak. Kattints a részletekhez.
+          ${t("portfolio.subtitle")}
         </p>
       </div>
 
@@ -172,14 +172,14 @@ export function renderPortfolio() {
 }
 
 export function initPortfolio() {
-  const items = (portfolio as Item[]).filter(Boolean);
+  const items = ta<Item[]>("portfolio.items").filter(Boolean);
 
   const controls = document.querySelector<HTMLDivElement>("#portfolioControls");
   const wrapper = document.querySelector<HTMLDivElement>("#portfolio3dWrapper");
   if (!wrapper || !controls) return;
 
   const tags = Array.from(new Set(items.map((x) => x.tag)));
-  const allTags = ["Összes", ...tags];
+  const allTags = [t("portfolio.all"), ...tags];
 
   let active = "Összes";
   let currentIndex = 0;
@@ -208,7 +208,7 @@ export function initPortfolio() {
     wrapper.innerHTML = "";
 
     if (filtered.length === 0) {
-      wrapper.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 60px 20px; color: var(--muted);">Nincs találat.</div>`;
+      wrapper.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 60px 20px; color: var(--muted);">${t("portfolio.empty")}</div>`;
       return;
     }
 
@@ -241,7 +241,7 @@ export function initPortfolio() {
 
       const card = document.createElement("article");
       card.className = className;
-      card.setAttribute("data-case", payload);
+      card.dataset.case = payload;
       card.setAttribute("role", "button");
       card.setAttribute("tabindex", "0");
       card.setAttribute("aria-label", `Esettanulmány: ${it.title}`);
@@ -352,10 +352,10 @@ export function initPortfolio() {
 
 /* ===== helpers ===== */
 function escapeHtml(s: string) {
-  return s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" }[c] as string));
+  return s.replaceAll(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" }[c] as string));
 }
 
 // attribútumba megy → idézőjelek kezelése
 function escapeAttr(s: string) {
-  return escapeHtml(s).replace(/"/g, "&quot;");
+  return escapeHtml(s).replaceAll("\"", "&quot;");
 }

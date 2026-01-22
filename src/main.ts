@@ -14,6 +14,7 @@ import { initModal } from "./components/modal";
 import { initToast } from "./components/toast";
 import { initCounters } from "./components/counter";
 import { initLang } from "./lib/lang";
+import { getSavedLang, setLang } from "./lib/i18n";
 
 import { renderHero } from "./sections/hero";
 import { renderProcess } from "./sections/process";
@@ -26,36 +27,44 @@ import { initContact, renderContact } from "./sections/contact";
 const app = document.querySelector<HTMLDivElement>("#app");
 if (!app) throw new Error("#app not found");
 
-app.innerHTML = `
-  ${renderNav()}
-  <main>
-    ${renderHero()}
-    ${renderProcess()}
-    ${renderPortfolio()}
-    ${renderCalculator()}
-    ${renderTestimonials()}
-    ${renderFaq()}
-    ${renderContact()}
-  </main>
-  ${renderFooter()}
-`;
+const renderApp = () => {
+  app.innerHTML = `
+    ${renderNav()}
+    <main>
+      ${renderHero()}
+      ${renderProcess()}
+      ${renderPortfolio()}
+      ${renderCalculator()}
+      ${renderTestimonials()}
+      ${renderFaq()}
+      ${renderContact()}
+    </main>
+    ${renderFooter()}
+  `;
 
-// init (DOM után)
-initToast();
-initTheme();
-initLang();
-initNav();
-initModal();
-initReveal();
-initCounters();
+  // init (DOM után)
+  initToast();
+  initTheme();
+  initLang((lang) => {
+    setLang(lang);
+    renderApp();
+  });
+  initNav();
+  initModal();
+  initReveal();
+  initCounters();
 
-initPortfolio();
-initCalculator();
-initTestimonials();
-initFaq();
-initContact();
-initProcessSteps();
+  initPortfolio();
+  initCalculator();
+  initTestimonials();
+  initFaq();
+  initContact();
+  initProcessSteps();
 
-initScrollProgress();
-initBeforeAfter();
-initCaseStudy();
+  initScrollProgress();
+  initBeforeAfter();
+  initCaseStudy();
+};
+
+setLang(getSavedLang());
+renderApp();

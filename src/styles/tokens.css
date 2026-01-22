@@ -23,25 +23,25 @@
   --dur-2: 350ms;
   --dur-3: 650ms;
 
-  /* colors - vibrant blue/purple gradient palette */
-  --bg: linear-gradient(135deg, #ffffff 0%, #e0f2fe 50%, #ddd6fe 100%);
-  --bg2: rgba(224, 242, 254, 0.5);
-  --bg3: rgba(221, 214, 254, 0.4);
-  --surface: rgba(59, 130, 246, 0.08);
-  --surface2: rgba(139, 92, 246, 0.10);
-  --surface-hover: rgba(99, 102, 241, 0.15);
-  --border: rgba(99, 102, 241, 0.20);
-  --border-hover: rgba(79, 70, 229, 0.35);
+  /* colors - dark pink/purple palette */
+  --bg: #0b0f1a;
+  --bg2: #111827;
+  --bg3: #1f2937;
+  --surface: rgba(168, 85, 247, 0.10);
+  --surface2: rgba(236, 72, 153, 0.12);
+  --surface-hover: rgba(168, 85, 247, 0.18);
+  --border: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(255, 255, 255, 0.14);
 
-  --text: #1e1b4b;
-  --text-secondary: #4c1d95;
-  --muted: #6366f1;
+  --text: #f9fafb;
+  --text-secondary: #d1d5db;
+  --muted: #9ca3af;
 
-  /* accents - bold blue/purple */
-  --accent: #6366f1;
-  --accent2: #8b5cf6;
-  --accent3: #3b82f6;
-  --accent4: #a78bfa;
+  /* accents - magenta / violet */
+  --accent: #a855f7;
+  --accent2: #ec4899;
+  --accent3: #8b5cf6;
+  --accent4: #f472b6;
 
   --good: #2d5016;
   --warn: #b8860b;
@@ -58,17 +58,17 @@ html[data-theme="dark"] {
 
 html[data-theme="dark"] {
   color-scheme: dark;
-  --bg: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4c1d95 100%);
-  --bg2: rgba(79, 70, 229, 0.15);
-  --bg3: rgba(139, 92, 246, 0.20);
-  --surface: rgba(139, 92, 246, 0.12);
-  --surface2: rgba(167, 139, 250, 0.15);
-  --surface-hover: rgba(196, 181, 253, 0.20);
-  --border: rgba(139, 92, 246, 0.25);
-  --border-hover: rgba(167, 139, 250, 0.40);
-  --text: #e0e7ff;
-  --text-secondary: #c7d2fe;
-  --muted: #a5b4fc;
+  --bg: #070b14;
+  --bg2: #0f172a;
+  --bg3: #111827;
+  --surface: rgba(168, 85, 247, 0.12);
+  --surface2: rgba(236, 72, 153, 0.14);
+  --surface-hover: rgba(168, 85, 247, 0.22);
+  --border: rgba(255, 255, 255, 0.10);
+  --border-hover: rgba(255, 255, 255, 0.18);
+  --text: #ffffff;
+  --text-secondary: #e5e7eb;
+  --muted: #9ca3af;
 }
 
 html[data-theme="light"] {

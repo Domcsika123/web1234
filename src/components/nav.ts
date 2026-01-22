@@ -1,27 +1,28 @@
+import { t } from "../lib/i18n";
+
 export function renderNav() {
   return `
   <header class="nav">
     <div class="container nav-inner">
       <a class="brand" href="#top" data-nav>
         <span class="brand-dot"></span>
-        <span>Webfejlesztés</span>
+        <span>${t("nav.brand")}</span>
       </a>
 
       <nav class="nav-links" aria-label="Fő navigáció">
-        <a href="#services" data-nav>Csomag</a>
-        <a href="#process" data-nav>Folyamat</a>
-        <a href="#work" data-nav>Portfólió</a>
-        <a href="#testimonials" data-nav>Vélemények</a>
-        <a href="#contact" data-nav>Kapcsolat</a>
+        <a href="#process" data-nav>${t("nav.process")}</a>
+        <a href="#work" data-nav>${t("nav.portfolio")}</a>
+        <a href="#testimonials" data-nav>${t("nav.testimonials")}</a>
+        <a href="#contact" data-nav>${t("nav.contact")}</a>
       </nav>
 
       <div class="nav-actions">
         <div class="lang-switcher" id="langSwitcher">
-          <button class="lang-btn active" data-lang="hu">🇭🇺</button>
-          <button class="lang-btn" data-lang="en">🇬🇧</button>
-          <button class="lang-btn" data-lang="de">🇩🇪</button>
+          <button class="lang-btn active" data-lang="hu">HU</button>
+          <button class="lang-btn" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="de">DE</button>
         </div>
-        <button class="btn btn-primary" data-modal-open="quote">Konzultáció</button>
+        <button class="btn btn-primary" data-modal-open="quote">${t("nav.cta")}</button>
         <button class="icon-btn burger" id="burger" aria-label="Menü">☰</button>
       </div>
     </div>
@@ -30,16 +31,15 @@ export function renderNav() {
       <div class="drawer-backdrop" data-drawer-close></div>
       <div class="drawer-panel">
         <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--border);">
-          <div class="brand"><span class="brand-dot"></span><span>Menü</span></div>
+          <div class="brand"><span class="brand-dot"></span><span>${t("nav.menu")}</span></div>
           <button class="icon-btn" data-drawer-close aria-label="Bezárás">✕</button>
         </div>
-        <a href="#services" data-nav>Csomag</a>
-        <a href="#process" data-nav>Folyamat</a>
-        <a href="#work" data-nav>Portfólió</a>
-        <a href="#testimonials" data-nav>Vélemények</a>
-        <a href="#contact" data-nav>Kapcsolat</a>
+        <a href="#process" data-nav>${t("nav.process")}</a>
+        <a href="#work" data-nav>${t("nav.portfolio")}</a>
+        <a href="#testimonials" data-nav>${t("nav.testimonials")}</a>
+        <a href="#contact" data-nav>${t("nav.contact")}</a>
         <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--border);">
-          <button class="btn btn-primary" style="width:100%;" data-modal-open="quote">Konzultáció</button>
+          <button class="btn btn-primary" style="width:100%;" data-modal-open="quote">${t("nav.cta")}</button>
         </div>
       </div>
     </div>
@@ -88,7 +88,7 @@ export function initNav() {
     });
   });
 
-  const sectionIds = ["process", "portfolio", "contact"];
+  const sectionIds = ["process", "work", "testimonials", "contact"];
   const sections = sectionIds.map((id) => document.getElementById(id)).filter(Boolean) as HTMLElement[];
 
   const setActive = (id: string) => {
@@ -114,32 +114,32 @@ function renderQuoteModal() {
   return `
     <div class="modal-overlay" id="quoteModal" aria-hidden="true">
       <div class="modal-backdrop" data-modal-close></div>
-      <div class="modal-content" role="dialog" aria-modal="true" aria-label="Ajánlatkérés">
+      <div class="modal-content" role="dialog" aria-modal="true" aria-label="${t("quoteModal.aria")}">
         <div class="modal-head">
           <div>
-            <div class="meta">Ajánlatkérés</div>
-            <div style="font-weight:900;font-size:20px;margin-top:8px;">Mondd el röviden, mire van szükséged</div>
-            <div style="color:var(--muted);margin-top:6px;">Visszajelzünk a legjobb megoldással és javasolt ütemezéssel.</div>
+            <div class="meta">${t("quoteModal.meta")}</div>
+            <div style="font-weight:900;font-size:20px;margin-top:8px;">${t("quoteModal.title")}</div>
+            <div style="color:var(--muted);margin-top:6px;">${t("quoteModal.subtitle")}</div>
           </div>
           <button class="icon-btn" data-modal-close aria-label="Bezárás">✕</button>
         </div>
 
         <form id="quoteForm">
           <div class="field">
-            <label for="q_name">Név</label>
-            <input id="q_name" name="name" placeholder="Pl. Kiss Gábor" required />
+            <label for="q_name">${t("quoteModal.nameLabel")}</label>
+            <input id="q_name" name="name" placeholder="${t("quoteModal.namePlaceholder")}" required />
           </div>
           <div class="field">
-            <label for="q_email">Email</label>
-            <input id="q_email" name="email" placeholder="email@domain.hu" type="email" required />
+            <label for="q_email">${t("quoteModal.emailLabel")}</label>
+            <input id="q_email" name="email" placeholder="${t("quoteModal.emailPlaceholder")}" type="email" required />
           </div>
           <div class="field">
-            <label for="q_msg">Rövid leírás</label>
-            <textarea id="q_msg" name="msg" placeholder="Milyen weboldalt szeretnél? Mi a cél? Van-e határidő?"></textarea>
+            <label for="q_msg">${t("quoteModal.messageLabel")}</label>
+            <textarea id="q_msg" name="msg" placeholder="${t("quoteModal.messagePlaceholder")}"></textarea>
           </div>
           <div style="display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap;margin-top:12px;">
-            <button type="button" class="btn btn-ghost" data-modal-close>Mégse</button>
-            <button type="submit" class="btn btn-primary">Küldés</button>
+            <button type="button" class="btn btn-ghost" data-modal-close>${t("quoteModal.cancel")}</button>
+            <button type="submit" class="btn btn-primary">${t("quoteModal.submit")}</button>
           </div>
         </form>
       </div>

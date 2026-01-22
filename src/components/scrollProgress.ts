@@ -1,7 +1,15 @@
+let initialized = false;
+
 export function initScrollProgress() {
-  const bar = document.createElement("div");
-  bar.id = "scrollProgress";
-  document.body.appendChild(bar);
+  if (initialized) return;
+  initialized = true;
+
+  const existing = document.getElementById("scrollProgress");
+  const bar = existing ?? document.createElement("div");
+  if (!existing) {
+    bar.id = "scrollProgress";
+    document.body.appendChild(bar);
+  }
 
   const onScroll = () => {
     const doc = document.documentElement;

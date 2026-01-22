@@ -1,22 +1,25 @@
 import { toast } from "../components/toast";
+import { t, ta } from "../lib/i18n";
 
 export function renderContact() {
+  const projectOptions = ta<{ value: string; label: string }[]>("contact.form.projectOptions");
+
   return `
   <section class="section" id="contact">
     <div class="container">
       <div class="section-head" data-reveal>
-        <div class="h2">Szeretnél elkezdeni?</div>
-        <p class="p">Írj vagy hívj. 24 órán belül válaszolunk, konzultáció ingyenes.</p>
+        <div class="h2">${t("contact.title")}</div>
+        <p class="p">${t("contact.subtitle")}</p>
       </div>
 
       <div class="contact-grid" data-reveal>
         <div class="contact-info">
-          <h3>Gyors kontakt</h3>
+          <h3>${t("contact.infoTitle")}</h3>
           
           <div class="contact-item">
             <span class="contact-icon">📧</span>
             <div>
-              <div class="contact-label">Email</div>
+              <div class="contact-label">${t("contact.emailLabel")}</div>
               <a href="mailto:info@webfejlesztes.hu">info@webfejlesztes.hu</a>
             </div>
           </div>
@@ -24,7 +27,7 @@ export function renderContact() {
           <div class="contact-item">
             <span class="contact-icon">📱</span>
             <div>
-              <div class="contact-label">Telefon</div>
+              <div class="contact-label">${t("contact.phoneLabel")}</div>
               <a href="tel:+36301234567">+36 (30) 123-4567</a>
             </div>
           </div>
@@ -32,63 +35,57 @@ export function renderContact() {
           <div class="contact-item">
             <span class="contact-icon">💬</span>
             <div>
-              <div class="contact-label">Slack / Discord</div>
-              <p style="margin: 0; color: var(--muted);">Real-time project updates</p>
+              <div class="contact-label">${t("contact.chatLabel")}</div>
+              <p style="margin: 0; color: var(--muted);">${t("contact.chatText")}</p>
             </div>
           </div>
 
           <div style="margin-top: 30px;">
-            <h4 style="margin-top: 0;">Várható időpontok</h4>
+            <h4 style="margin-top: 0;">${t("contact.availabilityTitle")}</h4>
             <ul style="list-style: none; padding: 0; margin: 0;">
-              <li style="margin-bottom: 8px;">📅 <strong>Hétfő–Péntek:</strong> 09:00–18:00</li>
-              <li>⏰ <strong>Sürgős:</strong> 30 perces callback</li>
+              <li style="margin-bottom: 8px;">📅 <strong>${t("contact.availabilityWeekdays")}</strong></li>
+              <li>⏰ <strong>${t("contact.availabilityUrgent")}</strong></li>
             </ul>
           </div>
         </div>
 
         <form id="contactForm" class="contact-form" data-reveal>
-          <h3>Kérdezz vagy kérj ajánlatot</h3>
+          <h3>${t("contact.formTitle")}</h3>
           
           <div class="form-group">
-            <label for="c_name">Név *</label>
-            <input id="c_name" type="text" required placeholder="A céged vagy neved" />
+            <label for="c_name">${t("contact.form.name")}</label>
+            <input id="c_name" type="text" required placeholder="${t("contact.form.placeholders.name")}" />
           </div>
 
           <div class="form-group">
-            <label for="c_email">Email *</label>
-            <input id="c_email" type="email" required placeholder="email@domain.hu" />
+            <label for="c_email">${t("contact.form.email")}</label>
+            <input id="c_email" type="email" required placeholder="${t("contact.form.placeholders.email")}" />
           </div>
 
           <div class="form-group">
-            <label for="c_phone">Telefon</label>
-            <input id="c_phone" type="tel" placeholder="+36 (30) 123-4567" />
+            <label for="c_phone">${t("contact.form.phone")}</label>
+            <input id="c_phone" type="tel" placeholder="${t("contact.form.placeholders.phone")}" />
           </div>
 
           <div class="form-group">
-            <label for="c_type">Milyen típusú projekt?</label>
+            <label for="c_type">${t("contact.form.projectType")}</label>
             <select id="c_type" required>
-              <option value="">-- Válassz --</option>
-              <option value="landing">Landing page</option>
-              <option value="webshop">Webshop / E-commerce</option>
-              <option value="corporate">Céges oldal</option>
-              <option value="saas">SaaS platform</option>
-              <option value="redesign">Redesign / Migration</option>
-              <option value="other">Egyéb</option>
+              ${projectOptions.map((o) => `<option value="${o.value}">${o.label}</option>`).join("")}
             </select>
           </div>
 
           <div class="form-group">
-            <label for="c_msg">Rövid leírás *</label>
-            <textarea id="c_msg" required placeholder="Mi a cél? Mi a szükséges? Milyen timeframe?"></textarea>
+            <label for="c_msg">${t("contact.form.message")}</label>
+            <textarea id="c_msg" required placeholder="${t("contact.form.placeholders.message")}"></textarea>
           </div>
 
           <div class="form-actions">
-            <button type="submit" class="btn btn-primary" style="width: 100%;">Küldés & Konzultáció</button>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">${t("contact.form.submit")}</button>
           </div>
 
           <div style="font-size: 12px; color: var(--muted); margin-top: 12px;">
             <input type="checkbox" id="c_agree" required style="margin-right: 6px;" />
-            <label for="c_agree">Elfogadom az adatvédelmi irányelveket</label>
+            <label for="c_agree">${t("contact.form.privacy")}</label>
           </div>
         </form>
       </div>
@@ -112,7 +109,7 @@ export function initContact() {
     // Later: send to backend/API
     console.log({ name, email, type, msg });
 
-    toast("Köszönünk! ✅", "Az üzeneteted megkaptuk. Hamarosan felvesszük veled a kapcsolatot.");
+    toast(t("contact.toastTitle"), t("contact.toastMessage"));
     form.reset();
     
     // Scroll to contact section
