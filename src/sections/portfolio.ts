@@ -7,8 +7,6 @@ type Item = {
   tag: string;
   result: string;
   image?: string;
-
-  // opcionális extra mezők a case study modalhoz
   summary?: string;
   bullets?: string[];
   stack?: string[];
@@ -25,217 +23,219 @@ export function renderPortfolio() {
         </p>
       </div>
       
-      <!-- 3D Perspective Gallery -->
+      <!-- 3D Book Gallery -->
       <style>
-        .portfolio-3d-container {
+        .portfolio-book-container {
           perspective: 1200px;
-          height: 600px;
+          height: 700px;
           display: flex;
           align-items: center;
           justify-content: center;
           position: relative;
-          overflow: visible;
+          overflow: hidden;
+          margin: 60px 0;
         }
         
-        .portfolio-3d-wrapper {
+        .portfolio-book-wrapper {
           position: relative;
           width: 100%;
           height: 100%;
-          transform-style: preserve-3d;
           display: flex;
           align-items: center;
           justify-content: center;
         }
         
-        .portfolio-card-3d {
-          position: absolute;
-          width: 280px;
-          height: 380px;
-          background: white;
-          border-radius: 12px;
-          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        .portfolio-book {
+          width: 900px;
+          height: 550px;
+          background: #ffffff;
+          border-radius: 4px;
+          box-shadow: 0 40px 80px rgba(0, 0, 0, 0.4), 0 0 40px rgba(168, 85, 247, 0.2);
           transform-style: preserve-3d;
-          transition: transform 0.8s cubic-bezier(0.23, 1, 0.320, 1), opacity 0.8s cubic-bezier(0.23, 1, 0.320, 1), filter 0.8s cubic-bezier(0.23, 1, 0.320, 1);
-          cursor: pointer;
-          border: 1px solid var(--border);
+          position: relative;
           overflow: hidden;
+          border: 8px solid #0a0a0a;
+        }
+        
+        .portfolio-book::before {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 0;
+          bottom: 0;
+          width: 20px;
+          background: linear-gradient(90deg, rgba(0,0,0,0.3), transparent);
+          z-index: 10;
+          pointer-events: none;
+        }
+        
+        .portfolio-book-spine {
+          position: absolute;
+          left: -8px;
+          top: 0;
+          bottom: 0;
+          width: 8px;
+          background: linear-gradient(90deg, #1a1a1a, #2a2a2a);
+          transform: skewX(-5deg);
+        }
+        
+        .portfolio-book-pages {
+          display: flex;
+          height: 100%;
+          width: 100%;
+          position: relative;
+          transform-style: preserve-3d;
+        }
+        
+        .portfolio-page {
+          flex: 0 0 50%;
+          height: 100%;
           display: flex;
           flex-direction: column;
-          will-change: transform, opacity, filter;
-        }
-
-        .portfolio-card-3d.is-anim {
-          animation-duration: 0.7s;
-          animation-timing-function: cubic-bezier(0.23, 1, 0.320, 1);
-          animation-fill-mode: both;
-        }
-
-        .portfolio-card-3d[data-role="active"][data-move="next"].is-anim {
-          animation-name: card-enter-from-right;
-        }
-
-        .portfolio-card-3d[data-role="active"][data-move="prev"].is-anim {
-          animation-name: card-enter-from-left;
-        }
-
-        .portfolio-card-3d[data-role="left"].is-anim {
-          animation-name: card-shift-left;
-        }
-
-        .portfolio-card-3d[data-role="right"].is-anim {
-          animation-name: card-shift-right;
-        }
-
-        @keyframes card-enter-from-right {
-          0% {
-            transform: translateX(20%) translateZ(0px) rotateY(-10deg) rotateX(2deg);
-            opacity: 0;
-          }
-          100% {
-            transform: translateX(-50%) translateZ(50px) scale(1.05) rotateY(0deg) rotateX(0deg);
-            opacity: 1;
-          }
-        }
-
-        @keyframes card-enter-from-left {
-          0% {
-            transform: translateX(-120%) translateZ(0px) rotateY(10deg) rotateX(2deg);
-            opacity: 0;
-          }
-          100% {
-            transform: translateX(-50%) translateZ(50px) scale(1.05) rotateY(0deg) rotateX(0deg);
-            opacity: 1;
-          }
-        }
-
-        @keyframes card-shift-left {
-          0% {
-            transform: translateX(-35%) translateZ(10px) rotateY(15deg) rotateX(2deg);
-            opacity: 0.3;
-          }
-          100% {
-            transform: translateZ(0px) rotateY(25deg) rotateX(2deg) translateZ(-30px);
-            opacity: 0.65;
-          }
-        }
-
-        @keyframes card-shift-right {
-          0% {
-            transform: translateX(35%) translateZ(10px) rotateY(-15deg) rotateX(2deg);
-            opacity: 0.3;
-          }
-          100% {
-            transform: translateZ(0px) rotateY(-25deg) rotateX(2deg) translateZ(-30px);
-            opacity: 0.65;
-          }
-        }
-
-        .portfolio-card-3d.is-enter {
-          transform: translateZ(-120px) scale(0.9);
-          opacity: 0;
-          filter: blur(2px);
-        }
-        
-        .portfolio-card-3d.active {
-          z-index: 10;
-          left: 50%;
-          transform: translateX(-50%) translateZ(50px) scale(1.05) rotateY(0deg) rotateX(0deg);
-        }
-        
-        .portfolio-card-3d.left {
-          left: 10%;
-          transform: translateZ(0px) rotateY(25deg) rotateX(2deg) translateZ(-30px);
-          opacity: 0.65;
-        }
-        
-        .portfolio-card-3d.right {
-          right: 10%;
-          left: auto;
-          transform: translateZ(0px) rotateY(-25deg) rotateX(2deg) translateZ(-30px);
-          opacity: 0.65;
-        }
-        
-        .portfolio-card-3d .pimg {
-          flex: 1;
-          background-size: cover;
-          background-position: center;
+          padding: 40px;
+          background: white;
           position: relative;
           overflow: hidden;
         }
         
-        .portfolio-card-3d .pimg::after {
-          content: '';
-          position: absolute;
-          inset: 0;
-          background: rgba(0, 0, 0, 0.3);
-          opacity: 0;
-          transition: opacity 0.3s;
-        }
-        
-        .portfolio-card-3d:hover .pimg::after {
-          opacity: 1;
-        }
-        
-        .portfolio-card-3d .pbody {
-          padding: 20px;
-          display: flex;
-          flex-direction: column;
+        .portfolio-page.left {
+          border-right: 1px solid #e5e5e5;
           justify-content: space-between;
-          flex-shrink: 0;
-          background: white;
         }
         
-        .portfolio-card-3d .pmeta {
+        .portfolio-page.right {
+          background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
           display: flex;
-          gap: 8px;
-          flex-wrap: wrap;
-          margin-bottom: 8px;
+          align-items: center;
+          justify-content: center;
         }
         
-        .portfolio-card-3d .meta {
+        .portfolio-page-tag {
           font-size: 11px;
-          padding: 4px 8px;
-          background: var(--bg2);
-          border-radius: 4px;
-          color: var(--muted);
-        }
-        
-        .portfolio-card-3d .ptitle {
-          font-size: 18px;
           font-weight: 700;
-          color: var(--text);
+          letter-spacing: 1.2px;
+          text-transform: uppercase;
+          color: #999;
           margin-bottom: 8px;
         }
         
-        .portfolio-card-3d .presult {
-          font-size: 13px;
-          color: var(--text-secondary);
-          margin: 0;
+        .portfolio-page-title {
+          font-size: 32px;
+          font-weight: 700;
+          color: #1a1a1a;
+          margin-bottom: 12px;
+          line-height: 1.2;
         }
         
-        @media (max-width: 768px) {
-          .portfolio-3d-container {
-            height: auto;
+        .portfolio-page-result {
+          font-size: 14px;
+          color: var(--accent);
+          font-weight: 600;
+          margin-bottom: 24px;
+        }
+        
+        .portfolio-page-desc {
+          font-size: 13px;
+          line-height: 1.8;
+          color: #555;
+          margin-bottom: 20px;
+          flex: 1;
+        }
+        
+        .portfolio-page-stack {
+          font-size: 11px;
+          color: #999;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+          margin-top: auto;
+        }
+        
+        .portfolio-page-stack span {
+          background: #f0f0f0;
+          padding: 4px 8px;
+          border-radius: 3px;
+        }
+        
+        .portfolio-page-image {
+          width: 100%;
+          height: 100%;
+          background-size: cover;
+          background-position: center;
+          border-radius: 3px;
+        }
+        
+        .portfolio-book-nav {
+          position: absolute;
+          bottom: -80px;
+          left: 50%;
+          transform: translateX(-50%);
+          display: flex;
+          gap: 16px;
+          align-items: center;
+          z-index: 20;
+        }
+        
+        .portfolio-book-btn {
+          padding: 12px 28px;
+          background: var(--accent);
+          color: white;
+          border: none;
+          border-radius: 8px;
+          cursor: pointer;
+          font-weight: 600;
+          font-size: 14px;
+          transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        .portfolio-book-btn:hover {
+          transform: scale(1.08);
+          box-shadow: 0 10px 30px rgba(168, 85, 247, 0.4);
+        }
+        
+        .portfolio-page-flip {
+          animation: pageFlip 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+          transform-style: preserve-3d;
+        }
+        
+        @keyframes pageFlip {
+          0% {
+            transform: rotateY(0deg);
+            opacity: 1;
           }
-          
-          .portfolio-card-3d {
-            position: relative;
+          50% {
+            transform: rotateY(90deg);
+            opacity: 0.7;
+          }
+          100% {
+            transform: rotateY(0deg);
+            opacity: 1;
+          }
+        }
+        
+        @media (max-width: 1024px) {
+          .portfolio-book {
             width: 100%;
-            height: auto;
-            transform: none !important;
-            opacity: 1 !important;
-            margin-bottom: 20px;
+            max-width: 700px;
+            height: 450px;
           }
           
-          .portfolio-card-3d.left,
-          .portfolio-card-3d.right {
-            display: none;
+          .portfolio-page {
+            padding: 30px;
+            font-size: 14px;
+          }
+          
+          .portfolio-page-title {
+            font-size: 24px;
           }
         }
       </style>
       
-      <div class="portfolio-3d-container" id="portfolio3d" data-reveal>
-        <div class="portfolio-3d-wrapper" id="portfolio3dWrapper"></div>
+      <div class="portfolio-book-container" id="portfolioBook" data-reveal>
+        <div class="portfolio-book-wrapper" id="portfolioBookWrapper">
+          <!-- Book pages will be rendered here -->
+        </div>
+        <div class="portfolio-book-nav" id="portfolioBookNav"></div>
       </div>
     </div>
   </section>
@@ -244,182 +244,103 @@ export function renderPortfolio() {
 
 export function initPortfolio() {
   const items = ta<Item[]>("portfolio.items").filter(Boolean);
-  const wrapper = document.querySelector<HTMLDivElement>("#portfolio3dWrapper");
-  if (!wrapper) return;
+  const bookWrapper = document.querySelector<HTMLDivElement>("#portfolioBookWrapper");
+  const bookNav = document.querySelector<HTMLDivElement>("#portfolioBookNav");
 
-  let active = "Összes";
+  if (!bookWrapper || !bookNav || items.length === 0) return;
+
   let currentIndex = 0;
-  let prevIndex = 0;
-  let pendingDirection: "next" | "prev" | "none" = "none";
+  const totalItems = items.length;
 
-  const render3dGallery = () => {
-    const filtered = active === "Összes" ? items : items.filter((x) => x.tag === active);
+  const renderBookPage = () => {
+    const item = items[currentIndex];
+    const img = item.image?.trim() || "";
 
-    const direction = pendingDirection;
-
-    wrapper.innerHTML = "";
-    wrapper.parentElement?.querySelector("#portfolio3dNav")?.remove();
-
-    if (filtered.length === 0) {
-      wrapper.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 60px 20px; color: var(--muted);">${t("portfolio.empty")}</div>`;
-      return;
-    }
-
-    // 3 kártya: left, active, right
-    filtered.forEach((it, idx) => {
-      const img = it.image?.trim();
-      const payload = escapeAttr(
-        JSON.stringify({
-          title: it.title,
-          tag: it.tag,
-          result: it.result,
-          summary: it.summary,
-          bullets: it.bullets,
-          stack: it.stack,
-        })
-      );
-
-      let className = "portfolio-card-3d is-enter";
-      let role: "active" | "left" | "right" | "hidden" = "hidden";
-
-      if (idx === currentIndex) {
-        className += " active";
-        role = "active";
-      } else if (idx === (currentIndex - 1 + filtered.length) % filtered.length) {
-        className += " left";
-        role = "left";
-      } else if (idx === (currentIndex + 1) % filtered.length) {
-        className += " right";
-        role = "right";
-      } else {
-        // csak 3 kártya legyen látható
-        return;
+    // Create book HTML
+    const bookHTML = `
+      <div class="portfolio-book">
+        <div class="portfolio-book-spine"></div>
+        <div class="portfolio-book-pages">
+          <!-- Left Page: Info -->
+          <div class="portfolio-page left">
+            <div>
+              <div class="portfolio-page-tag">${escapeHtml(item.tag)}</div>
+              <div class="portfolio-page-title">${escapeHtml(item.title)}</div>
+              <div class="portfolio-page-result">📈 ${escapeHtml(item.result)}</div>
+            </div>
+            <div class="portfolio-page-desc">
+              ${escapeHtml(item.summary || "")}
+            </div>
+            <div>
+              ${item.bullets && item.bullets.length > 0
+        ? `
+                <div style="margin-bottom: 20px; font-size: 13px; line-height: 1.8; color: #555;">
+                  ${item.bullets.map((b) => `<div style="margin-bottom: 8px;">✓ ${escapeHtml(b)}</div>`).join("")}
+                </div>
+              `
+        : ""
       }
-
-      const card = document.createElement("article");
-      card.className = className;
-      card.dataset.role = role;
-      if (direction !== "none") card.dataset.move = direction;
-      card.classList.add("is-anim");
-      card.dataset.case = payload;
-      card.setAttribute("role", "button");
-      card.setAttribute("tabindex", "0");
-      card.setAttribute("aria-label", `Esettanulmány: ${it.title}`);
-
-      card.innerHTML = `
-        <div class="pimg" ${img ? `style="background-image:url('${escapeAttr(img)}');"` : ""}></div>
-        <div class="pbody">
-          <div class="pmeta">
-            <span class="meta">${escapeHtml(it.tag)}</span>
-            <span class="meta">📈 ${escapeHtml(it.result)}</span>
+              <div class="portfolio-page-stack">
+                <strong style="width: 100%; color: #1a1a1a; margin-bottom: 8px; display: block;">Technológia:</strong>
+                ${item.stack ? item.stack.map((s) => `<span>${escapeHtml(s)}</span>`).join("") : ""}
+              </div>
+            </div>
           </div>
-          <div class="ptitle">${escapeHtml(it.title)}</div>
-          <p class="presult">Kattints az esettanulmány nézethez.</p>
+          
+          <!-- Right Page: Image -->
+          <div class="portfolio-page right">
+            ${img
+        ? `<div class="portfolio-page-image" style="background-image:url('${escapeAttr(img)}');"></div>`
+        : `<div style="font-size: 14px; color: #999; text-align: center;">Nincs kép</div>`
+      }
+          </div>
         </div>
-      `;
+      </div>
+    `;
 
-      const open = () => {
-        try {
-          const data = JSON.parse(payload) as Item;
-          openCaseStudy(data);
-        } catch (e) {
-          console.error("Case study parse error:", e);
-        }
-      };
+    bookWrapper.innerHTML = bookHTML;
 
-      card.addEventListener("click", open);
-      card.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          open();
-        }
-      });
-
-      wrapper.appendChild(card);
-    });
-
-    requestAnimationFrame(() => {
-      wrapper.querySelectorAll<HTMLElement>(".portfolio-card-3d.is-enter").forEach((el) => {
-        el.classList.remove("is-enter");
-      });
-    });
-
-    pendingDirection = "none";
-
-    // Carousel kezelés
-    if (filtered.length > 1) {
-      wrapper.style.position = "relative";
-
-      // Nyíl gomboknak külön container
-      const navContainer = document.createElement("div");
-      navContainer.id = "portfolio3dNav";
-      navContainer.style.cssText = `
-        position: absolute;
-        bottom: -60px;
-        left: 50%;
-        transform: translateX(-50%);
-        display: flex;
-        gap: 16px;
-        z-index: 5;
-      `;
-
-      const prevBtn = document.createElement("button");
-      prevBtn.innerHTML = "← Előző";
-      prevBtn.style.cssText = `
-        padding: 10px 20px;
-        background: var(--accent);
-        color: white;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        font-weight: 600;
-        transition: all 0.3s;
-      `;
-      prevBtn.addEventListener("mouseover", () => {
-        prevBtn.style.transform = "scale(1.05)";
-      });
-      prevBtn.addEventListener("mouseout", () => {
-        prevBtn.style.transform = "scale(1)";
-      });
-      prevBtn.addEventListener("click", () => {
-        prevIndex = currentIndex;
-        currentIndex = (currentIndex - 1 + filtered.length) % filtered.length;
-        pendingDirection = "prev";
-        render3dGallery();
-      });
-
-      const nextBtn = document.createElement("button");
-      nextBtn.innerHTML = "Következő →";
-      nextBtn.style.cssText = `
-        padding: 10px 20px;
-        background: var(--accent);
-        color: white;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        font-weight: 600;
-        transition: all 0.3s;
-      `;
-      nextBtn.addEventListener("mouseover", () => {
-        nextBtn.style.transform = "scale(1.05)";
-      });
-      nextBtn.addEventListener("mouseout", () => {
-        nextBtn.style.transform = "scale(1)";
-      });
-      nextBtn.addEventListener("click", () => {
-        prevIndex = currentIndex;
-        currentIndex = (currentIndex + 1) % filtered.length;
-        pendingDirection = "next";
-        render3dGallery();
-      });
-
-      navContainer.appendChild(prevBtn);
-      navContainer.appendChild(nextBtn);
-      wrapper.parentElement?.appendChild(navContainer);
+    // Add flip animation
+    const book = bookWrapper.querySelector<HTMLDivElement>(".portfolio-book");
+    if (book) {
+      book.classList.add("portfolio-page-flip");
     }
   };
 
-  render3dGallery();
+  const updateNav = () => {
+    if (totalItems <= 1) return;
+
+    bookNav.innerHTML = `
+      <button class="portfolio-book-btn" id="prevBtn">← Előző</button>
+      <span style="display: flex; align-items: center; color: var(--muted); font-size: 14px;">
+        ${currentIndex + 1} / ${totalItems}
+      </span>
+      <button class="portfolio-book-btn" id="nextBtn">Következő →</button>
+    `;
+
+    const prevBtn = bookNav.querySelector<HTMLButtonElement>("#prevBtn");
+    const nextBtn = bookNav.querySelector<HTMLButtonElement>("#nextBtn");
+
+    if (prevBtn) {
+      prevBtn.addEventListener("click", () => {
+        currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+        renderBookPage();
+        updateNav();
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener("click", () => {
+        currentIndex = (currentIndex + 1) % totalItems;
+        renderBookPage();
+        updateNav();
+      });
+    }
+  };
+
+  // Initial render
+  renderBookPage();
+  updateNav();
 }
 
 /* ===== helpers ===== */

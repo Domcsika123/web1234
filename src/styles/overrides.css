@@ -1,7 +1,7 @@
 /* ===== VIBRANT BLUE/PURPLE GRADIENT DESIGN ===== */
 
 body {
-  background: linear-gradient(180deg, #030712 0%, #111827 50%, #030712 100%);
+  background: linear-gradient(180deg, #030712 0%, #1a1030 50%, #030712 100%);
   background-attachment: fixed;
   position: relative;
   overflow-x: hidden;
@@ -9,7 +9,7 @@ body {
 }
 
 html[data-theme="dark"] body {
-  background: linear-gradient(180deg, #020617 0%, #0b1120 50%, #020617 100%);
+  background: linear-gradient(180deg, #020617 0%, #160b2e 50%, #020617 100%);
   background-attachment: fixed;
 }
 
@@ -123,30 +123,28 @@ main,
   padding: 100px 0;
 }
 
-main > .section:nth-of-type(even) {
+main>.section:nth-of-type(even) {
   position: relative;
   z-index: 0;
 }
 
-main > .section:nth-of-type(even)::before {
+main>.section:nth-of-type(even)::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(255, 255, 255, 0.14);
-  -webkit-mask-image: linear-gradient(
-    180deg,
-    transparent 0%,
-    #000 16%,
-    #000 84%,
-    transparent 100%
-  );
-  mask-image: linear-gradient(
-    180deg,
-    transparent 0%,
-    #000 16%,
-    #000 84%,
-    transparent 100%
-  );
+  background: linear-gradient(180deg,
+      rgba(88, 28, 135, 0.18),
+      rgba(157, 23, 77, 0.18));
+  -webkit-mask-image: linear-gradient(180deg,
+      transparent 0%,
+      #000 16%,
+      #000 84%,
+      transparent 100%);
+  mask-image: linear-gradient(180deg,
+      transparent 0%,
+      #000 16%,
+      #000 84%,
+      transparent 100%);
   z-index: -1;
   pointer-events: none;
 }
@@ -184,6 +182,7 @@ main > .section:nth-of-type(even)::before {
   border: 1px solid var(--border);
   border-radius: var(--r-lg);
   padding: 28px;
+  box-shadow: var(--shadow-card);
   transition: all var(--dur-2) var(--ease);
 }
 
@@ -269,9 +268,14 @@ html[data-theme="dark"] .nav {
 }
 
 .nav-links a.is-active {
+  color: var(--text-secondary);
+  background: transparent;
+  font-weight: 600;
+}
+
+.nav-links a.is-active:hover {
   color: var(--text);
-  background: rgba(168, 85, 247, 0.22);
-  font-weight: 700;
+  background: rgba(168, 85, 247, 0.16);
 }
 
 .site-footer {
@@ -693,7 +697,7 @@ select:focus {
 
 .step-number {
   font-size: 28px;
-  font-weight: 900;
+  font-weight: 600;
   line-height: 1;
   letter-spacing: 0.2px;
   transition: all 300ms var(--ease);
@@ -710,7 +714,7 @@ select:focus {
 }
 
 .step-label {
-  font-size: 12px;
+  font-size: 14px;
   margin-top: 6px;
   font-weight: 600;
   text-transform: uppercase;

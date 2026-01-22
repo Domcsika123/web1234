@@ -2,7 +2,7 @@
   "nav": {
     "brand": "Webfejlesztés",
     "process": "Folyamat",
-    "portfolio": "Portfólió",
+    "portfolio": "Projektminták",
     "testimonials": "Vélemények",
     "contact": "Kapcsolat",
     "cta": "Konzultáció",
@@ -22,19 +22,32 @@
       "clientsValue": "50+",
       "clientsLabel": "Elégedett kliens"
     },
-    "badges": ["Mobile-first", "SEO + Schema", "WCAG AA", "Konverzió fókusz"],
+    "badges": [
+      "Mobile-first",
+      "SEO + Schema",
+      "WCAG AA",
+      "Konverzió fókusz"
+    ],
     "before": "Before",
     "after": "After",
     "sliderLabel": "Csúszka"
   },
   "process": {
     "title": "Hogyan dolgozunk",
-    "subtitle": "3–7 nap alatt live. Minden lépés világos, korlátlan revízió, 1 év support.",
+    "subtitle": "Strukturált munkafolyamat és folyamatos szakmai támogatás a tervezéstől az átadásig.",
     "steps": [
-      { "label": "Megbeszélés" },
-      { "label": "Tervezés" },
-      { "label": "Fejlesztés" },
-      { "label": "Közzététel" }
+      {
+        "label": "Megbeszélés"
+      },
+      {
+        "label": "Tervezés"
+      },
+      {
+        "label": "Fejlesztés"
+      },
+      {
+        "label": "Közzététel"
+      }
     ],
     "details": [
       {
@@ -80,106 +93,136 @@
     ]
   },
   "portfolio": {
-    "title": "Portfólió",
-    "subtitle": "50+ sikeres projekt. E-commerce, SaaS, landing oldalak. Kattints a részletekhez.",
+    "title": "Projektminták",
+    "subtitle": "Szakértői megoldások, amelyek valódi üzleti eredményekké formálják a digitális elképzeléseket.",
     "all": "Összes",
     "empty": "Nincs találat.",
     "items": [
       {
-        "title": "TechFlow — SaaS Landing",
-        "tag": "SaaS",
-        "result": "+47% konverzió",
+        "title": "Minimalista",
+        "tag": "Design",
+        "result": "Tiszta & Elegáns",
         "image": "/src/assets/images/portfolio/project-1.svg",
-        "summary": "Egy B2B SaaS cég számára high-converting landing page. Clean design, szóció, conversion fókusz.",
+        "summary": "Minimalista design — whitespace, egyszerű tipográfia, fokuszált CTA. Prémium szolgáltatások és korporatív márkák számára ideális.",
         "bullets": [
-          "Luxury dark design with gradients",
-          "Video hero section",
-          "Interactive pricing calculator",
-          "Free trial CTA optimization",
-          "95+ PageSpeed Score"
+          "Minimál szín paletta",
+          "Fokuszált tipográfia",
+          "Clearspace & légies layoutok",
+          "Trust signals dominánsan",
+          "Mobile-first & gyors"
         ],
-        "stack": ["TypeScript", "React", "Tailwind CSS", "Stripe API"]
+        "stack": [
+          "Clean CSS",
+          "Szematikus HTML",
+          "Performance",
+          "Accessibility"
+        ]
       },
       {
-        "title": "Luxe Design — Portfolio Site",
-        "tag": "Portfolio",
-        "result": "50+ client leads / hó",
+        "title": "Szín & Energia",
+        "tag": "Design",
+        "result": "Merész & Modern",
         "image": "/src/assets/images/portfolio/project-2.svg",
-        "summary": "Premium design agency weboldala. Case studies, testimonials, conversion funnel.",
+        "summary": "Vibráló gradiens, merész szín kombinációk és dinamikus animációk. Startup, tech és kreatív ügynökségek számára.",
         "bullets": [
-          "Custom motion design",
-          "Before/After slider",
-          "Client testimonials carousel",
-          "Interactive case studies",
-          "Email newsletter integration"
+          "Merész szín kombinációk",
+          "CSS gradiens animációk",
+          "Smooth scrolling effektek",
+          "Gyors load time",
+          "Social share optimized"
         ],
-        "stack": ["Vite", "TypeScript", "CSS Animations", "Figma"]
+        "stack": [
+          "CSS3 Gradients",
+          "JavaScript Animations",
+          "TypeScript",
+          "Vite"
+        ]
       },
       {
-        "title": "EcoShop — E-commerce Redesign",
-        "tag": "E-commerce",
-        "result": "+28% kosár érték",
+        "title": "Retro & Vintage",
+        "tag": "Design",
+        "result": "Nostalgikus & Trendi",
         "image": "/src/assets/images/portfolio/project-3.svg",
-        "summary": "Fenntartható termékeket árusító webshop modernizálása. Performance, UX, conversion.",
+        "summary": "70s-90s esthetic. Korlátozott szín paletta, vintage tipó, szövet textúrák. Lifestyle, szórakoztató és e-commerce márkák kedvence.",
         "bullets": [
-          "Product filter system",
-          "Fast checkout (2-step)",
-          "Image optimization",
-          "Cart abandonment recovery",
-          "92 PageSpeed Score"
+          "Retro szín paletta (80s vibes)",
+          "Vintage tipográfia",
+          "Pattern & texture overlays",
+          "Nostalgic feel",
+          "SEO optimized"
         ],
-        "stack": ["Next.js", "PostgreSQL", "Stripe", "Image CDN"]
+        "stack": [
+          "SVG patterns",
+          "Custom fonts",
+          "CSS layers",
+          "Responsive"
+        ]
       },
       {
-        "title": "FinanceHub — Corporate Site",
-        "tag": "Corporate",
-        "result": "98% uptime",
+        "title": "Futurisztikus",
+        "tag": "Design",
+        "result": "Tech & AI Ready",
         "image": "/src/assets/images/portfolio/project-4.svg",
-        "summary": "Pénzügyi tanácsadó cég weboldala. Trust signals, SEO, lead generation.",
+        "summary": "Sci-fi inspirált design, neon akcentok, 3D effektek és AI-szimulátort vizualizációk. Tech startupos és innovatív vállalatok.",
         "bullets": [
-          "Interactive calculators",
-          "Blog system",
-          "SEO optimized",
-          "Schema markup",
-          "Analytics dashboard"
+          "Neon szín paletta",
+          "3D CSS transforms",
+          "Glassmorphism UI",
+          "Interactive micro interactions",
+          "Modern tech stack"
         ],
-        "stack": ["TypeScript", "Next.js", "GraphQL", "PostgreSQL"]
+        "stack": [
+          "CSS 3D",
+          "WebGL",
+          "TypeScript",
+          "React"
+        ]
       },
       {
-        "title": "Creative Agency Website",
-        "tag": "Agency",
-        "result": "Top 10 design sites",
+        "title": "Klasszikus Korporatív",
+        "tag": "Design",
+        "result": "Profizmus & Trust",
         "image": "/src/assets/images/portfolio/project-5.svg",
-        "summary": "Kreatív ügynökség saját weboldala. Portfolió, case studies, munkatársak.",
+        "summary": "Elegáns szürke-fehér paletta, professzionális fotók, konzervatív layout. Banki, pénzügyi és B2B vállalatok első választása.",
         "bullets": [
-          "Smooth scroll animations",
-          "Portfolio grid with filters",
-          "Team member profiles",
-          "Project case study modals",
-          "Dark mode support"
+          "Professzionális szín paletta",
+          "Case studies & testimonials",
+          "Trust badges & certifications",
+          "Detailed content sections",
+          "Analytics integration"
         ],
-        "stack": ["React", "Framer Motion", "Vite", "TypeScript"]
+        "stack": [
+          "Next.js",
+          "GraphQL",
+          "PostgreSQL",
+          "TypeScript"
+        ]
       },
       {
-        "title": "Wellness App Landing",
-        "tag": "App",
-        "result": "10K+ downloads / hó",
+        "title": "Playful & Kids",
+        "tag": "Design",
+        "result": "Vidám & Interaktív",
         "image": "/src/assets/images/portfolio/project-6.svg",
-        "summary": "Wellness alkalmazás promóciós oldala. App store optimization, video hero.",
+        "summary": "Élénk, játékos design gyermekes termékeknek, oktatási platformoknak és szórakoztató szolgáltatásoknak. Barátságos ábra és animációk.",
         "bullets": [
-          "Video background hero",
-          "Feature showcase carousel",
-          "App store download buttons",
-          "User testimonials",
-          "FAQ accordion"
+          "Vibráló, barátságos színek",
+          "Adorable illustrations",
+          "Playful animations",
+          "Easy navigation",
+          "Parent-friendly info"
         ],
-        "stack": ["Vue 3", "TailwindCSS", "Vite", "EmailJS"]
+        "stack": [
+          "Vue.js",
+          "Framer Motion",
+          "Custom illustrations",
+          "Vite"
+        ]
       }
     ]
   },
   "calculator": {
     "title": "Gyors ár- és időbecslés",
-    "subtitle": "Állítsd össze a projektet! Ez csak becslés — pontos ajánlat email-ben jön.",
+    "subtitle": "Személyre szabott projekttervezés az egyedi üzleti igények és technológiai követelmények alapján.",
     "pagesLabel": "Oldal szám",
     "pagesMin": "1 (landing)",
     "pagesMax": "12+ (nagy oldal)",
@@ -225,7 +268,7 @@
       "title": "Becslés",
       "price": "Ár",
       "time": "Átfutás",
-      "note": "💡 Ez egy gyors becslés. A végső ár az összetettségtől, a tartalomtól és az egyéni igénytől függ."
+      "note": "💡 A feltüntetett értékek tájékoztató jellegűek. A végleges árat az egyedi igények rögzítése után határozzuk meg."
     },
     "currency": "HUF",
     "locale": "hu-HU",
@@ -233,7 +276,7 @@
   },
   "testimonials": {
     "title": "Mit mondanak az ügyfelek",
-    "subtitle": "50+ sikeres projekt. Valódi ügyfelek, valódi eredmények, valódi megelégedettség.",
+    "subtitle": "Partnereink visszajelzései a közös munka hatékonyságáról és az elért eredményekről.",
     "items": [
       {
         "name": "Kiss Gábor",
@@ -279,7 +322,7 @@
   },
   "faq": {
     "title": "Gyakori kérdések",
-    "subtitle": "Nem találod a választ? Írj vagy hívj: info@webfejlesztes.hu",
+    "subtitle": "Részletes válaszok a fejlesztési folyamattal és az üzemeltetéssel kapcsolatos leggyakoribb kérdésekre.",
     "items": [
       {
         "q": "Mennyi idő alatt készül el a weboldal?",
@@ -316,8 +359,8 @@
     ]
   },
   "contact": {
-    "title": "Szeretnél elkezdeni?",
-    "subtitle": "Írj vagy hívj. 24 órán belül válaszolunk, konzultáció ingyenes.",
+    "title": "Szeretnéd elkezdeni?",
+    "subtitle": "Indítsuk el közösen a projektet egy kötelezettségmentes, szakmai konzultáció keretein belül.",
     "infoTitle": "Gyors kontakt",
     "emailLabel": "Email",
     "phoneLabel": "Telefon",
@@ -333,13 +376,34 @@
       "phone": "Telefon",
       "projectType": "Milyen típusú projekt?",
       "projectOptions": [
-        { "value": "", "label": "-- Válassz --" },
-        { "value": "landing", "label": "Landing page" },
-        { "value": "webshop", "label": "Webshop / E-commerce" },
-        { "value": "corporate", "label": "Céges oldal" },
-        { "value": "saas", "label": "SaaS platform" },
-        { "value": "redesign", "label": "Redesign / Migration" },
-        { "value": "other", "label": "Egyéb" }
+        {
+          "value": "",
+          "label": "-- Válassz --"
+        },
+        {
+          "value": "landing",
+          "label": "Landing page"
+        },
+        {
+          "value": "webshop",
+          "label": "Webshop / E-commerce"
+        },
+        {
+          "value": "corporate",
+          "label": "Céges oldal"
+        },
+        {
+          "value": "saas",
+          "label": "SaaS platform"
+        },
+        {
+          "value": "redesign",
+          "label": "Redesign / Migration"
+        },
+        {
+          "value": "other",
+          "label": "Egyéb"
+        }
       ],
       "message": "Rövid leírás *",
       "placeholders": {
@@ -392,7 +456,12 @@
       "Premium UI tipó + spacing rendszer",
       "Sebesség és konverziós útvonalak finomítása"
     ],
-    "stackFallback": ["Vite", "TypeScript", "Modern UI", "Performance"]
+    "stackFallback": [
+      "Vite",
+      "TypeScript",
+      "Modern UI",
+      "Performance"
+    ]
   },
   "modal": {
     "thanksTitle": "Köszi! Megkaptuk.",

@@ -29,11 +29,11 @@ export function renderCalculator() {
             <label for="type">${t("calculator.typeLabel")}</label>
             <select id="type" class="calc-select">
               ${Object.entries(types)
-                .map(([value, label]) => {
-                  const selected = value === "corporate" ? " selected" : "";
-                  return `<option value="${value}"${selected}>${label}</option>`;
-                })
-                .join("")}
+      .map(([value, label]) => {
+        const selected = value === "corporate" ? " selected" : "";
+        return `<option value="${value}"${selected}>${label}</option>`;
+      })
+      .join("")}
             </select>
           </div>
 
@@ -41,11 +41,11 @@ export function renderCalculator() {
             <label for="speed">${t("calculator.speed.label")}</label>
             <select id="speed" class="calc-select">
               ${Object.entries(speed)
-                .map(([value, label]) => {
-                  const selected = value === "standard" ? " selected" : "";
-                  return `<option value="${value}"${selected}>${label}</option>`;
-                })
-                .join("")}
+      .map(([value, label]) => {
+        const selected = value === "standard" ? " selected" : "";
+        return `<option value="${value}"${selected}>${label}</option>`;
+      })
+      .join("")}
             </select>
           </div>
 
@@ -73,10 +73,8 @@ export function renderCalculator() {
             <div class="result-value" id="timeOut">—</div>
           </div>
 
-          <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border);">
-            <p style="margin: 0; font-size: 12px; color: var(--muted); line-height: 1.5;">
-              ${t("calculator.estimate.note")}
-            </p>
+          <div class="calc-note">
+            <p>${t("calculator.estimate.note")}</p>
           </div>
         </div>
       </div>

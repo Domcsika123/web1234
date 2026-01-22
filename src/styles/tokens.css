@@ -25,8 +25,8 @@
 
   /* colors - dark pink/purple palette */
   --bg: #0b0f1a;
-  --bg2: #111827;
-  --bg3: #1f2937;
+  --bg2: #1a1030;
+  --bg3: #21123f;
   --surface: rgba(168, 85, 247, 0.10);
   --surface2: rgba(236, 72, 153, 0.12);
   --surface-hover: rgba(168, 85, 247, 0.18);
@@ -61,8 +61,8 @@ html[data-theme="dark"] {
 html[data-theme="dark"] {
   color-scheme: dark;
   --bg: #070b14;
-  --bg2: #0f172a;
-  --bg3: #111827;
+  --bg2: #160b2e;
+  --bg3: #221447;
   --surface: rgba(168, 85, 247, 0.12);
   --surface2: rgba(236, 72, 153, 0.14);
   --surface-hover: rgba(168, 85, 247, 0.22);
