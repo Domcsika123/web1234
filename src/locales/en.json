@@ -41,40 +41,40 @@
         "title": "Discovery Call",
         "text": "We lay the foundation by analyzing your business goals and audience. In a 30‑minute consultation we define key KPIs and the project timeline.",
         "bullets": [
-          "✓ Business goals & audience analysis",
-          "✓ KPI definition and measurement points",
-          "✓ 30-minute strategy consultation",
-          "✓ Detailed project roadmap"
+          "Business goals & audience analysis",
+          "KPI definition and measurement points",
+          "30-minute strategy consultation",
+          "Detailed project roadmap"
         ]
       },
       {
         "title": "Design Concept",
         "text": "We craft functional wireframes and custom visuals. You can choose from 2–3 concepts and we refine them based on your feedback until perfect.",
         "bullets": [
-          "✓ Wireframes and functional layouts",
-          "✓ 2–3 visual concept options",
-          "✓ Visual system (colors, type)",
-          "✓ Iterations based on your feedback"
+          "Wireframes and functional layouts",
+          "2–3 visual concept options",
+          "Visual system (colors, type)",
+          "Iterations based on your feedback"
         ]
       },
       {
         "title": "Development",
         "text": "Clean, semantic code and performance-first development with modern tech. Fully responsive and blazing fast across browsers.",
         "bullets": [
-          "✓ Modern stack (TypeScript, modern CSS)",
-          "✓ Responsive on all devices",
-          "✓ Performance-first approach",
-          "✓ Cross-browser stability"
+          "Modern stack (TypeScript, modern CSS)",
+          "Responsive on all devices",
+          "Performance-first approach",
+          "Cross-browser stability"
         ]
       },
       {
         "title": "Launch & Support",
         "text": "After thorough testing we configure the server environment and go live. Analytics setup included, plus one year of full technical support.",
         "bullets": [
-          "✓ Thorough testing",
-          "✓ Deploy + DNS/SSL setup",
-          "✓ Analytics tools configuration",
-          "✓ 1 year full support"
+          "Thorough testing",
+          "Deploy + DNS/SSL setup",
+          "Analytics tools configuration",
+          "1 year full support"
         ]
       }
     ]

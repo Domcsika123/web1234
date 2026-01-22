@@ -42,6 +42,8 @@
   --accent2: #ec4899;
   --accent3: #8b5cf6;
   --accent4: #f472b6;
+  --accent-gradient: linear-gradient(90deg, #a855f7, #ec4899);
+  --accent-gradient-strong: linear-gradient(90deg, #8b5cf6, #f472b6);
 
   --good: #2d5016;
   --warn: #b8860b;

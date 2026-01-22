@@ -17,17 +17,16 @@ export function renderFooter() {
 
         <div class="footer-cta">
           <button class="btn btn-primary" data-modal-open="quote">${t("footer.ctaPrimary")}</button>
-          <a class="btn" href="#work" data-nav>${t("footer.ctaSecondary")}</a>
         </div>
       </div>
 
       <div class="footer-cols">
         <div class="fcol">
           <div class="fhead">${t("footer.columns.services")}</div>
-          <a class="flink" href="#services" data-nav>${t("footer.links.premium")}</a>
-          <a class="flink" href="#services" data-nav>${t("footer.links.pro")}</a>
-          <a class="flink" href="#services" data-nav>${t("footer.links.enterprise")}</a>
           <a class="flink" href="#calculator" data-nav>${t("footer.links.calculator")}</a>
+          <a class="flink" href="#process" data-nav>${t("footer.links.process")}</a>
+          <a class="flink" href="#work" data-nav>${t("footer.links.portfolio")}</a>
+          <a class="flink" href="#contact" data-nav>${t("footer.links.contact")}</a>
         </div>
 
         <div class="fcol">

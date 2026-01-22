@@ -24,8 +24,6 @@ export function renderPortfolio() {
           ${t("portfolio.subtitle")}
         </p>
       </div>
-
-      <div class="portfolio-controls" id="portfolioControls" data-reveal></div>
       
       <!-- 3D Perspective Gallery -->
       <style>
@@ -246,38 +244,13 @@ export function renderPortfolio() {
 
 export function initPortfolio() {
   const items = ta<Item[]>("portfolio.items").filter(Boolean);
-
-  const controls = document.querySelector<HTMLDivElement>("#portfolioControls");
   const wrapper = document.querySelector<HTMLDivElement>("#portfolio3dWrapper");
-  if (!wrapper || !controls) return;
-
-  const tags = Array.from(new Set(items.map((x) => x.tag)));
-  const allTags = [t("portfolio.all"), ...tags];
+  if (!wrapper) return;
 
   let active = "Összes";
   let currentIndex = 0;
   let prevIndex = 0;
   let pendingDirection: "next" | "prev" | "none" = "none";
-
-  const renderControls = () => {
-    controls.innerHTML = allTags
-      .map(
-        (t) =>
-          `<button class="chip ${t === active ? "is-active" : ""}" data-tag="${escapeAttr(t)}">${escapeHtml(t)}</button>`
-      )
-      .join("");
-
-    controls.querySelectorAll<HTMLButtonElement>("[data-tag]").forEach((b) => {
-      b.addEventListener("click", () => {
-        active = b.dataset.tag || "Összes";
-        prevIndex = 0;
-        currentIndex = 0;
-        pendingDirection = "none";
-        renderControls();
-        render3dGallery();
-      });
-    });
-  };
 
   const render3dGallery = () => {
     const filtered = active === "Összes" ? items : items.filter((x) => x.tag === active);
@@ -446,7 +419,6 @@ export function initPortfolio() {
     }
   };
 
-  renderControls();
   render3dGallery();
 }
 

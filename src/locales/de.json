@@ -41,40 +41,40 @@
         "title": "Discovery Call",
         "text": "Wir analysieren Ziele und Zielgruppe und legen das Fundament. In 30 Minuten definieren wir KPIs und den Projekt‑Zeitplan.",
         "bullets": [
-          "✓ Ziele & Zielgruppe analysieren",
-          "✓ KPIs und Messpunkte festlegen",
-          "✓ 30‑minütige Strategie‑Session",
-          "✓ Detaillierter Projektplan"
+          "Ziele & Zielgruppe analysieren",
+          "KPIs und Messpunkte festlegen",
+          "30‑minütige Strategie‑Session",
+          "Detaillierter Projektplan"
         ]
       },
       {
         "title": "Design‑Konzept",
         "text": "Wireframes und individuelle Visuals. Du wählst aus 2–3 Konzepten, wir verfeinern bis zum perfekten Ergebnis.",
         "bullets": [
-          "✓ Wireframes und funktionale Layouts",
-          "✓ 2–3 Design‑Varianten",
-          "✓ Visuelles System (Farben, Typo)",
-          "✓ Iterationen nach Feedback"
+          "Wireframes und funktionale Layouts",
+          "2–3 Design‑Varianten",
+          "Visuelles System (Farben, Typo)",
+          "Iterationen nach Feedback"
         ]
       },
       {
         "title": "Entwicklung",
         "text": "Sauberer, semantischer Code und performance‑first Entwicklung mit modernem Stack. Voll responsiv und schnell.",
         "bullets": [
-          "✓ Moderner Stack (TypeScript, modernes CSS)",
-          "✓ Responsiv auf allen Geräten",
-          "✓ Performance‑first Ansatz",
-          "✓ Cross‑Browser‑Stabilität"
+          "Moderner Stack (TypeScript, modernes CSS)",
+          "Responsiv auf allen Geräten",
+          "Performance‑first Ansatz",
+          "Cross‑Browser‑Stabilität"
         ]
       },
       {
         "title": "Launch & Support",
         "text": "Nach gründlichen Tests konfigurieren wir Server und gehen live. Analytics‑Setup inklusive, plus 1 Jahr Support.",
         "bullets": [
-          "✓ Gründliche Tests",
-          "✓ Deploy + DNS/SSL‑Setup",
-          "✓ Analytics‑Konfiguration",
-          "✓ 1 Jahr Full‑Support"
+          "Gründliche Tests",
+          "Deploy + DNS/SSL‑Setup",
+          "Analytics‑Konfiguration",
+          "1 Jahr Full‑Support"
         ]
       }
     ]
