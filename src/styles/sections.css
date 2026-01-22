@@ -114,10 +114,18 @@
   gap: 12px;
   max-width: 800px;
   margin-bottom: 60px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  justify-items: center;
 }
 
 .section-head .h2 {
   margin-top: 0;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .section-head .p {

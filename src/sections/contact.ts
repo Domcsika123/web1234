@@ -32,14 +32,6 @@ export function renderContact() {
             </div>
           </div>
 
-          <div class="contact-item">
-            <span class="contact-icon">💬</span>
-            <div>
-              <div class="contact-label">${t("contact.chatLabel")}</div>
-              <p style="margin: 0; color: var(--muted);">${t("contact.chatText")}</p>
-            </div>
-          </div>
-
           <div style="margin-top: 30px;">
             <h4 style="margin-top: 0;">${t("contact.availabilityTitle")}</h4>
             <ul style="list-style: none; padding: 0; margin: 0;">

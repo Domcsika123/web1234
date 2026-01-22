@@ -17,12 +17,24 @@ export function renderNav() {
       </nav>
 
       <div class="nav-actions">
-        <div class="lang-switcher" id="langSwitcher">
-          <button class="lang-btn active" data-lang="hu">HU</button>
-          <button class="lang-btn" data-lang="en">EN</button>
-          <button class="lang-btn" data-lang="de">DE</button>
-        </div>
         <button class="btn btn-primary" data-modal-open="quote">${t("nav.cta")}</button>
+        <div class="lang-switcher" id="langSwitcher">
+          <button class="lang-trigger" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <img class="lang-flag" data-current src="https://flagcdn.com/w20/hu.png" alt="HU" />
+            <span class="lang-caret">▾</span>
+          </button>
+          <div class="lang-menu" role="listbox" aria-label="Nyelv választó">
+            <button class="lang-btn" data-lang="hu" role="option" aria-selected="true" aria-label="Magyar">
+              <img class="lang-flag" src="https://flagcdn.com/w20/hu.png" alt="HU" />
+            </button>
+            <button class="lang-btn" data-lang="en" role="option" aria-selected="false" aria-label="English">
+              <img class="lang-flag" src="https://flagcdn.com/w20/gb.png" alt="EN" />
+            </button>
+            <button class="lang-btn" data-lang="de" role="option" aria-selected="false" aria-label="Deutsch">
+              <img class="lang-flag" src="https://flagcdn.com/w20/de.png" alt="DE" />
+            </button>
+          </div>
+        </div>
         <button class="icon-btn burger" id="burger" aria-label="Menü">☰</button>
       </div>
     </div>
