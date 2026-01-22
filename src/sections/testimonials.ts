@@ -1,4 +1,4 @@
-import testimonials from "../data/testimonials.json";
+import { t, ta } from "../lib/i18n";
 
 type T = { name: string; role: string; quote: string };
 
@@ -7,8 +7,8 @@ export function renderTestimonials() {
   <section class="section" id="testimonials">
     <div class="container">
       <div class="section-head" data-reveal>
-        <div class="h2">Mit mondanak az ügyfelek</div>
-        <p class="p">50+ sikeres projekt. Valódi ügyfelek, valódi eredmények, valódi megelégedettség.</p>
+        <div class="h2">${t("testimonials.title")}</div>
+        <p class="p">${t("testimonials.subtitle")}</p>
       </div>
 
       <div class="testimonials-grid" id="tGrid" style="margin-top:28px;"></div>
@@ -21,7 +21,7 @@ export function initTestimonials() {
   const grid = document.querySelector<HTMLDivElement>("#tGrid");
   if (!grid) return;
 
-  const items = (testimonials as T[]).filter(Boolean);
+  const items = ta<T[]>("testimonials.items").filter(Boolean);
 
   grid.innerHTML = items
     .map(
@@ -38,5 +38,5 @@ export function initTestimonials() {
 }
 
 function esc(s: string) {
-  return s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" }[c] as string));
+  return s.replaceAll(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" }[c] as string));
 }

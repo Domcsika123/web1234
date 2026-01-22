@@ -1,3 +1,5 @@
+import { t, ta } from "../lib/i18n";
+
 type CaseStudy = {
   title: string;
   tag?: string;
@@ -17,7 +19,7 @@ export function initCaseStudy() {
   modalEl.setAttribute("aria-hidden", "true");
   modalEl.innerHTML = `
     <div class="cs-backdrop" data-cs-close></div>
-    <div class="cs-panel" role="dialog" aria-modal="true" aria-label="Esettanulmány">
+    <div class="cs-panel" role="dialog" aria-modal="true" aria-label="${t("caseStudy.modalTitle")}">
       <div class="cs-head">
         <div>
           <div class="cs-kicker" id="csKicker"></div>
@@ -35,7 +37,7 @@ export function initCaseStudy() {
   modalEl.querySelectorAll<HTMLElement>("[data-cs-close]").forEach((x) =>
     x.addEventListener("click", closeCaseStudy)
   );
-  window.addEventListener("keydown", (e) => {
+  globalThis.addEventListener("keydown", (e) => {
     if (e.key === "Escape") closeCaseStudy();
   });
 }
@@ -53,20 +55,15 @@ export function openCaseStudy(data: CaseStudy) {
 
   kicker.textContent = [data.tag, data.result ? `📈 ${data.result}` : ""].filter(Boolean).join(" • ");
   title.textContent = data.title;
-  sub.textContent = "Esettanulmány nézet — prémium prezentáció (demo)";
+  sub.textContent = t("caseStudy.subTitle");
 
   summary.textContent =
-    data.summary ??
-    "Itt lesz majd a projekt sztori: cél, megoldás, mérés. Most demo, de a struktúra már esettanulmány-szint.";
+    data.summary ?? t("caseStudy.summaryFallback");
 
-  const b = data.bullets ?? [
-    "Üzenet & CTA struktúra újratervezés",
-    "Premium UI tipó + spacing rendszer",
-    "Sebesség és konverziós útvonalak finomítása",
-  ];
+  const b = data.bullets ?? ta<string[]>("caseStudy.bulletsFallback");
   bullets.innerHTML = b.map((x) => `<li>${escapeHtml(x)}</li>`).join("");
 
-  const s = data.stack ?? ["Vite", "TypeScript", "Modern UI", "Performance"];
+  const s = data.stack ?? ta<string[]>("caseStudy.stackFallback");
   stack.innerHTML = s.map((x) => `<span class="cs-tag">${escapeHtml(x)}</span>`).join("");
 
   modalEl.classList.add("is-open");
@@ -82,5 +79,5 @@ export function closeCaseStudy() {
 }
 
 function escapeHtml(s: string) {
-  return s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" }[c] as string));
+  return s.replaceAll(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" }[c] as string));
 }

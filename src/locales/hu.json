@@ -1,0 +1,415 @@
+{
+  "nav": {
+    "brand": "Webfejlesztés",
+    "process": "Folyamat",
+    "portfolio": "Portfólió",
+    "testimonials": "Vélemények",
+    "contact": "Kapcsolat",
+    "cta": "Konzultáció",
+    "menu": "Menü"
+  },
+  "hero": {
+    "titleLead": "Weboldalak, amik",
+    "titleHighlight": "valóban működnek.",
+    "subtitle": "Nincs szépítés a végén. Design, kód, és marketing egy csomagban. 95+ PageSpeed. Konverzió-fókusz. Mérhető eredmények az első héten.",
+    "ctaPrimary": "Konzultáció kérése",
+    "ctaSecondary": "Portfólió megtekintése",
+    "stats": {
+      "pagespeedValue": "95+",
+      "pagespeedLabel": "PageSpeed Score",
+      "daysValue": "3–7",
+      "daysLabel": "Nap alatt kész",
+      "clientsValue": "50+",
+      "clientsLabel": "Elégedett kliens"
+    },
+    "badges": ["Mobile-first", "SEO + Schema", "WCAG AA", "Konverzió fókusz"],
+    "before": "Before",
+    "after": "After",
+    "sliderLabel": "Csúszka"
+  },
+  "process": {
+    "title": "Hogyan dolgozunk",
+    "subtitle": "3–7 nap alatt live. Minden lépés világos, korlátlan revízió, 1 év support.",
+    "steps": [
+      { "label": "Megbeszélés" },
+      { "label": "Tervezés" },
+      { "label": "Fejlesztés" },
+      { "label": "Közzététel" }
+    ],
+    "details": [
+      {
+        "title": "Igényfelmérés (Discovery Call)",
+        "text": "Üzleti céljaid és célközönséged alapos elemzésével fektetjük le a projekt alapjait. Egy 30 perces konzultáció során meghatározzuk a kulcsfontosságú mérőszámokat (KPI) és a pontos projektütemtervet.",
+        "bullets": [
+          "✓ Üzleti célok és közönség elemzése",
+          "✓ KPI-k és mérési pontok kijelölése",
+          "✓ 30 perces stratégiai konzultáció",
+          "✓ Részletes projektütemterv"
+        ]
+      },
+      {
+        "title": "Tervezés (Design Concept)",
+        "text": "Funkcionális drótvázak és egyedi látványtervek mentén alakítjuk ki a weboldal arculatát. 2-3 különböző koncepció közül választhatsz, melyeket visszajelzéseid alapján finomítunk a tökéletes végeredményig.",
+        "bullets": [
+          "✓ Wireframe-ek és funkcionális tervek",
+          "✓ 2-3 látványterv opció",
+          "✓ Vizuális arculat (színek, tipó)",
+          "✓ Iteráció visszajelzéseid alapján"
+        ]
+      },
+      {
+        "title": "Fejlesztés (Development)",
+        "text": "Tiszta, szemantikus kódolás és teljesítmény-központú fejlesztés modern technológiákkal. Biztosítjuk a reszponzív megjelenést minden eszközön, valamint a böngészőfüggetlen, villámgyors működést.",
+        "bullets": [
+          "✓ Modern tech (TypeScript, modern CSS)",
+          "✓ Reszponzív megjelenés minden eszközön",
+          "✓ Performance-first megközelítés",
+          "✓ Cross-browser stabilitás"
+        ]
+      },
+      {
+        "title": "Közzététel (Launch & Support)",
+        "text": "Alapos tesztelés után konfiguráljuk a szerverkörnyezetet és élesítjük a rendszert. Beállítjuk az analitikai eszközöket, és egy évig teljes körű technikai támogatást nyújtunk a zavartalan üzemeltetéshez.",
+        "bullets": [
+          "✓ Alapos tesztelés",
+          "✓ Deploy, DNS/SSL konfigurálás",
+          "✓ Analitikai eszközök beállítása",
+          "✓ 1 év teljes körű support"
+        ]
+      }
+    ]
+  },
+  "portfolio": {
+    "title": "Portfólió",
+    "subtitle": "50+ sikeres projekt. E-commerce, SaaS, landing oldalak. Kattints a részletekhez.",
+    "all": "Összes",
+    "empty": "Nincs találat.",
+    "items": [
+      {
+        "title": "TechFlow — SaaS Landing",
+        "tag": "SaaS",
+        "result": "+47% konverzió",
+        "image": "/src/assets/images/portfolio/project-1.svg",
+        "summary": "Egy B2B SaaS cég számára high-converting landing page. Clean design, szóció, conversion fókusz.",
+        "bullets": [
+          "Luxury dark design with gradients",
+          "Video hero section",
+          "Interactive pricing calculator",
+          "Free trial CTA optimization",
+          "95+ PageSpeed Score"
+        ],
+        "stack": ["TypeScript", "React", "Tailwind CSS", "Stripe API"]
+      },
+      {
+        "title": "Luxe Design — Portfolio Site",
+        "tag": "Portfolio",
+        "result": "50+ client leads / hó",
+        "image": "/src/assets/images/portfolio/project-2.svg",
+        "summary": "Premium design agency weboldala. Case studies, testimonials, conversion funnel.",
+        "bullets": [
+          "Custom motion design",
+          "Before/After slider",
+          "Client testimonials carousel",
+          "Interactive case studies",
+          "Email newsletter integration"
+        ],
+        "stack": ["Vite", "TypeScript", "CSS Animations", "Figma"]
+      },
+      {
+        "title": "EcoShop — E-commerce Redesign",
+        "tag": "E-commerce",
+        "result": "+28% kosár érték",
+        "image": "/src/assets/images/portfolio/project-3.svg",
+        "summary": "Fenntartható termékeket árusító webshop modernizálása. Performance, UX, conversion.",
+        "bullets": [
+          "Product filter system",
+          "Fast checkout (2-step)",
+          "Image optimization",
+          "Cart abandonment recovery",
+          "92 PageSpeed Score"
+        ],
+        "stack": ["Next.js", "PostgreSQL", "Stripe", "Image CDN"]
+      },
+      {
+        "title": "FinanceHub — Corporate Site",
+        "tag": "Corporate",
+        "result": "98% uptime",
+        "image": "/src/assets/images/portfolio/project-4.svg",
+        "summary": "Pénzügyi tanácsadó cég weboldala. Trust signals, SEO, lead generation.",
+        "bullets": [
+          "Interactive calculators",
+          "Blog system",
+          "SEO optimized",
+          "Schema markup",
+          "Analytics dashboard"
+        ],
+        "stack": ["TypeScript", "Next.js", "GraphQL", "PostgreSQL"]
+      },
+      {
+        "title": "Creative Agency Website",
+        "tag": "Agency",
+        "result": "Top 10 design sites",
+        "image": "/src/assets/images/portfolio/project-5.svg",
+        "summary": "Kreatív ügynökség saját weboldala. Portfolió, case studies, munkatársak.",
+        "bullets": [
+          "Smooth scroll animations",
+          "Portfolio grid with filters",
+          "Team member profiles",
+          "Project case study modals",
+          "Dark mode support"
+        ],
+        "stack": ["React", "Framer Motion", "Vite", "TypeScript"]
+      },
+      {
+        "title": "Wellness App Landing",
+        "tag": "App",
+        "result": "10K+ downloads / hó",
+        "image": "/src/assets/images/portfolio/project-6.svg",
+        "summary": "Wellness alkalmazás promóciós oldala. App store optimization, video hero.",
+        "bullets": [
+          "Video background hero",
+          "Feature showcase carousel",
+          "App store download buttons",
+          "User testimonials",
+          "FAQ accordion"
+        ],
+        "stack": ["Vue 3", "TailwindCSS", "Vite", "EmailJS"]
+      }
+    ]
+  },
+  "calculator": {
+    "title": "Gyors ár- és időbecslés",
+    "subtitle": "Állítsd össze a projektet! Ez csak becslés — pontos ajánlat email-ben jön.",
+    "pagesLabel": "Oldal szám",
+    "pagesMin": "1 (landing)",
+    "pagesMax": "12+ (nagy oldal)",
+    "typeLabel": "Típus",
+    "complexity": {
+      "label": "Komplexitás",
+      "options": {
+        "simple": "Egyszerű",
+        "standard": "Normál",
+        "advanced": "Összetett"
+      }
+    },
+    "speed": {
+      "label": "Átadás sebessége",
+      "options": {
+        "standard": "Standard",
+        "fast": "Gyorsított",
+        "rush": "Sürgős"
+      }
+    },
+    "support": {
+      "label": "Támogatás",
+      "options": {
+        "none": "Nincs",
+        "standard": "Standard",
+        "premium": "Prémium"
+      }
+    },
+    "types": {
+      "landing": "Landing page",
+      "corporate": "Céges oldal",
+      "ecommerce": "E-commerce / Webshop",
+      "portal": "Portal / App landing"
+    },
+    "extrasTitle": "Extra opciók",
+    "extras": {
+      "seo": "⭐ Haladó SEO",
+      "copy": "✍️ Teljes szövegírás",
+      "cms": "⚙️ CMS / Admin panel",
+      "ecommerce": "🛒 E-commerce (Stripe/PayPal)"
+    },
+    "estimate": {
+      "title": "Becslés",
+      "price": "Ár",
+      "time": "Átfutás",
+      "note": "💡 Ez egy gyors becslés. A végső ár az összetettségtől, a tartalomtól és az egyéni igénytől függ."
+    },
+    "currency": "HUF",
+    "locale": "hu-HU",
+    "workdays": "munkanap"
+  },
+  "testimonials": {
+    "title": "Mit mondanak az ügyfelek",
+    "subtitle": "50+ sikeres projekt. Valódi ügyfelek, valódi eredmények, valódi megelégedettség.",
+    "items": [
+      {
+        "name": "Kiss Gábor",
+        "role": "Cégvezető, TechFlow",
+        "quote": "Nem csak egy weboldal készült, hanem egy konverziós gép. Az első hónapban már 40% több érdeklődés."
+      },
+      {
+        "name": "Nagy Anna",
+        "role": "Marketing Lead, Luxe Design",
+        "quote": "A team profi volt. Világos kommunikáció, gyors kézbesítés, és olyan design, ami lebilincsel."
+      },
+      {
+        "name": "Kovács Péter",
+        "role": "Founder, EcoShop",
+        "quote": "95 PageSpeed és +28% kosárérték egy hónapban. Ez nem csak szép design, ez üzleti eredmény."
+      },
+      {
+        "name": "Szarka Márton",
+        "role": "CEO, FinanceHub",
+        "quote": "Az SEO, a trust signals, és a user experience szintje magasan felette van a konkurenciának."
+      },
+      {
+        "name": "Molnár Éva",
+        "role": "Art Director, Creative Agency",
+        "quote": "Végre olyan fejlesztő, aki a designt és az üzleti célt is érti. Kitűnő az egész munka."
+      },
+      {
+        "name": "Tóth István",
+        "role": "Product Manager, Wellness App",
+        "quote": "A landing page miatt a download számunk meghétszereződött. Köszönhetően az animációknak és a conversion copynak."
+      },
+      {
+        "name": "Fehér Zsuzsanna",
+        "role": "Business Owner, E-commerce",
+        "quote": "Nem hittem, hogy egy weboldal ennyi különbséget tud tenni az eladásokban. Ajánlom mindenkinek."
+      },
+      {
+        "name": "Bodnár László",
+        "role": "Marketing Manager, SaaS Startup",
+        "quote": "Profi, gyors, és megtérül. Pont azt kaptam, amit kerestem."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Gyakori kérdések",
+    "subtitle": "Nem találod a választ? Írj vagy hívj: info@webfejlesztes.hu",
+    "items": [
+      {
+        "q": "Mennyi idő alatt készül el a weboldal?",
+        "a": "A csomag típusától függ. Starter: 4–5 nap, Professional: 5–7 nap, Enterprise: egyedi. Rush projekteket is vállalunk."
+      },
+      {
+        "q": "Módosíthatom-e később a tartalmat?",
+        "a": "Igen! Egyéb csomag + CMS / admin panelja van, szabad módosítást is ajánlunk."
+      },
+      {
+        "q": "Mi az, ha nem szeretem az eredményt?",
+        "a": "Korlátlan revízió egy bizonyos keretekig. Amíg nem vagy elégedett, addig javítunk."
+      },
+      {
+        "q": "Kapok SEO alapot és mérési beállítást?",
+        "a": "Igen! Google Analytics, Search Console, pixel tracking, és schema markup minden csomagban benne van."
+      },
+      {
+        "q": "Mi történik az első év után?",
+        "a": "Ingyenes support az első éven belül. Utána opcionális annual maintenance csomag (updates, security, performance)."
+      },
+      {
+        "q": "Lehet e-commerce / webshop is?",
+        "a": "Igen. Ez a Professional vagy Enterprise csomag, Stripe/PayPal integrációval."
+      },
+      {
+        "q": "Milyen támogatást kapok fejlesztés közben?",
+        "a": "Email + Slack hozzáférés. Hétfő–péntek, napi válaszidő. Gyors kommunikáció."
+      },
+      {
+        "q": "Kapok source code-ot / Git repositoryt?",
+        "a": "Igen! Git repo-hoz hozzáférés (privát), sőt full source code is letölthető."
+      }
+    ]
+  },
+  "contact": {
+    "title": "Szeretnél elkezdeni?",
+    "subtitle": "Írj vagy hívj. 24 órán belül válaszolunk, konzultáció ingyenes.",
+    "infoTitle": "Gyors kontakt",
+    "emailLabel": "Email",
+    "phoneLabel": "Telefon",
+    "chatLabel": "Slack / Discord",
+    "chatText": "Real-time project updates",
+    "availabilityTitle": "Várható időpontok",
+    "availabilityWeekdays": "Hétfő–Péntek: 09:00–18:00",
+    "availabilityUrgent": "Sürgős: 30 perces callback",
+    "formTitle": "Kérdezz vagy kérj ajánlatot",
+    "form": {
+      "name": "Név *",
+      "email": "Email *",
+      "phone": "Telefon",
+      "projectType": "Milyen típusú projekt?",
+      "projectOptions": [
+        { "value": "", "label": "-- Válassz --" },
+        { "value": "landing", "label": "Landing page" },
+        { "value": "webshop", "label": "Webshop / E-commerce" },
+        { "value": "corporate", "label": "Céges oldal" },
+        { "value": "saas", "label": "SaaS platform" },
+        { "value": "redesign", "label": "Redesign / Migration" },
+        { "value": "other", "label": "Egyéb" }
+      ],
+      "message": "Rövid leírás *",
+      "placeholders": {
+        "name": "A céged vagy neved",
+        "email": "email@domain.hu",
+        "phone": "+36 (30) 123-4567",
+        "message": "Mi a cél? Mi a szükséges? Milyen timeframe?"
+      },
+      "submit": "Küldés & Konzultáció",
+      "privacy": "Elfogadom az adatvédelmi irányelveket"
+    },
+    "toastTitle": "Köszönünk! ✅",
+    "toastMessage": "Az üzeneteted megkaptuk. Hamarosan felvesszük veled a kapcsolatot."
+  },
+  "footer": {
+    "brand": "Webfejlesztés",
+    "text": "Premium weboldalak, amik eladnak. Design + fejlesztés + SEO + performance.",
+    "ctaPrimary": "Konzultáció kérése",
+    "ctaSecondary": "Portfólió",
+    "columns": {
+      "services": "Szolgáltatások",
+      "about": "Rólunk",
+      "contact": "Gyors kontakt",
+      "other": "Egyéb"
+    },
+    "links": {
+      "premium": "Premium csomag",
+      "pro": "Pro Plus",
+      "enterprise": "Enterprise",
+      "calculator": "Árbecslő",
+      "portfolio": "Portfólió",
+      "process": "Folyamat",
+      "testimonials": "Vélemények",
+      "faq": "GYIK",
+      "privacy": "Adatkezelés",
+      "terms": "ÁSZF",
+      "contact": "Kapcsolat"
+    },
+    "hours": "Mon–Fri: 9–18",
+    "copyright": "All rights reserved.",
+    "builtWith": "Built with",
+    "stack": "TypeScript • Vite • Modern CSS"
+  },
+  "caseStudy": {
+    "modalTitle": "Esettanulmány",
+    "subTitle": "Esettanulmány nézet — prémium prezentáció (demo)",
+    "summaryFallback": "Itt lesz majd a projekt sztori: cél, megoldás, mérés. Most demo, de a struktúra már esettanulmány-szint.",
+    "bulletsFallback": [
+      "Üzenet & CTA struktúra újratervezés",
+      "Premium UI tipó + spacing rendszer",
+      "Sebesség és konverziós útvonalak finomítása"
+    ],
+    "stackFallback": ["Vite", "TypeScript", "Modern UI", "Performance"]
+  },
+  "modal": {
+    "thanksTitle": "Köszi! Megkaptuk.",
+    "thanksBody": "Hamarosan írunk / hívunk a részletekkel."
+  },
+  "quoteModal": {
+    "aria": "Ajánlatkérés",
+    "meta": "Ajánlatkérés",
+    "title": "Mondd el röviden, mire van szükséged",
+    "subtitle": "Visszajelzünk a legjobb megoldással és javasolt ütemezéssel.",
+    "nameLabel": "Név",
+    "namePlaceholder": "Pl. Kiss Gábor",
+    "emailLabel": "Email",
+    "emailPlaceholder": "email@domain.hu",
+    "messageLabel": "Rövid leírás",
+    "messagePlaceholder": "Milyen weboldalt szeretnél? Mi a cél? Van-e határidő?",
+    "cancel": "Mégse",
+    "submit": "Küldés"
+  }
+}

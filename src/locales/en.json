@@ -1,0 +1,415 @@
+{
+  "nav": {
+    "brand": "Web Development",
+    "process": "Process",
+    "portfolio": "Portfolio",
+    "testimonials": "Testimonials",
+    "contact": "Contact",
+    "cta": "Consultation",
+    "menu": "Menu"
+  },
+  "hero": {
+    "titleLead": "Websites that",
+    "titleHighlight": "actually perform.",
+    "subtitle": "No fluff. Design, code, and marketing in one package. 95+ PageSpeed. Conversion-focused. Measurable results from week one.",
+    "ctaPrimary": "Request consultation",
+    "ctaSecondary": "View portfolio",
+    "stats": {
+      "pagespeedValue": "95+",
+      "pagespeedLabel": "PageSpeed Score",
+      "daysValue": "3–7",
+      "daysLabel": "Days to launch",
+      "clientsValue": "50+",
+      "clientsLabel": "Happy clients"
+    },
+    "badges": ["Mobile-first", "SEO + Schema", "WCAG AA", "Conversion-led"],
+    "before": "Before",
+    "after": "After",
+    "sliderLabel": "Slider"
+  },
+  "process": {
+    "title": "How we work",
+    "subtitle": "Live in 3–7 days. Clear steps, unlimited revisions, 1 year support.",
+    "steps": [
+      { "label": "Discovery" },
+      { "label": "Design" },
+      { "label": "Development" },
+      { "label": "Launch" }
+    ],
+    "details": [
+      {
+        "title": "Discovery Call",
+        "text": "We lay the foundation by analyzing your business goals and audience. In a 30‑minute consultation we define key KPIs and the project timeline.",
+        "bullets": [
+          "✓ Business goals & audience analysis",
+          "✓ KPI definition and measurement points",
+          "✓ 30-minute strategy consultation",
+          "✓ Detailed project roadmap"
+        ]
+      },
+      {
+        "title": "Design Concept",
+        "text": "We craft functional wireframes and custom visuals. You can choose from 2–3 concepts and we refine them based on your feedback until perfect.",
+        "bullets": [
+          "✓ Wireframes and functional layouts",
+          "✓ 2–3 visual concept options",
+          "✓ Visual system (colors, type)",
+          "✓ Iterations based on your feedback"
+        ]
+      },
+      {
+        "title": "Development",
+        "text": "Clean, semantic code and performance-first development with modern tech. Fully responsive and blazing fast across browsers.",
+        "bullets": [
+          "✓ Modern stack (TypeScript, modern CSS)",
+          "✓ Responsive on all devices",
+          "✓ Performance-first approach",
+          "✓ Cross-browser stability"
+        ]
+      },
+      {
+        "title": "Launch & Support",
+        "text": "After thorough testing we configure the server environment and go live. Analytics setup included, plus one year of full technical support.",
+        "bullets": [
+          "✓ Thorough testing",
+          "✓ Deploy + DNS/SSL setup",
+          "✓ Analytics tools configuration",
+          "✓ 1 year full support"
+        ]
+      }
+    ]
+  },
+  "portfolio": {
+    "title": "Portfolio",
+    "subtitle": "50+ successful projects. E‑commerce, SaaS, landing pages. Click for details.",
+    "all": "All",
+    "empty": "No results.",
+    "items": [
+      {
+        "title": "TechFlow — SaaS Landing",
+        "tag": "SaaS",
+        "result": "+47% conversion",
+        "image": "/src/assets/images/portfolio/project-1.svg",
+        "summary": "High‑converting landing page for a B2B SaaS company. Clean design, social proof, conversion focus.",
+        "bullets": [
+          "Luxury dark design with gradients",
+          "Video hero section",
+          "Interactive pricing calculator",
+          "Free trial CTA optimization",
+          "95+ PageSpeed Score"
+        ],
+        "stack": ["TypeScript", "React", "Tailwind CSS", "Stripe API"]
+      },
+      {
+        "title": "Luxe Design — Portfolio Site",
+        "tag": "Portfolio",
+        "result": "50+ client leads / month",
+        "image": "/src/assets/images/portfolio/project-2.svg",
+        "summary": "Premium design agency website with case studies, testimonials, and a conversion funnel.",
+        "bullets": [
+          "Custom motion design",
+          "Before/After slider",
+          "Client testimonials carousel",
+          "Interactive case studies",
+          "Email newsletter integration"
+        ],
+        "stack": ["Vite", "TypeScript", "CSS Animations", "Figma"]
+      },
+      {
+        "title": "EcoShop — E-commerce Redesign",
+        "tag": "E-commerce",
+        "result": "+28% cart value",
+        "image": "/src/assets/images/portfolio/project-3.svg",
+        "summary": "Modernization of a sustainable products webshop. Performance, UX, conversion.",
+        "bullets": [
+          "Product filter system",
+          "Fast checkout (2-step)",
+          "Image optimization",
+          "Cart abandonment recovery",
+          "92 PageSpeed Score"
+        ],
+        "stack": ["Next.js", "PostgreSQL", "Stripe", "Image CDN"]
+      },
+      {
+        "title": "FinanceHub — Corporate Site",
+        "tag": "Corporate",
+        "result": "98% uptime",
+        "image": "/src/assets/images/portfolio/project-4.svg",
+        "summary": "Corporate website for a financial advisory firm. Trust signals, SEO, lead generation.",
+        "bullets": [
+          "Interactive calculators",
+          "Blog system",
+          "SEO optimized",
+          "Schema markup",
+          "Analytics dashboard"
+        ],
+        "stack": ["TypeScript", "Next.js", "GraphQL", "PostgreSQL"]
+      },
+      {
+        "title": "Creative Agency Website",
+        "tag": "Agency",
+        "result": "Top 10 design sites",
+        "image": "/src/assets/images/portfolio/project-5.svg",
+        "summary": "Creative agency site with portfolio, case studies, and team showcase.",
+        "bullets": [
+          "Smooth scroll animations",
+          "Portfolio grid with filters",
+          "Team member profiles",
+          "Project case study modals",
+          "Dark mode support"
+        ],
+        "stack": ["React", "Framer Motion", "Vite", "TypeScript"]
+      },
+      {
+        "title": "Wellness App Landing",
+        "tag": "App",
+        "result": "10K+ downloads / month",
+        "image": "/src/assets/images/portfolio/project-6.svg",
+        "summary": "Promotional page for a wellness app. App store optimization, video hero.",
+        "bullets": [
+          "Video background hero",
+          "Feature showcase carousel",
+          "App store download buttons",
+          "User testimonials",
+          "FAQ accordion"
+        ],
+        "stack": ["Vue 3", "TailwindCSS", "Vite", "EmailJS"]
+      }
+    ]
+  },
+  "calculator": {
+    "title": "Quick price & timeline estimate",
+    "subtitle": "Configure your project! This is only an estimate — final quote arrives via email.",
+    "pagesLabel": "Pages",
+    "pagesMin": "1 (landing)",
+    "pagesMax": "12+ (large site)",
+    "typeLabel": "Type",
+    "complexity": {
+      "label": "Complexity",
+      "options": {
+        "simple": "Simple",
+        "standard": "Standard",
+        "advanced": "Advanced"
+      }
+    },
+    "speed": {
+      "label": "Delivery speed",
+      "options": {
+        "standard": "Standard",
+        "fast": "Fast",
+        "rush": "Rush"
+      }
+    },
+    "support": {
+      "label": "Support",
+      "options": {
+        "none": "None",
+        "standard": "Standard",
+        "premium": "Premium"
+      }
+    },
+    "types": {
+      "landing": "Landing page",
+      "corporate": "Business website",
+      "ecommerce": "E-commerce / Webshop",
+      "portal": "Portal / App landing"
+    },
+    "extrasTitle": "Add-ons",
+    "extras": {
+      "seo": "⭐ Advanced SEO",
+      "copy": "✍️ Full copywriting",
+      "cms": "⚙️ CMS / Admin panel",
+      "ecommerce": "🛒 E-commerce (Stripe/PayPal)"
+    },
+    "estimate": {
+      "title": "Estimate",
+      "price": "Price",
+      "time": "Timeline",
+      "note": "💡 This is a quick estimate. Final pricing depends on scope, content, and custom needs."
+    },
+    "currency": "HUF",
+    "locale": "en-US",
+    "workdays": "workdays"
+  },
+  "testimonials": {
+    "title": "What clients say",
+    "subtitle": "50+ successful projects. Real clients, real results, real satisfaction.",
+    "items": [
+      {
+        "name": "Gábor Kiss",
+        "role": "CEO, TechFlow",
+        "quote": "Not just a website — a conversion engine. We saw 40% more leads in the first month."
+      },
+      {
+        "name": "Anna Nagy",
+        "role": "Marketing Lead, Luxe Design",
+        "quote": "The team was professional. Clear communication, fast delivery, and a captivating design."
+      },
+      {
+        "name": "Péter Kovács",
+        "role": "Founder, EcoShop",
+        "quote": "95 PageSpeed and +28% cart value in one month. This is business impact."
+      },
+      {
+        "name": "Márton Szarka",
+        "role": "CEO, FinanceHub",
+        "quote": "SEO, trust signals, and UX are far above the competition."
+      },
+      {
+        "name": "Éva Molnár",
+        "role": "Art Director, Creative Agency",
+        "quote": "Finally a developer who understands design and business goals. Excellent work."
+      },
+      {
+        "name": "István Tóth",
+        "role": "Product Manager, Wellness App",
+        "quote": "Downloads multiplied thanks to the landing page, animations, and conversion copy."
+      },
+      {
+        "name": "Zsuzsanna Fehér",
+        "role": "Business Owner, E-commerce",
+        "quote": "I didn’t believe a website could change sales this much. Highly recommended."
+      },
+      {
+        "name": "László Bodnár",
+        "role": "Marketing Manager, SaaS Startup",
+        "quote": "Professional, fast, and it pays off. Exactly what we needed."
+      }
+    ]
+  },
+  "faq": {
+    "title": "FAQ",
+    "subtitle": "Can’t find the answer? Write or call: info@webfejlesztes.hu",
+    "items": [
+      {
+        "q": "How long does a website take?",
+        "a": "Depends on the package. Starter: 4–5 days, Professional: 5–7 days, Enterprise: custom. Rush projects available."
+      },
+      {
+        "q": "Can I edit the content later?",
+        "a": "Yes! We recommend a package with CMS/admin panel for easy updates."
+      },
+      {
+        "q": "What if I don’t like the result?",
+        "a": "Unlimited revisions within reasonable scope. We keep iterating until you’re happy."
+      },
+      {
+        "q": "Do I get SEO basics and tracking setup?",
+        "a": "Yes! Google Analytics, Search Console, pixel tracking, and schema markup included."
+      },
+      {
+        "q": "What happens after the first year?",
+        "a": "Free support during year one. After that, optional annual maintenance (updates, security, performance)."
+      },
+      {
+        "q": "Can you build e‑commerce / webshop?",
+        "a": "Yes. That’s the Professional or Enterprise package with Stripe/PayPal integration."
+      },
+      {
+        "q": "What support do I get during development?",
+        "a": "Email + Slack access. Monday–Friday, daily response time. Fast communication."
+      },
+      {
+        "q": "Do I get the source code / Git repository?",
+        "a": "Yes! Private Git repo access and full source code download."
+      }
+    ]
+  },
+  "contact": {
+    "title": "Ready to start?",
+    "subtitle": "Write or call. We reply within 24 hours, consultation is free.",
+    "infoTitle": "Quick contact",
+    "emailLabel": "Email",
+    "phoneLabel": "Phone",
+    "chatLabel": "Slack / Discord",
+    "chatText": "Real-time project updates",
+    "availabilityTitle": "Availability",
+    "availabilityWeekdays": "Mon–Fri: 09:00–18:00",
+    "availabilityUrgent": "Urgent: 30‑minute callback",
+    "formTitle": "Ask a question or request a quote",
+    "form": {
+      "name": "Name *",
+      "email": "Email *",
+      "phone": "Phone",
+      "projectType": "What type of project?",
+      "projectOptions": [
+        { "value": "", "label": "-- Select --" },
+        { "value": "landing", "label": "Landing page" },
+        { "value": "webshop", "label": "Webshop / E-commerce" },
+        { "value": "corporate", "label": "Business website" },
+        { "value": "saas", "label": "SaaS platform" },
+        { "value": "redesign", "label": "Redesign / Migration" },
+        { "value": "other", "label": "Other" }
+      ],
+      "message": "Short description *",
+      "placeholders": {
+        "name": "Your name or company",
+        "email": "email@domain.com",
+        "phone": "+36 (30) 123-4567",
+        "message": "Goals, requirements, timeline?"
+      },
+      "submit": "Send & Consultation",
+      "privacy": "I accept the privacy policy"
+    },
+    "toastTitle": "Thanks! ✅",
+    "toastMessage": "We received your message. We’ll get back to you soon."
+  },
+  "footer": {
+    "brand": "Web Development",
+    "text": "Premium websites that sell. Design + development + SEO + performance.",
+    "ctaPrimary": "Request consultation",
+    "ctaSecondary": "Portfolio",
+    "columns": {
+      "services": "Services",
+      "about": "About",
+      "contact": "Quick contact",
+      "other": "Other"
+    },
+    "links": {
+      "premium": "Premium package",
+      "pro": "Pro Plus",
+      "enterprise": "Enterprise",
+      "calculator": "Estimator",
+      "portfolio": "Portfolio",
+      "process": "Process",
+      "testimonials": "Testimonials",
+      "faq": "FAQ",
+      "privacy": "Privacy",
+      "terms": "Terms",
+      "contact": "Contact"
+    },
+    "hours": "Mon–Fri: 9–18",
+    "copyright": "All rights reserved.",
+    "builtWith": "Built with",
+    "stack": "TypeScript • Vite • Modern CSS"
+  },
+  "caseStudy": {
+    "modalTitle": "Case study",
+    "subTitle": "Case study view — premium presentation (demo)",
+    "summaryFallback": "Project story goes here: goal, solution, measurement. Demo for now, but the structure is case‑study ready.",
+    "bulletsFallback": [
+      "Messaging & CTA structure redesign",
+      "Premium UI typography + spacing system",
+      "Performance and conversion path tuning"
+    ],
+    "stackFallback": ["Vite", "TypeScript", "Modern UI", "Performance"]
+  },
+  "modal": {
+    "thanksTitle": "Thanks! We got it.",
+    "thanksBody": "We’ll reach out soon with details."
+  },
+  "quoteModal": {
+    "aria": "Request a quote",
+    "meta": "Request a quote",
+    "title": "Tell us briefly what you need",
+    "subtitle": "We’ll reply with the best solution and a recommended timeline.",
+    "nameLabel": "Name",
+    "namePlaceholder": "e.g., Alex Smith",
+    "emailLabel": "Email",
+    "emailPlaceholder": "email@domain.com",
+    "messageLabel": "Short description",
+    "messagePlaceholder": "What website do you need? What’s the goal? Any deadline?",
+    "cancel": "Cancel",
+    "submit": "Send"
+  }
+}

@@ -1,38 +1,51 @@
 <!doctype html>
 <html lang="hu">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Webfejlesztés — Premium Weboldalak, Amik Eladnak</title>
-    <meta
-      name="description"
-      content="Modern webtervezés és fejlesztés. 95+ PageSpeed, konverzió-optimalizált design, 3–7 nap alatt kész. Profi ügynökség, mérhető eredmények."
-    />
-    <meta name="keywords" content="webfejlesztés, webtervezés, agency, landing page, webshop, TypeScript, design, SEO" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Canonical -->
-    <link rel="canonical" href="https://webfejlesztes.hu/" />
+  <title>Webfejlesztés — Premium Weboldalak, Amik Eladnak</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Open Graph -->
-    <meta property="og:title" content="Webfejlesztés — Prémium weboldalak, amik eladnak" />
-    <meta
-      property="og:description"
-      content="Profi webfejlesztés. Design, kód, és marketing optimalizálás egy csomágban. 50+ sikeres projekt."
-    />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://webfejlesztes.hu/" />
-    <meta property="og:image" content="https://webfejlesztes.hu/og/og-image.png" />
-    <meta property="og:site_name" content="Webfejlesztés" />
-    
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Webfejlesztés — Prémium weboldalak, amik eladnak" />
-    <meta name="twitter:description" content="Modern, gyors, konverziós weboldalak. 3–7 nap alatt live." />
-    <meta name="twitter:image" content="https://webfejlesztes.hu/og/og-image.png" />
+  <script>
+    tailwind.config = {
+      // 1. Előtag hozzáadása (pl. "tw-"), hogy ne akadjon össze a te kódoddal.
+      // Így pl. a "flex" helyett "tw-flex"-et kell írnod.
+      prefix: 'tw-',
 
-    <!-- Structured Data (JSON-LD) -->
-    <script type="application/ld+json">
+      corePlugins: {
+        // 2. A Tailwind alap resetjének kikapcsolása.
+        // Ez menti meg a jelenlegi designodat!
+        preflight: false,
+
+      }
+    }
+  </script>
+  <meta name="description"
+    content="Modern webtervezés és fejlesztés. 95+ PageSpeed, konverzió-optimalizált design, 3–7 nap alatt kész. Profi ügynökség, mérhető eredmények." />
+  <meta name="keywords" content="webfejlesztés, webtervezés, agency, landing page, webshop, TypeScript, design, SEO" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://webfejlesztes.hu/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Webfejlesztés — Prémium weboldalak, amik eladnak" />
+  <meta property="og:description"
+    content="Profi webfejlesztés. Design, kód, és marketing optimalizálás egy csomágban. 50+ sikeres projekt." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://webfejlesztes.hu/" />
+  <meta property="og:image" content="https://webfejlesztes.hu/og/og-image.png" />
+  <meta property="og:site_name" content="Webfejlesztés" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Webfejlesztés — Prémium weboldalak, amik eladnak" />
+  <meta name="twitter:description" content="Modern, gyors, konverziós weboldalak. 3–7 nap alatt live." />
+  <meta name="twitter:image" content="https://webfejlesztes.hu/og/og-image.png" />
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
@@ -56,20 +69,23 @@
       }
     </script>
 
-    <!-- Theme & Branding -->
-    <meta name="theme-color" content="#0B0F1A" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <!-- Theme & Branding -->
+  <meta name="theme-color" content="#0B0F1A" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-    <!-- Preload Critical Resources -->
-    <link rel="preload" href="/src/main.ts" as="script" type="module" />
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%237c5cff' width='100' height='100'/><text x='50' y='75' font-size='60' font-weight='bold' fill='white' text-anchor='middle'>W</text></svg>" />
-    <link rel="apple-touch-icon" href="/favicon.png" />
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+  <!-- Preload Critical Resources -->
+  <link rel="preload" href="/src/main.ts" as="script" type="module" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%237c5cff' width='100' height='100'/><text x='50' y='75' font-size='60' font-weight='bold' fill='white' text-anchor='middle'>W</text></svg>" />
+  <link rel="apple-touch-icon" href="/favicon.png" />
+</head>
+
+<body>
+  <div id="app"></div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
 </html>

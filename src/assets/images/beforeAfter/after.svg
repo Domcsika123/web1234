@@ -1,49 +1,90 @@
 <svg viewBox="0 0 1200 600" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="bgAfter" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" style="stop-color:#ffffff" />
-      <stop offset="100%" style="stop-color:#f8f8f8" />
+      <stop offset="0%" stop-color="#edf7ff" />
+      <stop offset="100%" stop-color="#d3e8ff" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563eb" />
+      <stop offset="100%" stop-color="#22c55e" />
+    </linearGradient>
+    <linearGradient id="heroGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#5b8dff" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#22c55e" stop-opacity="0.35" />
     </linearGradient>
   </defs>
-  
-  <!-- Clean, elegant background -->
-  <rect width="1200" height="600" fill="url(#bgAfter)"/>
-  
-  <!-- Minimal header -->
-  <rect width="1200" height="80" fill="#ffffff" stroke="#e0e0e0" stroke-width="1"/>
-  <text x="50" y="50" font-size="24" font-weight="bold" fill="#000000">BRAND</text>
-  
-  <!-- Clean navigation with subtle lines -->
-  <line x1="850" y1="20" x2="1150" y2="20" stroke="#333" stroke-width="1"/>
-  <line x1="850" y1="50" x2="1150" y2="50" stroke="#333" stroke-width="1"/>
-  <line x1="850" y1="80" x2="1150" y2="80" stroke="#333" stroke-width="1"/>
-  
-  <!-- Hero section with breathing room -->
-  <rect y="80" width="1200" height="200" fill="#fafafa"/>
-  <text x="60" y="160" font-size="48" font-weight="bold" fill="#000000">Elegant Design</text>
-  <text x="60" y="210" font-size="16" fill="#666666">Clean, minimalist, and professionally crafted</text>
-  
-  <!-- CTA Button -->
-  <rect x="60" y="240" width="160" height="48" fill="#000000" rx="2"/>
-  <text x="90" y="270" font-size="14" fill="#ffffff" font-weight="bold">Get Started</text>
-  
-  <!-- Three clean sections -->
-  <rect x="50" y="310" width="340" height="240" fill="#ffffff" stroke="#d0d0d0" stroke-width="1" rx="2"/>
-  <rect x="50" y="310" width="340" height="140" fill="#f5f5f5"/>
-  <text x="70" y="490" font-size="16" font-weight="bold" fill="#000000">Timeless Quality</text>
-  <text x="70" y="530" font-size="13" fill="#888888">Crafted with attention to every detail</text>
-  
-  <rect x="430" y="310" width="340" height="240" fill="#ffffff" stroke="#d0d0d0" stroke-width="1" rx="2"/>
-  <rect x="430" y="310" width="340" height="140" fill="#f5f5f5"/>
-  <text x="450" y="490" font-size="16" font-weight="bold" fill="#000000">Modern Innovation</text>
-  <text x="450" y="530" font-size="13" fill="#888888">Leveraging the latest technologies</text>
-  
-  <rect x="810" y="310" width="340" height="240" fill="#000000" rx="2"/>
-  <rect x="810" y="310" width="340" height="140" fill="#1a1a1a"/>
-  <text x="830" y="490" font-size="16" font-weight="bold" fill="#ffffff">Sophisticated Style</text>
-  <text x="830" y="530" font-size="13" fill="#cccccc">Premium experience in every interaction</text>
-  
-  <!-- Subtle footer -->
-  <rect y="570" width="1200" height="30" fill="#ffffff" stroke="#e0e0e0" stroke-width="1"/>
-  <text x="50" y="590" font-size="11" fill="#999999">© 2024 Brand. All rights reserved. | Privacy | Terms</text>
+
+  <!-- Soft background with subtle overlay -->
+  <rect width="1200" height="600" fill="url(#bgAfter)" />
+  <circle cx="1050" cy="60" r="160" fill="#22c55e" opacity="0.08" />
+  <circle cx="150" cy="520" r="200" fill="#2563eb" opacity="0.06" />
+
+  <!-- Header -->
+  <rect width="1200" height="90" fill="#ffffff" stroke="#d6e2f0" stroke-width="1" />
+  <circle cx="70" cy="45" r="14" fill="#2563eb" />
+  <text x="94" y="52" font-size="20" font-weight="800" fill="#0f172a">EcoTech</text>
+
+  <g fill="#1e293b" font-size="13" font-weight="700" text-anchor="middle">
+    <text x="520" y="50">Home</text>
+    <text x="600" y="50">Solutions</text>
+    <text x="690" y="50">About</text>
+    <text x="770" y="50">Contact</text>
+  </g>
+
+  <rect x="980" y="28" width="110" height="36" rx="18" fill="url(#accent)" />
+  <text x="1010" y="51" font-size="13" font-weight="700" fill="#ffffff">Get started</text>
+
+  <!-- Hero card -->
+  <rect x="60" y="120" width="1080" height="210" rx="18" fill="#ffffff" stroke="#d6e2f0" />
+  <rect x="60" y="120" width="1080" height="210" rx="18" fill="url(#heroGlow)" opacity="0.45" />
+
+  <text x="90" y="180" font-size="42" font-weight="800" fill="#0f172a">Animate and Sustainable Tech</text>
+  <text x="90" y="215" font-size="17" fill="#1f2a3d">Build digital experiences that feel human and climate-positive.</text>
+
+  <rect x="90" y="238" width="180" height="46" rx="10" fill="#2563eb" />
+  <text x="118" y="267" font-size="14" font-weight="700" fill="#ffffff">Explore solutions</text>
+
+  <rect x="290" y="238" width="200" height="46" rx="10" fill="#0f172a" />
+  <text x="320" y="267" font-size="14" font-weight="700" fill="#ffffff">Book a demo</text>
+
+  <rect x="510" y="238" width="160" height="46" rx="10" fill="#22c55e" />
+  <text x="535" y="267" font-size="14" font-weight="700" fill="#0f172a">See pricing</text>
+
+  <!-- Hero visual -->
+  <rect x="700" y="145" width="380" height="160" rx="18" fill="#0f172a" opacity="0.9" />
+  <rect x="710" y="155" width="360" height="140" rx="14" fill="#ffffff" />
+  <rect x="720" y="165" width="200" height="120" rx="12" fill="#dce6f7" />
+  <rect x="930" y="165" width="120" height="120" rx="12" fill="#e5f7ef" />
+  <circle cx="970" cy="200" r="26" fill="#22c55e" opacity="0.9" />
+  <circle cx="860" cy="210" r="18" fill="#2563eb" opacity="0.9" />
+  <rect x="735" y="185" width="150" height="18" rx="8" fill="#0f172a" opacity="0.85" />
+  <rect x="735" y="210" width="110" height="14" rx="7" fill="#2563eb" opacity="0.8" />
+  <rect x="735" y="230" width="90" height="12" rx="6" fill="#94a3b8" />
+  <rect x="945" y="230" width="80" height="26" rx="12" fill="#2563eb" />
+
+  <!-- Feature cards -->
+  <rect x="60" y="360" width="330" height="190" rx="16" fill="#ffffff" stroke="#d6e2f0" />
+  <circle cx="100" cy="394" r="20" fill="#2563eb" opacity="0.9" />
+  <text x="130" y="401" font-size="15" font-weight="800" fill="#0f172a">Performance</text>
+  <text x="100" y="430" font-size="14" fill="#1f2a3d">95+ Lighthouse, optimized assets.</text>
+  <rect x="100" y="450" width="124" height="34" rx="10" fill="#2563eb" />
+  <text x="126" y="472" font-size="13" font-weight="700" fill="#ffffff">Speed insights</text>
+
+  <rect x="450" y="360" width="330" height="190" rx="16" fill="#ffffff" stroke="#d6e2f0" />
+  <circle cx="490" cy="394" r="20" fill="#22c55e" opacity="0.9" />
+  <text x="520" y="401" font-size="15" font-weight="800" fill="#0f172a">Accessibility</text>
+  <text x="490" y="430" font-size="14" fill="#1f2a3d">WCAG AA, keyboard-first, ARIA ready.</text>
+  <rect x="490" y="450" width="140" height="34" rx="10" fill="#0f172a" />
+  <text x="518" y="472" font-size="13" font-weight="700" fill="#ffffff">View checklist</text>
+
+  <rect x="840" y="360" width="300" height="190" rx="16" fill="#0b162f" />
+  <circle cx="880" cy="394" r="20" fill="#22c55e" opacity="0.9" />
+  <text x="910" y="401" font-size="15" font-weight="800" fill="#ffffff">Support</text>
+  <text x="880" y="430" font-size="14" fill="#cbd5e1">Human help, ongoing care.</text>
+  <rect x="880" y="450" width="140" height="34" rx="10" fill="#2563eb" />
+  <text x="905" y="472" font-size="13" font-weight="700" fill="#ffffff">Talk to us</text>
+
+  <!-- Footer -->
+  <rect y="565" width="1200" height="35" fill="#ffffff" stroke="#d6e2f0" />
+  <text x="50" y="588" font-size="12" fill="#475569">© 2026 EcoTech Innovations • Privacy • Terms</text>
 </svg>

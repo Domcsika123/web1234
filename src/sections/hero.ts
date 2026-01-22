@@ -1,47 +1,48 @@
+import { t, ta } from "../lib/i18n";
+
 export function renderHero() {
   return `
   <section class="hero" id="top">
     <div class="container hero-grid">
       <div data-reveal>
         <h1>
-          Weboldalak, amik <span class="grad-text">valóban működnek.</span>
+          ${t("hero.titleLead")} <span class="grad-text">${t("hero.titleHighlight")}</span>
         </h1>
 
         <p class="p">
-          Nincs szépítés a végén. Design, kód, és marketing egy csomágban. 
-          95+ PageSpeed. Konverzió-fókusz. Mérhető eredmények az első héten.
+          ${t("hero.subtitle")}
         </p>
 
         <div class="hero-actions">
-          <button class="btn btn-primary" data-modal-open="quote">Konzultáció kérése</button>
-          <a class="btn" href="#work" data-nav>Portfólió megtekintése</a>
+          <button class="btn btn-primary" data-modal-open="quote">${t("hero.ctaPrimary")}</button>
+          <a class="btn" href="#work" data-nav>${t("hero.ctaSecondary")}</a>
         </div>
 
         <div class="hero-stats">
           <div class="stat">
-            <b>95+</b>
-            <div>PageSpeed Score</div>
+            <b class="js-counter" data-target="95" data-suffix="+">${t("hero.stats.pagespeedValue")}</b>
+            <div>${t("hero.stats.pagespeedLabel")}</div>
           </div>
           <div class="stat">
-            <b>3–7</b>
-            <div>Nap alatt kész</div>
+            <b
+              class="js-counter"
+              data-start-target="3"
+              data-target="7"
+              data-start-from="0"
+              data-from="0"
+            >${t("hero.stats.daysValue")}</b>
+            <div>${t("hero.stats.daysLabel")}</div>
           </div>
           <div class="stat">
-            <b>50+</b>
-            <div>Elégedett kliens</div>
+            <b class="js-counter" data-target="50" data-suffix="+">${t("hero.stats.clientsValue")}</b>
+            <div>${t("hero.stats.clientsLabel")}</div>
           </div>
         </div>
 
-        <div class="hero-features">
-          <div class="feature-badge">✓ Mobil-first</div>
-          <div class="feature-badge">✓ SEO-ready</div>
-          <div class="feature-badge">✓ Accessible</div>
-          <div class="feature-badge">✓ Converter</div>
-        </div>
       </div>
 
       <div class="hero-visual" data-reveal>
-        <div class="ba" aria-label="Before/After">
+        <div class="ba" aria-label="${t("hero.before")}/${t("hero.after")}">
           <div class="ba-frame">
             <div class="ba-after"></div>
             <div class="ba-before"></div>
@@ -49,9 +50,9 @@ export function renderHero() {
           </div>
 
           <div class="ba-foot">
-            <span>Előtte</span>
-            <input class="ba-range" type="range" min="0" max="100" value="55" aria-label="Csúszka" />
-            <span>Után</span>
+            <span>${t("hero.before")}</span>
+            <input class="ba-range" type="range" min="0" max="100" value="55" aria-label="${t("hero.sliderLabel")}" />
+            <span>${t("hero.after")}</span>
           </div>
         </div>
       </div>

@@ -1,4 +1,5 @@
 import { toast } from "./toast";
+import { t } from "../lib/i18n";
 
 export function initModal() {
   const modal = document.querySelector<HTMLElement>("#quoteModal");
@@ -28,7 +29,7 @@ export function initModal() {
   closers.forEach((b) => b.addEventListener("click", close));
   backdrop?.addEventListener("click", close);
 
-  window.addEventListener("keydown", (e) => {
+  globalThis.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && modal.classList.contains("is-open")) close();
   });
 
@@ -37,7 +38,7 @@ export function initModal() {
   form?.addEventListener("submit", (e) => {
     e.preventDefault();
     close();
-    toast("Köszi! Megkaptuk.", "Hamarosan írunk / hívunk a részletekkel.");
+    toast(t("modal.thanksTitle"), t("modal.thanksBody"));
     form.reset();
   });
 }
