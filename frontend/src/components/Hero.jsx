@@ -15,10 +15,6 @@ const Hero = ({ onCtaClick }) => {
         <div className="hero-overlay"></div>
       </div>
       <div className="hero-content">
-        <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-lime-500/10 px-4 py-2 backdrop-blur-sm">
-          <Sparkles className="h-4 w-4 text-lime-400" />
-          <span className="caption text-lime-400">Magyar KKV-knak</span>
-        </div>
         <h1 className="hero-title mb-6">{heroData.headline}</h1>
         <p className="body-large mb-12 max-w-2xl text-neutral-light">
           {heroData.subheadline}
