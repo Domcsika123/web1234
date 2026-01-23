@@ -145,7 +145,7 @@ export const testimonials = [
 export const caseStudies = [
   {
     id: 1,
-    client: "Helyi étterem",
+    client: "Étterem",
     industry: "Vendéglátás",
     challenge: "Online rendelési rendszer hiánya, alacsony láthatóság",
     solution: "Reszponzív weboldal online foglalási és rendelési rendszerrel",
@@ -154,7 +154,7 @@ export const caseStudies = [
   },
   {
     id: 2,
-    client: "Helyi fodrászat",
+    client: "Fodrászat",
     industry: "Szépségápolás",
     challenge: "Telefonos időpontfoglalás túlterheltsége",
     solution: "Modern weboldal online időpontfoglaló rendszerrel",
