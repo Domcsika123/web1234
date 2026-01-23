@@ -104,6 +104,41 @@ export const testimonials = [
     company: "Fitness stúdió",
     text: "Mobilon is gyönyörű, és végre mérem, honnan jönnek az új tagok. Köszönöm!",
     rating: 5
+  },
+  {
+    id: 4,
+    name: "Horváth Gábor",
+    company: "Webshop tulajdonos",
+    text: "Profi munka, gyors válaszok. A webshopom pontosan azt tudja, amit kértem.",
+    rating: 5
+  },
+  {
+    id: 5,
+    name: "Szabó Mónika",
+    company: "Kozmetikai szalon",
+    text: "Az online időpontfoglalóval rengeteg időt spórolok. Remek befektetés volt!",
+    rating: 5
+  },
+  {
+    id: 6,
+    name: "Kovács László",
+    company: "Építőipari cég",
+    text: "Végre van egy modern weboldalunk. Az ügyfelek bizalma láthatóan nőtt.",
+    rating: 5
+  },
+  {
+    id: 7,
+    name: "Molnár Judit",
+    company: "Személyi edző",
+    text: "Gyors, hatékony munka. Pontosan úgy néz ki az oldal, ahogy elképzeltem.",
+    rating: 5
+  },
+  {
+    id: 8,
+    name: "Farkas Tamás",
+    company: "Autószerviz",
+    text: "SEO-ra optimalizálták, most sokkal jobban találnak meg a Google-ben. Király!",
+    rating: 5
   }
 ];
 
