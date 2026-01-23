@@ -11,7 +11,7 @@ import FAQ from './components/FAQ';
 import CTASection from './components/CTASection';
 import ContactForm from './components/ContactForm';
 import Footer from './components/Footer';
-import { Toaster } from './components/ui/sonner';
+import { Toaster } from 'sonner';
 
 function App() {
   const handleCtaClick = () => {
@@ -36,7 +36,7 @@ function App() {
         <ContactForm />
       </main>
       <Footer />
-      <Toaster />
+      <Toaster position="top-right" richColors />
     </div>
   );
 }
