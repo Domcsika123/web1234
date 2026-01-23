@@ -1,0 +1,207 @@
+import React, { useState } from 'react';
+import { Button } from './ui/button';
+import { Input } from './ui/input';
+import { Textarea } from './ui/textarea';
+import { Label } from './ui/label';
+import { Mail, Phone, MapPin, Send, Check } from 'lucide-react';
+import { contactInfo } from '../mockData';
+import { useToast } from '../hooks/use-toast';
+
+const ContactForm = () => {
+  const { toast } = useToast();
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    budget: '',
+    message: ''
+  });
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Mock submission
+    setIsSubmitted(true);
+    toast({
+      title: "Sikeres küldés!",
+      description: "24 órán belül válaszolunk.",
+    });
+    setTimeout(() => {
+      setFormData({ name: '', email: '', phone: '', budget: '', message: '' });
+      setIsSubmitted(false);
+    }, 2000);
+  };
+
+  return (
+    <section id="contact" className="py-32 px-8 bg-page">
+      <div className="container mx-auto max-w-6xl">
+        <div className="text-center mb-20">
+          <h2 className="heading-2 mb-6 text-primary">Kezdjük el!</h2>
+          <p className="body-large text-secondary max-w-3xl mx-auto">
+            Ingyenes konzultáció – beszéljük meg a projektedet
+          </p>
+        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          {/* Contact Info */}
+          <div>
+            <div className="mb-12">
+              <h3 className="heading-4 mb-6 text-primary">Írj nekünk</h3>
+              <p className="body-medium text-secondary mb-8">
+                24 órán belül válaszolunk minden megkeresésre. Nincs kötelezettség, csak beszélgetünk.
+              </p>
+            </div>
+            <div className="space-y-6">
+              <div className="flex items-start gap-4 p-6 rounded-xl border border-border-medium bg-card hover:bg-border-medium transition-colors">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-brand-primary/10">
+                  <Mail className="h-6 w-6 text-brand-primary" />
+                </div>
+                <div>
+                  <p className="caption text-secondary mb-1">EMAIL</p>
+                  <p className="body-medium text-primary">{contactInfo.email}</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-4 p-6 rounded-xl border border-border-medium bg-card hover:bg-border-medium transition-colors">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-brand-primary/10">
+                  <Phone className="h-6 w-6 text-brand-primary" />
+                </div>
+                <div>
+                  <p className="caption text-secondary mb-1">TELEFON</p>
+                  <p className="body-medium text-primary">{contactInfo.phone}</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-4 p-6 rounded-xl border border-border-medium bg-card hover:bg-border-medium transition-colors">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-brand-primary/10">
+                  <MapPin className="h-6 w-6 text-brand-primary" />
+                </div>
+                <div>
+                  <p className="caption text-secondary mb-1">HELYSZÍN</p>
+                  <p className="body-medium text-primary">{contactInfo.address}</p>
+                </div>
+              </div>
+            </div>
+            <div className="mt-8 p-6 rounded-xl bg-brand-primary/10 border border-brand-primary/20">
+              <p className="body-small text-primary">
+                <Check className="inline h-5 w-5 mr-2 text-brand-primary" />
+                Nincs kötelezettség
+              </p>
+              <p className="body-small text-primary mt-2">
+                <Check className="inline h-5 w-5 mr-2 text-brand-primary" />
+                24 órán belül válaszolunk
+              </p>
+            </div>
+          </div>
+
+          {/* Contact Form */}
+          <div className="p-8 rounded-xl border border-border-medium bg-card">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div>
+                <Label htmlFor="name" className="body-small text-primary mb-2 block">
+                  Név *
+                </Label>
+                <Input
+                  id="name"
+                  name="name"
+                  type="text"
+                  required
+                  value={formData.name}
+                  onChange={handleChange}
+                  className="bg-page border-border-medium text-primary"
+                  placeholder="Teljes neved"
+                />
+              </div>
+              <div>
+                <Label htmlFor="email" className="body-small text-primary mb-2 block">
+                  Email *
+                </Label>
+                <Input
+                  id="email"
+                  name="email"
+                  type="email"
+                  required
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="bg-page border-border-medium text-primary"
+                  placeholder="pelda@email.hu"
+                />
+              </div>
+              <div>
+                <Label htmlFor="phone" className="body-small text-primary mb-2 block">
+                  Telefon
+                </Label>
+                <Input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className="bg-page border-border-medium text-primary"
+                  placeholder="+36 30 123 4567"
+                />
+              </div>
+              <div>
+                <Label htmlFor="budget" className="body-small text-primary mb-2 block">
+                  Költségkeret
+                </Label>
+                <select
+                  id="budget"
+                  name="budget"
+                  value={formData.budget}
+                  onChange={handleChange}
+                  className="w-full rounded-md border border-border-medium bg-page px-3 py-2 text-primary body-medium focus:outline-none focus:ring-2 focus:ring-brand-primary"
+                >
+                  <option value="">Válassz...</option>
+                  <option value="under-500k">500k Ft alatt</option>
+                  <option value="500k-1m">500k - 1M Ft</option>
+                  <option value="1m-2m">1M - 2M Ft</option>
+                  <option value="above-2m">2M Ft felett</option>
+                </select>
+              </div>
+              <div>
+                <Label htmlFor="message" className="body-small text-primary mb-2 block">
+                  Projekt leírása *
+                </Label>
+                <Textarea
+                  id="message"
+                  name="message"
+                  required
+                  value={formData.message}
+                  onChange={handleChange}
+                  rows={4}
+                  className="bg-page border-border-medium text-primary"
+                  placeholder="Írj néhány mondatot a projektedről..."
+                />
+              </div>
+              <Button
+                type="submit"
+                className="btn-primary w-full"
+                size="lg"
+                disabled={isSubmitted}
+              >
+                {isSubmitted ? (
+                  <>
+                    <Check className="mr-2 h-5 w-5" />
+                    Elküldve!
+                  </>
+                ) : (
+                  <>
+                    Küldés
+                    <Send className="ml-2 h-5 w-5" />
+                  </>
+                )}
+              </Button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default ContactForm;
