@@ -2,6 +2,8 @@ let runId = 0;
 
 export function initBeforeAfter(rootSelector = ".ba") {
   const currentRun = ++runId;
+  const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
   document.querySelectorAll<HTMLElement>(rootSelector).forEach((root) => {
     const before = root.querySelector<HTMLElement>(".ba-before");
     const handle = root.querySelector<HTMLElement>(".ba-handle");
@@ -12,9 +14,11 @@ export function initBeforeAfter(rootSelector = ".ba") {
     let value = 0;
     let direction: 1 | -1 = 1;
     let lastTime = performance.now();
-    const durationMs = Number(root.dataset.duration ?? 8000); // slow, gentle sweep across full width
+    const durationMs = Number(root.dataset.duration ?? 8000);
     const min = 0;
     const max = 100;
+    let rafId = 0;
+    let running = false;
 
     const apply = (v: number) => {
       before.style.clipPath = `inset(0 ${100 - v}% 0 0)`;
@@ -22,11 +26,11 @@ export function initBeforeAfter(rootSelector = ".ba") {
     };
 
     const tick = (now: number) => {
-      if (currentRun !== runId) return;
+      if (currentRun !== runId || !running) return;
       const delta = now - lastTime;
       lastTime = now;
 
-      const step = (delta / durationMs) * 100; // map duration to full sweep
+      const step = (delta / durationMs) * 100;
       value += step * direction;
 
       if (value >= max) {
@@ -38,10 +42,36 @@ export function initBeforeAfter(rootSelector = ".ba") {
       }
 
       apply(value);
-      requestAnimationFrame(tick);
+      rafId = requestAnimationFrame(tick);
+    };
+
+    const start = () => {
+      if (running || prefersReduced) return;
+      running = true;
+      lastTime = performance.now();
+      rafId = requestAnimationFrame(tick);
+    };
+
+    const stop = () => {
+      running = false;
+      if (rafId) cancelAnimationFrame(rafId);
     };
 
     apply(value);
-    requestAnimationFrame(tick);
+
+    if ("IntersectionObserver" in window) {
+      const io = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) start();
+            else stop();
+          }
+        },
+        { threshold: 0.2 }
+      );
+      io.observe(root);
+    } else {
+      start();
+    }
   });
 }

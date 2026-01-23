@@ -527,14 +527,15 @@ html[data-theme="dark"] .nav {
   position: fixed;
   bottom: 24px;
   right: 24px;
-  background: var(--accent);
-  color: white;
+  background: var(--accent-gradient);
+  color: #fff;
   padding: 16px 24px;
   border-radius: var(--r-md);
   box-shadow: var(--shadow-lg);
   font-size: 14px;
   animation: slideIn 300ms var(--ease);
   z-index: 200;
+  border: 1px solid rgba(236, 72, 153, 0.45);
 }
 
 @keyframes slideIn {
