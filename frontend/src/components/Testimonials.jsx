@@ -28,11 +28,11 @@ const Testimonials = () => {
           </p>
         </div>
         
-        <div className="relative max-w-7xl mx-auto">
+        <div className="relative max-w-7xl mx-auto px-16">
           {/* Navigation Buttons */}
           <button
             onClick={scrollPrev}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-12 h-12 rounded-full bg-brand-primary hover:bg-brand-hover transition-all flex items-center justify-center shadow-lg"
+            className="absolute -left-2 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-brand-primary hover:bg-brand-hover transition-all flex items-center justify-center shadow-lg"
             aria-label="Previous"
           >
             <ChevronLeft className="w-6 h-6 text-text-inverse" />
@@ -40,7 +40,7 @@ const Testimonials = () => {
           
           <button
             onClick={scrollNext}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-12 h-12 rounded-full bg-brand-primary hover:bg-brand-hover transition-all flex items-center justify-center shadow-lg"
+            className="absolute -right-2 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-brand-primary hover:bg-brand-hover transition-all flex items-center justify-center shadow-lg"
             aria-label="Next"
           >
             <ChevronRight className="w-6 h-6 text-text-inverse" />
