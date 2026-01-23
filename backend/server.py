@@ -9,7 +9,6 @@ from pydantic import BaseModel, Field, ConfigDict
 from typing import List
 import uuid
 from datetime import datetime, timezone
-from routes.contact_routes import router as contact_router
 
 
 ROOT_DIR = Path(__file__).parent
