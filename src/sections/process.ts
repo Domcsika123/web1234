@@ -15,7 +15,7 @@ export function renderProcess() {
         <p class="p">${t("process.subtitle")}</p>
       </div>
 
-      <div class="process-timeline-vertical" style="margin-top: 48px; display: flex; gap: 40px; position: relative;">
+      <div class="process-timeline-vertical" style="margin-top: 48px; margin-bottom: -40px; display: flex; gap: 40px; position: relative;">
         
         <!-- Left Sidebar with fixed steps -->
         <div class="process-sidebar" style="position: sticky; top: 100px; height: fit-content; width: 120px; flex-shrink: 0;">
@@ -32,7 +32,7 @@ export function renderProcess() {
         </div>
 
         <!-- Right Content -->
-        <div class="process-content" style="flex: 1; padding: 60px 0;">
+        <div class="process-content" style="flex: 1; padding: 60px 0 0;">
           ${details
             .map(
               (detail, index) => `

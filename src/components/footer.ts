@@ -57,11 +57,6 @@ export function renderFooter() {
     <div class="footer-bottom">
       <div class="container footer-bottom-inner">
         <span class="fmuted">© ${year} ${t("footer.brand")}. ${t("footer.copyright")}</span>
-        <div class="footer-tech">
-          <span class="fmuted">${t("footer.builtWith")}</span>
-          <span style="margin: 0 4px;">❤️</span>
-          <span class="fmuted">${t("footer.stack")}</span>
-        </div>
       </div>
     </div>
   </footer>
