@@ -169,6 +169,33 @@ export const caseStudies = [
     solution: "Teljes körű e-commerce megoldás fizetéssel és logisztikával",
     result: "3 héten belül élesítés, első hónapban 50+ rendelés",
     image: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=800&q=80"
+  },
+  {
+    id: 4,
+    client: "Fitness klub",
+    industry: "Sport & wellness",
+    challenge: "Elavult weboldal, nincs online beiratkozás",
+    solution: "Modern design, online tagsági rendszer, mobilapp integráció",
+    result: "+45% online beiratkozás, tagok 80%-a online fizet",
+    image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&q=80"
+  },
+  {
+    id: 5,
+    client: "Ingatlaniroda",
+    industry: "Ingatlan",
+    challenge: "Ingatlanok nehezen kereshetők, lassú oldal",
+    solution: "Gyors, szűrős kereső, térképes nézet, képgaléria",
+    result: "3x gyorsabb betöltés, +55% érdeklődés",
+    image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80"
+  },
+  {
+    id: 6,
+    client: "Szálloda",
+    industry: "Turizmus",
+    challenge: "Kevés direct booking, magas Booking.com jutalék",
+    solution: "Weboldal közvetlen foglalási rendszerrel és kedvezményekkel",
+    result: "+40% direkt foglalás, 15%-kal alacsonyabb költség",
+    image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80"
   }
 ];
 
