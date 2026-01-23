@@ -29,11 +29,11 @@ const Testimonials = () => {
           </p>
         </div>
         
-        <div className="relative max-w-7xl mx-auto px-16">
+        <div className="relative max-w-7xl mx-auto px-20">
           {/* Navigation Buttons */}
           <button
             onClick={scrollPrev}
-            className="absolute -left-2 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-brand-primary hover:bg-brand-hover transition-all flex items-center justify-center shadow-lg"
+            className="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-brand-primary hover:bg-brand-hover transition-all flex items-center justify-center shadow-lg"
             aria-label="Previous"
           >
             <ChevronLeft className="w-6 h-6 text-text-inverse" />
@@ -41,20 +41,19 @@ const Testimonials = () => {
           
           <button
             onClick={scrollNext}
-            className="absolute -right-2 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-brand-primary hover:bg-brand-hover transition-all flex items-center justify-center shadow-lg"
+            className="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-brand-primary hover:bg-brand-hover transition-all flex items-center justify-center shadow-lg"
             aria-label="Next"
           >
             <ChevronRight className="w-6 h-6 text-text-inverse" />
           </button>
 
           {/* Carousel */}
-          <div className="overflow-hidden" ref={emblaRef}>
-            <div className="flex" style={{ marginLeft: '-12px', marginRight: '-12px' }}>
+          <div className="overflow-hidden px-1" ref={emblaRef}>
+            <div className="flex -mx-3">
               {testimonials.map((testimonial) => (
                 <div
                   key={testimonial.id}
-                  className="flex-[0_0_100%] min-w-0 md:flex-[0_0_50%] lg:flex-[0_0_33.333%]"
-                  style={{ paddingLeft: '12px', paddingRight: '12px' }}
+                  className="flex-[0_0_100%] min-w-0 md:flex-[0_0_50%] lg:flex-[0_0_33.333%] px-3"
                 >
                   <div className="team-card p-8 rounded-xl border border-border-medium hover:bg-border-medium transition-all duration-300 h-full">
                     <Quote className="h-10 w-10 text-brand-primary mb-6" />
