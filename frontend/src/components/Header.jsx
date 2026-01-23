@@ -19,7 +19,12 @@ const Header = ({ onCtaClick }) => {
         <div className="flex items-center justify-between py-4">
           {/* Logo */}
           <div className="flex items-center">
-            <h1 className="heading-4 text-brand-primary">WebForge</h1>
+            <button 
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              className="heading-4 text-brand-primary hover:opacity-80 transition-opacity cursor-pointer"
+            >
+              WebForge
+            </button>
           </div>
 
           {/* Desktop Navigation */}
