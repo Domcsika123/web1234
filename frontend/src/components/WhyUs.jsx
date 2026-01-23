@@ -9,17 +9,8 @@ const WhyUs = () => {
         <div className="text-center mb-20">
           <h2 className="heading-2 mb-6 text-primary">Miért minket válassz?</h2>
           <p className="body-large text-secondary max-w-3xl mx-auto">
-            Nem csak készítünk weboldalt – partnerek vagyunk a sikerben
+            Nem csak weboldalt készítünk – partnerek vagyunk a sikerben
           </p>
-        </div>
-        
-        {/* Top Image Section */}
-        <div className="mb-16 rounded-2xl overflow-hidden border border-border-medium shadow-2xl">
-          <img 
-            src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200&q=80" 
-            alt="Csapat együttműködés"
-            className="w-full h-[400px] object-cover"
-          />
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
@@ -43,7 +34,7 @@ const WhyUs = () => {
             <img 
               src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&q=80" 
               alt="Modern munkakörnyezet"
-              className="w-full h-[350px] object-cover"
+              className="w-full h-[300px] object-cover"
             />
           </div>
           
