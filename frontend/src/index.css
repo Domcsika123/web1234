@@ -2,84 +2,225 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Pixel Pushers Design System - WebForge */
+@layer base {
+  :root {
+    /* Backgrounds - Pixel Pushers Colors */
+    --bg-page: #1a1c1b;
+    --bg-card: #302f2c;
+    --bg-light: #dfddd6;
+    
+    /* Text - Pixel Pushers Colors */
+    --text-primary: #d9fb06;
+    --text-secondary: #888680;
+    --text-muted: #302f2c;
+    --text-inverse: #1a1c1b;
+    
+    /* Borders - Pixel Pushers Colors */
+    --border-light: rgba(63, 72, 22, 0.5);
+    --border-medium: #3f4816;
+    --border-strong: #888680;
+    
+    /* Brand Colors */
+    --brand-primary: #d9fb06;
+    --brand-hover: rgba(217, 251, 6, 0.8);
+    --brand-active: rgba(217, 251, 6, 0.6);
+    
+    /* Supporting Colors */
+    --secondary-olive: #3f4816;
+    --secondary-yellow: #f8d47a;
+    --secondary-blue: #0073e6;
+    --neutral-white: white;
+    --neutral-light: #dfddd6;
+    
+    /* Shadcn compatibility */
+    --background: 10 5% 10%;
+    --foreground: 72 100% 51%;
+    --card: 40 5% 18%;
+    --card-foreground: 72 100% 51%;
+    --popover: 10 5% 10%;
+    --popover-foreground: 72 100% 51%;
+    --primary: 72 100% 51%;
+    --primary-foreground: 10 5% 10%;
+    --secondary: 70 30% 20%;
+    --secondary-foreground: 72 100% 51%;
+    --muted: 70 30% 20%;
+    --muted-foreground: 40 5% 53%;
+    --accent: 70 30% 20%;
+    --accent-foreground: 72 100% 51%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 70 30% 20%;
+    --input: 70 30% 20%;
+    --ring: 72 100% 51%;
+    --radius: 0.75rem;
+  }
+}
+
 body {
-    margin: 0;
-    font-family:
-        -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-        "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-        sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+      "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+      "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-page);
+  color: var(--text-primary);
 }
 
 code {
-    font-family:
-        source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+/* Typography System - Pixel Pushers */
+.brand-display {
+  font-family: 'PP Right Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  font-weight: 900;
+  font-size: clamp(6rem, 5.2571rem + 3.0476vw, 8rem);
+  line-height: 0.76;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0;
+}
+
+.heading-1 {
+  font-family: 'PP Right Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  font-weight: 900;
+  font-size: clamp(6rem, 5.2571rem + 3.0476vw, 8rem);
+  line-height: 0.76;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+.heading-2 {
+  font-family: 'PP Right Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  font-weight: 900;
+  font-size: clamp(3rem, 4vw, 5rem);
+  line-height: 0.85;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+.heading-3 {
+  font-family: 'PP Right Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  font-weight: 900;
+  font-size: clamp(2rem, 3vw, 3.5rem);
+  line-height: 0.9;
+  text-transform: uppercase;
+  color: var(--secondary-olive);
+}
+
+.heading-4 {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1.2;
+  color: var(--text-primary);
+}
+
+.heading-5 {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 1.3;
+  color: var(--text-primary);
+}
+
+.heading-6 {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.4;
+  color: var(--text-primary);
+}
+
+.body-large {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: var(--text-primary);
+}
+
+.body-medium {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-primary);
+}
+
+.body-small {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+.caption {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  font-weight: 600;
+  font-size: 0.75rem;
+  line-height: 1.3;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.button-text {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.1em;
+  letter-spacing: -0.04em;
+}
+
+.link-text {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.4;
+  color: var(--brand-primary);
+}
+
+/* Utility Classes */
+.bg-page {
+  background-color: var(--bg-page);
+}
+
+.bg-card {
+  background-color: var(--bg-card);
+}
+
+.text-primary {
+  color: var(--text-primary);
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+.text-inverse {
+  color: var(--text-inverse);
+}
+
+.border-border-medium {
+  border-color: var(--border-medium);
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
 }
 
 @layer base {
-    :root {
-        --background: 0 0% 100%;
-        --foreground: 0 0% 3.9%;
-        --card: 0 0% 100%;
-        --card-foreground: 0 0% 3.9%;
-        --popover: 0 0% 100%;
-        --popover-foreground: 0 0% 3.9%;
-        --primary: 0 0% 9%;
-        --primary-foreground: 0 0% 98%;
-        --secondary: 0 0% 96.1%;
-        --secondary-foreground: 0 0% 9%;
-        --muted: 0 0% 96.1%;
-        --muted-foreground: 0 0% 45.1%;
-        --accent: 0 0% 96.1%;
-        --accent-foreground: 0 0% 9%;
-        --destructive: 0 84.2% 60.2%;
-        --destructive-foreground: 0 0% 98%;
-        --border: 0 0% 89.8%;
-        --input: 0 0% 89.8%;
-        --ring: 0 0% 3.9%;
-        --chart-1: 12 76% 61%;
-        --chart-2: 173 58% 39%;
-        --chart-3: 197 37% 24%;
-        --chart-4: 43 74% 66%;
-        --chart-5: 27 87% 67%;
-        --radius: 0.5rem;
-    }
-    .dark {
-        --background: 0 0% 3.9%;
-        --foreground: 0 0% 98%;
-        --card: 0 0% 3.9%;
-        --card-foreground: 0 0% 98%;
-        --popover: 0 0% 3.9%;
-        --popover-foreground: 0 0% 98%;
-        --primary: 0 0% 98%;
-        --primary-foreground: 0 0% 9%;
-        --secondary: 0 0% 14.9%;
-        --secondary-foreground: 0 0% 98%;
-        --muted: 0 0% 14.9%;
-        --muted-foreground: 0 0% 63.9%;
-        --accent: 0 0% 14.9%;
-        --accent-foreground: 0 0% 98%;
-        --destructive: 0 62.8% 30.6%;
-        --destructive-foreground: 0 0% 98%;
-        --border: 0 0% 14.9%;
-        --input: 0 0% 14.9%;
-        --ring: 0 0% 83.1%;
-        --chart-1: 220 70% 50%;
-        --chart-2: 160 60% 45%;
-        --chart-3: 30 80% 55%;
-        --chart-4: 280 65% 60%;
-        --chart-5: 340 75% 55%;
-    }
-}
-
-@layer base {
-    * {
-        @apply border-border;
-    }
-    body {
-        @apply bg-background text-foreground;
-    }
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
 }
 
 @layer base {
