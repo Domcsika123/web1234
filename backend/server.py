@@ -67,6 +67,26 @@ async def get_status_checks():
     
     return status_checks
 
+# Dependency to inject database
+async def get_database():
+    return db
+
+# Include contact routes with database dependency
+@api_router.post("/contact", status_code=201)
+async def create_contact_endpoint(contact_data: dict, request: Request):
+    from routes.contact_routes import create_contact
+    return await create_contact(contact_data, db)
+
+@api_router.get("/contact/all")
+async def get_all_contacts_endpoint(limit: int = 100, skip: int = 0):
+    from routes.contact_routes import get_all_contacts
+    return await get_all_contacts(db, limit, skip)
+
+@api_router.get("/contact/{contact_id}")
+async def get_contact_by_id_endpoint(contact_id: str):
+    from routes.contact_routes import get_contact_by_id
+    return await get_contact_by_id(contact_id, db)
+
 # Include the router in the main app
 app.include_router(api_router)
 
