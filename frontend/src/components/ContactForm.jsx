@@ -205,9 +205,14 @@ const ContactForm = () => {
                 type="submit"
                 className="btn-primary w-full"
                 size="lg"
-                disabled={isSubmitted}
+                disabled={isSubmitted || isLoading}
               >
-                {isSubmitted ? (
+                {isLoading ? (
+                  <>
+                    <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                    Küldés...
+                  </>
+                ) : isSubmitted ? (
                   <>
                     <Check className="mr-2 h-5 w-5" />
                     Elküldve!
