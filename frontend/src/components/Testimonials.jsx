@@ -49,11 +49,12 @@ const Testimonials = () => {
 
           {/* Carousel */}
           <div className="overflow-hidden" ref={emblaRef}>
-            <div className="flex gap-6">
+            <div className="flex" style={{ marginLeft: '-12px', marginRight: '-12px' }}>
               {testimonials.map((testimonial) => (
                 <div
                   key={testimonial.id}
-                  className="flex-[0_0_100%] min-w-0 md:flex-[0_0_calc(50%-12px)] lg:flex-[0_0_calc(33.333%-16px)]"
+                  className="flex-[0_0_100%] min-w-0 md:flex-[0_0_50%] lg:flex-[0_0_33.333%]"
+                  style={{ paddingLeft: '12px', paddingRight: '12px' }}
                 >
                   <div className="team-card p-8 rounded-xl border border-border-medium hover:bg-border-medium transition-all duration-300 h-full">
                     <Quote className="h-10 w-10 text-brand-primary mb-6" />
