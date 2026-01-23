@@ -49,11 +49,12 @@ const CaseStudies = () => {
 
           {/* Carousel */}
           <div className="overflow-hidden" ref={emblaRef}>
-            <div className="flex gap-8">
+            <div className="flex" style={{ marginLeft: '-16px', marginRight: '-16px' }}>
               {caseStudies.map((study) => (
                 <div
                   key={study.id}
-                  className="flex-[0_0_100%] min-w-0 md:flex-[0_0_calc(50%-16px)] lg:flex-[0_0_calc(33.333%-22px)]"
+                  className="flex-[0_0_100%] min-w-0 md:flex-[0_0_50%] lg:flex-[0_0_33.333%]"
+                  style={{ paddingLeft: '16px', paddingRight: '16px' }}
                 >
                   <div className="event-card-style overflow-hidden rounded-xl border border-border-medium hover:border-brand-primary transition-all duration-300 group h-full flex flex-col">
                     <div className="relative h-64 overflow-hidden">
