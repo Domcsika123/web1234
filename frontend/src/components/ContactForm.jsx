@@ -3,12 +3,15 @@ import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
 import { Label } from './ui/label';
-import { Mail, Phone, MapPin, Send, Check } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Check, Loader2 } from 'lucide-react';
 import { contactInfo } from '../mockData';
-import { useToast } from '../hooks/use-toast';
+import { toast } from 'sonner';
+import axios from 'axios';
+
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+const API = `${BACKEND_URL}/api`;
 
 const ContactForm = () => {
-  const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -16,6 +19,7 @@ const ContactForm = () => {
     budget: '',
     message: ''
   });
+  const [isLoading, setIsLoading] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleChange = (e) => {
@@ -25,18 +29,37 @@ const ContactForm = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Mock submission
-    setIsSubmitted(true);
-    toast({
-      title: "Sikeres küldés!",
-      description: "24 órán belül válaszolunk.",
-    });
-    setTimeout(() => {
-      setFormData({ name: '', email: '', phone: '', budget: '', message: '' });
-      setIsSubmitted(false);
-    }, 2000);
+    setIsLoading(true);
+    
+    try {
+      const response = await axios.post(`${API}/contact`, formData);
+      
+      if (response.data.success) {
+        setIsSubmitted(true);
+        toast.success('Sikeres küldés!', {
+          description: response.data.message,
+        });
+        
+        // Reset form after 2 seconds
+        setTimeout(() => {
+          setFormData({ name: '', email: '', phone: '', budget: '', message: '' });
+          setIsSubmitted(false);
+        }, 2000);
+      }
+    } catch (error) {
+      console.error('Contact form error:', error);
+      const errorMessage = error.response?.data?.detail || 
+                          error.response?.data?.error || 
+                          'Hiba történt az üzenet küldése során. Kérjük, próbáld újra később.';
+      
+      toast.error('Hiba történt', {
+        description: errorMessage,
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
