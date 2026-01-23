@@ -1,23 +1,23 @@
-from fastapi import APIRouter, HTTPException, status
+from fastapi import HTTPException, status
 from motor.motor_asyncio import AsyncIOMotorDatabase
-from models.contact import Contact, ContactCreate
+from models.contact import ContactCreate
 from datetime import datetime
 from bson import ObjectId
 import logging
 
 logger = logging.getLogger(__name__)
 
-router = APIRouter(prefix="/contact", tags=["contacts"])
 
-
-@router.post("", status_code=status.HTTP_201_CREATED)
-async def create_contact(contact_data: ContactCreate, db: AsyncIOMotorDatabase):
+async def create_contact(contact_data: dict, db: AsyncIOMotorDatabase):
     """
     Create a new contact form submission
     """
     try:
+        # Validate input data
+        contact = ContactCreate(**contact_data)
+        
         # Prepare contact document
-        contact_dict = contact_data.dict()
+        contact_dict = contact.dict()
         contact_dict["status"] = "new"
         contact_dict["created_at"] = datetime.utcnow()
         contact_dict["updated_at"] = datetime.utcnow()
@@ -25,7 +25,7 @@ async def create_contact(contact_data: ContactCreate, db: AsyncIOMotorDatabase):
         # Insert into database
         result = await db.contacts.insert_one(contact_dict)
         
-        logger.info(f"New contact form submission from {contact_data.email}")
+        logger.info(f"New contact form submission from {contact.email}")
         
         return {
             "success": True,
@@ -33,6 +33,12 @@ async def create_contact(contact_data: ContactCreate, db: AsyncIOMotorDatabase):
             "contactId": str(result.inserted_id)
         }
     
+    except ValueError as e:
+        logger.error(f"Validation error: {str(e)}")
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=str(e)
+        )
     except Exception as e:
         logger.error(f"Error creating contact: {str(e)}")
         raise HTTPException(
