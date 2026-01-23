@@ -47,7 +47,6 @@ async def create_contact(contact_data: dict, db: AsyncIOMotorDatabase):
         )
 
 
-@router.get("/all")
 async def get_all_contacts(db: AsyncIOMotorDatabase, limit: int = 100, skip: int = 0):
     """
     Get all contact form submissions (admin)
@@ -78,7 +77,6 @@ async def get_all_contacts(db: AsyncIOMotorDatabase, limit: int = 100, skip: int
         )
 
 
-@router.get("/{contact_id}")
 async def get_contact_by_id(contact_id: str, db: AsyncIOMotorDatabase):
     """
     Get a specific contact by ID
