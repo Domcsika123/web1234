@@ -8,7 +8,6 @@ import CaseStudies from './components/CaseStudies';
 import Testimonials from './components/Testimonials';
 import WhyUs from './components/WhyUs';
 import FAQ from './components/FAQ';
-import CTASection from './components/CTASection';
 import ContactForm from './components/ContactForm';
 import Footer from './components/Footer';
 import { Toaster } from 'sonner';
@@ -32,7 +31,6 @@ function App() {
         <Testimonials />
         <WhyUs />
         <FAQ />
-        <CTASection onCtaClick={handleCtaClick} />
         <ContactForm />
       </main>
       <Footer />
