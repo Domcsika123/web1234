@@ -7,7 +7,8 @@ const Testimonials = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ 
     loop: true,
     align: 'start',
-    slidesToScroll: 1
+    slidesToScroll: 1,
+    containScroll: 'trimSnaps'
   });
 
   const scrollPrev = React.useCallback(() => {
