@@ -6,10 +6,9 @@ import { Label } from './ui/label';
 import { Mail, Phone, MapPin, Send, Check, Loader2 } from 'lucide-react';
 import { contactInfo } from '../mockData';
 import { toast } from 'sonner';
-import axios from 'axios';
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
+// Formspree endpoint - nincs szükség backendre vagy adatbázisra!
+const FORMSPREE_URL = 'https://formspree.io/f/xojednlb';
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -34,12 +33,19 @@ const ContactForm = () => {
     setIsLoading(true);
     
     try {
-      const response = await axios.post(`${API}/contact`, formData);
+      const response = await fetch(FORMSPREE_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
       
-      if (response.data.success) {
+      if (response.ok) {
         setIsSubmitted(true);
         toast.success('Sikeres küldés!', {
-          description: response.data.message,
+          description: 'Köszönjük megkeresésedet! Hamarosan felvesszük veled a kapcsolatot.',
         });
         
         // Reset form after 2 seconds
@@ -47,15 +53,13 @@ const ContactForm = () => {
           setFormData({ name: '', email: '', phone: '', budget: '', message: '' });
           setIsSubmitted(false);
         }, 2000);
+      } else {
+        throw new Error('Form submission failed');
       }
     } catch (error) {
       console.error('Contact form error:', error);
-      const errorMessage = error.response?.data?.detail || 
-                          error.response?.data?.error || 
-                          'Hiba történt az üzenet küldése során. Kérjük, próbáld újra később.';
-      
       toast.error('Hiba történt', {
-        description: errorMessage,
+        description: 'Hiba történt az üzenet küldése során. Kérjük, próbáld újra később.',
       });
     } finally {
       setIsLoading(false);
