@@ -15,18 +15,18 @@ const Hero = ({ onCtaClick }) => {
         <div className="hero-overlay"></div>
       </div>
       <div className="hero-content">
-        <h1 className="hero-title mb-6">{heroData.headline}</h1>
-        <p className="body-large mb-12 max-w-2xl text-neutral-light">
+        <h1 className="hero-title mb-4 md:mb-6">{heroData.headline}</h1>
+        <p className="body-large mb-8 md:mb-12 max-w-2xl text-neutral-light text-base md:text-xl">
           {heroData.subheadline}
         </p>
-        <div className="flex flex-col gap-4 sm:flex-row">
+        <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
           <Button
             onClick={onCtaClick}
             className="btn-primary group"
             size="lg"
           >
             {heroData.cta}
-            <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+            <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5 transition-transform group-hover:translate-x-1" />
           </Button>
           <Button
             onClick={() => {
