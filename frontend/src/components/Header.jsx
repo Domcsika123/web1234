@@ -15,13 +15,13 @@ const Header = ({ onCtaClick }) => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-page/80 backdrop-blur-lg border-b border-border-medium">
-      <div className="container mx-auto px-8">
-        <div className="flex items-center justify-between py-4">
+      <div className="container mx-auto px-4 md:px-8">
+        <div className="flex items-center justify-between py-3 md:py-4">
           {/* Logo */}
           <div className="flex items-center">
             <button 
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="heading-4 text-brand-primary hover:opacity-80 transition-opacity cursor-pointer"
+              className="heading-4 text-brand-primary hover:opacity-80 transition-opacity cursor-pointer text-lg md:text-xl"
             >
               WebForge
             </button>
@@ -52,35 +52,35 @@ const Header = ({ onCtaClick }) => {
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="md:hidden text-primary p-2"
           >
-            {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <nav className="md:hidden pb-4 space-y-2">
+          <nav className="md:hidden pb-4 space-y-1">
             <button
               onClick={() => {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
                 setIsMobileMenuOpen(false);
               }}
-              className="block w-full text-left nav-link py-3"
+              className="block w-full text-left nav-link py-2 text-sm"
             >
               Főlap
             </button>
             <button
               onClick={() => scrollToSection('case-studies')}
-              className="block w-full text-left nav-link py-3"
+              className="block w-full text-left nav-link py-2 text-sm"
             >
               Referenciák
             </button>
             <button
               onClick={() => scrollToSection('contact')}
-              className="block w-full text-left nav-link py-3"
+              className="block w-full text-left nav-link py-2 text-sm"
             >
               Kapcsolat
             </button>
-            <Button onClick={onCtaClick} className="btn-primary w-full mt-4">
+            <Button onClick={onCtaClick} className="btn-primary w-full mt-3 text-sm">
               Ingyenes konzultáció
             </Button>
           </nav>
