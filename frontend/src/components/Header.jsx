@@ -19,7 +19,7 @@ const Header = ({ onCtaClick }) => {
         <div className="flex items-center justify-between py-3 md:py-4">
           {/* Logo */}
           <div className="flex items-center">
-            <button 
+            <button
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               className="heading-4 text-brand-primary hover:opacity-80 transition-opacity cursor-pointer text-lg md:text-xl"
             >
@@ -30,7 +30,7 @@ const Header = ({ onCtaClick }) => {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-2">
             <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="nav-link">
-              Főlap
+              Kezdőlap
             </button>
             <button onClick={() => scrollToSection('case-studies')} className="nav-link">
               Referenciák
@@ -66,7 +66,7 @@ const Header = ({ onCtaClick }) => {
               }}
               className="block w-full text-left nav-link py-2 text-sm"
             >
-              Főlap
+              Kezdőlap
             </button>
             <button
               onClick={() => scrollToSection('case-studies')}

@@ -2,9 +2,11 @@ import React from 'react';
 import { caseStudies } from '../mockData';
 import { TrendingUp, ChevronLeft, ChevronRight } from 'lucide-react';
 import useEmblaCarousel from 'embla-carousel-react';
+import { useInView } from '../hooks/useInView';
 
 const CaseStudies = () => {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ 
+  const [ref, isInView] = useInView();
+  const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: true,
     align: 'start',
     slidesToScroll: 1,
@@ -22,13 +24,14 @@ const CaseStudies = () => {
   return (
     <section id="case-studies" className="py-16 md:py-32 px-4 md:px-8 bg-page">
       <div className="container mx-auto">
-        <div className="text-center mb-12 md:mb-20">
+        <div className="text-center mb-12 md:mb-20" ref={ref}>
           <h2 className="heading-2 mb-4 md:mb-6 text-primary">Referenciák</h2>
           <p className="body-large text-secondary max-w-3xl mx-auto px-2">
             Valós projektek, mérhető eredményekkel – ilyen oldalakat készítünk
           </p>
+          <div className={`section-divider ${isInView ? 'section-divider-visible' : ''}`}></div>
         </div>
-        
+
         <div className="relative max-w-7xl mx-auto px-2 sm:px-12 md:px-20">
           {/* Navigation Buttons */}
           <button
@@ -38,7 +41,7 @@ const CaseStudies = () => {
           >
             <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 text-text-inverse" />
           </button>
-          
+
           <button
             onClick={scrollNext}
             className="absolute right-0 sm:right-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-brand-primary hover:bg-brand-hover transition-all flex items-center justify-center shadow-lg"
