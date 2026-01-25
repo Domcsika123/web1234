@@ -67,69 +67,69 @@ const ContactForm = () => {
   };
 
   return (
-    <section id="contact" className="py-32 px-8 bg-page">
+    <section id="contact" className="py-16 md:py-32 px-4 md:px-8 bg-page">
       <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-20">
-          <h2 className="heading-2 mb-6 text-primary">Kezdjük el!</h2>
-          <p className="body-large text-secondary max-w-3xl mx-auto">
+        <div className="text-center mb-12 md:mb-20">
+          <h2 className="heading-2 mb-4 md:mb-6 text-primary">Kezdjük el!</h2>
+          <p className="body-large text-secondary max-w-3xl mx-auto px-2">
             Ingyenes konzultáció – beszéljük meg a projektedet
           </p>
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
           {/* Contact Info */}
           <div>
-            <div className="mb-12">
-              <h3 className="heading-4 mb-6 text-primary">Írj nekünk</h3>
-              <p className="body-medium text-secondary mb-8">
+            <div className="mb-8 md:mb-12">
+              <h3 className="heading-4 mb-4 md:mb-6 text-primary text-lg md:text-xl">Írj nekünk</h3>
+              <p className="body-medium text-secondary mb-6 md:mb-8 text-sm md:text-base">
                 24 órán belül válaszolunk minden megkeresésre. Nincs kötelezettség, csak beszélgetünk.
               </p>
             </div>
-            <div className="space-y-6">
-              <div className="flex items-start gap-4 p-6 rounded-xl border border-border-medium bg-card hover:bg-border-medium transition-colors">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-brand-primary/10">
-                  <Mail className="h-6 w-6 text-brand-primary" />
+            <div className="space-y-4 md:space-y-6">
+              <div className="flex items-start gap-3 md:gap-4 p-4 md:p-6 rounded-xl border border-border-medium bg-card hover:bg-border-medium transition-colors">
+                <div className="flex h-10 w-10 md:h-12 md:w-12 items-center justify-center rounded-full bg-brand-primary/10">
+                  <Mail className="h-5 w-5 md:h-6 md:w-6 text-brand-primary" />
                 </div>
                 <div>
-                  <p className="caption text-secondary mb-1">EMAIL</p>
-                  <p className="body-medium text-primary">{contactInfo.email}</p>
+                  <p className="caption text-secondary mb-1 text-xs">EMAIL</p>
+                  <p className="body-medium text-primary text-sm md:text-base">{contactInfo.email}</p>
                 </div>
               </div>
-              <div className="flex items-start gap-4 p-6 rounded-xl border border-border-medium bg-card hover:bg-border-medium transition-colors">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-brand-primary/10">
-                  <Phone className="h-6 w-6 text-brand-primary" />
+              <div className="flex items-start gap-3 md:gap-4 p-4 md:p-6 rounded-xl border border-border-medium bg-card hover:bg-border-medium transition-colors">
+                <div className="flex h-10 w-10 md:h-12 md:w-12 items-center justify-center rounded-full bg-brand-primary/10">
+                  <Phone className="h-5 w-5 md:h-6 md:w-6 text-brand-primary" />
                 </div>
                 <div>
-                  <p className="caption text-secondary mb-1">TELEFON</p>
-                  <p className="body-medium text-primary">{contactInfo.phone}</p>
+                  <p className="caption text-secondary mb-1 text-xs">TELEFON</p>
+                  <p className="body-medium text-primary text-sm md:text-base">{contactInfo.phone}</p>
                 </div>
               </div>
-              <div className="flex items-start gap-4 p-6 rounded-xl border border-border-medium bg-card hover:bg-border-medium transition-colors">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-brand-primary/10">
-                  <MapPin className="h-6 w-6 text-brand-primary" />
+              <div className="flex items-start gap-3 md:gap-4 p-4 md:p-6 rounded-xl border border-border-medium bg-card hover:bg-border-medium transition-colors">
+                <div className="flex h-10 w-10 md:h-12 md:w-12 items-center justify-center rounded-full bg-brand-primary/10">
+                  <MapPin className="h-5 w-5 md:h-6 md:w-6 text-brand-primary" />
                 </div>
                 <div>
-                  <p className="caption text-secondary mb-1">HELYSZÍN</p>
-                  <p className="body-medium text-primary">{contactInfo.address}</p>
+                  <p className="caption text-secondary mb-1 text-xs">HELYSZÍN</p>
+                  <p className="body-medium text-primary text-sm md:text-base">{contactInfo.address}</p>
                 </div>
               </div>
             </div>
-            <div className="mt-8 p-6 rounded-xl bg-brand-primary/10 border border-brand-primary/20">
-              <p className="body-small text-primary">
-                <Check className="inline h-5 w-5 mr-2 text-brand-primary" />
+            <div className="mt-6 md:mt-8 p-4 md:p-6 rounded-xl bg-brand-primary/10 border border-brand-primary/20">
+              <p className="body-small text-primary text-sm">
+                <Check className="inline h-4 w-4 md:h-5 md:w-5 mr-2 text-brand-primary" />
                 Nincs kötelezettség
               </p>
-              <p className="body-small text-primary mt-2">
-                <Check className="inline h-5 w-5 mr-2 text-brand-primary" />
+              <p className="body-small text-primary mt-2 text-sm">
+                <Check className="inline h-4 w-4 md:h-5 md:w-5 mr-2 text-brand-primary" />
                 24 órán belül válaszolunk
               </p>
             </div>
           </div>
 
           {/* Contact Form */}
-          <div className="p-8 rounded-xl border border-border-medium bg-card">
-            <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="p-5 md:p-8 rounded-xl border border-border-medium bg-card">
+            <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
               <div>
-                <Label htmlFor="name" className="body-small text-primary mb-2 block">
+                <Label htmlFor="name" className="body-small text-primary mb-2 block text-sm">
                   Név *
                 </Label>
                 <Input
@@ -139,12 +139,12 @@ const ContactForm = () => {
                   required
                   value={formData.name}
                   onChange={handleChange}
-                  className="bg-page border-border-medium text-primary"
+                  className="bg-page border-border-medium text-primary text-sm md:text-base"
                   placeholder="Teljes neved"
                 />
               </div>
               <div>
-                <Label htmlFor="email" className="body-small text-primary mb-2 block">
+                <Label htmlFor="email" className="body-small text-primary mb-2 block text-sm">
                   Email *
                 </Label>
                 <Input
@@ -154,12 +154,12 @@ const ContactForm = () => {
                   required
                   value={formData.email}
                   onChange={handleChange}
-                  className="bg-page border-border-medium text-primary"
+                  className="bg-page border-border-medium text-primary text-sm md:text-base"
                   placeholder="pelda@email.hu"
                 />
               </div>
               <div>
-                <Label htmlFor="phone" className="body-small text-primary mb-2 block">
+                <Label htmlFor="phone" className="body-small text-primary mb-2 block text-sm">
                   Telefon
                 </Label>
                 <Input
@@ -168,12 +168,12 @@ const ContactForm = () => {
                   type="tel"
                   value={formData.phone}
                   onChange={handleChange}
-                  className="bg-page border-border-medium text-primary"
+                  className="bg-page border-border-medium text-primary text-sm md:text-base"
                   placeholder="+36 30 123 4567"
                 />
               </div>
               <div>
-                <Label htmlFor="budget" className="body-small text-primary mb-2 block">
+                <Label htmlFor="budget" className="body-small text-primary mb-2 block text-sm">
                   Költségkeret
                 </Label>
                 <select
@@ -181,7 +181,7 @@ const ContactForm = () => {
                   name="budget"
                   value={formData.budget}
                   onChange={handleChange}
-                  className="w-full rounded-md border border-border-medium bg-page px-3 py-2 text-primary body-medium focus:outline-none focus:ring-2 focus:ring-brand-primary"
+                  className="w-full rounded-md border border-border-medium bg-page px-3 py-2 text-primary body-medium focus:outline-none focus:ring-2 focus:ring-brand-primary text-sm md:text-base"
                 >
                   <option value="">Válassz...</option>
                   <option value="under-500k">500k Ft alatt</option>
@@ -191,7 +191,7 @@ const ContactForm = () => {
                 </select>
               </div>
               <div>
-                <Label htmlFor="message" className="body-small text-primary mb-2 block">
+                <Label htmlFor="message" className="body-small text-primary mb-2 block text-sm">
                   Projekt leírása *
                 </Label>
                 <Textarea
@@ -201,7 +201,7 @@ const ContactForm = () => {
                   value={formData.message}
                   onChange={handleChange}
                   rows={4}
-                  className="bg-page border-border-medium text-primary"
+                  className="bg-page border-border-medium text-primary text-sm md:text-base"
                   placeholder="Írj néhány mondatot a projektedről..."
                 />
               </div>
@@ -213,18 +213,18 @@ const ContactForm = () => {
               >
                 {isLoading ? (
                   <>
-                    <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                    <Loader2 className="mr-2 h-4 w-4 md:h-5 md:w-5 animate-spin" />
                     Küldés...
                   </>
                 ) : isSubmitted ? (
                   <>
-                    <Check className="mr-2 h-5 w-5" />
+                    <Check className="mr-2 h-4 w-4 md:h-5 md:w-5" />
                     Elküldve!
                   </>
                 ) : (
                   <>
                     Küldés
-                    <Send className="ml-2 h-5 w-5" />
+                    <Send className="ml-2 h-4 w-4 md:h-5 md:w-5" />
                   </>
                 )}
               </Button>
