@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Facebook, Instagram, Linkedin, Mail, Phone } from 'lucide-react';
 import { contactInfo, slogans } from '../mockData';
+import PrivacyPolicy from './PrivacyPolicy';
+import TermsOfService from './TermsOfService';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const [showPrivacy, setShowPrivacy] = useState(false);
+  const [showTerms, setShowTerms] = useState(false);
 
   return (
     <footer className="bg-card border-t border-border-medium">
@@ -95,16 +99,26 @@ const Footer = () => {
               © {currentYear} WebForge. Minden jog fenntartva.
             </p>
             <div className="flex flex-wrap justify-center gap-4 md:gap-6">
-              <button className="caption text-secondary hover:text-brand-primary transition-colors text-xs md:text-sm">
+              <button 
+                onClick={() => setShowPrivacy(true)}
+                className="caption text-secondary hover:text-brand-primary transition-colors text-xs md:text-sm"
+              >
                 Adatvédelmi nyilatkozat
               </button>
-              <button className="caption text-secondary hover:text-brand-primary transition-colors text-xs md:text-sm">
+              <button 
+                onClick={() => setShowTerms(true)}
+                className="caption text-secondary hover:text-brand-primary transition-colors text-xs md:text-sm"
+              >
                 ÁSZF
               </button>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Modal components */}
+      {showPrivacy && <PrivacyPolicy onClose={() => setShowPrivacy(false)} />}
+      {showTerms && <TermsOfService onClose={() => setShowTerms(false)} />}
     </footer>
   );
 };

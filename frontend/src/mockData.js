@@ -256,7 +256,7 @@ export const whyUs = [
 ];
 
 export const contactInfo = {
-  email: "hello@webforge.hu",
+  email: "websitemuhely@gmail.com",
   phone: "+36 30 123 4567",
   address: "Budapest, Magyarország"
 };
