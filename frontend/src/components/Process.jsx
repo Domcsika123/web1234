@@ -51,25 +51,30 @@ const Process = () => {
                       </div>
                     </div>
 
-                    {/* Icon circle */}
-                    <div className="flex justify-center mb-4 md:mb-6">
-                      <div className="w-24 h-24 md:w-32 md:h-32 rounded-full bg-gradient-to-br from-secondary-olive to-border-medium flex items-center justify-center border-4 border-card group-hover:border-brand-primary transition-all duration-300 group-hover:scale-105">
+                    {/* Icon circle - overlapping the card */}
+                    <div className="flex justify-center -mb-12 md:-mb-16 relative z-20">
+                      <div className="w-24 h-24 md:w-32 md:h-32 rounded-full bg-gradient-to-br from-secondary-olive to-border-medium flex items-center justify-center group-hover:scale-105 transition-all duration-300">
                         <Icon className="w-10 h-10 md:w-14 md:h-14 text-brand-primary" />
                       </div>
                     </div>
 
                     {/* Content card */}
-                    <div className="bg-page rounded-xl p-4 md:p-6 border border-border-medium group-hover:border-brand-primary transition-all duration-300 min-h-[180px] md:min-h-[200px] flex flex-col">
-                      <h3 className="heading-6 mb-2 md:mb-3 text-primary text-center">{step.title}</h3>
-                      <p className="body-small text-secondary text-center flex-1">{step.description}</p>
+                    <div className="bg-page rounded-xl border border-border-medium group-hover:border-brand-primary transition-all duration-300 min-h-[180px] md:min-h-[200px] flex flex-col relative pt-12 md:pt-16">
+                      {/* Decorative top border accent - visible accent */}
+                      <div className="w-full h-1.5 bg-brand-primary rounded-tl-xl rounded-tr-xl"></div>
 
-                      {/* Progress indicator */}
-                      <div className="mt-4 pt-4 border-t border-border-medium">
-                        <div className="w-full bg-border-medium rounded-full h-1.5">
-                          <div
-                            className="bg-brand-primary h-1.5 rounded-full transition-all duration-500 group-hover:w-full"
-                            style={{ width: `${(index + 1) * 20}%` }}
-                          ></div>
+                      <div className="p-4 md:p-6 flex flex-col flex-1">
+                        <h3 className="heading-5 md:heading-4 mb-2 md:mb-3 text-primary text-center">{step.title}</h3>
+                        <p className="body-small text-secondary text-center flex-1">{step.description}</p>
+
+                        {/* Progress indicator */}
+                        <div className="mt-4 pt-4 border-t border-border-medium">
+                          <div className="w-full bg-border-medium rounded-full h-1.5">
+                            <div
+                              className="bg-brand-primary h-1.5 rounded-full transition-all duration-500 group-hover:w-full"
+                              style={{ width: `${(index + 1) * 20}%` }}
+                            ></div>
+                          </div>
                         </div>
                       </div>
                     </div>
