@@ -4,7 +4,7 @@ import { Star, Quote, ChevronLeft, ChevronRight } from 'lucide-react';
 import useEmblaCarousel from 'embla-carousel-react';
 
 const Testimonials = () => {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ 
+  const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: true,
     align: 'start',
     slidesToScroll: 1,
@@ -28,7 +28,7 @@ const Testimonials = () => {
             Valós visszajelzések magyar vállalkozóktól
           </p>
         </div>
-        
+
         <div className="relative max-w-7xl mx-auto px-20">
           {/* Navigation Buttons */}
           <button
@@ -38,7 +38,7 @@ const Testimonials = () => {
           >
             <ChevronLeft className="w-6 h-6 text-text-inverse" />
           </button>
-          
+
           <button
             onClick={scrollNext}
             className="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-brand-primary hover:bg-brand-hover transition-all flex items-center justify-center shadow-lg"
@@ -62,7 +62,7 @@ const Testimonials = () => {
                     </p>
                     <div className="flex items-center gap-2 mb-4">
                       {[...Array(testimonial.rating)].map((_, i) => (
-                        <Star key={i} className="h-4 w-4 fill-brand-primary text-brand-primary" />
+                        <span key={i} className="text-lg">★</span>
                       ))}
                     </div>
                     <div>
