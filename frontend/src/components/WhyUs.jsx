@@ -18,41 +18,41 @@ const WhyUs = () => {
             </h2>
 
             <div className="space-y-1 mb-8">
-              <h3 className="text-xl md:text-2xl font-normal text-secondary leading-tight">
+              <h3 className="text-xl md:text-2xl font-bold text-brand-primary leading-tight">
                 A legtöbb weboldal elkészül…
               </h3>
               <h3 className="text-xl md:text-2xl font-bold text-brand-primary leading-tight">
-                majd nem válik valódi üzleti eszközzé.
+                <span className="text-brand-primary">majd nem válik valódi üzleti eszközzé.</span>
               </h3>
             </div>
 
             <div className="space-y-4 mb-8">
-              <p className="text-base md:text-lg text-secondary leading-relaxed">
-                <span className="font-semibold">Szép,</span><br />
-                de nem támogatja tudatosan az ügyfélszerzést.
-              </p>
+              <div className="flex items-start gap-3 md:flex-row flex-wrap">
+                <p className="text-base md:text-lg text-secondary leading-relaxed flex-1 min-w-full md:min-w-auto">
+                  <span className="font-semibold">Szép,</span> de nem támogatja tudatosan az ügyfélszerzést.
+                </p>
 
-              <p className="text-base md:text-lg text-secondary leading-relaxed">
-                <span className="font-semibold">Megvan,</span><br />
-                de nincs összehangolva a vállalkozás céljaival.
-              </p>
+                <p className="text-base md:text-lg text-secondary leading-relaxed flex-1 min-w-full md:min-w-auto">
+                  <span className="font-semibold">Megvan,</span> de nincs összehangolva a vállalkozás céljaival.
+                </p>
+              </div>
             </div>
 
             <p className="text-base md:text-lg text-secondary mb-4">
-              Mi is láttuk:
+              Mi is láttunk:
             </p>
 
             <div className="space-y-3 mb-8">
               <div className="flex items-start gap-3">
-                <div className="w-6 h-6 rounded-full border-2 border-secondary flex-shrink-0 mt-1"></div>
+                <div className="w-6 h-6 rounded-full border-2 border-secondary flex-shrink-0 mt-1 flex items-center justify-center text-xs font-bold text-secondary">!</div>
                 <p className="text-base text-secondary">digitális megoldásokat, amelyek nem illeszkednek a működéshez</p>
               </div>
               <div className="flex items-start gap-3">
-                <div className="w-6 h-6 rounded-full border-2 border-secondary flex-shrink-0 mt-1"></div>
+                <div className="w-6 h-6 rounded-full border-2 border-secondary flex-shrink-0 mt-1 flex items-center justify-center text-xs font-bold text-secondary">!</div>
                 <p className="text-base text-secondary">projekteket, ahol a célok nem voltak egyértelműek</p>
               </div>
               <div className="flex items-start gap-3">
-                <div className="w-6 h-6 rounded-full border-2 border-secondary flex-shrink-0 mt-1"></div>
+                <div className="w-6 h-6 rounded-full border-2 border-secondary flex-shrink-0 mt-1 flex items-center justify-center text-xs font-bold text-secondary">!</div>
                 <p className="text-base text-secondary">oldalakat, amelyek elkészültek, de nem kaptak irányt a fejlődéshez</p>
               </div>
             </div>
@@ -103,15 +103,10 @@ const WhyUs = () => {
         </div>
 
         {/* Bottom Stats Section */}
-        <div className="text-center mb-8">
-          <p className="caption text-secondary uppercase tracking-wider">
-            SZÁMOK, AMELYEK MÖGÖTT VALÓDI PROJEKTEK ÁLLNAK
-          </p>
-        </div>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8" ref={statsRef}>
           <div className="bg-card border border-border-medium rounded-xl p-6 md:p-8 text-center transition-all duration-300">
             <h3 className="text-4xl md:text-5xl font-black text-brand-primary mb-2">
-              <CounterNumber target={127} isVisible={statsInView} duration={3500} />+
+              <CounterNumber target={127} isVisible={statsInView} duration={3500} />
             </h3>
             <p className="body-medium text-secondary">sikeresen lezárt projekt</p>
           </div>

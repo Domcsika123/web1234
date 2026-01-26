@@ -78,7 +78,7 @@ const ContactForm = () => {
         <div className="text-center mb-12 md:mb-20" ref={ref}>
           <h2 className="heading-2 mb-4 md:mb-6 text-primary">Kezdjük el!</h2>
           <p className="body-large text-secondary max-w-3xl mx-auto px-2">
-            Ingyenes konzultáció – beszéljük meg a projektedet
+            Kérj egyedi ajánlatot, és építsünk egy olyan oldalt, ami valóban a te cégedet képviseli.
           </p>
           <div className={`section-divider ${isInView ? 'section-divider-visible' : ''}`}></div>
         </div>
@@ -87,8 +87,8 @@ const ContactForm = () => {
           <div>
             <div className="mb-8 md:mb-12">
               <h3 className="heading-4 mb-4 md:mb-6 text-primary text-lg md:text-xl">Írj nekünk</h3>
-              <p className="body-medium text-secondary mb-6 md:mb-8 text-sm md:text-base">
-                24 órán belül válaszolunk minden megkeresésre. Nincs kötelezettség, csak beszélgetünk.
+              <p className="body-large text-secondary mb-6 md:mb-8 text-base md:text-lg">
+                Ajánlatkérés kötelezettségek nélkül. Te döntesz.
               </p>
             </div>
             <div className="space-y-4 md:space-y-6">

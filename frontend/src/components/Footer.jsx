@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Facebook, Instagram, Linkedin, Mail, Phone } from 'lucide-react';
+import { Mail, Phone } from 'lucide-react';
 import { contactInfo, slogans } from '../mockData';
 import PrivacyPolicy from './PrivacyPolicy';
 import TermsOfService from './TermsOfService';
@@ -19,26 +19,6 @@ const Footer = () => {
             <p className="body-medium text-secondary mb-4 md:mb-6 text-sm md:text-base">
               {slogans[0]}
             </p>
-            <div className="flex gap-3 md:gap-4">
-              <a
-                href="#"
-                className="flex h-9 w-9 md:h-10 md:w-10 items-center justify-center rounded-full border border-border-medium bg-page hover:bg-brand-primary hover:border-brand-primary transition-all group"
-              >
-                <Facebook className="h-4 w-4 md:h-5 md:w-5 text-primary group-hover:text-text-inverse" />
-              </a>
-              <a
-                href="#"
-                className="flex h-9 w-9 md:h-10 md:w-10 items-center justify-center rounded-full border border-border-medium bg-page hover:bg-brand-primary hover:border-brand-primary transition-all group"
-              >
-                <Instagram className="h-4 w-4 md:h-5 md:w-5 text-primary group-hover:text-text-inverse" />
-              </a>
-              <a
-                href="#"
-                className="flex h-9 w-9 md:h-10 md:w-10 items-center justify-center rounded-full border border-border-medium bg-page hover:bg-brand-primary hover:border-brand-primary transition-all group"
-              >
-                <Linkedin className="h-4 w-4 md:h-5 md:w-5 text-primary group-hover:text-text-inverse" />
-              </a>
-            </div>
           </div>
 
           {/* Quick Links */}
