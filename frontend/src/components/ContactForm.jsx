@@ -8,11 +8,13 @@ import { contactInfo } from '../mockData';
 import { toast } from 'sonner';
 import PrivacyPolicy from './PrivacyPolicy';
 import TermsOfService from './TermsOfService';
+import { useInView } from '../hooks/useInView';
 
 // Formspree endpoint - nincs szükség backendre vagy adatbázisra!
 const FORMSPREE_URL = 'https://formspree.io/f/xojednlb';
 
 const ContactForm = () => {
+  const [ref, isInView] = useInView();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -35,7 +37,7 @@ const ContactForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    
+
     try {
       const response = await fetch(FORMSPREE_URL, {
         method: 'POST',
@@ -45,13 +47,13 @@ const ContactForm = () => {
         },
         body: JSON.stringify(formData)
       });
-      
+
       if (response.ok) {
         setIsSubmitted(true);
         toast.success('Sikeres küldés!', {
           description: 'Köszönjük megkeresésedet! Hamarosan felvesszük veled a kapcsolatot.',
         });
-        
+
         // Reset form after 2 seconds
         setTimeout(() => {
           setFormData({ name: '', email: '', phone: '', message: '' });
@@ -73,11 +75,12 @@ const ContactForm = () => {
   return (
     <section id="contact" className="py-16 md:py-32 px-4 md:px-8 bg-page">
       <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-12 md:mb-20">
+        <div className="text-center mb-12 md:mb-20" ref={ref}>
           <h2 className="heading-2 mb-4 md:mb-6 text-primary">Kezdjük el!</h2>
           <p className="body-large text-secondary max-w-3xl mx-auto px-2">
             Ingyenes konzultáció – beszéljük meg a projektedet
           </p>
+          <div className={`section-divider ${isInView ? 'section-divider-visible' : ''}`}></div>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
           {/* Contact Info */}

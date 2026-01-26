@@ -1,8 +1,8 @@
 // Mock data for WebForge agency website
 
 export const heroData = {
-  headline: "Weboldal, ami ügyfeleket hoz",
-  subheadline: "Professzionális weboldal magyar KKV-knak – gyorsan, mérhető eredménnyel, biztos alapokon",
+  headline: "Digitális jelenlét vállalkozása növekedéséhez",
+  subheadline: "Prémium weboldalak kis- és középvállalkozások részére",
   cta: "Ingyenes konzultáció",
   secondaryCta: "Referenciák megtekintése"
 };

@@ -1,9 +1,9 @@
 import React from 'react';
 import { testimonials } from '../mockData';
 import { Star, Quote, ChevronLeft, ChevronRight } from 'lucide-react';
-import useEmblaCarousel from 'embla-carousel-react';
-
+import useEmblaCarousel from 'embla-carousel-react'; import { useInView } from '../hooks/useInView';
 const Testimonials = () => {
+  const [ref, isInView] = useInView();
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: true,
     align: 'start',
@@ -22,11 +22,12 @@ const Testimonials = () => {
   return (
     <section className="py-16 md:py-32 px-4 md:px-8 bg-card">
       <div className="container mx-auto">
-        <div className="text-center mb-12 md:mb-20">
+        <div className="text-center mb-12 md:mb-20" ref={ref}>
           <h2 className="heading-2 mb-4 md:mb-6 text-primary">Ügyfeleink mondják</h2>
           <p className="body-large text-secondary max-w-3xl mx-auto px-2">
             Valós visszajelzések magyar vállalkozóktól
           </p>
+          <div className={`section-divider ${isInView ? 'section-divider-visible' : ''}`}></div>
         </div>
 
         <div className="relative max-w-7xl mx-auto px-2 sm:px-12 md:px-20">

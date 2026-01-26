@@ -50,7 +50,7 @@ const Footer = () => {
                   onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                   className="link-text hover:text-brand-hover transition-colors text-sm md:text-base"
                 >
-                  Főlap
+                  Kezdőlap
                 </button>
               </li>
               <li>
@@ -99,13 +99,13 @@ const Footer = () => {
               © {currentYear} WebForge. Minden jog fenntartva.
             </p>
             <div className="flex flex-wrap justify-center gap-4 md:gap-6">
-              <button 
+              <button
                 onClick={() => setShowPrivacy(true)}
                 className="caption text-secondary hover:text-brand-primary transition-colors text-xs md:text-sm"
               >
                 Adatvédelmi nyilatkozat
               </button>
-              <button 
+              <button
                 onClick={() => setShowTerms(true)}
                 className="caption text-secondary hover:text-brand-primary transition-colors text-xs md:text-sm"
               >

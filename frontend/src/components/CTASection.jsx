@@ -1,15 +1,18 @@
 import React from 'react';
 import { Button } from './ui/button';
 import { ArrowRight, Sparkles } from 'lucide-react';
+import { useInView } from '../hooks/useInView';
 
 const CTASection = ({ onCtaClick }) => {
+  const [ref, isInView] = useInView();
+
   return (
     <section className="py-16 md:py-32 px-4 md:px-8 bg-gradient-to-br from-secondary-olive via-page to-page relative overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute top-0 right-0 w-48 md:w-96 h-48 md:h-96 bg-brand-primary/5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 left-0 w-48 md:w-96 h-48 md:h-96 bg-brand-primary/5 rounded-full blur-3xl"></div>
-      
-      <div className="container mx-auto max-w-4xl text-center relative z-10">
+
+      <div className="container mx-auto max-w-4xl text-center relative z-10" ref={ref}>
         <div className="inline-flex items-center gap-2 rounded-full bg-brand-primary/10 px-4 md:px-6 py-2 md:py-3 backdrop-blur-sm mb-6 md:mb-8">
           <Sparkles className="h-4 w-4 md:h-5 md:w-5 text-brand-primary" />
           <span className="caption text-brand-primary font-bold text-xs md:text-sm">KÉSZEN ÁLL</span>
@@ -18,9 +21,10 @@ const CTASection = ({ onCtaClick }) => {
           Indítsuk el a projektedet!
         </h2>
         <p className="body-large text-secondary mb-8 md:mb-12 max-w-2xl mx-auto px-2">
-          Ingyenes konzultációban megbeszéljük a céljaidat, és készítünk egy egyéni árajánlatot. 
+          Ingyenes konzultációban megbeszéljük a céljaidat, és készítünk egy egyéni árajánlatot.
           Nincs kötelezettség, csak lehetőségek.
         </p>
+        <div className={`section-divider ${isInView ? 'section-divider-visible' : ''}`}></div>
         <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center">
           <Button
             onClick={onCtaClick}
@@ -41,7 +45,7 @@ const CTASection = ({ onCtaClick }) => {
             Referenciák megtekintése
           </Button>
         </div>
-        
+
         {/* Trust indicators */}
         <div className="mt-10 md:mt-16 flex flex-col sm:flex-row justify-center items-center gap-4 md:gap-8 text-secondary">
           <div className="flex items-center gap-2">

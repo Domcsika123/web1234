@@ -9,6 +9,20 @@
   overflow: hidden;
 }
 
+/* Section Divider Animation */
+.section-divider {
+  height: 2px;
+  background: var(--brand-primary);
+  margin: 24px auto 0;
+  width: 0;
+  max-width: 320px;
+  transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.section-divider-visible {
+  width: 320px;
+}
+
 .hero-background {
   position: absolute;
   width: 100%;
@@ -45,7 +59,7 @@
 .hero-title {
   font-family: 'PP Right Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
   font-weight: 900;
-  font-size: clamp(4rem, 5.2571rem + 3.0476vw, 8rem);
+  font-size: clamp(3rem, 4rem + 2vw, 6rem);
   line-height: 0.85;
   color: var(--text-primary);
   text-transform: uppercase;
@@ -150,17 +164,17 @@
     min-height: auto;
     min-height: 90vh;
   }
-  
+
   .hero-title {
     font-size: clamp(2rem, 10vw, 3.5rem);
     line-height: 0.95;
     word-break: break-word;
   }
-  
+
   .hero-content {
     max-width: 100%;
   }
-  
+
   .btn-primary,
   .btn-secondary {
     width: 100%;
@@ -168,7 +182,7 @@
     font-size: 0.875rem;
     padding: 0.875em 1.25em;
   }
-  
+
   .nav-link {
     font-size: 0.875rem;
     padding: 0.5em 1em;
@@ -179,7 +193,7 @@
   .hero-section {
     padding: 120px 32px 80px;
   }
-  
+
   .hero-title {
     font-size: clamp(3rem, 6vw, 5rem);
   }
