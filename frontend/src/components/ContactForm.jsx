@@ -6,6 +6,8 @@ import { Label } from './ui/label';
 import { Mail, Phone, MapPin, Send, Check, Loader2 } from 'lucide-react';
 import { contactInfo } from '../mockData';
 import { toast } from 'sonner';
+import PrivacyPolicy from './PrivacyPolicy';
+import TermsOfService from './TermsOfService';
 import { useInView } from '../hooks/useInView';
 
 // Formspree endpoint - nincs szükség backendre vagy adatbázisra!
@@ -17,11 +19,13 @@ const ContactForm = () => {
     name: '',
     email: '',
     phone: '',
-    budget: '',
     message: ''
   });
   const [isLoading, setIsLoading] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [acceptedTerms, setAcceptedTerms] = useState(false);
+  const [showPrivacy, setShowPrivacy] = useState(false);
+  const [showTerms, setShowTerms] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
@@ -52,7 +56,7 @@ const ContactForm = () => {
 
         // Reset form after 2 seconds
         setTimeout(() => {
-          setFormData({ name: '', email: '', phone: '', budget: '', message: '' });
+          setFormData({ name: '', email: '', phone: '', message: '' });
           setIsSubmitted(false);
         }, 2000);
       } else {
@@ -176,24 +180,6 @@ const ContactForm = () => {
                 />
               </div>
               <div>
-                <Label htmlFor="budget" className="body-small text-primary mb-2 block text-sm">
-                  Költségkeret
-                </Label>
-                <select
-                  id="budget"
-                  name="budget"
-                  value={formData.budget}
-                  onChange={handleChange}
-                  className="w-full rounded-md border border-border-medium bg-page px-3 py-2 text-primary body-medium focus:outline-none focus:ring-2 focus:ring-brand-primary text-sm md:text-base"
-                >
-                  <option value="">Válassz...</option>
-                  <option value="under-500k">500k Ft alatt</option>
-                  <option value="500k-1m">500k - 1M Ft</option>
-                  <option value="1m-2m">1M - 2M Ft</option>
-                  <option value="above-2m">2M Ft felett</option>
-                </select>
-              </div>
-              <div>
                 <Label htmlFor="message" className="body-small text-primary mb-2 block text-sm">
                   Projekt leírása *
                 </Label>
@@ -208,11 +194,45 @@ const ContactForm = () => {
                   placeholder="Írj néhány mondatot a projektedről..."
                 />
               </div>
+              <div className="flex items-start gap-3">
+                <input
+                  type="checkbox"
+                  id="terms"
+                  checked={acceptedTerms}
+                  onChange={(e) => setAcceptedTerms(e.target.checked)}
+                  className="mt-1 h-4 w-4 rounded border-border-medium text-brand-primary focus:ring-2 focus:ring-brand-primary"
+                />
+                <label htmlFor="terms" className="body-small text-secondary text-sm">
+                  Elfogadom az{' '}
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setShowPrivacy(true);
+                    }}
+                    className="text-brand-primary hover:text-brand-hover underline"
+                  >
+                    adatvédelmi nyilatkozatot
+                  </button>
+                  {' '}és az{' '}
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setShowTerms(true);
+                    }}
+                    className="text-brand-primary hover:text-brand-hover underline"
+                  >
+                    ÁSZF-et
+                  </button>
+                  .
+                </label>
+              </div>
               <Button
                 type="submit"
                 className="btn-primary w-full"
                 size="lg"
-                disabled={isSubmitted || isLoading}
+                disabled={isSubmitted || isLoading || !acceptedTerms}
               >
                 {isLoading ? (
                   <>
@@ -235,6 +255,10 @@ const ContactForm = () => {
           </div>
         </div>
       </div>
+
+      {/* Modal components */}
+      {showPrivacy && <PrivacyPolicy onClose={() => setShowPrivacy(false)} />}
+      {showTerms && <TermsOfService onClose={() => setShowTerms(false)} />}
     </section>
   );
 };

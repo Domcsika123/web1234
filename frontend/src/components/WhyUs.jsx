@@ -1,79 +1,123 @@
 import React from 'react';
-import { whyUs } from '../mockData';
-import { Award } from 'lucide-react';
+import { Target, TrendingUp, Settings, CheckCircle, Clock, AlertTriangle } from 'lucide-react';
 import { useInView } from '../hooks/useInView';
 
 const WhyUs = () => {
   const [ref, isInView] = useInView();
 
   return (
-    <section className="py-16 md:py-32 px-4 md:px-8 bg-page">
-      <div className="container mx-auto">
-        <div className="text-center mb-12 md:mb-20" ref={ref}>
-          <h2 className="heading-2 mb-4 md:mb-6 text-primary">Miért minket válassz?</h2>
-          <p className="body-large text-secondary max-w-3xl mx-auto px-2">
-            Nem csak weboldalt készítünk – partnerek vagyunk a sikerben
-          </p>
-          <div className={`section-divider ${isInView ? 'section-divider-visible' : ''}`}></div>
-        </div>
+    <section className="py-16 md:py-32 px-4 md:px-8 bg-card">
+      <div className="container mx-auto max-w-6xl">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 mb-16">
+          {/* Left Column */}
+          <div className="space-y-6" ref={ref}>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-brand-primary mb-8">
+              A SZEMLÉLETÜNK
+            </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 mb-10 md:mb-16">
-          {whyUs.map((item) => (
-            <div
-              key={item.id}
-              className="text-center p-5 md:p-8 rounded-xl border border-border-medium bg-card hover:bg-border-medium transition-all duration-300 hover:scale-105"
-            >
-              <div className="mb-4 md:mb-6 inline-flex h-12 w-12 md:h-16 md:w-16 items-center justify-center rounded-full bg-brand-primary">
-                <Award className="h-6 w-6 md:h-8 md:w-8 text-text-inverse" />
-              </div>
-              <h3 className="heading-5 mb-2 md:mb-3 text-primary text-base md:text-lg">{item.title}</h3>
-              <p className="body-small text-secondary text-sm">{item.description}</p>
+            <div className="space-y-1 mb-8">
+              <h3 className="text-xl md:text-2xl font-normal text-secondary leading-tight">
+                A legtöbb weboldal elkészül…
+              </h3>
+              <h3 className="text-xl md:text-2xl font-bold text-brand-primary leading-tight">
+                majd nem válik valódi üzleti eszközzé.
+              </h3>
             </div>
-          ))}
-        </div>
 
-        {/* Bottom Image Section with Stats */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 items-center">
-          <div className="rounded-2xl overflow-hidden border border-border-medium shadow-2xl">
-            <img
-              src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&q=80"
-              alt="Modern munkakörnyezet"
-              className="w-full h-[200px] md:h-[300px] object-cover"
-            />
+            <div className="space-y-4 mb-8">
+              <p className="text-base md:text-lg text-secondary leading-relaxed">
+                <span className="font-semibold">Szép,</span><br />
+                de nem támogatja tudatosan az ügyfélszerzést.
+              </p>
+
+              <p className="text-base md:text-lg text-secondary leading-relaxed">
+                <span className="font-semibold">Megvan,</span><br />
+                de nincs összehangolva a vállalkozás céljaival.
+              </p>
+            </div>
+
+            <p className="text-base md:text-lg text-secondary mb-4">
+              Mi is láttuk:
+            </p>
+
+            <div className="space-y-3 mb-8">
+              <div className="flex items-start gap-3">
+                <div className="w-6 h-6 rounded-full border-2 border-secondary flex-shrink-0 mt-1"></div>
+                <p className="text-base text-secondary">digitális megoldásokat, amelyek nem illeszkednek a működéshez</p>
+              </div>
+              <div className="flex items-start gap-3">
+                <div className="w-6 h-6 rounded-full border-2 border-secondary flex-shrink-0 mt-1"></div>
+                <p className="text-base text-secondary">projekteket, ahol a célok nem voltak egyértelműek</p>
+              </div>
+              <div className="flex items-start gap-3">
+                <div className="w-6 h-6 rounded-full border-2 border-secondary flex-shrink-0 mt-1"></div>
+                <p className="text-base text-secondary">oldalakat, amelyek elkészültek, de nem kaptak irányt a fejlődéshez</p>
+              </div>
+            </div>
+
+            <p className="text-xl md:text-2xl text-brand-primary font-bold leading-tight">
+              Ezért döntöttünk úgy, hogy stratégiai szemlélettel dolgozunk.
+            </p>
           </div>
 
-          <div className="space-y-4 md:space-y-6">
-            <h3 className="heading-4 text-primary mb-4 md:mb-6 text-lg md:text-xl">Tapasztalat, amiben megbízhatsz</h3>
+          {/* Right Column */}
+          <div className="bg-page border border-border-medium rounded-xl p-6 md:p-8 space-y-6 h-fit">
+            <p className="body-medium text-secondary">
+              Minden együttműködést egy egyszerű kérdéssel kezdünk:
+            </p>
 
-            <div className="flex items-start gap-3 md:gap-4 p-4 md:p-6 rounded-xl bg-card border border-border-medium">
-              <div className="flex-shrink-0 w-12 h-12 md:w-16 md:h-16 rounded-full bg-brand-primary/10 flex items-center justify-center">
-                <span className="text-lg md:text-2xl font-black text-brand-primary">50+</span>
+            <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-brand-primary leading-tight">
+              MIT SZERETNÉL ELÉRNI A DIGITÁLIS JELENLÉTEDDEL?
+            </h3>
+
+            <div className="space-y-3">
+              <div className="flex items-center gap-3">
+                <Target className="w-5 h-5 text-brand-primary flex-shrink-0" />
+                <p className="body-medium text-brand-primary">Több megkeresést?</p>
               </div>
-              <div>
-                <h4 className="heading-6 text-primary mb-1 md:mb-2 text-sm md:text-base">Sikeres projekt</h4>
-                <p className="body-small text-secondary text-xs md:text-sm">Magyar KKV-k számára készített weboldal</p>
+              <div className="flex items-center gap-3">
+                <TrendingUp className="w-5 h-5 text-brand-primary flex-shrink-0" />
+                <p className="body-medium text-brand-primary">Hatékonyabb értékesítést?</p>
+              </div>
+              <div className="flex items-center gap-3">
+                <Settings className="w-5 h-5 text-brand-primary flex-shrink-0" />
+                <p className="body-medium text-brand-primary">Kevesebb manuális adminisztrációt?</p>
               </div>
             </div>
 
-            <div className="flex items-start gap-3 md:gap-4 p-4 md:p-6 rounded-xl bg-card border border-border-medium">
-              <div className="flex-shrink-0 w-12 h-12 md:w-16 md:h-16 rounded-full bg-brand-primary/10 flex items-center justify-center">
-                <span className="text-lg md:text-2xl font-black text-brand-primary">98%</span>
-              </div>
-              <div>
-                <h4 className="heading-6 text-primary mb-1 md:mb-2 text-sm md:text-base">Elégedett ügyfelek</h4>
-                <p className="body-small text-secondary text-xs md:text-sm">Ügyfeleink ajánlanák szolgáltatásunkat</p>
-              </div>
-            </div>
+            <p className="body-large text-brand-primary font-bold border-t border-border-medium pt-6">
+              A válasz határozza meg, mit és hogyan építünk.
+            </p>
 
-            <div className="flex items-start gap-3 md:gap-4 p-4 md:p-6 rounded-xl bg-card border border-border-medium">
-              <div className="flex-shrink-0 w-12 h-12 md:w-16 md:h-16 rounded-full bg-brand-primary/10 flex items-center justify-center">
-                <span className="text-lg md:text-2xl font-black text-brand-primary">24h</span>
-              </div>
-              <div>
-                <h4 className="heading-6 text-primary mb-1 md:mb-2 text-sm md:text-base">Válaszidő</h4>
-                <p className="body-small text-secondary text-xs md:text-sm">Garantált gyors reagálás minden kérdésre</p>
-              </div>
+            <div className="border-t border-border-medium pt-6 space-y-3">
+              <p className="body-medium text-secondary">
+                Nem klasszikus webfejlesztőként gondolkodunk.
+              </p>
+              <p className="body-medium text-secondary">
+                Digitális partnerként dolgozunk, a stratégiai tervezéstől a megvalósításon át a folyamatos fejlesztésig.
+              </p>
             </div>
+          </div>
+        </div>
+
+        {/* Bottom Stats Section */}
+        <div className="text-center mb-8">
+          <p className="caption text-secondary uppercase tracking-wider">
+            SZÁMOK, AMELYEK MÖGÖTT VALÓDI PROJEKTEK ÁLLNAK
+          </p>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8">
+          <div className="bg-card border border-border-medium rounded-xl p-6 md:p-8 text-center transition-all duration-300">
+            <h3 className="text-4xl md:text-5xl font-black text-brand-primary mb-2">127+</h3>
+            <p className="body-medium text-secondary">sikeresen lezárt projekt</p>
+          </div>
+          <div className="bg-card border-2 border-brand-primary rounded-xl p-6 md:p-8 text-center transition-all duration-300">
+            <h3 className="text-4xl md:text-5xl font-black text-brand-primary mb-2">94%</h3>
+            <p className="body-medium text-secondary">visszatérő ügyfél</p>
+          </div>
+          <div className="bg-card border border-border-medium rounded-xl p-6 md:p-8 text-center transition-all duration-300">
+            <h3 className="text-4xl md:text-5xl font-black text-brand-primary mb-2">3,2×</h3>
+            <p className="body-medium text-secondary">átlagos konverziónövekedés</p>
           </div>
         </div>
       </div>

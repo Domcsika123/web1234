@@ -26,7 +26,7 @@ const FAQ = () => {
             <AccordionItem
               key={faq.id}
               value={`item-${faq.id}`}
-              className="border border-border-medium rounded-xl px-4 md:px-6 bg-page hover:scale-[1.02] transition-all"
+              className="border border-border-medium rounded-xl px-4 md:px-6 bg-page hover:bg-border-medium hover:scale-105 transition-all duration-300"
             >
               <AccordionTrigger className="heading-6 text-primary text-left py-4 md:py-6 text-sm md:text-base">
                 {faq.question}
