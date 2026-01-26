@@ -1,7 +1,7 @@
 // Mock data for WebForge agency website
 
 export const heroData = {
-  headline: "Digitális jelenlét vállalkozása növekedéséhez",
+  headline: "Digitális jelenlét vállalkozásod növekedéséhez",
   subheadline: "Prémium weboldalak kis- és középvállalkozások részére",
   cta: "Ingyenes konzultáció",
   secondaryCta: "Referenciák megtekintése"
@@ -11,37 +11,27 @@ export const features = [
   {
     id: 1,
     title: "Gyors kivitelezés",
-    description: "2-4 hét alatt átadható, működő weboldal – mert az időd pénz."
+    description: "Rövid átfutás, transzparens kivitelezés, gyors élesítés"
   },
   {
     id: 2,
     title: "SEO-alapok beépítve",
-    description: "Keresőoptimalizált struktúra, meta adatok, gyors betöltés – a Google szereti."
-  },
-  {
-    id: 3,
-    title: "Mobilon tökéletes",
-    description: "Minden eszközön hibátlan megjelenés – az ügyfeleid 70%-a mobilról néz."
+    description: "Technikai SEO-val és villámgyors betöltéssel biztosítjuk, hogy vevői könnyen rátaláljanak."
   },
   {
     id: 4,
     title: "Mérés beépítve",
-    description: "Google Analytics 4 konfiguráció – látod, honnan jönnek az ügyfelek."
+    description: "Precíz analitikát állítunk be, hogy minden adatot lásson a látogatók viselkedéséről."
   },
   {
     id: 5,
     title: "Biztonság garantáltan",
-    description: "HTTPS, GDPR-kompatibilis sütik, adatvédelem – nyugodtan alszol."
+    description: "Teljes körű adatvédelem és maximális védelem a kiberfenyegetések ellen."
   },
   {
     id: 6,
     title: "Karbantartás segítség",
     description: "Nem vagy egyedül átadás után – támogatunk szükség esetén."
-  },
-  {
-    id: 7,
-    title: "Gyors betöltés",
-    description: "Optimalizált képek, kód – az oldalad 2 másodperc alatt betölt."
   },
   {
     id: 8,
@@ -86,44 +76,44 @@ export const process = [
 export const testimonials = [
   {
     id: 1,
-    name: "Kiss Anna",
-    company: "Virágüzlet tulajdonos",
-    text: "2 hét alatt kész volt az oldal, azóta 40%-kal több online rendelésem van. Megérte.",
+    name: "István",
+    company: "Étteremtulajdonos",
+    text: "Korrekt, gördülékeny együttműködés volt. Olyan weboldalt kaptunk, ami valóban a mi stílusunkat tükrözi, és a vendégeink is visszajelezték, hogy végre átlátható az étlapunk. Köszönjük a munkát.",
     rating: 5
   },
   {
     id: 2,
     name: "Nagy Péter",
     company: "Ügyvédi iroda",
-    text: "Végre van egy professzionális megjelenésünk. Az ügyfelek is dicsérték.",
+    text: "Egy ügyvédi irodánál a bizalom a legfontosabb. Olyan letisztult és elegáns weboldalt kaptunk, ami pontosan azt a professzionalizmust tükrözi, amit mi is képviselünk a munkánk során.",
     rating: 5
   },
   {
     id: 3,
     name: "Tóth Eszter",
     company: "Fitness stúdió",
-    text: "Mobilon is gyönyörű, és végre mérem, honnan jönnek az új tagok. Köszönöm!",
+    text: "Végre szintet léptünk. Az új weboldal miatt sokkal komolyabban vesznek minket az új tagok, és ez a bérleteladásokon is látszik.",
     rating: 5
   },
   {
     id: 4,
     name: "Horváth Gábor",
     company: "Webshop tulajdonos",
-    text: "Profi munka, gyors válaszok. A webshopom pontosan azt tudja, amit kértem.",
+    text: "Végre egy csapat, akik nem csak bólogatnak, hanem szakmai tanácsokat is adnak. Olyan funkciókat is beépítettek, amikre én nem is gondoltam, de azóta rengeteg időt spórolnak nekem az adminisztrációban.",
     rating: 5
   },
   {
     id: 5,
     name: "Szabó Mónika",
     company: "Kozmetikai szalon",
-    text: "Az online időpontfoglalóval rengeteg időt spórolok. Remek befektetés volt!",
+    text: "A legnagyobb megváltás az online foglalórendszer volt. Nem kell a kezelés közben a telefont fognom, a vendégek pedig imádják, hogy akár éjfélkor is be tudnak jelentkezni hozzám két perc alatt.",
     rating: 5
   },
   {
     id: 6,
     name: "Kovács László",
     company: "Építőipari cég",
-    text: "Végre van egy modern weboldalunk. Az ügyfelek bizalma láthatóan nőtt.",
+    text: "Régi motorosok vagyunk a szakmában, de a weboldalunkon ez nem látszott. Most már büszkén mutatom meg a korábbi projektjeinket az új partnereknek, mert az oldalunk is azt mutatja: értünk ahhoz, amit csinálunk.",
     rating: 5
   },
   {
@@ -137,7 +127,7 @@ export const testimonials = [
     id: 8,
     name: "Farkas Tamás",
     company: "Autószerviz",
-    text: "SEO-ra optimalizálták, most sokkal jobban találnak meg a Google-ben. Király!",
+    text: "Eddig csak ajánlás útján jöttek hozzánk, de mióta elkészült az új oldal, rengeteg új ember keres meg minket a környékről. Tényleg működik a dolog, folyamatosan csörög a telefonunk.",
     rating: 5
   }
 ];
@@ -202,33 +192,33 @@ export const caseStudies = [
 export const faqData = [
   {
     id: 1,
-    question: "Mennyi idő alatt készül el egy weboldal?",
-    answer: "Egyszerű bemutatkozó oldal 1-2 hét, komplex webshop 3-4 hét. A pontos időt a brief után mondjuk meg."
+    question: "Mennyi idő alatt készül el?",
+    answer: "Általában 1–4 hét. Folyamatosan tartjuk majd a kapcsolatot és mindig tudni fogod, hogy éppen hol tart a projekt."
   },
   {
     id: 2,
-    question: "Mennyibe kerül egy weboldal?",
-    answer: "Projekt-specifikus. A legegyszerűbb oldalak néhány százezer forinttól indulnak, komplexebb megoldások 1-2 millió Ft körül mozognak. Ingyenes konzultáción egyedi árajánlatot adunk."
+    question: "Mennyibe fog kerülni?",
+    answer: "Ez a funkcióktól és az oldal méretétől függ. Egy gyors egyeztetés után küldünk egy konkrét árajánlatot, amiben minden költség benne lesz."
   },
   {
     id: 3,
-    question: "Kell-e saját domain és tárhelyet?",
-    answer: "Nem feltétlenül – segítünk beszerezni és beállítani. Ha már van, azt is használhatjuk."
+    question: "Nekem kell biztosítanom a domaint és a tárhelyet?",
+    answer: "Ha már megvannak, akkor csak elkérjük a hozzáférést, viszont, ha nem akarsz ezzel bajlódni, akkor mi ezeket is tudjuk biztosítani."
   },
   {
     id: 4,
-    question: "Ki írja a szövegeket?",
-    answer: "Alapértelmezetten te adod a tartalmat, de segítünk struktúrálni. Opcionálisan vállaljuk a szövegírást is."
+    question: "Szövegírást vállaltok?",
+    answer: "Igen, ha igényled, a teljes tartalomfejlesztést átvállaljuk. Egy rövid egyeztetés után megírjuk a szövegeket, ügyelve arra, hogy a hangvétel passzoljon a vállalkozásodhoz, és szakmai szempontból is meggyőző legyen a látogatók számára."
   },
   {
     id: 5,
-    question: "Én is tudok majd módosítani az oldalon?",
-    answer: "Igen! Betanítunk, és könnyen használható admin felületet kapsz. Ha elakadsz, segítünk."
+    question: "Megtalálnak majd a Google-ben?",
+    answer: "Igen, minden oldalt a legfrissebb keresőoptimalizálási (SEO) szempontok szerint építünk fel. Beállítjuk a technikai alapokat, figyelünk a sebességre és a mobilbarát kialakításra, hogy a Google jó helyre rangsorolja az oldaladat már az induláskor."
   },
   {
     id: 6,
-    question: "Mi van átadás után?",
-    answer: "30 napos garancia minden projektre. Utána opcionális karbantartási csomag, vagy alkalmi támogatás."
+    question: "Elérlek titeket átadás után is?",
+    answer: "Igen, természetesen. Ha bármit módosítanál, vagy van egy új ötleted az oldalhoz, küldj egy üzenetet vagy hívj fel minket és állunk rendelkezésedre."
   }
 ];
 
@@ -257,12 +247,12 @@ export const whyUs = [
 
 export const contactInfo = {
   email: "websitemuhely@gmail.com",
-  phone: "+36 30 123 4567",
+  phone: "+36 30 648 9678",
   address: "Budapest, Magyarország"
 };
 
 export const slogans = [
-  "Weboldal, ami ügyfeleket hoz – nem csak szép",
+  "Digitális jelenlét vállalkozásod növekedéséhez",
   "Gyorsan. Mérhető eredménnyel. Biztos alapon.",
   "Professzionális web magyar vállalkozásoknak",
   "Weboldal, ami növeli a forgalmadat",
