@@ -59,7 +59,7 @@ const Process = () => {
                     </div>
 
                     {/* Content card */}
-                    <div className="bg-page rounded-xl border border-border-medium group-hover:border-brand-primary transition-all duration-300 min-h-[180px] md:min-h-[200px] flex flex-col relative pt-12 md:pt-16">
+                    <div className="bg-page rounded-xl border border-border-medium group-hover:border-brand-primary transition-all duration-300 h-[280px] md:h-[320px] flex flex-col relative pt-12 md:pt-16">
                       {/* Decorative top border accent - visible accent */}
                       <div className="w-full h-1.5 bg-brand-primary rounded-tl-xl rounded-tr-xl"></div>
 
