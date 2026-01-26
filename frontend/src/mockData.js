@@ -1,7 +1,7 @@
 // Mock data for WebForge agency website
 
 export const heroData = {
-  headline: "Digitális jelenlét vállalkozása növekedéséhez",
+  headline: "Digitális jelenlét vállalkozásod növekedéséhez",
   subheadline: "Prémium weboldalak kis- és középvállalkozások részére",
   cta: "Ingyenes konzultáció",
   secondaryCta: "Referenciák megtekintése"

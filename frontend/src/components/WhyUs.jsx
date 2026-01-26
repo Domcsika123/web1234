@@ -1,9 +1,11 @@
 import React from 'react';
 import { Target, TrendingUp, Settings, CheckCircle, Clock, AlertTriangle } from 'lucide-react';
 import { useInView } from '../hooks/useInView';
+import CounterNumber from './CounterNumber';
 
 const WhyUs = () => {
   const [ref, isInView] = useInView();
+  const [statsRef, statsInView] = useInView();
 
   return (
     <section className="py-16 md:py-32 px-4 md:px-8 bg-card">
@@ -106,17 +108,23 @@ const WhyUs = () => {
             SZÁMOK, AMELYEK MÖGÖTT VALÓDI PROJEKTEK ÁLLNAK
           </p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8" ref={statsRef}>
           <div className="bg-card border border-border-medium rounded-xl p-6 md:p-8 text-center transition-all duration-300">
-            <h3 className="text-4xl md:text-5xl font-black text-brand-primary mb-2">127+</h3>
+            <h3 className="text-4xl md:text-5xl font-black text-brand-primary mb-2">
+              <CounterNumber target={127} isVisible={statsInView} duration={3500} />+
+            </h3>
             <p className="body-medium text-secondary">sikeresen lezárt projekt</p>
           </div>
           <div className="bg-card border-2 border-brand-primary rounded-xl p-6 md:p-8 text-center transition-all duration-300">
-            <h3 className="text-4xl md:text-5xl font-black text-brand-primary mb-2">94%</h3>
+            <h3 className="text-4xl md:text-5xl font-black text-brand-primary mb-2">
+              <CounterNumber target={94} isVisible={statsInView} duration={3500} />%
+            </h3>
             <p className="body-medium text-secondary">visszatérő ügyfél</p>
           </div>
           <div className="bg-card border border-border-medium rounded-xl p-6 md:p-8 text-center transition-all duration-300">
-            <h3 className="text-4xl md:text-5xl font-black text-brand-primary mb-2">3,2×</h3>
+            <h3 className="text-4xl md:text-5xl font-black text-brand-primary mb-2">
+              <CounterNumber target={3.2} isVisible={statsInView} duration={3500} decimals={1} />×
+            </h3>
             <p className="body-medium text-secondary">átlagos konverziónövekedés</p>
           </div>
         </div>
