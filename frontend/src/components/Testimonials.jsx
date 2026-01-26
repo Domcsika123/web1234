@@ -56,19 +56,19 @@ const Testimonials = () => {
                   key={testimonial.id}
                   className="flex-[0_0_85%] min-w-0 sm:flex-[0_0_70%] md:flex-[0_0_50%] lg:flex-[0_0_33.333%] px-2 md:px-3"
                 >
-                  <div className="team-card p-5 md:p-8 rounded-xl border border-border-medium hover:bg-border-medium transition-all duration-300 h-full">
+                  <div className="team-card p-5 md:p-8 rounded-xl border border-border-medium hover:bg-border-medium transition-all duration-300 h-full flex flex-col">
                     <Quote className="h-8 w-8 md:h-10 md:w-10 text-brand-primary mb-4 md:mb-6" />
-                    <p className="body-medium text-primary mb-4 md:mb-6 italic text-sm md:text-base">
+                    <p className="body-medium text-primary mb-4 md:mb-6 italic text-sm md:text-base flex-1">
                       "{testimonial.text}"
                     </p>
                     <div className="flex items-center gap-1 md:gap-2 mb-3 md:mb-4">
                       {[...Array(testimonial.rating)].map((_, i) => (
-                        <span key={i} className="text-base md:text-lg">★</span>
+                        <span key={i} className="text-base md:text-lg text-brand-primary">★</span>
                       ))}
                     </div>
                     <div>
-                      <p className="button-text text-primary text-sm md:text-base">{testimonial.name}</p>
-                      <p className="caption text-secondary text-xs md:text-sm">{testimonial.company}</p>
+                      <p className="button-text text-primary text-sm md:text-base">{testimonial.name.split(' ')[1] || testimonial.name.split(' ')[0]}</p>
+                      <p className="caption text-secondary text-xs md:text-sm uppercase">{testimonial.company}</p>
                     </div>
                   </div>
                 </div>

@@ -66,11 +66,6 @@ const CaseStudies = () => {
                         className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-secondary-olive/90 to-transparent"></div>
-                      <div className="absolute bottom-3 md:bottom-4 left-3 md:left-4">
-                        <span className="inline-block px-2 md:px-3 py-1 rounded-full bg-brand-primary text-text-inverse caption font-semibold text-xs">
-                          {study.industry}
-                        </span>
-                      </div>
                     </div>
                     <div className="p-4 md:p-8 bg-card flex-1 flex flex-col">
                       <h3 className="heading-5 mb-3 md:mb-4 text-primary text-base md:text-lg">{study.client}</h3>

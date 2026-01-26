@@ -33,51 +33,25 @@ const Process = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
             {process.map((step, index) => {
               const Icon = iconMap[step.id];
-              const isLast = index === process.length - 1;
 
               return (
-                <div key={step.id} className="relative">
-                  {/* Connecting line - only show on lg screens */}
-                  {!isLast && (
-                    <div className="hidden lg:block absolute top-16 left-[calc(50%+50px)] w-[calc(100%-50px)] h-0.5 bg-gradient-to-r from-brand-primary/50 to-border-medium z-0"></div>
-                  )}
+                <div key={step.id} className="relative flex flex-col">
+                  {/* Number badge */}
+                  <div className="flex justify-center mb-4">
+                    <span className="text-2xl font-black text-brand-primary">{step.step}</span>
+                  </div>
 
-                  {/* Card */}
-                  <div className="relative z-10 group">
-                    {/* Number badge */}
-                    <div className="absolute -top-2 -left-2 md:-top-3 md:-left-3 z-20">
-                      <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-brand-primary flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                        <span className="text-lg md:text-xl font-black text-text-inverse">{step.step}</span>
-                      </div>
+                  {/* Icon circle */}
+                  <div className="flex justify-center mb-6">
+                    <div className="w-24 h-24 md:w-28 md:h-28 rounded-full border-2 border-secondary-olive flex items-center justify-center group-hover:border-brand-primary transition-all duration-300">
+                      <Icon className="w-10 h-10 md:w-12 md:h-12 text-brand-primary" />
                     </div>
+                  </div>
 
-                    {/* Icon circle - overlapping the card */}
-                    <div className="flex justify-center -mb-12 md:-mb-16 relative z-20">
-                      <div className="w-24 h-24 md:w-32 md:h-32 rounded-full bg-gradient-to-br from-secondary-olive to-border-medium flex items-center justify-center group-hover:scale-105 transition-all duration-300">
-                        <Icon className="w-10 h-10 md:w-14 md:h-14 text-brand-primary" />
-                      </div>
-                    </div>
-
-                    {/* Content card */}
-                    <div className="bg-page rounded-xl border border-border-medium group-hover:border-brand-primary transition-all duration-300 min-h-[180px] md:min-h-[200px] flex flex-col relative pt-12 md:pt-16">
-                      {/* Decorative top border accent - visible accent */}
-                      <div className="w-full h-1.5 bg-brand-primary rounded-tl-xl rounded-tr-xl"></div>
-
-                      <div className="p-4 md:p-6 flex flex-col flex-1">
-                        <h3 className="heading-5 md:heading-4 mb-2 md:mb-3 text-primary text-center">{step.title}</h3>
-                        <p className="body-small text-secondary text-center flex-1">{step.description}</p>
-
-                        {/* Progress indicator */}
-                        <div className="mt-4 pt-4 border-t border-border-medium">
-                          <div className="w-full bg-border-medium rounded-full h-1.5">
-                            <div
-                              className="bg-brand-primary h-1.5 rounded-full transition-all duration-500 group-hover:w-full"
-                              style={{ width: `${(index + 1) * 20}%` }}
-                            ></div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                  {/* Content card */}
+                  <div className="bg-transparent rounded-lg border border-border-medium p-4 md:p-6 flex-1 flex flex-col">
+                    <h3 className="heading-5 mb-2 text-brand-primary text-center">{step.title}</h3>
+                    <p className="body-small text-secondary text-center flex-1">{step.description}</p>
                   </div>
                 </div>
               );
@@ -86,21 +60,12 @@ const Process = () => {
 
           {/* Bottom summary */}
           <div className="mt-10 md:mt-16 text-center">
-            <div className="inline-flex flex-col sm:flex-row items-center gap-4 sm:gap-6 md:gap-8 px-4 sm:px-6 md:px-8 py-4 rounded-2xl sm:rounded-full bg-brand-primary/10 border border-brand-primary/20">
-              <div className="flex items-center gap-2">
-                <div className="w-3 h-3 rounded-full bg-brand-primary"></div>
-                <span className="caption text-primary text-xs sm:text-sm">2-4 hét átfutási idő</span>
-              </div>
+            <div className="inline-flex flex-col sm:flex-row items-center gap-4 sm:gap-6 md:gap-8 px-6 md:px-12 py-4 rounded-full bg-transparent border border-brand-primary">
+              <span className="caption text-brand-primary text-sm font-bold">3–6 HÉT</span>
               <div className="hidden sm:block w-px h-6 bg-border-medium"></div>
-              <div className="flex items-center gap-2">
-                <div className="w-3 h-3 rounded-full bg-brand-primary"></div>
-                <span className="caption text-primary text-xs sm:text-sm">5 egyértelmű lépés</span>
-              </div>
+              <span className="caption text-brand-primary text-sm font-bold">FIX ÁR</span>
               <div className="hidden sm:block w-px h-6 bg-border-medium"></div>
-              <div className="flex items-center gap-2">
-                <div className="w-3 h-3 rounded-full bg-brand-primary"></div>
-                <span className="caption text-primary text-xs sm:text-sm">30 napos garancia</span>
-              </div>
+              <span className="caption text-brand-primary text-sm font-bold">EREDMÉNYGARANCIA</span>
             </div>
           </div>
         </div>

@@ -25,11 +25,11 @@ function App() {
       <Header onCtaClick={handleCtaClick} />
       <main>
         <Hero onCtaClick={handleCtaClick} />
+        <WhyUs />
         <Features />
         <Process />
         <CaseStudies />
         <Testimonials />
-        <WhyUs />
         <FAQ />
         <ContactForm />
       </main>
