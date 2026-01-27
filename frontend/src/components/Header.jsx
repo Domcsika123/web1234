@@ -14,9 +14,9 @@ const Header = ({ onCtaClick }) => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-black backdrop-blur-lg border-b border-border-medium">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-black backdrop-blur-lg border-b-2 border-brand-primary/50">
       <div className="container mx-auto px-4 md:px-8">
-        <div className="flex items-center justify-between py-3 md:py-4">
+        <div className="flex items-center justify-between py-2 md:py-2.5">
           {/* Logo */}
           <div className="flex items-center">
             <button
@@ -33,13 +33,13 @@ const Header = ({ onCtaClick }) => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-2 bg-[#302f2c]/20 backdrop-blur-sm rounded-2xl px-2 py-2">
-            <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="flex-1 min-w-[140px] text-brand-primary uppercase font-semibold transition-all duration-300 px-4 py-2 rounded-xl border-2 border-brand-primary/40 shadow-2xl shadow-brand-primary/0 hover:bg-[#302f2c]/80 hover:border-brand-primary/70 hover:shadow-brand-primary/60 hover:scale-105 text-center">
+            <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="flex-1 min-w-[140px] text-brand-primary uppercase font-semibold transition-all duration-300 px-4 py-2 rounded-xl shadow-2xl shadow-brand-primary/0 hover:bg-[#302f2c]/80 hover:shadow-brand-primary/60 hover:scale-105 text-center">
               Kezdőlap
             </button>
-            <button onClick={() => scrollToSection('case-studies')} className="flex-1 min-w-[140px] text-brand-primary uppercase font-semibold transition-all duration-300 px-4 py-2 rounded-xl border-2 border-brand-primary/40 shadow-2xl shadow-brand-primary/0 hover:bg-[#302f2c]/80 hover:border-brand-primary/70 hover:shadow-brand-primary/60 hover:scale-105 text-center">
+            <button onClick={() => scrollToSection('case-studies')} className="flex-1 min-w-[140px] text-brand-primary uppercase font-semibold transition-all duration-300 px-4 py-2 rounded-xl shadow-2xl shadow-brand-primary/0 hover:bg-[#302f2c]/80 hover:shadow-brand-primary/60 hover:scale-105 text-center">
               Referenciák
             </button>
-            <button onClick={() => scrollToSection('contact')} className="flex-1 min-w-[140px] text-brand-primary uppercase font-semibold transition-all duration-300 px-4 py-2 rounded-xl border-2 border-brand-primary/40 shadow-2xl shadow-brand-primary/0 hover:bg-[#302f2c]/80 hover:border-brand-primary/70 hover:shadow-brand-primary/60 hover:scale-105 text-center">
+            <button onClick={() => scrollToSection('contact')} className="flex-1 min-w-[140px] text-brand-primary uppercase font-semibold transition-all duration-300 px-4 py-2 rounded-xl shadow-2xl shadow-brand-primary/0 hover:bg-[#302f2c]/80 hover:shadow-brand-primary/60 hover:scale-105 text-center">
               Kapcsolat
             </button>
           </nav>
