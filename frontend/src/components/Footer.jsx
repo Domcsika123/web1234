@@ -15,7 +15,13 @@ const Footer = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 mb-8 md:mb-12">
           {/* Brand */}
           <div className="sm:col-span-2">
-            <h3 className="heading-4 text-brand-primary mb-3 md:mb-4 text-lg md:text-xl">AuraCode</h3>
+            <div className="flex items-center gap-2 mb-3 md:mb-4">
+              <img src="/logo.svg" alt="AuraCode Logo" className="h-8 md:h-10 w-auto" />
+              <h3 className="heading-4 text-lg md:text-xl">
+                <span className="text-white">Aura</span>
+                <span className="text-brand-primary">Code</span>
+              </h3>
+            </div>
             <p className="body-medium text-secondary mb-4 md:mb-6 text-sm md:text-base">
               {slogans[0]}
             </p>
