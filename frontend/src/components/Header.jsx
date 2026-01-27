@@ -23,7 +23,7 @@ const Header = ({ onCtaClick }) => {
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               className="heading-4 text-brand-primary hover:opacity-80 transition-opacity cursor-pointer text-lg md:text-xl"
             >
-              WebForge
+              AuraCode
             </button>
           </div>
 

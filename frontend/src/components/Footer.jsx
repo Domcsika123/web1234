@@ -15,7 +15,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 mb-8 md:mb-12">
           {/* Brand */}
           <div className="sm:col-span-2">
-            <h3 className="heading-4 text-brand-primary mb-3 md:mb-4 text-lg md:text-xl">WebForge</h3>
+            <h3 className="heading-4 text-brand-primary mb-3 md:mb-4 text-lg md:text-xl">AuraCode</h3>
             <p className="body-medium text-secondary mb-4 md:mb-6 text-sm md:text-base">
               {slogans[0]}
             </p>
@@ -76,7 +76,7 @@ const Footer = () => {
         <div className="pt-6 md:pt-8 border-t border-border-medium">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="caption text-secondary text-xs md:text-sm">
-              © {currentYear} WebForge. Minden jog fenntartva.
+              © {currentYear} AuraCode. Minden jog fenntartva.
             </p>
             <div className="flex flex-wrap justify-center gap-4 md:gap-6">
               <button

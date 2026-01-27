@@ -20,7 +20,7 @@ const PrivacyPolicy = ({ onClose }) => {
           <section>
             <h3 className="heading-5 text-primary mb-3">1. Általános rendelkezések</h3>
             <p className="body-medium text-secondary">
-              A WebForge (a továbbiakban: Szolgáltató) elkötelezett a felhasználók személyes adatainak védelme iránt. 
+              Az AuraCode (a továbbiakban: Szolgáltató) elkötelezett a felhasználók személyes adatainak védelme iránt. 
               Jelen adatvédelmi tájékoztató célja, hogy ismertesse a Szolgáltató által kezelt személyes adatok körét, 
               az adatkezelés célját, jogalapját, időtartamát, valamint a felhasználók adatkezeléssel kapcsolatos jogait.
             </p>
@@ -29,7 +29,7 @@ const PrivacyPolicy = ({ onClose }) => {
           <section>
             <h3 className="heading-5 text-primary mb-3">2. Az adatkezelő adatai</h3>
             <div className="body-medium text-secondary space-y-1">
-              <p><strong>Név:</strong> WebForge</p>
+              <p><strong>Név:</strong> AuraCode</p>
               <p><strong>E-mail:</strong> websitemuhely@gmail.com</p>
               <p><strong>Székhely:</strong> Budapest, Magyarország</p>
             </div>

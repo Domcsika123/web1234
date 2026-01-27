@@ -20,7 +20,7 @@ const TermsOfService = ({ onClose }) => {
           <section>
             <h3 className="heading-5 text-primary mb-3">1. Általános rendelkezések</h3>
             <p className="body-medium text-secondary mb-3">
-              Jelen Általános Szerződési Feltételek (továbbiakban: ÁSZF) tartalmazzák a WebForge 
+              Jelen Általános Szerződési Feltételek (továbbiakban: ÁSZF) tartalmazzák az AuraCode 
               (továbbiakban: Szolgáltató) által nyújtott webfejlesztési és kapcsolódó szolgáltatások 
               igénybevételének feltételeit.
             </p>
@@ -32,7 +32,7 @@ const TermsOfService = ({ onClose }) => {
           <section>
             <h3 className="heading-5 text-primary mb-3">2. A Szolgáltató adatai</h3>
             <div className="body-medium text-secondary space-y-1">
-              <p><strong>Név:</strong> WebForge</p>
+              <p><strong>Név:</strong> AuraCode</p>
               <p><strong>E-mail:</strong> websitemuhely@gmail.com</p>
               <p><strong>Székhely:</strong> Budapest, Magyarország</p>
             </div>

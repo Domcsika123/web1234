@@ -4,10 +4,6 @@ import { Zap, Search, Smartphone, BarChart3, Shield, Wrench, Gauge, Target, Chev
 import { useInView } from '../hooks/useInView';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCoverflow, Pagination, Navigation, Autoplay } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/effect-coverflow';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
 
 const iconMap = {
   1: Zap,
@@ -148,27 +144,6 @@ const Features = () => {
           </div>
         </div>
       </div>
-
-      <style jsx global>{`
-        .features-swiper {
-          position: relative;
-        }
-      `}</style>
-
-      <style jsx>{`
-        .features-swiper {
-          padding: 50px 0 80px 0;
-        }
-        
-        .swiper-slide-custom {
-          width: 320px;
-          height: 280px;
-        }
-        
-        .feature-card-3d {
-          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
-      `}</style>
     </section>
   );
 };

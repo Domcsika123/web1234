@@ -1,4 +1,4 @@
-// Mock data for WebForge agency website
+// Mock data for AuraCode agency website
 
 export const heroData = {
   headline: "Digitális jelenlét vállalkozásod növekedéséhez",

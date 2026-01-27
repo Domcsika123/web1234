@@ -2,7 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Pixel Pushers Design System - WebForge */
+/* Swiper CSS */
+@import 'swiper/css';
+@import 'swiper/css/effect-coverflow';
+@import 'swiper/css/pagination';
+@import 'swiper/css/navigation';
+
+/* Pixel Pushers Design System - AuraCode */
 @layer base {
   :root {
     /* Backgrounds - Pixel Pushers Colors */
@@ -253,4 +259,28 @@ html {
         border-top-color: inherit;
         border-bottom-color: inherit;
     }
+}
+
+/* Swiper Carousel Custom Styles */
+.features-swiper {
+  padding: 50px 0 80px 0;
+}
+
+.swiper-slide-custom {
+  width: 320px !important;
+  height: auto;
+}
+
+.feature-card-3d {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.swiper-slide {
+  background-position: center;
+  background-size: cover;
+}
+
+.swiper-slide-shadow-left,
+.swiper-slide-shadow-right {
+  background-image: none !important;
 }

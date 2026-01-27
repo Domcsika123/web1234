@@ -8,8 +8,9 @@ const WhyUs = () => {
   const [statsRef, statsInView] = useInView();
 
   return (
-    <section className="py-16 md:py-32 px-4 md:px-8 bg-card">
-      <div className="container mx-auto max-w-6xl">
+    <section className="bg-card">
+      <div className="py-16 md:py-32 px-4 md:px-8">
+        <div className="container mx-auto max-w-6xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 mb-16">
           {/* Left Column */}
           <div className="space-y-6" ref={ref}>
@@ -112,9 +113,9 @@ const WhyUs = () => {
           </div>
           <div className="bg-card border-2 border-brand-primary rounded-xl p-6 md:p-8 text-center transition-all duration-300">
             <h3 className="text-4xl md:text-5xl font-black text-brand-primary mb-2">
-              <CounterNumber target={94} isVisible={statsInView} duration={3500} />%
+              <CounterNumber target={30} isVisible={statsInView} duration={3500} />
             </h3>
-            <p className="body-medium text-secondary">visszatérő ügyfél</p>
+            <p className="body-medium text-secondary">nap garancia</p>
           </div>
           <div className="bg-card border border-border-medium rounded-xl p-6 md:p-8 text-center transition-all duration-300">
             <h3 className="text-4xl md:text-5xl font-black text-brand-primary mb-2">
@@ -123,6 +124,16 @@ const WhyUs = () => {
             <p className="body-medium text-secondary">átlagos konverziónövekedés</p>
           </div>
         </div>
+      </div>
+      </div>
+
+      {/* Team Image - Full Width Separator */}
+      <div className="w-full">
+        <img 
+          src="https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?w=1920&q=80" 
+          alt="Csapatmunka - közös célok elérése" 
+          className="w-full h-[400px] md:h-[500px] object-cover grayscale"
+        />
       </div>
     </section>
   );
