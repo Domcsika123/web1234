@@ -4,6 +4,8 @@ import { heroData } from '../mockData';
 import { ArrowRight, Sparkles } from 'lucide-react';
 
 const Hero = ({ onCtaClick }) => {
+  const headlineWords = heroData.headline.split(' ');
+
   return (
     <section className="hero-section">
       <div className="hero-background">
@@ -15,7 +17,18 @@ const Hero = ({ onCtaClick }) => {
         <div className="hero-overlay"></div>
       </div>
       <div className="hero-content">
-        <h1 className="hero-title mb-4 md:mb-6">{heroData.headline}</h1>
+        <h1 className="hero-title mb-4 md:mb-6">
+          {headlineWords.map((word, index) => (
+            <span
+              key={`${word}-${index}`}
+              className="hero-word"
+              style={{ animationDelay: `${index * 0.12}s` }}
+            >
+              {word}
+              {index < headlineWords.length - 1 ? ' ' : ''}
+            </span>
+          ))}
+        </h1>
         <p className="body-large mb-8 md:mb-12 max-w-2xl text-neutral-light text-base md:text-xl">
           {heroData.subheadline}
         </p>

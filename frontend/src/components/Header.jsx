@@ -84,7 +84,10 @@ const Header = ({ onCtaClick }) => {
             >
               Kapcsolat
             </button>
-            <Button onClick={onCtaClick} className="btn-primary w-full mt-3 text-sm">
+            <Button onClick={() => {
+              onCtaClick();
+              setIsMobileMenuOpen(false);
+            }} className="btn-primary w-full mt-3 text-sm">
               Ingyenes konzultáció
             </Button>
           </nav>
