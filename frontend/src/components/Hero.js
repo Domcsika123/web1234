@@ -11,7 +11,7 @@ export const Hero = () => {
   });
 
   const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const opacity = useTransform(scrollYProgress, [0.25, 0.8], [1, 0]);
 
   const scrollToSection = (href) => {
     const element = document.querySelector(href);
@@ -28,7 +28,7 @@ export const Hero = () => {
     >
       {/* Background Grid */}
       <div className="absolute inset-0 grid-bg opacity-50" />
-      
+
       {/* Floating particles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {[...Array(20)].map((_, i) => (
@@ -58,16 +58,6 @@ export const Hero = () => {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Text Content */}
             <div className="order-2 lg:order-1">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="font-mono text-sm text-[#00FF00] mb-6 tracking-wider"
-                data-testid="hero-label"
-              >
-                // WEBFEJLESZTÉS & DESIGN
-              </motion.div>
-
               <motion.h1
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -87,7 +77,7 @@ export const Hero = () => {
                 className="text-lg lg:text-xl text-[#A1A1AA] mb-10 max-w-xl"
                 data-testid="hero-subtitle"
               >
-                Prémium weboldalak kis- és középvállalkozások részére. 
+                Prémium weboldalak kis- és középvállalkozások részére.
                 Modern, SEO-optimalizált honlapok 1-4 hét alatt, fix áron.
               </motion.p>
 
@@ -107,7 +97,7 @@ export const Hero = () => {
                   Ingyenes konzultáció
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </motion.button>
-                
+
                 <motion.button
                   onClick={() => scrollToSection('#portfolio')}
                   className="btn-secondary"
