@@ -52,7 +52,7 @@ export const Navbar = () => {
               whileHover={{ scale: 1.05 }}
               data-testid="navbar-logo"
             >
-              <img src={LOGO_URL} alt="AuraCode Logo" className="h-10 w-10" />
+              <img src={LOGO_URL} alt="AuraCode Logo" className="h-10 w-10 bg-transparent" style={{ background: 'none' }} />
               <span className="font-bold text-xl tracking-tight">AuraCode</span>
             </motion.a>
 
