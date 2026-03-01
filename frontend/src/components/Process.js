@@ -35,6 +35,44 @@ const steps = [
   },
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.3,
+      delayChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: (index) => ({
+    opacity: 0,
+    x: index % 2 === 0 ? -30 : 30,
+  }),
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.8,
+      ease: [0.25, 0.1, 0.25, 1], // cubic-bezier for smooth motion
+    },
+  },
+};
+
+const dotVariants = {
+  hidden: { scale: 0, opacity: 0 },
+  visible: {
+    scale: 1,
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+      ease: [0.34, 1.56, 0.64, 1], // spring-like bounce
+    },
+  },
+};
+
 export const Process = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -50,9 +88,9 @@ export const Process = () => {
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
           className="text-center mb-16"
         >
           <span className="font-mono text-sm text-[#00FF00] tracking-wider">
@@ -70,13 +108,17 @@ export const Process = () => {
           {/* Timeline line */}
           <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-[#00FF00] via-[#00FF00]/50 to-transparent" />
 
-          <div className="space-y-8 lg:space-y-0">
+          <motion.div 
+            className="space-y-8 lg:space-y-0"
+            variants={containerVariants}
+            initial="hidden"
+            animate={inView ? "visible" : "hidden"}
+          >
             {steps.map((step, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                animate={inView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 1.2, delay: index * 0.4, ease: "easeOut" }}
+                custom={index}
+                variants={itemVariants}
                 className={`relative lg:flex lg:items-center ${
                   index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
                 }`}
@@ -84,11 +126,11 @@ export const Process = () => {
               >
                 {/* Content */}
                 <div className={`lg:w-1/2 ${index % 2 === 0 ? 'lg:pr-16 lg:text-right' : 'lg:pl-16'}`}>
-                  <div className="glass p-6 lg:p-8 rounded-xl group hover:border-[#00FF00]/30 transition-colors">
+                  <div className="glass p-6 lg:p-8 rounded-xl group hover:border-[#00FF00]/30 transition-colors duration-300">
                     <span className="font-mono text-[#00FF00] text-sm">{step.number}</span>
                     
                     <div className="flex items-center gap-4 mt-3 mb-4">
-                      <div className="p-2 rounded-lg bg-[#00FF00]/10 group-hover:bg-[#00FF00]/20 transition-colors lg:hidden">
+                      <div className="p-2 rounded-lg bg-[#00FF00]/10 group-hover:bg-[#00FF00]/20 transition-colors duration-300 lg:hidden">
                         <step.icon className="w-5 h-5 text-[#00FF00]" />
                       </div>
                       <h3 className="text-xl font-bold">{step.title}</h3>
@@ -103,9 +145,7 @@ export const Process = () => {
                 {/* Center dot - Desktop only */}
                 <div className="hidden lg:flex absolute left-1/2 -translate-x-1/2 w-14 h-14 items-center justify-center">
                   <motion.div
-                    initial={{ scale: 0 }}
-                    animate={inView ? { scale: 1 } : {}}
-                    transition={{ duration: 0.8, delay: 0.5 + index * 0.4, ease: "easeOut" }}
+                    variants={dotVariants}
                     className="w-14 h-14 rounded-full bg-[#0A0A0A] border-2 border-[#00FF00] flex items-center justify-center neon-glow"
                   >
                     <step.icon className="w-6 h-6 text-[#00FF00]" />
@@ -116,7 +156,7 @@ export const Process = () => {
                 <div className="hidden lg:block lg:w-1/2" />
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
