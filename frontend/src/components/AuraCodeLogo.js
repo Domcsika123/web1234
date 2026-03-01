@@ -16,7 +16,7 @@ export const AuraCodeLogo = ({ className = "w-10 h-10", glowEffect = false }) =>
       
       {/* Left bracket < */}
       <path
-        d="M 45 35 L 30 50 L 45 65"
+        d="M 38 32 L 22 50 L 38 68"
         fill="none"
         stroke="#00FF00"
         strokeWidth="4"
@@ -26,7 +26,7 @@ export const AuraCodeLogo = ({ className = "w-10 h-10", glowEffect = false }) =>
       
       {/* Right bracket > */}
       <path
-        d="M 55 35 L 70 50 L 55 65"
+        d="M 62 32 L 78 50 L 62 68"
         fill="none"
         stroke="#00FF00"
         strokeWidth="4"
@@ -36,7 +36,7 @@ export const AuraCodeLogo = ({ className = "w-10 h-10", glowEffect = false }) =>
       
       {/* Forward slash / */}
       <path
-        d="M 55 35 L 45 65"
+        d="M 58 32 L 42 68"
         fill="none"
         stroke="#00FF00"
         strokeWidth="4"
