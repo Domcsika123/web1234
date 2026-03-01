@@ -1,0 +1,172 @@
+{
+  "project_name": "AuraCode - Modern Agency Portfolio",
+  "theme": "dark",
+  "design_philosophy": {
+    "core_concept": "Digital Architect",
+    "emotional_tone": "Professional, Striking, Innovative, Trustworthy, Cyber-Elegant",
+    "visual_style": "Dark Mode Cyberpunk meets Swiss Grid. High contrast, neon accents, deep blacks, subtle noise textures, glassmorphism.",
+    "layout_strategy": "The Tetris Grid (Asymmetric Bento). Use wide gaps (gap-8 to gap-12) and heavy negative space. Never fill 100% of the grid perfectly.",
+    "motion_strategy": "Smooth, physics-based (Lenis scroll). Parallax effects on background elements. Glitch effects on text reveal. Magnetic buttons."
+  },
+  "typography": {
+    "headings": {
+      "font_family": "Outfit, sans-serif",
+      "weights": ["600", "700", "900"],
+      "tracking": "tracking-tight",
+      "transform": "uppercase for small labels, normal for headlines",
+      "usage": "Hero titles, section headers, big impact statements."
+    },
+    "body": {
+      "font_family": "DM Sans, sans-serif",
+      "weights": ["400", "500"],
+      "tracking": "tracking-normal",
+      "leading": "leading-relaxed",
+      "usage": "Paragraphs, lists, form inputs."
+    },
+    "accents": {
+      "font_family": "Space Mono, monospace",
+      "weights": ["400"],
+      "tracking": "tracking-wide",
+      "usage": "Section numbers (01, 02), tags, technical specs, tiny labels."
+    }
+  },
+  "colors": {
+    "primary": {
+      "name": "Neon Green",
+      "hex": "#00FF00",
+      "usage": "Primary CTA buttons, active states, key highlights, glowing borders."
+    },
+    "secondary": {
+      "name": "Electric Cyan",
+      "hex": "#00F0FF",
+      "usage": "Secondary accents, gradients with green for 'Aurora' effect."
+    },
+    "background": {
+      "base": "#0A0A0A",
+      "surface": "#121212",
+      "card": "#18181B",
+      "overlay": "rgba(10, 10, 10, 0.8)"
+    },
+    "text": {
+      "primary": "#FFFFFF",
+      "secondary": "#A1A1AA",
+      "muted": "#52525B",
+      "inverse": "#000000"
+    },
+    "border": {
+      "default": "rgba(255, 255, 255, 0.1)",
+      "active": "rgba(0, 255, 0, 0.5)"
+    }
+  },
+  "visual_enhancers": {
+    "shadows": {
+      "neon_glow": "0 0 20px rgba(0, 255, 0, 0.3)",
+      "card_hover": "0 20px 40px -10px rgba(0, 0, 0, 0.5)"
+    },
+    "borders": {
+      "glass": "1px solid rgba(255, 255, 255, 0.1)",
+      "active": "1px solid #00FF00"
+    },
+    "textures": {
+      "noise": "url('/noise.png') opacity-5",
+      "grid": "linear-gradient(to right, #222 1px, transparent 1px), linear-gradient(to bottom, #222 1px, transparent 1px)"
+    }
+  },
+  "components": [
+    {
+      "name": "Navigation",
+      "path": "src/components/layout/Navbar.js",
+      "style": "Sticky glassmorphism header. Logo left, Links center (hidden mobile), CTA right.",
+      "animation": "Slide down on load. Backdrop blur-xl."
+    },
+    {
+      "name": "Hero Section",
+      "path": "src/components/sections/Hero.js",
+      "style": "Split layout. Left: Massive Typography (Headline: 'Digitális jelenlét vállalkozásod növekedéséhez'). Right: 3D Floating Neon Geometric Shape (use Framer Motion 3D or Spline).",
+      "content": {
+        "headline": "Digitális jelenlét vállalkozásod növekedéséhez",
+        "subheadline": "Prémium weboldalak kis- és középvállalkozások részére.",
+        "cta_primary": "Ingyenes konzultáció",
+        "cta_secondary": "Referenciák megtekintése"
+      }
+    },
+    {
+      "name": "Services Grid",
+      "path": "src/components/sections/Services.js",
+      "style": "Bento Grid layout. Cards with glass background, thin white borders. Hover: Border turns Neon Green + inner glow.",
+      "items": [
+        { "title": "Stratégiai Tervezés", "icon": "Target" },
+        { "title": "Webfejlesztés", "icon": "Code" },
+        { "title": "SEO & Analitika", "icon": "BarChart" },
+        { "title": "Karbantartás", "icon": "Shield" }
+      ]
+    },
+    {
+      "name": "Statistics",
+      "path": "src/components/sections/Stats.js",
+      "style": "Large typography counters. Use 'react-countup'. Background: Subtle scrolling binary code or grid.",
+      "data": [
+        { "label": "Sikeres Projekt", "value": 50, "suffix": "+" },
+        { "label": "Garancia (Nap)", "value": 30, "suffix": "" },
+        { "label": "Konverzió Növekedés", "value": 3, "suffix": "x" }
+      ]
+    },
+    {
+      "name": "Process Timeline",
+      "path": "src/components/sections/Process.js",
+      "style": "Vertical line on left. Steps animate in on scroll. Active step lights up Neon Green.",
+      "steps": ["Brief & Igényfelmérés", "Tervezés & Wireframe", "Fejlesztés", "Átadás & Élesítés", "Támogatás"]
+    },
+    {
+      "name": "Portfolio Gallery",
+      "path": "src/components/sections/Portfolio.js",
+      "style": "Masonry or Grid. Images initially Black & White. Hover: Full Color + Scale Up + Title Reveal.",
+      "references": [
+        { "category": "Étterem", "title": "Restaurant Project", "image": "restaurant_img" },
+        { "category": "Fodrászat", "title": "Hair Salon", "image": "salon_img" },
+        { "category": "Webshop", "title": "E-commerce", "image": "webshop_img" },
+        { "category": "Fitness", "title": "Gym Website", "image": "gym_img" }
+      ]
+    },
+    {
+      "name": "Testimonials",
+      "path": "src/components/sections/Testimonials.js",
+      "style": "Infinite horizontal marquee loop. Cards with user quotes. Dark card bg, neon quote icon.",
+      "content_source": "Use extracted testimonials from auracode.hu crawl."
+    },
+    {
+      "name": "Contact Form",
+      "path": "src/components/sections/Contact.js",
+      "style": "Minimalist form. Inputs: transparent bg, bottom border only (underline style). Focus: Border turns green. Large 'Send' button.",
+      "fields": ["Név", "Email", "Telefon", "Projekt leírása"]
+    }
+  ],
+  "image_urls": {
+    "hero_abstract": "https://images.unsplash.com/photo-1772048197106-922b41271750?crop=entropy&cs=srgb&fm=jpg&q=85",
+    "coding_laptop": "https://images.unsplash.com/photo-1611078489935-0cb964de46d6?crop=entropy&cs=srgb&fm=jpg&q=85",
+    "office_meeting": "https://images.unsplash.com/photo-1758691737182-d42aefd6dee8?crop=entropy&cs=srgb&fm=jpg&q=85",
+    "restaurant_ref": "https://images.unsplash.com/photo-1767500263347-4eef1b448fc2?crop=entropy&cs=srgb&fm=jpg&q=85",
+    "gym_ref": "https://images.unsplash.com/photo-1761971976282-b2bb051a5474?crop=entropy&cs=srgb&fm=jpg&q=85",
+    "generic_tech": "https://images.unsplash.com/photo-1772056381673-4592ecce5ae7?crop=entropy&cs=srgb&fm=jpg&q=85",
+    "logo_url": "https://customer-assets.emergentagent.com/job_c38f2a46-25f2-4f3b-8851-63d8e67e81b9/artifacts/gttgy6ne_AuraCode%20logo.png"
+  },
+  "instructions_to_main_agent": [
+    "Install dependencies: `npm install framer-motion lucide-react clsx tailwind-merge react-countup @radix-ui/react-slot @radix-ui/react-accordion @radix-ui/react-label @radix-ui/react-dialog`.",
+    "IMPORTANT: Use standard HTML/CSS/Tailwind for layout structure. Use Shadcn components for complex interactive bits (Dialog, Accordion, Form) but heavily customized with Tailwind.",
+    "Fonts: Add 'Outfit' and 'DM Sans' via Google Fonts in `public/index.html` or CSS import.",
+    "Theme: Force DARK MODE by default. Add 'dark' class to html/body.",
+    "Animations: Use `framer-motion` for all entrances. Simple fade-up for text, scale-in for images.",
+    "Images: Use the provided Unsplash URLs. Do not use placeholders.",
+    "Content: Stick to the Hungarian content provided in the components section.",
+    "3D Elements: Use CSS-based 3D transforms or simple framer-motion rotation for the 'Hero' abstract shape if R3F is too complex to setup quickly. A rotating neon green cube or icosahedron is sufficient."
+  ],
+  "UNIVERSAL_GUIDELINES": [
+    "Do not use gradients for text unless it's a very subtle shine.",
+    "Avoid 'Inter' font. Use 'Outfit' for headings.",
+    "Use 2x more whitespace than you think is necessary.",
+    "All interactive elements must have a hover state (color change, lift, glow).",
+    "Use 'data-testid' for all interactive elements.",
+    "Do not center everything. Use asymmetry.",
+    "The neon green (#00FF00) is potent. Use it for <10% of the UI (CTAs, borders, icons). Don't flood the screen."
+  ]
+}
