@@ -14,17 +14,9 @@ export const AuraCodeLogo = ({ className = "w-10 h-10", glowEffect = false }) =>
         strokeLinejoin="round"
       />
       
-      {/* Left bracket < (two lines) */}
+      {/* Left bracket < */}
       <path
-        d="M 35 40 L 20 57.5 L 35 75"
-        fill="none"
-        stroke="#00FF00"
-        strokeWidth="5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M 45 40 L 30 57.5 L 45 75"
+        d="M 40 40 L 22 57.5 L 40 75"
         fill="none"
         stroke="#00FF00"
         strokeWidth="5"
@@ -32,17 +24,9 @@ export const AuraCodeLogo = ({ className = "w-10 h-10", glowEffect = false }) =>
         strokeLinejoin="round"
       />
       
-      {/* Right bracket > (two lines) */}
+      {/* Right bracket > */}
       <path
-        d="M 65 40 L 80 57.5 L 65 75"
-        fill="none"
-        stroke="#00FF00"
-        strokeWidth="5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M 55 40 L 70 57.5 L 55 75"
+        d="M 60 40 L 78 57.5 L 60 75"
         fill="none"
         stroke="#00FF00"
         strokeWidth="5"
