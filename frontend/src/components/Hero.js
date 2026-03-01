@@ -148,45 +148,125 @@ export const Hero = () => {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
-                className="relative"
+                className="relative w-[320px] h-[320px] lg:w-[400px] lg:h-[400px]"
               >
-                {/* 3D Rotating Cube */}
-                <div className="cube-container">
-                  <div className="cube">
-                    <div className="cube-face cube-face-front">
-                      <img src={LOGO_URL} alt="" className="w-20 h-20 opacity-80" style={{ filter: 'brightness(1.2)', mixBlendMode: 'screen' }} />
-                    </div>
-                    <div className="cube-face cube-face-back">
-                      <span className="text-[#00FF00] font-mono text-2xl">&lt;/&gt;</span>
-                    </div>
-                    <div className="cube-face cube-face-right">
-                      <span className="text-[#00FF00] font-mono text-2xl">{'{}'}</span>
-                    </div>
-                    <div className="cube-face cube-face-left">
-                      <span className="text-[#00FF00] font-mono text-2xl">[ ]</span>
-                    </div>
-                    <div className="cube-face cube-face-top">
-                      <span className="text-[#00FF00] font-mono text-2xl">( )</span>
-                    </div>
-                    <div className="cube-face cube-face-bottom">
-                      <span className="text-[#00FF00] font-mono text-2xl">;</span>
-                    </div>
-                  </div>
-                </div>
+                {/* Outer rotating ring with dots */}
+                <motion.div
+                  className="absolute inset-0"
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
+                >
+                  <div className="w-full h-full rounded-full border border-[#00FF00]/20" />
+                  {[...Array(8)].map((_, i) => (
+                    <motion.div
+                      key={i}
+                      className="absolute w-2 h-2 bg-[#00FF00] rounded-full"
+                      style={{
+                        top: '50%',
+                        left: '50%',
+                        transform: `rotate(${i * 45}deg) translateX(160px) translateY(-50%)`,
+                      }}
+                      animate={{ 
+                        scale: [1, 1.5, 1],
+                        opacity: [0.5, 1, 0.5]
+                      }}
+                      transition={{ 
+                        duration: 2, 
+                        repeat: Infinity, 
+                        delay: i * 0.25 
+                      }}
+                    />
+                  ))}
+                </motion.div>
 
-                {/* Glowing rings */}
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                  <motion.div
-                    className="w-[350px] h-[350px] border border-[#00FF00]/20 rounded-full"
-                    animate={{ rotate: 360 }}
-                    transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+                {/* Middle pulsing hexagon */}
+                <motion.div
+                  className="absolute inset-[15%]"
+                  animate={{ rotate: -360 }}
+                  transition={{ duration: 35, repeat: Infinity, ease: 'linear' }}
+                >
+                  <svg viewBox="0 0 100 100" className="w-full h-full">
+                    <motion.polygon
+                      points="50,5 90,27.5 90,72.5 50,95 10,72.5 10,27.5"
+                      fill="none"
+                      stroke="#00FF00"
+                      strokeWidth="0.5"
+                      animate={{ 
+                        strokeOpacity: [0.3, 0.6, 0.3],
+                      }}
+                      transition={{ duration: 3, repeat: Infinity }}
+                    />
+                  </svg>
+                </motion.div>
+
+                {/* Inner hexagon with glow */}
+                <motion.div
+                  className="absolute inset-[25%]"
+                  animate={{ 
+                    scale: [1, 1.05, 1],
+                  }}
+                  transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+                >
+                  <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-[0_0_15px_rgba(0,255,0,0.5)]">
+                    <polygon
+                      points="50,5 90,27.5 90,72.5 50,95 10,72.5 10,27.5"
+                      fill="rgba(0,255,0,0.05)"
+                      stroke="#00FF00"
+                      strokeWidth="1.5"
+                    />
+                  </svg>
+                </motion.div>
+
+                {/* Center logo */}
+                <motion.div
+                  className="absolute inset-0 flex items-center justify-center"
+                  animate={{ 
+                    y: [0, -8, 0],
+                  }}
+                  transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+                >
+                  <img 
+                    src={LOGO_URL} 
+                    alt="AuraCode" 
+                    className="w-24 h-24 lg:w-32 lg:h-32"
+                    style={{ 
+                      filter: 'brightness(1.2) drop-shadow(0 0 20px rgba(0,255,0,0.6))',
+                      mixBlendMode: 'screen'
+                    }} 
                   />
-                  <motion.div
-                    className="absolute w-[400px] h-[400px] border border-[#00F0FF]/10 rounded-full"
-                    animate={{ rotate: -360 }}
-                    transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
-                  />
-                </div>
+                </motion.div>
+
+                {/* Orbiting code symbols */}
+                <motion.div
+                  className="absolute inset-0"
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 15, repeat: Infinity, ease: 'linear' }}
+                >
+                  {['<>', '{}', '[]', '()'].map((symbol, i) => (
+                    <motion.span
+                      key={i}
+                      className="absolute font-mono text-[#00FF00]/60 text-sm"
+                      style={{
+                        top: '50%',
+                        left: '50%',
+                        transform: `rotate(${i * 90}deg) translateX(120px) translateY(-50%) rotate(-${i * 90}deg)`,
+                      }}
+                      animate={{ 
+                        opacity: [0.4, 0.8, 0.4],
+                      }}
+                      transition={{ 
+                        duration: 2, 
+                        repeat: Infinity, 
+                        delay: i * 0.5 
+                      }}
+                    >
+                      {symbol}
+                    </motion.span>
+                  ))}
+                </motion.div>
+
+                {/* Glowing background effect */}
+                <div className="absolute inset-[30%] bg-[#00FF00]/5 rounded-full blur-3xl" />
               </motion.div>
             </div>
           </div>
