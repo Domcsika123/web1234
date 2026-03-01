@@ -188,38 +188,6 @@ export const Hero = () => {
                 </div>
               </motion.div>
             </div>
-                <motion.div
-                  className="absolute inset-0"
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 15, repeat: Infinity, ease: 'linear' }}
-                >
-                  {['<>', '{}', '[]', '()'].map((symbol, i) => (
-                    <motion.span
-                      key={i}
-                      className="absolute font-mono text-[#00FF00]/60 text-sm"
-                      style={{
-                        top: '50%',
-                        left: '50%',
-                        transform: `rotate(${i * 90}deg) translateX(120px) translateY(-50%) rotate(-${i * 90}deg)`,
-                      }}
-                      animate={{ 
-                        opacity: [0.4, 0.8, 0.4],
-                      }}
-                      transition={{ 
-                        duration: 2, 
-                        repeat: Infinity, 
-                        delay: i * 0.5 
-                      }}
-                    >
-                      {symbol}
-                    </motion.span>
-                  ))}
-                </motion.div>
-
-                {/* Glowing background effect */}
-                <div className="absolute inset-[30%] bg-[#00FF00]/5 rounded-full blur-3xl" />
-              </motion.div>
-            </div>
           </div>
         </div>
       </motion.div>
