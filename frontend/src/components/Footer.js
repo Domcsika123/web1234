@@ -7,7 +7,6 @@ const footerLinks = [
     links: [
       { name: 'Szolgáltatások', href: '#services' },
       { name: 'Folyamat', href: '#process' },
-      { name: 'Referenciák', href: '#portfolio' },
       { name: 'Kapcsolat', href: '#contact' },
     ],
   },
@@ -42,12 +41,12 @@ export const Footer = () => {
               data-testid="footer-logo"
             >
               <AuraCodeLogo className="h-10 w-10" />
-              <span className="font-bold text-xl tracking-tight">AuraCode</span>
+              <span className="font-bold text-xl tracking-tight">Aura<span className="gradient-text">Code</span></span>
             </motion.button>
-            
+
             <p className="text-[#A1A1AA] leading-relaxed max-w-md mb-6">
-              Prémium weboldalak kis- és középvállalkozások részére. 
-              Digitális partnerként dolgozunk a stratégiai tervezéstől 
+              Prémium weboldalak kis- és középvállalkozások részére.
+              Digitális partnerként dolgozunk a stratégiai tervezéstől
               a megvalósításon át a folyamatos fejlesztésig.
             </p>
 
@@ -89,7 +88,7 @@ export const Footer = () => {
           <p className="text-[#52525B] text-sm">
             © {currentYear} AuraCode. Minden jog fenntartva.
           </p>
-          
+
           <div className="flex gap-6 text-sm text-[#52525B]">
             <a href="#" className="hover:text-[#A1A1AA] transition-colors">
               Adatvédelem

@@ -38,8 +38,8 @@ export const Contact = () => {
     {
       icon: Mail,
       label: 'EMAIL',
-      value: 'websitemuhely@gmail.com',
-      href: 'mailto:websitemuhely@gmail.com',
+      value: 'info@auracode.hu',
+      href: 'mailto:info@auracode.hu',
     },
     {
       icon: Phone,
@@ -73,7 +73,8 @@ export const Contact = () => {
             08 // KEZDJÜK EL
           </span>
           <h2 className="text-headline font-bold mt-4" data-testid="contact-headline">
-            Kérj egyedi ajánlatot
+            Kérj{' '}
+            <span className="gradient-text">egyedi ajánlatot</span>
           </h2>
           <p className="text-[#A1A1AA] mt-4 max-w-xl mx-auto">
             Építsünk egy olyan oldalt, ami valóban a te cégedet képviseli
@@ -92,14 +93,14 @@ export const Contact = () => {
               Ajánlatkérés kötelezettségek nélkül. Te döntesz.
             </p>
 
-            <div className="space-y-6 mb-12">
+            <div className="mb-12">
               {contactInfo.map((info, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
                   animate={inView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
-                  className="flex items-start gap-4"
+                  className={`flex items-start gap-4 ${index !== 0 ? 'mt-8' : ''}`}
                   data-testid={`contact-info-${index}`}
                 >
                   <div className="p-3 rounded-lg bg-[#00FF00]/10">

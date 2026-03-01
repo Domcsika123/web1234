@@ -39,10 +39,10 @@ export const Hero = () => {
 
       {/* Floating particles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(20)].map((_, i) => (
+        {[...Array(24)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-1 h-1 bg-[#00FF00] rounded-full"
+            className="absolute w-[5px] h-[5px] bg-[#00FF00] rounded-full shadow-[0_0_8px_rgba(0,255,0,0.65)]"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
@@ -50,7 +50,8 @@ export const Hero = () => {
             animate={{
               y: [0, -100, 0],
               x: [0, Math.random() * 50 - 25, 0],
-              opacity: [0.2, 0.8, 0.2],
+              opacity: [0.3, 0.85, 0.3],
+              scale: [1, 1.2, 1],
             }}
             transition={{
               duration: 5 + Math.random() * 5,
@@ -107,13 +108,13 @@ export const Hero = () => {
                 </motion.button>
 
                 <motion.button
-                  onClick={() => scrollToSection('#portfolio')}
+                  onClick={() => scrollToSection('#services')}
                   className="btn-secondary"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   data-testid="hero-cta-secondary"
                 >
-                  Referenciák megtekintése
+                  Szolgáltatások megtekintése
                 </motion.button>
               </motion.div>
 

@@ -60,7 +60,8 @@ export const FAQ = () => {
             07 // GYAKORI KÉRDÉSEK
           </span>
           <h2 className="text-headline font-bold mt-4" data-testid="faq-headline">
-            Minden, amit tudnod kell
+            Minden, amit{' '}
+            <span className="gradient-text">tudnod kell</span>
           </h2>
           <p className="text-[#A1A1AA] mt-4">
             Az oldalkészítésről egyszerűen
@@ -77,7 +78,7 @@ export const FAQ = () => {
               <AccordionItem
                 key={index}
                 value={`item-${index}`}
-                className="faq-item border-b border-[#ffffff10] pb-4"
+                className="faq-item border border-[#ffffff20] rounded-xl px-6"
                 data-testid={`faq-item-${index}`}
               >
                 <AccordionTrigger className="faq-trigger text-left text-lg font-semibold hover:no-underline py-4 [&[data-state=open]]:text-[#00FF00]">
