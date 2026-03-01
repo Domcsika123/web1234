@@ -40,8 +40,8 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.3,
-      delayChildren: 0.2,
+      staggerChildren: 0.5,
+      delayChildren: 0.3,
     },
   },
 };
@@ -55,8 +55,8 @@ const itemVariants = {
     opacity: 1,
     x: 0,
     transition: {
-      duration: 0.8,
-      ease: [0.25, 0.1, 0.25, 1], // cubic-bezier for smooth motion
+      duration: 1.2,
+      ease: [0.25, 0.1, 0.25, 1],
     },
   },
 };
@@ -67,8 +67,8 @@ const dotVariants = {
     scale: 1,
     opacity: 1,
     transition: {
-      duration: 0.5,
-      ease: [0.34, 1.56, 0.64, 1], // spring-like bounce
+      duration: 0.7,
+      ease: [0.34, 1.56, 0.64, 1],
     },
   },
 };
