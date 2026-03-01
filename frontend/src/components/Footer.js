@@ -41,15 +41,7 @@ export const Footer = () => {
               whileHover={{ scale: 1.05 }}
               data-testid="footer-logo"
             >
-              <img 
-                src={LOGO_URL} 
-                alt="AuraCode Logo" 
-                className="h-10 w-10" 
-                style={{ 
-                  filter: 'brightness(1.2)',
-                  mixBlendMode: 'screen'
-                }}
-              />
+              <AuraCodeLogo className="h-10 w-10" />
               <span className="font-bold text-xl tracking-tight">AuraCode</span>
             </motion.button>
             
