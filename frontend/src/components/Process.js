@@ -76,7 +76,7 @@ export const Process = () => {
                 key={index}
                 initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
                 animate={inView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.6, delay: index * 0.15 }}
+                transition={{ duration: 1.2, delay: index * 0.4, ease: "easeOut" }}
                 className={`relative lg:flex lg:items-center ${
                   index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
                 }`}
@@ -105,7 +105,7 @@ export const Process = () => {
                   <motion.div
                     initial={{ scale: 0 }}
                     animate={inView ? { scale: 1 } : {}}
-                    transition={{ duration: 0.4, delay: 0.3 + index * 0.15 }}
+                    transition={{ duration: 0.8, delay: 0.5 + index * 0.4, ease: "easeOut" }}
                     className="w-14 h-14 rounded-full bg-[#0A0A0A] border-2 border-[#00FF00] flex items-center justify-center neon-glow"
                   >
                     <step.icon className="w-6 h-6 text-[#00FF00]" />
