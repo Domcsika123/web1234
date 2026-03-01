@@ -1,45 +1,61 @@
 export const AuraCodeLogo = ({ className = "w-10 h-10", glowEffect = false }) => {
   return (
     <svg 
-      viewBox="0 0 100 100" 
+      viewBox="0 0 100 115" 
       className={className}
       style={glowEffect ? { filter: 'drop-shadow(0 0 10px rgba(0,255,0,0.6))' } : {}}
     >
-      {/* Hexagon outline */}
+      {/* Hexagon outline - taller/vertical orientation */}
       <polygon
-        points="50,5 93,27.5 93,72.5 50,95 7,72.5 7,27.5"
-        fill="none"
-        stroke="#00FF00"
-        strokeWidth="3"
-        strokeLinejoin="round"
-      />
-      
-      {/* Left bracket < */}
-      <path
-        d="M 38 32 L 22 50 L 38 68"
+        points="50,3 95,28 95,87 50,112 5,87 5,28"
         fill="none"
         stroke="#00FF00"
         strokeWidth="4"
+        strokeLinejoin="round"
+      />
+      
+      {/* Left bracket < (two lines) */}
+      <path
+        d="M 35 40 L 20 57.5 L 35 75"
+        fill="none"
+        stroke="#00FF00"
+        strokeWidth="5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M 45 40 L 30 57.5 L 45 75"
+        fill="none"
+        stroke="#00FF00"
+        strokeWidth="5"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       
-      {/* Right bracket > */}
+      {/* Right bracket > (two lines) */}
       <path
-        d="M 62 32 L 78 50 L 62 68"
+        d="M 65 40 L 80 57.5 L 65 75"
         fill="none"
         stroke="#00FF00"
-        strokeWidth="4"
+        strokeWidth="5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M 55 40 L 70 57.5 L 55 75"
+        fill="none"
+        stroke="#00FF00"
+        strokeWidth="5"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       
-      {/* Forward slash / */}
+      {/* Forward slash / in the middle */}
       <path
-        d="M 58 32 L 42 68"
+        d="M 56 30 L 44 85"
         fill="none"
         stroke="#00FF00"
-        strokeWidth="4"
+        strokeWidth="5"
         strokeLinecap="round"
       />
     </svg>
