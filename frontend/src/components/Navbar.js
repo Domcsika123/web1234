@@ -57,8 +57,8 @@ export const Navbar = () => {
                 alt="AuraCode Logo" 
                 className="h-10 w-10" 
                 style={{ 
-                  mixBlendMode: 'lighten',
-                  background: 'transparent'
+                  filter: 'brightness(1.2)',
+                  mixBlendMode: 'screen'
                 }} 
               />
               <span className="font-bold text-xl tracking-tight">AuraCode</span>

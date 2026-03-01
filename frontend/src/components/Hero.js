@@ -154,7 +154,7 @@ export const Hero = () => {
                 <div className="cube-container">
                   <div className="cube">
                     <div className="cube-face cube-face-front">
-                      <img src={LOGO_URL} alt="" className="w-20 h-20 opacity-80" style={{ mixBlendMode: 'lighten' }} />
+                      <img src={LOGO_URL} alt="" className="w-20 h-20 opacity-80" style={{ filter: 'brightness(1.2)', mixBlendMode: 'screen' }} />
                     </div>
                     <div className="cube-face cube-face-back">
                       <span className="text-[#00FF00] font-mono text-2xl">&lt;/&gt;</span>
