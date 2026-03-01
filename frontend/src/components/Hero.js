@@ -224,15 +224,7 @@ export const Hero = () => {
                   }}
                   transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
                 >
-                  <img 
-                    src={LOGO_URL} 
-                    alt="AuraCode" 
-                    className="w-24 h-24 lg:w-32 lg:h-32"
-                    style={{ 
-                      filter: 'brightness(1.5) drop-shadow(0 0 20px rgba(0,255,0,0.6))',
-                      mixBlendMode: 'lighten'
-                    }} 
-                  />
+                  <AuraCodeLogo className="w-24 h-24 lg:w-32 lg:h-32" glowEffect={true} />
                 </motion.div>
 
                 {/* Orbiting code symbols */}
