@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
-
-const LOGO_URL = "https://customer-assets.emergentagent.com/job_c38f2a46-25f2-4f3b-8851-63d8e67e81b9/artifacts/gttgy6ne_AuraCode%20logo.png";
+import { AuraCodeLogo } from './AuraCodeLogo';
 
 const navLinks = [
   { name: 'Szolgáltatások', href: '#services' },
@@ -52,15 +51,7 @@ export const Navbar = () => {
               whileHover={{ scale: 1.05 }}
               data-testid="navbar-logo"
             >
-              <img 
-                src={LOGO_URL} 
-                alt="AuraCode Logo" 
-                className="h-10 w-10" 
-                style={{ 
-                  filter: 'brightness(1.2)',
-                  mixBlendMode: 'screen'
-                }} 
-              />
+              <AuraCodeLogo className="h-10 w-10" />
               <span className="font-bold text-xl tracking-tight">AuraCode</span>
             </motion.a>
 
