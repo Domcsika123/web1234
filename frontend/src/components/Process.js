@@ -93,7 +93,7 @@ export const Process = () => {
           transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
           className="text-center mb-16"
         >
-          <span className="font-mono text-sm text-[#00FF00] tracking-wider">
+          <span className="font-mono text-base text-[#00FF00] tracking-wider">
             04 // HOGYAN DOLGOZUNK
           </span>
           <h2 className="text-headline font-bold mt-4" data-testid="process-headline">
@@ -108,7 +108,7 @@ export const Process = () => {
           {/* Timeline line */}
           <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-[#00FF00] via-[#00FF00]/50 to-transparent" />
 
-          <motion.div 
+          <motion.div
             className="space-y-8 lg:space-y-0"
             variants={containerVariants}
             initial="hidden"
@@ -119,23 +119,22 @@ export const Process = () => {
                 key={index}
                 custom={index}
                 variants={itemVariants}
-                className={`relative lg:flex lg:items-center ${
-                  index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
-                }`}
+                className={`relative lg:flex lg:items-center ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
+                  }`}
                 data-testid={`process-step-${index}`}
               >
                 {/* Content */}
                 <div className={`lg:w-1/2 ${index % 2 === 0 ? 'lg:pr-16 lg:text-right' : 'lg:pl-16'}`}>
                   <div className="glass p-6 lg:p-8 rounded-xl group hover:border-[#00FF00]/30 transition-colors duration-300">
                     <span className="font-mono text-[#00FF00] text-sm">{step.number}</span>
-                    
+
                     <div className="flex items-center gap-4 mt-3 mb-4">
                       <div className="p-2 rounded-lg bg-[#00FF00]/10 group-hover:bg-[#00FF00]/20 transition-colors duration-300 lg:hidden">
                         <step.icon className="w-5 h-5 text-[#00FF00]" />
                       </div>
                       <h3 className="text-xl font-bold">{step.title}</h3>
                     </div>
-                    
+
                     <p className="text-[#A1A1AA] leading-relaxed">
                       {step.description}
                     </p>

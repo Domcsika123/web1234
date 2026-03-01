@@ -51,7 +51,7 @@ const TestimonialCard = ({ testimonial, index }) => (
     data-testid={`testimonial-card-${index}`}
   >
     <Quote className="w-8 h-8 text-[#00FF00] mb-4 opacity-50" />
-    
+
     <p className="text-[#A1A1AA] leading-relaxed mb-6 text-sm">
       "{testimonial.quote}"
     </p>
@@ -92,7 +92,7 @@ export const Testimonials = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="font-mono text-sm text-[#00FF00] tracking-wider">
+          <span className="font-mono text-base text-[#00FF00] tracking-wider">
             06 // ÜGYFELEINK MONDJÁK
           </span>
           <h2 className="text-headline font-bold mt-4" data-testid="testimonials-headline">

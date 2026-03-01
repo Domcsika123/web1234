@@ -1,6 +1,14 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
-import { ArrowRight, ChevronDown } from 'lucide-react';
+import {
+  ArrowRight,
+  ChevronDown,
+  TrendingUp,
+  Zap,
+  Search,
+  Smartphone,
+  Cog,
+} from 'lucide-react';
 import { AuraCodeLogo } from './AuraCodeLogo';
 
 export const Hero = () => {
@@ -146,19 +154,19 @@ export const Hero = () => {
                       <AuraCodeLogo className="w-20 h-20" glowEffect={true} />
                     </div>
                     <div className="cube-face cube-face-back">
-                      <span className="text-[#00FF00] font-mono text-2xl">&lt;/&gt;</span>
+                      <TrendingUp className="w-12 h-12 text-[#00FF00]" strokeWidth={1.75} />
                     </div>
                     <div className="cube-face cube-face-right">
-                      <span className="text-[#00FF00] font-mono text-2xl">{'{}'}</span>
+                      <Zap className="w-12 h-12 text-[#00FF00]" strokeWidth={1.75} />
                     </div>
                     <div className="cube-face cube-face-left">
-                      <span className="text-[#00FF00] font-mono text-2xl">[ ]</span>
+                      <Search className="w-12 h-12 text-[#00FF00]" strokeWidth={1.75} />
                     </div>
                     <div className="cube-face cube-face-top">
-                      <span className="text-[#00FF00] font-mono text-2xl">( )</span>
+                      <Smartphone className="w-12 h-12 text-[#00FF00]" strokeWidth={1.75} />
                     </div>
                     <div className="cube-face cube-face-bottom">
-                      <span className="text-[#00FF00] font-mono text-2xl">;</span>
+                      <Cog className="w-12 h-12 text-[#00FF00]" strokeWidth={1.75} />
                     </div>
                   </div>
                 </div>

@@ -56,7 +56,7 @@ export const Approach = () => {
       data-testid="approach-section"
     >
       <div className="absolute inset-0 grid-bg opacity-30" />
-      
+
       <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
         <motion.div
           variants={containerVariants}
@@ -68,7 +68,7 @@ export const Approach = () => {
           <div>
             <motion.span
               variants={itemVariants}
-              className="font-mono text-sm text-[#00FF00] tracking-wider"
+              className="font-mono text-base text-[#00FF00] tracking-wider"
             >
               01 // A SZEMLÉLETÜNK
             </motion.span>
@@ -125,7 +125,7 @@ export const Approach = () => {
               <p className="text-[#52525B] font-mono text-sm mb-4">
                 Minden együttműködést egy egyszerű kérdéssel kezdünk:
               </p>
-              
+
               <h3 className="text-xl lg:text-2xl font-bold mb-8 text-[#00FF00]">
                 MIT SZERETNÉL ELÉRNI A DIGITÁLIS JELENLÉTEDDEL?
               </h3>

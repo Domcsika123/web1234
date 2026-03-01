@@ -49,7 +49,7 @@ export const Stats = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="font-mono text-sm text-[#00FF00] tracking-wider">
+          <span className="font-mono text-base text-[#00FF00] tracking-wider">
             02 // EREDMÉNYEINK
           </span>
         </motion.div>
@@ -69,7 +69,7 @@ export const Stats = () => {
                 <motion.div
                   className="absolute -inset-4 bg-[#00FF00]/10 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                 />
-                
+
                 <div className="stat-number relative">
                   {inView && (
                     <CountUp
@@ -85,7 +85,7 @@ export const Stats = () => {
               <h3 className="text-xl font-bold mt-4 mb-2 text-white">
                 {stat.label}
               </h3>
-              
+
               <p className="text-[#52525B] text-sm">
                 {stat.description}
               </p>
