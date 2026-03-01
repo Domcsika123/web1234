@@ -230,8 +230,8 @@ export const Hero = () => {
                     alt="AuraCode" 
                     className="w-24 h-24 lg:w-32 lg:h-32"
                     style={{ 
-                      filter: 'brightness(1.2) drop-shadow(0 0 20px rgba(0,255,0,0.6))',
-                      mixBlendMode: 'screen'
+                      filter: 'brightness(1.5) drop-shadow(0 0 20px rgba(0,255,0,0.6))',
+                      mixBlendMode: 'lighten'
                     }} 
                   />
                 </motion.div>
