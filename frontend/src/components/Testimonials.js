@@ -108,12 +108,12 @@ export const Testimonials = () => {
         <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#121212] to-transparent z-10" />
         <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#121212] to-transparent z-10" />
 
-        {/* First row - left to right */}
+        {/* Single row - left to right */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="flex mb-6 hide-scrollbar"
+          className="flex hide-scrollbar"
         >
           <motion.div
             animate={{ x: ['0%', '-50%'] }}
@@ -124,30 +124,8 @@ export const Testimonials = () => {
             }}
             className="flex"
           >
-            {duplicatedTestimonials.slice(0, 8).map((testimonial, index) => (
+            {duplicatedTestimonials.map((testimonial, index) => (
               <TestimonialCard key={index} testimonial={testimonial} index={index} />
-            ))}
-          </motion.div>
-        </motion.div>
-
-        {/* Second row - right to left */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="flex hide-scrollbar"
-        >
-          <motion.div
-            animate={{ x: ['-50%', '0%'] }}
-            transition={{
-              duration: 45,
-              repeat: Infinity,
-              ease: 'linear',
-            }}
-            className="flex"
-          >
-            {duplicatedTestimonials.slice(4, 12).map((testimonial, index) => (
-              <TestimonialCard key={index} testimonial={testimonial} index={index + 8} />
             ))}
           </motion.div>
         </motion.div>

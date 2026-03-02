@@ -1,5 +1,7 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { AuraCodeLogo } from './AuraCodeLogo';
+import { LegalModal } from './LegalModal';
 
 const footerLinks = [
   {
@@ -24,6 +26,7 @@ const footerLinks = [
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const [modal, setModal] = useState(null);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -44,10 +47,10 @@ export const Footer = () => {
               <AuraCodeLogo className="h-10 w-10" />
               <span className="font-bold text-xl tracking-tight">AuraCode</span>
             </motion.button>
-            
+
             <p className="text-[#A1A1AA] leading-relaxed max-w-md mb-6">
-              Prémium weboldalak kis- és középvállalkozások részére. 
-              Digitális partnerként dolgozunk a stratégiai tervezéstől 
+              Prémium weboldalak kis- és középvállalkozások részére.
+              Digitális partnerként dolgozunk a stratégiai tervezéstől
               a megvalósításon át a folyamatos fejlesztésig.
             </p>
 
@@ -89,17 +92,19 @@ export const Footer = () => {
           <p className="text-[#52525B] text-sm">
             © {currentYear} AuraCode. Minden jog fenntartva.
           </p>
-          
+
           <div className="flex gap-6 text-sm text-[#52525B]">
-            <a href="#" className="hover:text-[#A1A1AA] transition-colors">
+            <button onClick={() => setModal('privacy')} className="hover:text-[#A1A1AA] transition-colors">
               Adatvédelem
-            </a>
-            <a href="#" className="hover:text-[#A1A1AA] transition-colors">
+            </button>
+            <button onClick={() => setModal('aszf')} className="hover:text-[#A1A1AA] transition-colors">
               ÁSZF
-            </a>
+            </button>
           </div>
         </div>
       </div>
+
+      {modal && <LegalModal type={modal} onClose={() => setModal(null)} />}
     </footer>
   );
 };

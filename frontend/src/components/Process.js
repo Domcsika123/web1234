@@ -105,11 +105,11 @@ export const Process = () => {
         </motion.div>
 
         <div className="relative">
-          {/* Timeline line */}
+          {/* Timeline line - Desktop */}
           <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-[#00FF00] via-[#00FF00]/50 to-transparent" />
 
           <motion.div
-            className="space-y-8 lg:space-y-0"
+            className="space-y-0 lg:space-y-0"
             variants={containerVariants}
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
@@ -119,25 +119,37 @@ export const Process = () => {
                 key={index}
                 custom={index}
                 variants={itemVariants}
-                className={`relative lg:flex lg:items-center ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
-                  }`}
+                className={`relative lg:flex lg:items-center ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}
                 data-testid={`process-step-${index}`}
               >
-                {/* Content */}
-                <div className={`lg:w-1/2 ${index % 2 === 0 ? 'lg:pr-16 lg:text-right' : 'lg:pl-16'}`}>
+                {/* Mobile layout */}
+                <div className="lg:hidden flex gap-4 mb-6">
+                  <div className="flex flex-col items-center flex-shrink-0">
+                    <motion.div
+                      variants={dotVariants}
+                      className="w-12 h-12 rounded-full bg-[#0A0A0A] border-2 border-[#00FF00] flex items-center justify-center neon-glow"
+                    >
+                      <step.icon className="w-5 h-5 text-[#00FF00]" />
+                    </motion.div>
+                    {index < steps.length - 1 && (
+                      <div className="w-[2px] flex-1 min-h-[2rem] bg-gradient-to-b from-[#00FF00]/60 to-transparent mt-2" />
+                    )}
+                  </div>
+                  <div className="glass p-5 rounded-xl flex-1">
+                    <span className="font-mono text-[#00FF00] text-sm">{step.number}</span>
+                    <h3 className="text-lg font-bold mt-2 mb-2">{step.title}</h3>
+                    <p className="text-[#A1A1AA] leading-relaxed text-sm">{step.description}</p>
+                  </div>
+                </div>
+
+                {/* Desktop layout - Content */}
+                <div className={`hidden lg:block lg:w-1/2 ${index % 2 === 0 ? 'lg:pr-16 lg:text-right' : 'lg:pl-16'}`}>
                   <div className="glass p-6 lg:p-8 rounded-xl group hover:border-[#00FF00]/30 transition-colors duration-300">
                     <span className="font-mono text-[#00FF00] text-sm">{step.number}</span>
-
                     <div className="flex items-center gap-4 mt-3 mb-4">
-                      <div className="p-2 rounded-lg bg-[#00FF00]/10 group-hover:bg-[#00FF00]/20 transition-colors duration-300 lg:hidden">
-                        <step.icon className="w-5 h-5 text-[#00FF00]" />
-                      </div>
                       <h3 className="text-xl font-bold">{step.title}</h3>
                     </div>
-
-                    <p className="text-[#A1A1AA] leading-relaxed">
-                      {step.description}
-                    </p>
+                    <p className="text-[#A1A1AA] leading-relaxed">{step.description}</p>
                   </div>
                 </div>
 
@@ -151,7 +163,7 @@ export const Process = () => {
                   </motion.div>
                 </div>
 
-                {/* Empty space for the other side */}
+                {/* Empty space for the other side - Desktop */}
                 <div className="hidden lg:block lg:w-1/2" />
               </motion.div>
             ))}

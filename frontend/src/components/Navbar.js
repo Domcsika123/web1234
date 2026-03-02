@@ -24,11 +24,15 @@ export const Navbar = () => {
   }, []);
 
   const scrollToSection = (href) => {
+    const isMobile = window.innerWidth < 768;
     setIsMobileMenuOpen(false);
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    setTimeout(() => {
+      const element = document.querySelector(href);
+      if (element) {
+        const top = element.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({ top, behavior: isMobile ? 'instant' : 'smooth' });
+      }
+    }, isMobile ? 350 : 0);
   };
 
   return (

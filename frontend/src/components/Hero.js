@@ -18,7 +18,8 @@ export const Hero = () => {
     offset: ['start start', 'end start']
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
+  const isMobile = typeof window !== 'undefined' && window.matchMedia('(max-width: 768px)').matches;
+  const y = useTransform(scrollYProgress, [0, 1], isMobile ? [0, 0] : [0, 200]);
   const opacity = useTransform(scrollYProgress, [0.25, 0.8], [1, 0]);
 
   const scrollToSection = (href) => {
@@ -61,7 +62,7 @@ export const Hero = () => {
         ))}
       </div>
 
-      <motion.div style={{ y, opacity }} className="w-full">
+      <motion.div style={{ y, opacity, willChange: 'transform', backfaceVisibility: 'hidden' }} className="w-full">
         <div className="max-w-7xl mx-auto px-6 lg:px-12 pt-32 pb-20">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Text Content */}
