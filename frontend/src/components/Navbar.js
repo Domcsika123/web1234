@@ -126,8 +126,8 @@ export const Navbar = () => {
               ))}
               <motion.button
                 onClick={() => scrollToSection('#contact')}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
                 transition={{ delay: navLinks.length * 0.1 }}
                 className="btn-primary text-lg mt-4 w-full"
                 data-testid="mobile-cta"
