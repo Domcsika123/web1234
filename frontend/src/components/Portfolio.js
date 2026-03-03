@@ -182,11 +182,10 @@ export const Portfolio = () => {
           {projects.map((_, index) => (
             <div
               key={index}
-              className={`rounded-full transition-all duration-300 ${
-                activeIndex === index
+              className={`rounded-full transition-all duration-300 ${activeIndex === index
                   ? 'w-4 h-2 bg-[#00FF00]'
                   : 'w-2 h-2 bg-[#ffffff20]'
-              }`}
+                }`}
             />
           ))}
         </div>

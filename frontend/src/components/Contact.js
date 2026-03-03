@@ -83,7 +83,7 @@ export const Contact = () => {
             08 // KEZDJÜK EL
           </span>
           <h2 className="text-headline font-bold mt-4" data-testid="contact-headline">
-            Kérj egyedi ajánlatot
+            Kérj <span className="gradient-text">egyedi ajánlatot</span>
           </h2>
           <p className="text-[#A1A1AA] mt-4 max-w-xl mx-auto">
             Építsünk egy olyan oldalt, ami valóban a te cégedet képviseli

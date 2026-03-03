@@ -43,7 +43,7 @@ export const Hero = () => {
         {[...Array(20)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-1 h-1 bg-[#00FF00] rounded-full"
+            className="absolute w-1.5 h-1.5 bg-[#00FF00] rounded-full"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
@@ -51,7 +51,7 @@ export const Hero = () => {
             animate={{
               y: [0, -100, 0],
               x: [0, Math.random() * 50 - 25, 0],
-              opacity: [0.2, 0.8, 0.2],
+              opacity: [0.35, 1, 0.35],
             }}
             transition={{
               duration: 5 + Math.random() * 5,
@@ -75,8 +75,7 @@ export const Hero = () => {
                 data-testid="hero-headline"
               >
                 Digitális jelenlét{' '}
-                <span className="gradient-text">vállalkozásod</span>{' '}
-                növekedéséhez
+                <span className="gradient-text">vállalkozásod növekedéséhez</span>
               </motion.h1>
 
               <motion.p
@@ -108,13 +107,13 @@ export const Hero = () => {
                 </motion.button>
 
                 <motion.button
-                  onClick={() => scrollToSection('#portfolio')}
+                  onClick={() => scrollToSection('#services')}
                   className="btn-secondary"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   data-testid="hero-cta-secondary"
                 >
-                  Referenciák megtekintése
+                  Szolgáltatások megtekintése
                 </motion.button>
               </motion.div>
 

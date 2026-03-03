@@ -6,8 +6,6 @@ import { AuraCodeLogo } from './AuraCodeLogo';
 const navLinks = [
   { name: 'Szolgáltatások', href: '#services' },
   { name: 'Folyamat', href: '#process' },
-  { name: 'Referenciák', href: '#portfolio' },
-  { name: 'Vélemények', href: '#testimonials' },
   { name: 'GYIK', href: '#faq' },
 ];
 
@@ -41,9 +39,8 @@ export const Navbar = () => {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: 'easeOut' }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled ? 'glass' : 'bg-transparent'
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'glass' : 'bg-transparent'
+          }`}
         data-testid="navbar"
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
@@ -56,7 +53,9 @@ export const Navbar = () => {
               data-testid="navbar-logo"
             >
               <AuraCodeLogo className="h-10 w-10" />
-              <span className="font-bold text-xl tracking-tight">AuraCode</span>
+              <span className="font-extrabold text-xl tracking-tight">
+                Aura<span className="gradient-text font-extrabold">Code</span>
+              </span>
             </motion.a>
 
             {/* Desktop Navigation */}

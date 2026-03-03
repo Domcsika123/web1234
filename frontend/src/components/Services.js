@@ -103,8 +103,8 @@ export const Services = () => {
             </span>
             <div className="mt-4">
               <h2 className="text-headline font-bold max-w-xl" data-testid="services-headline">
-                Nem csak egy weboldalt, hanem egy{' '}
-                <span className="gradient-text">működő ügyfélszerző rendszert</span>
+                Nem csak egy weboldalt, hanem egy működő{' '}
+                <span className="gradient-text">ügyfélszerző rendszert</span>
               </h2>
               <p className="text-[#A1A1AA] mt-4 max-w-xs">
                 Minden fontos elemmel, ami a sikeres online jelenléthez kell
@@ -130,41 +130,36 @@ export const Services = () => {
                 >
                   {/* Left accent bar */}
                   <div
-                    className={`absolute left-0 top-4 bottom-4 w-[2px] bg-[#00FF00] rounded-full transition-transform duration-300 origin-top ${
-                      isActive ? 'scale-y-100' : 'scale-y-0'
-                    }`}
+                    className={`absolute left-0 top-4 bottom-4 w-[2px] bg-[#00FF00] rounded-full transition-transform duration-300 origin-top ${isActive ? 'scale-y-100' : 'scale-y-0'
+                      }`}
                   />
 
                   {/* Number */}
                   <span
-                    className={`font-mono text-xs pt-1 flex-shrink-0 w-6 transition-colors duration-300 ${
-                      isActive ? 'text-[#00FF00]/50' : 'text-[#ffffff15]'
-                    }`}
+                    className={`font-mono text-xs pt-1 flex-shrink-0 w-6 transition-colors duration-300 ${isActive ? 'text-[#00FF00]/50' : 'text-[#ffffff15]'
+                      }`}
                   >
                     {String(index + 1).padStart(2, '0')}
                   </span>
 
                   {/* Icon box */}
                   <div
-                    className={`flex-shrink-0 p-2.5 rounded-lg border transition-all duration-300 mt-0.5 ${
-                      isActive
-                        ? 'bg-[#00FF00]/10 border-[#00FF00]/25'
-                        : 'bg-[#ffffff05] border-[#ffffff08]'
-                    }`}
+                    className={`flex-shrink-0 p-2.5 rounded-lg border transition-all duration-300 mt-0.5 ${isActive
+                      ? 'bg-[#00FF00]/10 border-[#00FF00]/25'
+                      : 'bg-[#ffffff05] border-[#ffffff08]'
+                      }`}
                   >
                     <service.icon
-                      className={`w-5 h-5 transition-colors duration-300 ${
-                        isActive ? 'text-[#00FF00]' : 'text-[#52525B]'
-                      }`}
+                      className={`w-5 h-5 transition-colors duration-300 ${isActive ? 'text-[#00FF00]' : 'text-[#52525B]'
+                        }`}
                     />
                   </div>
 
                   {/* Content */}
                   <div className="flex-1">
                     <h3
-                      className={`text-base font-bold mb-1.5 transition-colors duration-300 ${
-                        isActive ? 'text-[#00FF00]' : 'text-white'
-                      }`}
+                      className={`text-base font-bold mb-1.5 transition-colors duration-300 ${isActive ? 'text-[#00FF00]' : 'text-white'
+                        }`}
                     >
                       {service.title}
                     </h3>
@@ -191,8 +186,8 @@ export const Services = () => {
               03 // AMIT KAPSZ TŐLÜNK
             </span>
             <h2 className="text-headline font-bold mt-4" data-testid="services-headline-desktop">
-              Nem csak egy weboldalt, hanem egy{' '}
-              <span className="gradient-text">működő ügyfélszerző rendszert</span>
+              Nem csak egy weboldalt, hanem egy működő{' '}
+              <span className="gradient-text">ügyfélszerző rendszert</span>
             </h2>
             <p className="text-[#A1A1AA] mt-4 max-w-2xl mx-auto">
               Minden fontos elemmel, ami a sikeres online jelenléthez kell

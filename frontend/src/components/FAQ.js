@@ -60,7 +60,7 @@ export const FAQ = () => {
             07 // GYAKORI KÉRDÉSEK
           </span>
           <h2 className="text-headline font-bold mt-4" data-testid="faq-headline">
-            Minden, amit tudnod kell
+            Minden, amit <span className="gradient-text">tudnod kell</span>
           </h2>
           <p className="text-[#A1A1AA] mt-4">
             Az oldalkészítésről egyszerűen
