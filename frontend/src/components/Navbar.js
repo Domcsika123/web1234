@@ -64,7 +64,7 @@ export const Navbar = () => {
                 <motion.button
                   key={link.name}
                   onClick={() => scrollToSection(link.href)}
-                  className="text-sm text-[#A1A1AA] hover:text-white transition-colors font-medium"
+                  className="nav-link-underline text-sm text-[#A1A1AA] hover:text-white transition-colors font-medium"
                   whileHover={{ y: -2 }}
                   data-testid={`nav-link-${link.name.toLowerCase()}`}
                 >

@@ -77,7 +77,7 @@ export const FAQ = () => {
               <AccordionItem
                 key={index}
                 value={`item-${index}`}
-                className="faq-item border-b border-[#ffffff10] pb-4"
+                className="faq-item pb-4"
                 data-testid={`faq-item-${index}`}
               >
                 <AccordionTrigger className="faq-trigger text-left text-lg font-semibold hover:no-underline py-4 [&[data-state=open]]:text-[#00FF00]">
