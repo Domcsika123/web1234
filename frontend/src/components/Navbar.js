@@ -124,16 +124,19 @@ export const Navbar = () => {
                   {link.name}
                 </motion.button>
               ))}
-              <motion.button
-                onClick={() => scrollToSection('#contact')}
+              <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: navLinks.length * 0.1 }}
-                className="btn-primary text-lg mt-4 w-full"
-                data-testid="mobile-cta"
               >
-                Ingyenes konzultáció
-              </motion.button>
+                <button
+                  onClick={() => scrollToSection('#contact')}
+                  className="btn-primary text-lg mt-4 w-full"
+                  data-testid="mobile-cta"
+                >
+                  Ingyenes konzultáció
+                </button>
+              </motion.div>
             </div>
           </motion.div>
         )}

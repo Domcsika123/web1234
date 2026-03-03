@@ -102,14 +102,14 @@ export const Contact = () => {
               Ajánlatkérés kötelezettségek nélkül. Te döntesz.
             </p>
 
-            <div className="space-y-6 mb-12">
+            <div className="divide-y divide-[#ffffff08] mb-12">
               {contactInfo.map((info, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0 }}
                   animate={inView ? { opacity: 1 } : {}}
                   transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
-                  className="flex items-start gap-4"
+                  className="flex items-start gap-4 py-5"
                   data-testid={`contact-info-${index}`}
                 >
                   <div className="p-3 rounded-lg bg-[#00FF00]/10">
