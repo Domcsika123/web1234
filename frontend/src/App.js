@@ -12,6 +12,7 @@ import { FAQ } from "./components/FAQ";
 import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
 import { GastroPreview } from "./components/previews/GastroPreview";
+import { FitnessPreview } from "./components/previews/FitnessPreview";
 
 function App() {
   useEffect(() => {
@@ -48,6 +49,7 @@ function App() {
           }
         />
         <Route path="/preview/gastro" element={<GastroPreview />} />
+        <Route path="/preview/fitness" element={<FitnessPreview />} />
       </Routes>
     </BrowserRouter>
   );

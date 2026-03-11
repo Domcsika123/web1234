@@ -40,8 +40,8 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.5,
-      delayChildren: 0.3,
+      staggerChildren: 0.6,
+      delayChildren: 0.4,
     },
   },
 };
@@ -55,7 +55,7 @@ const itemVariants = {
     opacity: 1,
     x: 0,
     transition: {
-      duration: 1.2,
+      duration: 1.4,
       ease: [0.25, 0.1, 0.25, 1],
     },
   },
@@ -67,7 +67,7 @@ const dotVariants = {
     scale: 1,
     opacity: 1,
     transition: {
-      duration: 0.7,
+      duration: 0.85,
       ease: [0.34, 1.56, 0.64, 1],
     },
   },
@@ -76,7 +76,7 @@ const dotVariants = {
 export const Process = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
-    threshold: 0.1,
+    threshold: 0.35,
   });
 
   return (

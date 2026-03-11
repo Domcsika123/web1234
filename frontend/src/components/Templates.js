@@ -18,8 +18,8 @@ const templates = [
         title: 'Konditerem weboldal',
         category: 'Fitness',
         description: 'Bérlet- és órarendközpontú landing oldal edzői bemutatkozással és CTA blokkokkal.',
-        href: 'preview.html?theme=fitness',
-        image: 'https://picsum.photos/seed/fitness-template/900/560',
+        previewRoute: '/preview/fitness',
+        image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=900&q=80',
     },
     {
         id: 'law',
@@ -57,7 +57,6 @@ const templates = [
 
 const TemplateCard = ({ template, index, mobile = false, onPreview, isExpanding }) => (
     <motion.article
-        layoutId={`card-container-${template.id}`}
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
@@ -65,20 +64,16 @@ const TemplateCard = ({ template, index, mobile = false, onPreview, isExpanding 
         className={`group relative overflow-hidden rounded-[12px] border border-[#ffffff1a] bg-[#1e1e1e] transition-all duration-300 hover:-translate-y-[5px] ${mobile ? 'min-w-[88%] snap-start' : ''} ${isExpanding ? 'invisible' : ''}`}
         data-testid={`template-card-${index}`}
     >
-        <span className="absolute right-3 top-3 z-10 rounded-full border border-[#00FF00]/30 bg-[#0A0A0A]/90 px-2.5 py-1 text-[11px] font-medium text-[#00FF00]">
-            {template.category}
-        </span>
-
-        <motion.div layoutId={`card-image-${template.id}`} className="aspect-[16/10] w-full overflow-hidden">
+        <div className="aspect-[16/10] w-full overflow-hidden">
             <img
                 src={template.image}
                 alt={`${template.title} sablon előnézet`}
                 className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                 loading="lazy"
             />
-        </motion.div>
+        </div>
 
-        <motion.div layoutId={`card-content-${template.id}`} className="p-5">
+        <div className="p-5">
             <h3 className="text-xl font-bold text-white">{template.title}</h3>
             <p className="mt-2 text-sm leading-relaxed text-[#A1A1AA]">{template.description}</p>
             <button
@@ -88,7 +83,7 @@ const TemplateCard = ({ template, index, mobile = false, onPreview, isExpanding 
             >
                 Előnézet
             </button>
-        </motion.div>
+        </div>
     </motion.article>
 );
 
@@ -103,9 +98,9 @@ export const Templates = () => {
 
     const handlePreview = (template) => {
         if (template.previewRoute) {
-            if (template.id === 'gastro' && window.innerWidth >= 1024) {
+            if (window.innerWidth >= 1024) {
                 setExpandedTemplate(template);
-                setTimeout(() => setShowIframe(true), 500);
+                setTimeout(() => setShowIframe(true), 380);
                 return;
             }
             navigate(template.previewRoute);
@@ -114,7 +109,8 @@ export const Templates = () => {
 
     const handleClose = () => {
         setShowIframe(false);
-        setTimeout(() => setExpandedTemplate(null), 50);
+        // Megvárjuk az animáció végét (0.65s = 650ms) mielőtt eltávolítjuk a DOM-ból
+        setTimeout(() => setExpandedTemplate(null), 650);
     };
 
     return (
@@ -140,7 +136,7 @@ export const Templates = () => {
                         Választható <span className="gradient-text">iparági sablonok</span>
                     </h2>
                     <p className="mt-4 text-[#A1A1AA] lg:max-w-2xl lg:mx-auto">
-                        Kész, modern alapok, amelyeket a márkádra szabunk.
+                        Ezek csak kiindulópontok. Bármilyen egyedi funkciót vagy designt megvalósítunk.
                     </p>
                 </motion.div>
 
@@ -173,7 +169,7 @@ export const Templates = () => {
             </div>
 
             {/* Expanding Preview Overlay */}
-            <AnimatePresence>
+            <AnimatePresence mode="wait">
                 {expandedTemplate && (
                     <>
                         {/* Backdrop */}
@@ -181,37 +177,40 @@ export const Templates = () => {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            transition={{ duration: 0.3 }}
+                            transition={{ duration: 0.35, ease: 'easeInOut' }}
                             className="fixed inset-0 z-40 bg-black/80 backdrop-blur-sm"
                             onClick={handleClose}
                         />
 
                         {/* Expanding Card → Fullscreen */}
                         <motion.div
-                            layoutId={`card-container-${expandedTemplate.id}`}
                             className="fixed z-50 overflow-hidden rounded-xl border border-[#ffffff1a] bg-[#0a0a0a]"
-                            initial={false}
-                            animate={{
+                            style={{
                                 top: '3vh',
                                 left: '2.5vw',
                                 width: '95vw',
                                 height: '94vh',
-                                borderRadius: '12px',
+                            }}
+                            initial={{ opacity: 0, y: '100vh' }}
+                            animate={{
+                                opacity: 1,
+                                y: 0,
                             }}
                             exit={{
-                                borderRadius: '12px',
+                                opacity: 0,
+                                y: '100vh',
                             }}
                             transition={{
-                                type: 'spring',
-                                stiffness: 200,
-                                damping: 30,
+                                duration: 0.65,
+                                ease: [0.32, 0.72, 0, 1],
                             }}
                         >
                             {/* Close button */}
                             <motion.button
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ delay: 0.3 }}
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0.9 }}
+                                transition={{ duration: 0.3, ease: 'easeInOut' }}
                                 onClick={handleClose}
                                 className="absolute top-4 right-4 z-50 p-2 rounded-full bg-[#121212]/90 border border-[#00FF00]/30 text-[#00FF00] hover:bg-[#00FF00] hover:text-[#0a0a0a] transition-colors"
                             >
@@ -220,26 +219,23 @@ export const Templates = () => {
 
                             {/* Transitioning Image */}
                             {!showIframe && (
-                                <motion.div
-                                    layoutId={`card-image-${expandedTemplate.id}`}
-                                    className="w-full h-full"
-                                >
+                                <div className="w-full h-full">
                                     <img
                                         src={expandedTemplate.image}
                                         alt={expandedTemplate.title}
                                         className="w-full h-full object-cover"
                                     />
-                                </motion.div>
+                                </div>
                             )}
 
                             {/* Iframe fades in after expansion */}
                             <AnimatePresence>
                                 {showIframe && (
                                     <motion.iframe
-                                        initial={{ opacity: 0 }}
-                                        animate={{ opacity: 1 }}
-                                        exit={{ opacity: 0 }}
-                                        transition={{ duration: 0.3 }}
+                                        initial={{ opacity: 0, scale: 0.95 }}
+                                        animate={{ opacity: 1, scale: 1 }}
+                                        exit={{ opacity: 0, scale: 0.95 }}
+                                        transition={{ duration: 0.35, ease: 'easeInOut' }}
                                         src={`${expandedTemplate.previewRoute}?embed=true`}
                                         title={`${expandedTemplate.title} előnézet`}
                                         className="absolute inset-0 w-full h-full border-0"
