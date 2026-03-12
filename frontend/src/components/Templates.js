@@ -26,32 +26,32 @@ const templates = [
         title: 'Ügyvédi iroda weboldal',
         category: 'Law',
         description: 'Bizalmat építő vállalati megjelenés, szolgáltatásfókuszú struktúra és kapcsolatfelvétel.',
-        href: 'preview.html?theme=law',
-        image: 'https://picsum.photos/seed/law-template/900/560',
+        previewRoute: '/preview/law',
+        image: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=900&q=80',
     },
     {
         id: 'barber',
-        title: 'Fodrászat weboldal',
+        title: 'Borbélyszalon weboldal',
         category: 'Beauty',
         description: 'Időpontfoglalásra optimalizált, vizuálisan erős sablon szolgáltatás- és árlistával.',
-        href: 'preview.html?theme=barber',
-        image: 'https://picsum.photos/seed/barber-template/900/560',
+        previewRoute: '/preview/barber',
+        image: 'https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=900&q=80',
     },
     {
         id: 'wedding',
         title: 'Esküvői dekoráció',
         category: 'Wedding',
         description: 'Portfólió- és ajánlatkérés-központú sablon prémium vizuális hangsúlyokkal.',
-        href: 'preview.html?theme=wedding',
-        image: 'https://picsum.photos/seed/wedding-template/900/560',
+        previewRoute: '/preview/wedding',
+        image: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=80',
     },
     {
         id: 'moto',
-        title: 'Motor tartozék webshop',
-        category: 'E-commerce',
-        description: 'Termékfókuszú webshop struktúra gyors navigációval és konverzióra hangolt felülettel.',
-        href: 'preview.html?theme=moto-shop',
-        image: 'https://picsum.photos/seed/moto-template/900/560',
+        title: 'Szépségszalon weboldal',
+        category: 'Beauty',
+        description: 'Prémium megjelenésű sablon online időpontfoglaláshoz, kezelési listához és bizalomépítő bemutatkozáshoz.',
+        previewRoute: '/preview/beauty',
+        image: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=900&q=80',
     },
 ];
 
@@ -61,7 +61,7 @@ const TemplateCard = ({ template, index, mobile = false, onPreview, isExpanding 
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.45, delay: index * 0.06 }}
-        className={`group relative overflow-hidden rounded-[12px] border border-[#ffffff1a] bg-[#1e1e1e] transition-all duration-300 hover:-translate-y-[5px] ${mobile ? 'min-w-[88%] snap-start' : ''} ${isExpanding ? 'invisible' : ''}`}
+        className={`group relative overflow-hidden rounded-[12px] border border-[#ffffff1a] bg-[#1e1e1e] transition-all duration-300 hover:-translate-y-[5px] ${mobile ? 'min-w-[78%] max-w-[78%] snap-start flex-shrink-0' : ''} ${isExpanding ? 'invisible' : ''}`}
         data-testid={`template-card-${index}`}
     >
         <div className="aspect-[16/10] w-full overflow-hidden">
@@ -140,8 +140,8 @@ export const Templates = () => {
                     </p>
                 </motion.div>
 
-                <div className="lg:hidden -mx-6 px-6 overflow-x-auto hide-scrollbar">
-                    <div className="flex snap-x snap-mandatory gap-4 pb-2">
+                <div className="lg:hidden -mx-6 px-6 overflow-x-auto hide-scrollbar" style={{ scrollPaddingLeft: '24px' }}>
+                    <div className="flex snap-x snap-mandatory gap-4 pb-2" style={{ paddingRight: '24px' }}>
                         {templates.map((template, index) => (
                             <TemplateCard
                                 key={template.id}

@@ -13,6 +13,10 @@ import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
 import { GastroPreview } from "./components/previews/GastroPreview";
 import { FitnessPreview } from "./components/previews/FitnessPreview";
+import { LawPreview } from "./components/previews/LawPreview";
+import { BarberPreview } from "./components/previews/BarberPreview";
+import { WeddingPreview } from "./components/previews/WeddingPreview";
+import { BeautyPreview } from "./components/previews/BeautyPreview";
 
 function App() {
   useEffect(() => {
@@ -50,6 +54,10 @@ function App() {
         />
         <Route path="/preview/gastro" element={<GastroPreview />} />
         <Route path="/preview/fitness" element={<FitnessPreview />} />
+        <Route path="/preview/law" element={<LawPreview />} />
+        <Route path="/preview/barber" element={<BarberPreview />} />
+        <Route path="/preview/wedding" element={<WeddingPreview />} />
+        <Route path="/preview/beauty" element={<BeautyPreview />} />
       </Routes>
     </BrowserRouter>
   );

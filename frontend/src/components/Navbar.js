@@ -5,6 +5,7 @@ import { AuraCodeLogo } from './AuraCodeLogo';
 
 const navLinks = [
   { name: 'Szolgáltatások', href: '#services' },
+  { name: 'Sablonok', href: '#templates' },
   { name: 'Folyamat', href: '#process' },
   { name: 'GYIK', href: '#faq' },
 ];
@@ -53,8 +54,8 @@ export const Navbar = () => {
               data-testid="navbar-logo"
             >
               <AuraCodeLogo className="h-10 w-10" />
-              <span className="font-extrabold text-xl tracking-tight">
-                Aura<span className="gradient-text font-extrabold">Code</span>
+              <span className="font-black text-xl tracking-tight" style={{ fontWeight: 900, WebkitTextStroke: '0.35px rgba(255,255,255,0.55)' }}>
+                Aura<span className="gradient-text font-black" style={{ fontWeight: 900, WebkitTextStroke: '0.35px rgba(0,255,0,0.4)' }}>Code</span>
               </span>
             </motion.a>
 

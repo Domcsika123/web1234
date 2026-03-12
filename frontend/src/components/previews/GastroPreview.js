@@ -9,15 +9,15 @@ import { ArrowLeft, MapPin, Clock, Instagram } from 'lucide-react';
 ───────────────────────────────────────────────────────────── */
 
 const menuLeft = [
-    { name: 'Wagyu Tataki', desc: 'A5 wagyu, ponzu, fokhagyma chips', price: '14 900 Ft' },
-    { name: 'Truffle Risotto', desc: 'Carnaroli, mascarpone, fekete szarvasgomba', price: '9 800 Ft' },
-    { name: 'Foie Gras Terrine', desc: 'Libamáj, brioche, karamell körte', price: '11 500 Ft' },
+    { name: 'Wagyu Tataki', desc: 'A5 wagyu, ponzu, fokhagyma chips', price: '14 900 Ft', image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=200&q=80' },
+    { name: 'Truffle Risotto', desc: 'Carnaroli, mascarpone, fekete szarvasgomba', price: '9 800 Ft', image: 'https://images.unsplash.com/photo-1476124369491-e7addf5db371?auto=format&fit=crop&w=200&q=80' },
+    { name: 'Foie Gras Terrine', desc: 'Libamáj, brioche, karamell körte', price: '11 500 Ft', image: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=200&q=80' },
 ];
 
 const menuRight = [
-    { name: 'Tomahawk Steak', desc: '1.2 kg dry-aged marha, vörösbor jus', price: '32 000 Ft' },
-    { name: 'Languszta', desc: 'Maine languszta, citrusos hollandaise', price: '28 900 Ft' },
-    { name: 'Chocolate Sphere', desc: 'Valrhona, arany, passionfruit', price: '5 900 Ft' },
+    { name: 'Tomahawk Steak', desc: '1.2 kg dry-aged marha, vörösbor jus', price: '32 000 Ft', image: 'https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=200&q=80' },
+    { name: 'Languszta', desc: 'Maine languszta, citrusos hollandaise', price: '28 900 Ft', image: 'https://images.unsplash.com/photo-1559737558-2f5a35f4523b?auto=format&fit=crop&w=200&q=80' },
+    { name: 'Chocolate Sphere', desc: 'Valrhona, arany, passionfruit', price: '5 900 Ft', image: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=200&q=80' },
 ];
 
 export const GastroPreview = () => {
@@ -50,7 +50,7 @@ export const GastroPreview = () => {
                     >
                         <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
                             <button
-                                onClick={() => navigate('/#templates')}
+                                onClick={() => { navigate('/'); setTimeout(() => document.getElementById('templates')?.scrollIntoView({ behavior: 'smooth' }), 100); }}
                                 className="flex items-center gap-2 text-[#00FF00] font-semibold hover:text-white transition-colors"
                             >
                                 <ArrowLeft size={18} />
@@ -203,15 +203,18 @@ export const GastroPreview = () => {
                                         whileInView={{ opacity: 1, y: 0 }}
                                         viewport={{ once: true }}
                                         transition={{ duration: 0.4, delay: i * 0.1 }}
-                                        className="flex justify-between items-start py-6 border-b border-[#D4AF37]/20 group"
+                                        className="flex items-center gap-4 py-5 border-b border-[#D4AF37]/20 group"
                                     >
-                                        <div>
+                                        <div className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
+                                            <img src={item.image} alt={item.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" />
+                                        </div>
+                                        <div className="flex-1 min-w-0">
                                             <h3 className="text-[#D4AF37] font-semibold text-lg group-hover:text-white transition-colors">
                                                 {item.name}
                                             </h3>
-                                            <p className="text-white/40 text-sm mt-1">{item.desc}</p>
+                                            <p className="text-white/40 text-sm mt-0.5">{item.desc}</p>
                                         </div>
-                                        <span className="text-white/70 font-medium ml-4 whitespace-nowrap">{item.price}</span>
+                                        <span className="text-white/70 font-medium ml-2 whitespace-nowrap">{item.price}</span>
                                     </motion.div>
                                 ))}
                             </div>
@@ -225,15 +228,18 @@ export const GastroPreview = () => {
                                         whileInView={{ opacity: 1, y: 0 }}
                                         viewport={{ once: true }}
                                         transition={{ duration: 0.4, delay: i * 0.1 + 0.15 }}
-                                        className="flex justify-between items-start py-6 border-b border-[#D4AF37]/20 group"
+                                        className="flex items-center gap-4 py-5 border-b border-[#D4AF37]/20 group"
                                     >
-                                        <div>
+                                        <div className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
+                                            <img src={item.image} alt={item.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" />
+                                        </div>
+                                        <div className="flex-1 min-w-0">
                                             <h3 className="text-[#D4AF37] font-semibold text-lg group-hover:text-white transition-colors">
                                                 {item.name}
                                             </h3>
-                                            <p className="text-white/40 text-sm mt-1">{item.desc}</p>
+                                            <p className="text-white/40 text-sm mt-0.5">{item.desc}</p>
                                         </div>
-                                        <span className="text-white/70 font-medium ml-4 whitespace-nowrap">{item.price}</span>
+                                        <span className="text-white/70 font-medium ml-2 whitespace-nowrap">{item.price}</span>
                                     </motion.div>
                                 ))}
                             </div>
