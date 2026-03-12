@@ -356,6 +356,9 @@ section {
 
   .cube-face-front {
     transform: translateZ(70px);
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
   }
 
   .cube-face-back {
