@@ -87,7 +87,7 @@ export const Approach = () => {
                 Szép, de nem támogatja tudatosan az ügyfélszerzést.
               </p>
               <p className="text-[#A1A1AA]">
-                Megvan, de nincs összehangolva a vállalkozás céljaival.
+                Modern, viszont nem felhasználóbarát.
               </p>
             </motion.div>
 

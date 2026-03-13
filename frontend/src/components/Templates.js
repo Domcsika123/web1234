@@ -5,7 +5,7 @@ import { useInView } from 'react-intersection-observer';
 const templates = [
     {
         id: 'gastro',
-        title: 'Étterem weboldal',
+        title: 'Étterem',
         category: 'Gastro',
         description: 'Modern éttermi bemutatkozó oldal online asztalfoglalás fókuszú felépítéssel.',
         previewRoute: '/preview/gastro',
@@ -13,7 +13,7 @@ const templates = [
     },
     {
         id: 'fitness',
-        title: 'Konditerem weboldal',
+        title: 'Konditerem',
         category: 'Fitness',
         description: 'Bérlet- és órarendközpontú landing oldal edzői bemutatkozással és CTA blokkokkal.',
         previewRoute: '/preview/fitness',
@@ -21,7 +21,7 @@ const templates = [
     },
     {
         id: 'law',
-        title: 'Ügyvédi iroda weboldal',
+        title: 'Ügyvédi iroda',
         category: 'Law',
         description: 'Bizalmat építő vállalati megjelenés, szolgáltatásfókuszú struktúra és kapcsolatfelvétel.',
         previewRoute: '/preview/law',
@@ -29,7 +29,7 @@ const templates = [
     },
     {
         id: 'barber',
-        title: 'Borbélyszalon weboldal',
+        title: 'Borbélyszalon',
         category: 'Beauty',
         description: 'Időpontfoglalásra optimalizált, vizuálisan erős sablon szolgáltatás- és árlistával.',
         previewRoute: '/preview/barber',
@@ -45,7 +45,7 @@ const templates = [
     },
     {
         id: 'moto',
-        title: 'Szépségszalon weboldal',
+        title: 'Szépségszalon',
         category: 'Beauty',
         description: 'Prémium megjelenésű sablon online időpontfoglaláshoz, kezelési listához és bizalomépítő bemutatkozáshoz.',
         previewRoute: '/preview/beauty',
