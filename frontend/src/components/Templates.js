@@ -1,8 +1,6 @@
 import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { useNavigate } from 'react-router-dom';
-import { X } from 'lucide-react';
 
 const templates = [
     {
@@ -61,7 +59,7 @@ const TemplateCard = ({ template, index, mobile = false, onPreview, isExpanding 
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.45, delay: index * 0.06 }}
-        className={`group relative overflow-hidden rounded-[12px] border border-[#ffffff1a] bg-[#1e1e1e] transition-all duration-300 hover:-translate-y-[5px] ${mobile ? 'min-w-[78%] max-w-[78%] snap-start flex-shrink-0' : ''} ${isExpanding ? 'invisible' : ''}`}
+        className={`group relative flex h-[420px] lg:h-[460px] flex-col overflow-hidden rounded-[12px] border border-[#ffffff1a] bg-[#1e1e1e] transition-all duration-300 hover:-translate-y-[5px] ${mobile ? 'min-w-[78%] max-w-[78%] snap-start flex-shrink-0' : ''} ${isExpanding ? 'invisible' : ''}`}
         data-testid={`template-card-${index}`}
     >
         <div className="aspect-[16/10] w-full overflow-hidden">
@@ -73,12 +71,12 @@ const TemplateCard = ({ template, index, mobile = false, onPreview, isExpanding 
             />
         </div>
 
-        <div className="p-5">
+        <div className="p-5 flex flex-1 flex-col">
             <h3 className="text-xl font-bold text-white">{template.title}</h3>
             <p className="mt-2 text-sm leading-relaxed text-[#A1A1AA]">{template.description}</p>
             <button
                 onClick={() => onPreview && onPreview(template)}
-                className="mt-5 inline-flex items-center justify-center rounded-lg border border-[#00FF00]/35 px-4 py-2 text-sm font-semibold text-[#00FF00] transition-colors duration-300 group-hover:bg-[#00FF00] group-hover:text-[#0A0A0A]"
+                className="mt-auto inline-flex items-center justify-center rounded-lg border border-[#00FF00]/35 px-4 py-2 text-sm font-semibold text-[#00FF00] transition-colors duration-300 group-hover:bg-[#00FF00] group-hover:text-[#0A0A0A]"
                 data-testid={`template-cta-${index}`}
             >
                 Előnézet
@@ -92,18 +90,13 @@ export const Templates = () => {
         triggerOnce: true,
         threshold: 0.1,
     });
-    const navigate = useNavigate();
     const [expandedTemplate, setExpandedTemplate] = useState(null);
     const [showIframe, setShowIframe] = useState(false);
 
     const handlePreview = (template) => {
         if (template.previewRoute) {
-            if (window.innerWidth >= 1024) {
-                setExpandedTemplate(template);
-                setTimeout(() => setShowIframe(true), 380);
-                return;
-            }
-            navigate(template.previewRoute);
+            setExpandedTemplate(template);
+            setTimeout(() => setShowIframe(true), 380);
         }
     };
 
@@ -140,8 +133,11 @@ export const Templates = () => {
                     </p>
                 </motion.div>
 
-                <div className="lg:hidden -mx-6 px-6 overflow-x-auto hide-scrollbar" style={{ scrollPaddingLeft: '24px' }}>
-                    <div className="flex snap-x snap-mandatory gap-4 pb-2" style={{ paddingRight: '24px' }}>
+                <div
+                    className="lg:hidden -mx-6 px-6 overflow-x-auto overflow-y-hidden hide-scrollbar"
+                    style={{ scrollPaddingLeft: '24px', overscrollBehaviorX: 'contain' }}
+                >
+                    <div className="flex items-stretch snap-x snap-mandatory gap-4 pb-2" style={{ paddingRight: '24px' }}>
                         {templates.map((template, index) => (
                             <TemplateCard
                                 key={template.id}
@@ -205,43 +201,46 @@ export const Templates = () => {
                                 ease: [0.32, 0.72, 0, 1],
                             }}
                         >
-                            {/* Close button */}
-                            <motion.button
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                exit={{ opacity: 0, scale: 0.9 }}
-                                transition={{ duration: 0.3, ease: 'easeInOut' }}
-                                onClick={handleClose}
-                                className="absolute top-4 right-4 z-50 p-2 rounded-full bg-[#121212]/90 border border-[#00FF00]/30 text-[#00FF00] hover:bg-[#00FF00] hover:text-[#0a0a0a] transition-colors"
-                            >
-                                <X size={20} />
-                            </motion.button>
+                            <div className="absolute top-0 left-0 right-0 z-50 flex h-16 items-center justify-center border-b border-[#ffffff14] bg-[#0a0a0a] px-4">
+                                <motion.button
+                                    initial={{ opacity: 0, x: -8 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    exit={{ opacity: 0, x: -8 }}
+                                    transition={{ duration: 0.25, ease: 'easeInOut' }}
+                                    onClick={handleClose}
+                                    className="rounded-full border border-[#00FF00]/30 bg-[#121212]/90 px-4 py-2 text-xs font-semibold uppercase tracking-[0.08em] text-[#00FF00] transition-colors hover:bg-[#00FF00] hover:text-[#0a0a0a]"
+                                >
+                                    Vissza a sablonokhoz
+                                </motion.button>
+                            </div>
 
-                            {/* Transitioning Image */}
-                            {!showIframe && (
-                                <div className="w-full h-full">
-                                    <img
-                                        src={expandedTemplate.image}
-                                        alt={expandedTemplate.title}
-                                        className="w-full h-full object-cover"
-                                    />
-                                </div>
-                            )}
-
-                            {/* Iframe fades in after expansion */}
-                            <AnimatePresence>
-                                {showIframe && (
-                                    <motion.iframe
-                                        initial={{ opacity: 0, scale: 0.95 }}
-                                        animate={{ opacity: 1, scale: 1 }}
-                                        exit={{ opacity: 0, scale: 0.95 }}
-                                        transition={{ duration: 0.35, ease: 'easeInOut' }}
-                                        src={`${expandedTemplate.previewRoute}?embed=true`}
-                                        title={`${expandedTemplate.title} előnézet`}
-                                        className="absolute inset-0 w-full h-full border-0"
-                                    />
+                            <div className="h-full pt-16">
+                                {/* Transitioning Image */}
+                                {!showIframe && (
+                                    <div className="w-full h-full">
+                                        <img
+                                            src={expandedTemplate.image}
+                                            alt={expandedTemplate.title}
+                                            className="w-full h-full object-cover"
+                                        />
+                                    </div>
                                 )}
-                            </AnimatePresence>
+
+                                {/* Iframe fades in after expansion */}
+                                <AnimatePresence>
+                                    {showIframe && (
+                                        <motion.iframe
+                                            initial={{ opacity: 0, scale: 0.95 }}
+                                            animate={{ opacity: 1, scale: 1 }}
+                                            exit={{ opacity: 0, scale: 0.95 }}
+                                            transition={{ duration: 0.35, ease: 'easeInOut' }}
+                                            src={`${expandedTemplate.previewRoute}?embed=true`}
+                                            title={`${expandedTemplate.title} előnézet`}
+                                            className="w-full h-full border-0"
+                                        />
+                                    )}
+                                </AnimatePresence>
+                            </div>
                         </motion.div>
                     </>
                 )}

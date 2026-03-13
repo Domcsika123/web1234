@@ -74,7 +74,7 @@ export const Hero = () => {
                 className="text-display font-bold leading-tight mb-6"
                 data-testid="hero-headline"
               >
-                Digitális jelenlét{' '}
+                Professzionális weboldal{' '}
                 <span className="gradient-text">vállalkozásod növekedéséhez</span>
               </motion.h1>
 

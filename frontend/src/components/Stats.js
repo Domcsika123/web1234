@@ -4,12 +4,6 @@ import CountUp from 'react-countup';
 
 const stats = [
   {
-    value: 50,
-    suffix: '+',
-    label: 'Sikeres Projekt',
-    description: 'lezárt együttműködés',
-  },
-  {
     value: 30,
     suffix: '',
     label: 'Nap Garancia',
@@ -50,11 +44,11 @@ export const Stats = () => {
           className="text-center mb-16"
         >
           <span className="font-mono text-base text-[#00FF00] tracking-wider">
-            02 // EREDMÉNYEINK
+            02 // AMI GARANTÁLUNK
           </span>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8 lg:gap-16">
+        <div className="grid md:grid-cols-2 gap-8 lg:gap-16 max-w-4xl mx-auto">
           {stats.map((stat, index) => (
             <motion.div
               key={index}
