@@ -44,7 +44,9 @@ export const Footer = () => {
               data-testid="footer-logo"
             >
               <AuraCodeLogo className="h-10 w-10" />
-              <span className="font-bold text-xl tracking-tight">Aura<span className="gradient-text">Code</span></span>
+              <span className="font-black text-xl tracking-tight" style={{ fontWeight: 900, WebkitTextStroke: '0.35px rgba(255,255,255,0.55)' }}>
+                Aura<span className="gradient-text font-black" style={{ fontWeight: 900, WebkitTextStroke: '0.35px rgba(0,255,0,0.4)' }}>Code</span>
+              </span>
             </motion.button>
 
             <p className="text-[#A1A1AA] leading-relaxed max-w-md mb-6">

@@ -40,10 +40,10 @@ export const Hero = () => {
 
       {/* Floating particles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(24)].map((_, i) => (
+        {[...Array(20)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-[5px] h-[5px] bg-[#00FF00] rounded-full shadow-[0_0_8px_rgba(0,255,0,0.65)]"
+            className="absolute w-1.5 h-1.5 bg-[#00FF00] rounded-full"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
@@ -51,8 +51,7 @@ export const Hero = () => {
             animate={{
               y: [0, -100, 0],
               x: [0, Math.random() * 50 - 25, 0],
-              opacity: [0.3, 0.85, 0.3],
-              scale: [1, 1.2, 1],
+              opacity: [0.35, 1, 0.35],
             }}
             transition={{
               duration: 5 + Math.random() * 5,
@@ -75,9 +74,8 @@ export const Hero = () => {
                 className="text-display font-bold leading-tight mb-6"
                 data-testid="hero-headline"
               >
-                Digitális jelenlét{' '}
-                <span className="gradient-text">vállalkozásod</span>{' '}
-                növekedéséhez
+                Professzionális weboldal{' '}
+                <span className="gradient-text">vállalkozásod növekedéséhez</span>
               </motion.h1>
 
               <motion.p
@@ -152,8 +150,43 @@ export const Hero = () => {
                 {/* 3D Rotating Cube */}
                 <div className="cube-container">
                   <div className="cube">
-                    <div className="cube-face cube-face-front">
-                      <AuraCodeLogo className="w-20 h-20" glowEffect={true} />
+                    <div className="cube-face cube-face-front" style={{ background: 'transparent', border: 'none', boxShadow: 'none' }}>
+                      <svg viewBox="0 0 120 120" style={{ width: '4.5rem', height: '4.5rem', filter: 'drop-shadow(0 0 12px rgba(0,255,0,0.8)) drop-shadow(0 0 25px rgba(0,255,0,0.4))' }}>
+                        {/* Hexagon outline */}
+                        <polygon
+                          points="60,5 110,30 110,80 60,105 10,80 10,30"
+                          fill="none"
+                          stroke="#00FF00"
+                          strokeWidth="5"
+                          strokeLinejoin="round"
+                        />
+                        {/* Left bracket < */}
+                        <path
+                          d="M 48 40 L 30 55 L 48 70"
+                          fill="none"
+                          stroke="#00FF00"
+                          strokeWidth="6.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                        {/* Slash / */}
+                        <path
+                          d="M 66 35 L 54 75"
+                          fill="none"
+                          stroke="#00FF00"
+                          strokeWidth="6.5"
+                          strokeLinecap="round"
+                        />
+                        {/* Right bracket > */}
+                        <path
+                          d="M 72 40 L 90 55 L 72 70"
+                          fill="none"
+                          stroke="#00FF00"
+                          strokeWidth="6.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
                     </div>
                     <div className="cube-face cube-face-back">
                       <TrendingUp className="w-12 h-12 text-[#00FF00]" strokeWidth={1.75} />

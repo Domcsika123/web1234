@@ -5,6 +5,7 @@ import { AuraCodeLogo } from './AuraCodeLogo';
 
 const navLinks = [
   { name: 'Szolgáltatások', href: '#services' },
+  { name: 'Sablonok', href: '#templates' },
   { name: 'Folyamat', href: '#process' },
   { name: 'GYIK', href: '#faq' },
 ];
@@ -53,7 +54,9 @@ export const Navbar = () => {
               data-testid="navbar-logo"
             >
               <AuraCodeLogo className="h-10 w-10" />
-              <span className="font-bold text-xl tracking-tight">Aura<span className="gradient-text">Code</span></span>
+              <span className="font-black text-xl tracking-tight" style={{ fontWeight: 900, WebkitTextStroke: '0.35px rgba(255,255,255,0.55)' }}>
+                Aura<span className="gradient-text font-black" style={{ fontWeight: 900, WebkitTextStroke: '0.35px rgba(0,255,0,0.4)' }}>Code</span>
+              </span>
             </motion.a>
 
             {/* Desktop Navigation */}
@@ -62,7 +65,7 @@ export const Navbar = () => {
                 <motion.button
                   key={link.name}
                   onClick={() => scrollToSection(link.href)}
-                  className="relative pb-1 text-sm text-[#A1A1AA] hover:text-white transition-colors font-medium after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-full after:bg-[#00FF00] after:origin-left after:scale-x-0 after:transition-transform after:duration-300 hover:after:scale-x-100"
+                  className="nav-link-underline text-sm text-[#A1A1AA] hover:text-white transition-colors font-medium"
                   whileHover={{ y: -2 }}
                   data-testid={`nav-link-${link.name.toLowerCase()}`}
                 >
