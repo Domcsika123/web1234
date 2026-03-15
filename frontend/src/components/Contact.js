@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Mail, Phone, MapPin, Send, CheckCircle } from 'lucide-react';
-import { LegalModal } from './LegalModal';
 
 export const Contact = () => {
   const [ref, inView] = useInView({
@@ -19,8 +18,6 @@ export const Contact = () => {
   });
 
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [modal, setModal] = useState(null);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -30,18 +27,11 @@ export const Contact = () => {
     }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setIsLoading(true);
-    await fetch('https://formspree.io/f/xojednlb', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify(formData),
-    });
-    setIsLoading(false);
+    // Form submission logic would go here
     setIsSubmitted(true);
-    setFormData({ name: '', email: '', phone: '', message: '', privacy: false });
-    setTimeout(() => setIsSubmitted(false), 4000);
+    setTimeout(() => setIsSubmitted(false), 3000);
   };
 
   const contactInfo = [
@@ -74,8 +64,8 @@ export const Contact = () => {
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
@@ -83,7 +73,8 @@ export const Contact = () => {
             08 // KEZDJÜK EL
           </span>
           <h2 className="text-headline font-bold mt-4" data-testid="contact-headline">
-            Kérj egyedi ajánlatot
+            Kérj{' '}
+            <span className="gradient-text">egyedi ajánlatot</span>
           </h2>
           <p className="text-[#A1A1AA] mt-4 max-w-xl mx-auto">
             Építsünk egy olyan oldalt, ami valóban a te cégedet képviseli
@@ -93,8 +84,8 @@ export const Contact = () => {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
           {/* Contact Info */}
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={inView ? { opacity: 1 } : {}}
+            initial={{ opacity: 0, x: -30 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <h3 className="text-2xl font-bold mb-8">Írj nekünk</h3>
@@ -102,14 +93,14 @@ export const Contact = () => {
               Ajánlatkérés kötelezettségek nélkül. Te döntesz.
             </p>
 
-            <div className="divide-y divide-[#ffffff08] mb-12">
+            <div className="mb-12">
               {contactInfo.map((info, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0 }}
-                  animate={inView ? { opacity: 1 } : {}}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={inView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
-                  className="flex items-start gap-4 py-5"
+                  className={`flex items-start gap-4 ${index !== 0 ? 'mt-8' : ''}`}
                   data-testid={`contact-info-${index}`}
                 >
                   <div className="p-3 rounded-lg bg-[#00FF00]/10">
@@ -147,8 +138,8 @@ export const Contact = () => {
 
           {/* Contact Form */}
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={inView ? { opacity: 1 } : {}}
+            initial={{ opacity: 0, x: 30 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             <form onSubmit={handleSubmit} className="space-y-6" data-testid="contact-form">
@@ -227,17 +218,13 @@ export const Contact = () => {
                   data-testid="contact-checkbox-privacy"
                 />
                 <label htmlFor="privacy" className="text-sm text-[#A1A1AA]">
-                  Elfogadom az{' '}
-                  <button type="button" onClick={() => setModal('privacy')} className="underline hover:text-[#00FF00] transition-colors">adatvédelmi nyilatkozatot</button>
-                  {' '}és az{' '}
-                  <button type="button" onClick={() => setModal('aszf')} className="underline hover:text-[#00FF00] transition-colors">ÁSZF-et</button>.
+                  Elfogadom az adatvédelmi nyilatkozatot és az ÁSZF-et.
                 </label>
               </div>
 
               <motion.button
                 type="submit"
-                disabled={isLoading}
-                className="btn-primary w-full flex items-center justify-center gap-2 group disabled:opacity-60"
+                className="btn-primary w-full flex items-center justify-center gap-2 group"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 data-testid="contact-submit-btn"
@@ -247,8 +234,6 @@ export const Contact = () => {
                     <CheckCircle className="w-5 h-5" />
                     Elküldve!
                   </>
-                ) : isLoading ? (
-                  'Küldés...'
                 ) : (
                   <>
                     Küldés
@@ -260,8 +245,6 @@ export const Contact = () => {
           </motion.div>
         </div>
       </div>
-
-      {modal && <LegalModal type={modal} onClose={() => setModal(null)} />}
     </section>
   );
 };

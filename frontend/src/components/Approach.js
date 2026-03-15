@@ -79,7 +79,7 @@ export const Approach = () => {
               data-testid="approach-headline"
             >
               A legtöbb weboldal elkészül…{' '}
-              <span className="text-[#A1A1AA]">majd nem válik valódi üzleti eszközzé.</span>
+              <span className="gradient-text">mégsem válik valódi üzleti eszközzé.</span>
             </motion.h2>
 
             <motion.div variants={itemVariants} className="space-y-4 mb-10">

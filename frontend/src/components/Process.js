@@ -97,7 +97,8 @@ export const Process = () => {
             04 // HOGYAN DOLGOZUNK
           </span>
           <h2 className="text-headline font-bold mt-4" data-testid="process-headline">
-            Átlátható, gyors, kiszámítható folyamat
+            Átlátható, gyors,{' '}
+            <span className="gradient-text">kiszámítható folyamat</span>
           </h2>
           <p className="text-[#A1A1AA] mt-4">
             Mindig tudod, hol tartunk

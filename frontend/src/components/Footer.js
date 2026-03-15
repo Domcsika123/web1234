@@ -9,7 +9,6 @@ const footerLinks = [
     links: [
       { name: 'Szolgáltatások', href: '#services' },
       { name: 'Folyamat', href: '#process' },
-      { name: 'Referenciák', href: '#portfolio' },
       { name: 'Kapcsolat', href: '#contact' },
     ],
   },
@@ -45,7 +44,7 @@ export const Footer = () => {
               data-testid="footer-logo"
             >
               <AuraCodeLogo className="h-10 w-10" />
-              <span className="font-bold text-xl tracking-tight">AuraCode</span>
+              <span className="font-bold text-xl tracking-tight">Aura<span className="gradient-text">Code</span></span>
             </motion.button>
 
             <p className="text-[#A1A1AA] leading-relaxed max-w-md mb-6">

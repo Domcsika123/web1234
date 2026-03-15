@@ -4,12 +4,6 @@ import CountUp from 'react-countup';
 
 const stats = [
   {
-    value: 50,
-    suffix: '+',
-    label: 'Sikeres Projekt',
-    description: 'lezárt együttműködés',
-  },
-  {
     value: 30,
     suffix: '',
     label: 'Nap Garancia',
@@ -54,7 +48,7 @@ export const Stats = () => {
           </span>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8 lg:gap-16">
+        <div className="grid md:grid-cols-2 gap-8 lg:gap-16">
           {stats.map((stat, index) => (
             <motion.div
               key={index}
