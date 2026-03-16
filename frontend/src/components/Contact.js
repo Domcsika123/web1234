@@ -153,7 +153,7 @@ export const Contact = () => {
           >
             <form onSubmit={handleSubmit} className="space-y-6" data-testid="contact-form">
               <div>
-                <label className="block font-mono text-xs text-[#52525B] mb-2">
+                <label className="block font-mono text-xs text-white mb-2">
                   NÉV *
                 </label>
                 <input
@@ -169,7 +169,7 @@ export const Contact = () => {
               </div>
 
               <div>
-                <label className="block font-mono text-xs text-[#52525B] mb-2">
+                <label className="block font-mono text-xs text-white mb-2">
                   EMAIL *
                 </label>
                 <input
@@ -185,7 +185,7 @@ export const Contact = () => {
               </div>
 
               <div>
-                <label className="block font-mono text-xs text-[#52525B] mb-2">
+                <label className="block font-mono text-xs text-white mb-2">
                   TELEFON
                 </label>
                 <input
@@ -200,7 +200,7 @@ export const Contact = () => {
               </div>
 
               <div>
-                <label className="block font-mono text-xs text-[#52525B] mb-2">
+                <label className="block font-mono text-xs text-white mb-2">
                   PROJEKT LEÍRÁSA *
                 </label>
                 <textarea
