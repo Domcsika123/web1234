@@ -123,7 +123,7 @@ export const Templates = () => {
                     className="mb-12 text-left lg:text-center"
                 >
                     <span className="font-mono text-base text-[#00FF00] tracking-wider">
-                        WEBOLDAL SABLONOK
+                        04 // WEBOLDAL SABLONOK
                     </span>
                     <h2 className="text-headline font-bold mt-4" data-testid="templates-headline">
                         Választható <span className="gradient-text">iparági sablonok</span>
