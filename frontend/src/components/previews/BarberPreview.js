@@ -117,6 +117,7 @@ export const BarberPreview = () => {
             {/* ══════════ Fonts ══════════ */}
             <style>{`
                 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap');
+                body { overflow-x: hidden; }
                 .font-display { font-family: 'Bebas Neue', sans-serif; }
                 .font-body { font-family: 'Inter', sans-serif; }
                 .stripe-pattern {

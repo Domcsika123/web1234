@@ -34,6 +34,7 @@ export const GastroPreview = () => {
             {/* ══════════ Google Fonts ══════════ */}
             <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@400;500;600&display=swap');
+        body { overflow-x: hidden; }
         .font-playfair { font-family: 'Playfair Display', serif; }
         .font-body { font-family: 'DM Sans', sans-serif; }
       `}</style>

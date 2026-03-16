@@ -80,7 +80,7 @@ export const Contact = () => {
           className="text-center mb-16"
         >
           <span className="font-mono text-base text-[#00FF00] tracking-wider">
-            08 // KEZDJÜK EL
+            07 // KEZDJÜK EL
           </span>
           <h2 className="text-headline font-bold mt-4" data-testid="contact-headline">
             Kérj <span className="gradient-text">egyedi ajánlatot</span>

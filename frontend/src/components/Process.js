@@ -94,7 +94,7 @@ export const Process = () => {
           className="text-center mb-16"
         >
           <span className="font-mono text-base text-[#00FF00] tracking-wider">
-            04 // HOGYAN DOLGOZUNK
+            05 // HOGYAN DOLGOZUNK
           </span>
           <h2 className="text-headline font-bold mt-4" data-testid="process-headline">
             Átlátható, gyors, <span className="gradient-text">kiszámítható folyamat</span>

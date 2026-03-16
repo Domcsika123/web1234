@@ -57,7 +57,7 @@ export const FAQ = () => {
           className="text-center mb-16"
         >
           <span className="font-mono text-base text-[#00FF00] tracking-wider">
-            07 // GYAKORI KÉRDÉSEK
+            06 // GYAKORI KÉRDÉSEK
           </span>
           <h2 className="text-headline font-bold mt-4" data-testid="faq-headline">
             Minden, amit <span className="gradient-text">tudnod kell</span>

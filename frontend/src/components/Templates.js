@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
@@ -53,16 +53,21 @@ const templates = [
     },
 ];
 
-const TemplateCard = ({ template, index, mobile = false, onPreview, isExpanding }) => (
+const TemplateCard = ({ template, index, mobile = false, onPreview, isExpanding, isActive, cardRef }) => (
     <motion.article
-        initial={{ opacity: 0, y: 24 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.45, delay: index * 0.06 }}
-        className={`group relative flex h-[420px] lg:h-[460px] flex-col overflow-hidden rounded-[12px] border border-[#ffffff1a] bg-[#1e1e1e] transition-all duration-300 hover:-translate-y-[5px] ${mobile ? 'min-w-[78%] max-w-[78%] snap-start flex-shrink-0' : ''} ${isExpanding ? 'invisible' : ''}`}
+        ref={cardRef}
+        initial={mobile ? false : { opacity: 0, y: 24 }}
+        whileInView={mobile ? undefined : { opacity: 1, y: 0 }}
+        viewport={mobile ? undefined : { once: true, amount: 0.2 }}
+        transition={{ duration: 0.45, delay: mobile ? 0 : index * 0.06 }}
+        className={`relative flex h-[420px] lg:h-[460px] flex-col overflow-hidden rounded-[12px] border bg-[#1e1e1e] transition-all duration-300
+            ${mobile ? 'min-w-[78%] max-w-[78%] snap-start flex-shrink-0' : 'group hover:-translate-y-[5px]'}
+            ${mobile && isActive ? 'border-[#00FF00]/70' : 'border-[#ffffff1a]'}
+            ${mobile && !isActive ? 'opacity-50' : ''}
+            ${isExpanding ? 'invisible' : ''}`}
         data-testid={`template-card-${index}`}
     >
-        <div className="aspect-[16/10] w-full overflow-hidden">
+        <div className="aspect-[16/10] w-full overflow-hidden pointer-events-none">
             <img
                 src={template.image}
                 alt={`${template.title} sablon előnézet`}
@@ -71,12 +76,16 @@ const TemplateCard = ({ template, index, mobile = false, onPreview, isExpanding 
             />
         </div>
 
-        <div className="p-5 flex flex-1 flex-col">
+        <div className="p-5 flex flex-1 flex-col pointer-events-none">
             <h3 className="text-xl font-bold text-white">{template.title}</h3>
             <p className="mt-2 text-sm leading-relaxed text-[#A1A1AA]">{template.description}</p>
             <button
                 onClick={() => onPreview && onPreview(template)}
-                className="mt-auto inline-flex items-center justify-center rounded-lg border border-[#00FF00]/35 px-4 py-2 text-sm font-semibold text-[#00FF00] transition-colors duration-300 group-hover:bg-[#00FF00] group-hover:text-[#0A0A0A]"
+                className={`pointer-events-auto mt-auto inline-flex items-center justify-center rounded-lg border px-4 py-2 text-sm font-semibold transition-colors duration-300
+                    ${mobile && isActive
+                        ? 'border-[#00FF00] bg-[#00FF00] text-[#0A0A0A]'
+                        : 'border-[#00FF00]/35 text-[#00FF00] hover:bg-[#00FF00] hover:text-[#0A0A0A]'
+                    }`}
                 data-testid={`template-cta-${index}`}
             >
                 Előnézet
@@ -91,19 +100,43 @@ export const Templates = () => {
         threshold: 0.1,
     });
     const [expandedTemplate, setExpandedTemplate] = useState(null);
-    const [showIframe, setShowIframe] = useState(false);
+    const [activeIndex, setActiveIndex] = useState(0);
+    const scrollRef = useRef(null);
+    const cardRefs = useRef([]);
+
+    useEffect(() => {
+        const el = scrollRef.current;
+        if (!el) return;
+        const handleScroll = () => {
+            const containerCenter = el.scrollLeft + el.clientWidth / 2;
+            let closest = 0;
+            let closestDist = Infinity;
+            cardRefs.current.forEach((card, i) => {
+                if (!card) return;
+                const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+                const dist = Math.abs(cardCenter - containerCenter);
+                if (dist < closestDist) { closestDist = dist; closest = i; }
+            });
+            setActiveIndex(closest);
+        };
+        el.addEventListener('scroll', handleScroll, { passive: true });
+        return () => el.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    const savedScrollY = useRef(0);
 
     const handlePreview = (template) => {
         if (template.previewRoute) {
+            savedScrollY.current = window.scrollY;
             setExpandedTemplate(template);
-            setTimeout(() => setShowIframe(true), 380);
         }
     };
 
     const handleClose = () => {
-        setShowIframe(false);
-        // Megvárjuk az animáció végét (0.65s = 650ms) mielőtt eltávolítjuk a DOM-ból
-        setTimeout(() => setExpandedTemplate(null), 650);
+        setTimeout(() => {
+            setExpandedTemplate(null);
+            window.scrollTo({ top: savedScrollY.current, behavior: 'instant' });
+        }, 650);
     };
 
     return (
@@ -123,7 +156,7 @@ export const Templates = () => {
                     className="mb-12 text-left lg:text-center"
                 >
                     <span className="font-mono text-base text-[#00FF00] tracking-wider">
-                        WEBOLDAL SABLONOK
+                        04 // WEBOLDAL SABLONOK
                     </span>
                     <h2 className="text-headline font-bold mt-4" data-testid="templates-headline">
                         Választható <span className="gradient-text">iparági sablonok</span>
@@ -134,10 +167,11 @@ export const Templates = () => {
                 </motion.div>
 
                 <div
-                    className="lg:hidden -mx-6 px-6 overflow-x-auto overflow-y-hidden hide-scrollbar"
-                    style={{ scrollPaddingLeft: '24px', overscrollBehaviorX: 'contain' }}
+                    ref={scrollRef}
+                    className="lg:hidden -mx-6 px-6 overflow-x-auto hide-scrollbar"
+                    style={{ scrollPaddingLeft: '24px', overscrollBehaviorX: 'contain', paddingTop: '8px', paddingBottom: '8px' }}
                 >
-                    <div className="flex items-stretch snap-x snap-mandatory gap-4 pb-2" style={{ paddingRight: '24px' }}>
+                    <div className="flex items-start snap-x snap-mandatory gap-4" style={{ paddingRight: '24px' }}>
                         {templates.map((template, index) => (
                             <TemplateCard
                                 key={template.id}
@@ -146,9 +180,21 @@ export const Templates = () => {
                                 mobile
                                 onPreview={handlePreview}
                                 isExpanding={expandedTemplate?.id === template.id}
+                                isActive={activeIndex === index}
+                                cardRef={el => cardRefs.current[index] = el}
                             />
                         ))}
                     </div>
+                </div>
+
+                {/* Mobile dot indicators */}
+                <div className="lg:hidden flex justify-center gap-2 mt-5">
+                    {templates.map((_, i) => (
+                        <div
+                            key={i}
+                            className={`rounded-full transition-all duration-300 ${i === activeIndex ? 'w-5 h-2 bg-[#00FF00]' : 'w-2 h-2 bg-[#ffffff20]'}`}
+                        />
+                    ))}
                 </div>
 
                 <div className="hidden lg:grid grid-cols-3 gap-6">
@@ -215,31 +261,11 @@ export const Templates = () => {
                             </div>
 
                             <div className="h-full pt-16">
-                                {/* Transitioning Image */}
-                                {!showIframe && (
-                                    <div className="w-full h-full">
-                                        <img
-                                            src={expandedTemplate.image}
-                                            alt={expandedTemplate.title}
-                                            className="w-full h-full object-cover"
-                                        />
-                                    </div>
-                                )}
-
-                                {/* Iframe fades in after expansion */}
-                                <AnimatePresence>
-                                    {showIframe && (
-                                        <motion.iframe
-                                            initial={{ opacity: 0, scale: 0.95 }}
-                                            animate={{ opacity: 1, scale: 1 }}
-                                            exit={{ opacity: 0, scale: 0.95 }}
-                                            transition={{ duration: 0.35, ease: 'easeInOut' }}
-                                            src={`${expandedTemplate.previewRoute}?embed=true`}
-                                            title={`${expandedTemplate.title} előnézet`}
-                                            className="w-full h-full border-0"
-                                        />
-                                    )}
-                                </AnimatePresence>
+                                <iframe
+                                    src={`${expandedTemplate.previewRoute}?embed=true`}
+                                    title={`${expandedTemplate.title} előnézet`}
+                                    className="w-full h-full border-0"
+                                />
                             </div>
                         </motion.div>
                     </>

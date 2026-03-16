@@ -134,6 +134,7 @@ export const LawPreview = () => {
         <>
             <style>{`
                 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Source+Sans+3:wght@300;400;500;600;700&display=swap');
+                body { overflow-x: hidden; }
                 .lf-h { font-family: 'Playfair Display', serif; }
                 .lf-b { font-family: 'Source Sans 3', sans-serif; }
             `}</style>

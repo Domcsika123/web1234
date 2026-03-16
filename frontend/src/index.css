@@ -4,6 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html, body {
+  overflow-x: hidden;
+}
+
 :root {
   --neon-green: #00FF00;
   --electric-cyan: #00F0FF;

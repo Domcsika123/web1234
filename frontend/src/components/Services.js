@@ -5,36 +5,116 @@ import { Shield, Wrench, Target, Zap, Search, BarChart3 } from 'lucide-react';
 
 const services = [
   {
-    icon: Shield,
-    title: 'Biztonság garantáltan',
-    description: 'Teljes körű adatvédelem és maximális védelem a kiberfenyegetések ellen.',
+    icon: Zap,
+    title: 'Gyors kivitelezés',
+    description: 'Rövid átfutás, transzparens kivitelezés, gyors élesítés. Projektjeid 1-4 hét alatt elkészülnek.',
+    size: 'featured',
+    gridArea: 'featured1',
   },
   {
-    icon: Wrench,
-    title: 'Karbantartás segítség',
-    description: 'Nem vagy egyedül átadás után – támogatunk szükség esetén.',
+    icon: Search,
+    title: 'SEO-alapok beépítve',
+    description: 'Technikai SEO-val és villámgyors betöltéssel biztosítjuk, hogy vevőid könnyen rátaláljanak. Google-barát struktúra alapból.',
+    size: 'featured',
+    gridArea: 'featured2',
   },
   {
     icon: Target,
     title: 'Konverzió-fókusz',
     description: 'Nem csak szép, hanem eredményes – minden elem az ügyfélszerzésért dolgozik.',
-  },
-  {
-    icon: Zap,
-    title: 'Gyors kivitelezés',
-    description: 'Rövid átfutás, transzparens kivitelezés, gyors élesítés.',
-  },
-  {
-    icon: Search,
-    title: 'SEO-alapok beépítve',
-    description: 'Technikai SEO-val és villámgyors betöltéssel biztosítjuk, hogy vevőid könnyen rátaláljanak.',
+    size: 'medium',
+    gridArea: 'medium1',
   },
   {
     icon: BarChart3,
     title: 'Mérés beépítve',
     description: 'Precíz analitikát állítunk be, hogy minden adatot láss a látogatók viselkedéséről.',
+    size: 'medium',
+    gridArea: 'medium2',
+  },
+  {
+    icon: Shield,
+    title: 'Biztonság',
+    description: 'Teljes körű adatvédelem és maximális védelem.',
+    size: 'small',
+    gridArea: 'small1',
+  },
+  {
+    icon: Wrench,
+    title: 'Karbantartás',
+    description: 'Nem vagy egyedül átadás után – támogatunk.',
+    size: 'small',
+    gridArea: 'small2',
   },
 ];
+
+const BentoCard = ({ service, index, inView }) => {
+  const Icon = service.icon;
+
+  const sizeClasses = {
+    featured: 'col-span-2 row-span-1 p-6 lg:p-8',
+    medium: 'col-span-1 row-span-1 p-5 lg:p-6',
+    small: 'col-span-1 row-span-1 p-5 lg:p-6',
+  };
+  const titleClasses = { featured: 'text-xl lg:text-2xl', medium: 'text-lg', small: 'text-lg' };
+  const descClasses = { featured: 'text-sm lg:text-base', medium: 'text-xs lg:text-sm', small: 'text-xs lg:text-sm' };
+  const iconBgSize = { featured: 'w-12 h-12 lg:w-14 lg:h-14', medium: 'w-10 h-10', small: 'w-10 h-10' };
+  const iconSize = { featured: 'w-6 h-6 lg:w-7 lg:h-7', medium: 'w-5 h-5', small: 'w-5 h-5' };
+  const bgIconSize = { featured: 'w-36 h-36 lg:w-48 lg:h-48', medium: 'w-24 h-24', small: 'w-24 h-24' };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 40, scale: 0.95 }}
+      animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
+      transition={{ duration: 0.5, delay: index * 0.08 }}
+      className={`
+        ${sizeClasses[service.size]}
+        relative overflow-hidden rounded-2xl
+        bg-[#0d0d0d] border border-[#ffffff08]
+        group cursor-default
+        transition-all duration-500 ease-out
+        hover:border-[#00FF00]/40
+        hover:shadow-[0_0_40px_-10px_rgba(0,255,0,0.25)]
+      `}
+      style={{ gridArea: service.gridArea }}
+      data-testid={`service-card-${index}`}
+    >
+      <div className="absolute -right-8 -bottom-8 pointer-events-none opacity-[0.04] group-hover:opacity-[0.08] transition-opacity duration-500">
+        <Icon className={`${bgIconSize[service.size]} text-[#00FF00]`} strokeWidth={1} />
+      </div>
+      <div className="absolute top-3 left-3 w-1.5 h-1.5 rounded-full bg-[#00FF00]/20 group-hover:bg-[#00FF00]/50 transition-colors" />
+      <div className="absolute top-3 right-3 w-1.5 h-1.5 rounded-full bg-[#00FF00]/20 group-hover:bg-[#00FF00]/50 transition-colors" />
+      <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+        <div className="absolute inset-0 rounded-2xl border border-[#00FF00]/30" />
+        <div className="absolute -inset-[1px] rounded-2xl bg-gradient-to-br from-[#00FF00]/10 via-transparent to-[#00FF00]/5" />
+      </div>
+      <div className="relative z-10">
+        <div className={`
+          ${iconBgSize[service.size]} flex items-center justify-center
+          rounded-xl bg-[#00FF00]/10 mb-5 lg:mb-6
+          group-hover:bg-[#00FF00]/15 group-hover:scale-105
+          transition-all duration-300
+          ${service.size === 'featured' ? '-ml-2 -mt-2' : ''}
+        `}>
+          <Icon className={`${iconSize[service.size]} text-[#00FF00]`} strokeWidth={2} />
+        </div>
+        <h3 className={`${titleClasses[service.size]} font-bold mb-3 text-white group-hover:text-[#00FF00] transition-colors duration-300`}>
+          {service.title}
+        </h3>
+        <p className={`${descClasses[service.size]} text-[#71717A] leading-relaxed font-light tracking-wide group-hover:text-[#A1A1AA] transition-colors duration-300`}>
+          {service.description}
+        </p>
+      </div>
+      <div className="absolute top-0 right-0 w-20 h-20 overflow-hidden rounded-tr-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <div className="absolute top-0 right-0 w-[1px] h-12 bg-gradient-to-b from-[#00FF00]/60 to-transparent" />
+        <div className="absolute top-0 right-0 h-[1px] w-12 bg-gradient-to-l from-[#00FF00]/60 to-transparent" />
+      </div>
+      {service.size === 'featured' && (
+        <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#00FF00]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      )}
+    </motion.div>
+  );
+};
 
 export const Services = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
@@ -187,47 +267,51 @@ export const Services = () => {
             </span>
             <h2 className="text-headline font-bold mt-4" data-testid="services-headline-desktop">
               Nem csak egy weboldalt, hanem egy működő{' '}
-              <span className="gradient-text">ügyfélszerző rendszert</span>
+              <span className="gradient-text">ügyfélszerző rendszert</span>{' '}
+              csinálunk
             </h2>
             <p className="text-[#A1A1AA] mt-4 max-w-2xl mx-auto">
               Minden fontos elemmel, ami a sikeres online jelenléthez kell
             </p>
           </motion.div>
 
-          {/* Desktop Card Grid */}
-          <motion.div
-            variants={desktopContainerVariants}
-            initial="hidden"
-            animate={inView ? 'visible' : 'hidden'}
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+          {/* Desktop Bento Grid */}
+          <div
+            className="grid gap-4 lg:gap-5"
+            style={{
+              gridTemplateColumns: 'repeat(5, 1fr)',
+              gridTemplateRows: 'repeat(2, minmax(140px, auto))',
+              gridTemplateAreas: `
+                "featured1 featured1 medium1 small1 ."
+                ". medium2 small2 featured2 featured2"
+              `,
+            }}
           >
+            <style>{`
+              @media (max-width: 1023px) {
+                [data-testid="services-section"] .grid {
+                  display: grid !important;
+                  grid-template-columns: repeat(2, 1fr) !important;
+                  grid-template-rows: auto !important;
+                  grid-template-areas:
+                    "featured1 featured1"
+                    "featured2 featured2"
+                    "medium1 medium2"
+                    "small1 small2" !important;
+                }
+              }
+            `}</style>
             {services.map((service, index) => (
-              <motion.div
-                key={index}
-                variants={desktopItemVariants}
-                className="service-card glass p-6 lg:p-8 rounded-xl group cursor-default relative"
-                data-testid={`service-card-${index}`}
-              >
-                <div className="p-3 rounded-xl bg-[#00FF00]/10 w-fit mb-6 group-hover:bg-[#00FF00]/20 transition-colors">
-                  <service.icon className="w-6 h-6 text-[#00FF00]" />
-                </div>
-
-                <h3 className="text-xl font-bold mb-3 group-hover:text-[#00FF00] transition-colors">
-                  {service.title}
-                </h3>
-
-                <p className="text-[#A1A1AA] leading-relaxed">
-                  {service.description}
-                </p>
-
-                {/* Decorative corner */}
-                <div className="absolute top-0 right-0 w-16 h-16 overflow-hidden rounded-tr-xl opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="absolute top-0 right-0 w-[2px] h-8 bg-gradient-to-b from-[#00FF00] to-transparent" />
-                  <div className="absolute top-0 right-0 h-[2px] w-8 bg-gradient-to-l from-[#00FF00] to-transparent" />
-                </div>
-              </motion.div>
+              <BentoCard key={index} service={service} index={index} inView={inView} />
             ))}
-          </motion.div>
+          </div>
+
+          <motion.div
+            initial={{ scaleX: 0 }}
+            animate={inView ? { scaleX: 1 } : {}}
+            transition={{ duration: 1, delay: 0.6 }}
+            className="mt-16 h-[1px] bg-gradient-to-r from-transparent via-[#00FF00]/30 to-transparent"
+          />
         </div>
 
       </div>

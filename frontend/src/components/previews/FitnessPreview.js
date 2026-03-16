@@ -160,6 +160,7 @@ export const FitnessPreview = () => {
         <>
             <style>{`
                 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+                body { overflow-x: hidden; }
                 .gf-h { font-family: 'Bebas Neue', sans-serif; }
                 .gf-b { font-family: 'Inter', sans-serif; }
             `}</style>
