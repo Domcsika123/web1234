@@ -11,7 +11,7 @@ import {
 } from 'lucide-react';
 import { AuraCodeLogo } from './AuraCodeLogo';
 
-export const Hero = () => {
+export const Hero = ({ content }) => {
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -74,8 +74,8 @@ export const Hero = () => {
                 className="text-display font-bold leading-tight mb-6"
                 data-testid="hero-headline"
               >
-                Professzionális weboldal{' '}
-                <span className="gradient-text">vállalkozásod növekedéséhez</span>
+                {content.headlineStart}{' '}
+                <span className="gradient-text">{content.headlineAccent}</span>
               </motion.h1>
 
               <motion.p
@@ -85,8 +85,7 @@ export const Hero = () => {
                 className="text-lg lg:text-xl text-[#A1A1AA] mb-10 max-w-xl"
                 data-testid="hero-subtitle"
               >
-                Prémium weboldalak kis- és középvállalkozások részére.
-                Modern, SEO-optimalizált honlapok 1-4 hét alatt, fix áron.
+                {content.subtitle}
               </motion.p>
 
               <motion.div
@@ -102,7 +101,7 @@ export const Hero = () => {
                   whileTap={{ scale: 0.95 }}
                   data-testid="hero-cta-primary"
                 >
-                  Ingyenes konzultáció
+                  {content.primaryCta}
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </motion.button>
 
@@ -113,7 +112,7 @@ export const Hero = () => {
                   whileTap={{ scale: 0.95 }}
                   data-testid="hero-cta-secondary"
                 >
-                  Szolgáltatások megtekintése
+                  {content.secondaryCta}
                 </motion.button>
               </motion.div>
 
@@ -124,18 +123,12 @@ export const Hero = () => {
                 transition={{ duration: 0.6, delay: 0.7 }}
                 className="mt-12 flex flex-wrap gap-6 text-sm text-[#52525B]"
               >
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-[#00FF00] rounded-full" />
-                  <span>30 napos garancia</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-[#00FF00] rounded-full" />
-                  <span>Fix áras projektek</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-[#00FF00] rounded-full" />
-                  <span>Ingyenes konzultáció</span>
-                </div>
+                {content.badges.map((badge) => (
+                  <div key={badge} className="flex items-center gap-2">
+                    <div className="w-2 h-2 bg-[#00FF00] rounded-full" />
+                    <span>{badge}</span>
+                  </div>
+                ))}
               </motion.div>
             </div>
 

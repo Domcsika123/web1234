@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "@/App.css";
 import { Navbar } from "./components/Navbar";
@@ -17,8 +17,12 @@ import { LawPreview } from "./components/previews/LawPreview";
 import { BarberPreview } from "./components/previews/BarberPreview";
 import { WeddingPreview } from "./components/previews/WeddingPreview";
 import { BeautyPreview } from "./components/previews/BeautyPreview";
+import { content } from "./i18n/content";
 
 function App() {
+  const [lang, setLang] = useState("hu");
+  const copy = useMemo(() => content[lang], [lang]);
+
   useEffect(() => {
     const remove = () => {
       const badge = document.getElementById("emergent-badge");
@@ -30,6 +34,10 @@ function App() {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    document.title = copy.meta.title;
+  }, [copy.meta.title]);
+
   return (
     <BrowserRouter>
       <Routes>
@@ -37,18 +45,18 @@ function App() {
           path="/"
           element={
             <div className="App bg-[#0A0A0A] min-h-screen">
-              <Navbar />
+              <Navbar lang={lang} setLang={setLang} content={copy.navbar} />
               <main>
-                <Hero />
-                <Approach />
-                <Stats />
-                <Services />
-                <Templates />
-                <Process />
-                <FAQ />
-                <Contact />
+                <Hero content={copy.hero} />
+                <Approach content={copy.approach} />
+                <Stats content={copy.stats} />
+                <Services content={copy.services} />
+                <Templates content={copy.templates} />
+                <Process content={copy.process} />
+                <FAQ content={copy.faq} />
+                <Contact content={copy.contact} />
               </main>
-              <Footer />
+              <Footer content={copy.footer} />
             </div>
           }
         />

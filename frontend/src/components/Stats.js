@@ -2,22 +2,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import CountUp from 'react-countup';
 
-const stats = [
-  {
-    value: 30,
-    suffix: '',
-    label: 'Nap Garancia',
-    description: 'minden projektre',
-  },
-  {
-    value: 3,
-    suffix: 'x',
-    label: 'Konverzió Növekedés',
-    description: 'átlagos eredmény',
-  },
-];
-
-export const Stats = () => {
+export const Stats = ({ content }) => {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -44,12 +29,12 @@ export const Stats = () => {
           className="text-center mb-16"
         >
           <span className="font-mono text-base text-[#00FF00] tracking-wider">
-            02 // AMIT GARANTÁLUNK
+            {content.tag}
           </span>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8 lg:gap-8 max-w-2xl mx-auto">
-          {stats.map((stat, index) => (
+        <div className="grid md:grid-cols-2 gap-8 lg:gap-16 max-w-4xl mx-auto">
+          {content.items.map((stat, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 50 }}
@@ -102,7 +87,7 @@ export const Stats = () => {
           transition={{ duration: 0.6, delay: 1 }}
           className="flex flex-wrap justify-center gap-4 mt-16"
         >
-          {['1–4 HÉT', 'FIX ÁR', 'EREDMÉNYGARANCIA'].map((tag, index) => (
+          {content.tags.map((tag, index) => (
             <span
               key={index}
               className="px-4 py-2 border border-[#ffffff10] rounded-full text-sm text-[#A1A1AA] font-mono"

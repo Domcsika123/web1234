@@ -2,38 +2,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { MessageSquare, PenTool, Code, Rocket, HeartHandshake } from 'lucide-react';
 
-const steps = [
-  {
-    number: '01',
-    icon: MessageSquare,
-    title: 'Brief & Igényfelmérés',
-    description: 'Megbeszéljük a céljaidat, közönségedet, versenytársaidat egy 1 órás konzultáció keretein belül.',
-  },
-  {
-    number: '02',
-    icon: PenTool,
-    title: 'Tervezés & Wireframe',
-    description: 'Elkészítjük az oldal struktúráját és vizuális tervét. Iterálunk, amíg tökéletes.',
-  },
-  {
-    number: '03',
-    icon: Code,
-    title: 'Fejlesztés',
-    description: 'Modern technológiával építjük a weboldaladat – gyors, biztonságos, skálázható.',
-  },
-  {
-    number: '04',
-    icon: Rocket,
-    title: 'Átadás & Élesítés',
-    description: 'Élesítjük az oldalt, elvégezzük a technikai beállításokat és megtanítjuk a kezelését.',
-  },
-  {
-    number: '05',
-    icon: HeartHandshake,
-    title: 'Támogatás',
-    description: '30 nap garancia és opcionális karbantartási csomagok. Biztonság és szakmai háttértámogatás.',
-  },
-];
+const stepIcons = [MessageSquare, PenTool, Code, Rocket, HeartHandshake];
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -73,11 +42,16 @@ const dotVariants = {
   },
 };
 
-export const Process = () => {
+export const Process = ({ content }) => {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.35,
   });
+
+  const steps = content.steps.map((step, index) => ({
+    ...step,
+    icon: stepIcons[index] || MessageSquare,
+  }));
 
   return (
     <section
@@ -94,13 +68,13 @@ export const Process = () => {
           className="text-center mb-16"
         >
           <span className="font-mono text-base text-[#00FF00] tracking-wider">
-            05 // HOGYAN DOLGOZUNK
+            {content.tag}
           </span>
           <h2 className="text-headline font-bold mt-4" data-testid="process-headline">
-            Átlátható, gyors, <span className="gradient-text">kiszámítható folyamat</span>
+            {content.headlineStart} <span className="gradient-text">{content.headlineAccent}</span>
           </h2>
           <p className="text-[#A1A1AA] mt-4">
-            Mindig tudod, hol tartunk
+            {content.subtitle}
           </p>
         </motion.div>
 

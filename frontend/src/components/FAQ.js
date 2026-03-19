@@ -7,34 +7,7 @@ import {
   AccordionTrigger,
 } from '../components/ui/accordion';
 
-const faqs = [
-  {
-    question: 'Mennyi idő alatt készül el?',
-    answer: 'A projektek általában 1-4 hét alatt készülnek el a komplexitástól függően. Egyszerűbb landing page-ek akár 1 hét alatt is elkészülhetnek, míg összetettebb webshopok vagy egyedi funkciókkal rendelkező oldalak 3-4 hetet vehetnek igénybe. Az első konzultáción pontosan meghatározzuk a határidőt.',
-  },
-  {
-    question: 'Mennyibe fog kerülni?',
-    answer: 'Fix áras rendszerben dolgozunk, így nem érhetnek meglepetések. A pontos árat az igényfelmérés után adjuk meg, amely függ az oldal típusától, funkcióitól és a tartalomtól. Az ingyenes konzultáción részletes árajánlatot kapsz kötelezettségek nélkül.',
-  },
-  {
-    question: 'Nekem kell biztosítanom a domaint és a tárhelyet?',
-    answer: 'Nem feltétlenül. Ha van már domained és tárhelyed, azzal dolgozunk. Ha nincs, segítünk a beszerzésében és beállításában. A tárhely kiválasztásánál tanácsot adunk, hogy a weboldalad gyorsan és megbízhatóan működjön.',
-  },
-  {
-    question: 'Szövegírást vállaltok?',
-    answer: 'Igen, segítünk a tartalom elkészítésében. Alapból a te szövegeidet használjuk és optimalizáljuk SEO szempontból, de igény esetén teljes szövegírást is vállalunk, hogy a weboldalad tartalma is profi legyen.',
-  },
-  {
-    question: 'Megtalálnak majd a Google-ben?',
-    answer: 'Minden weboldalt alapvető SEO beállításokkal adunk át: technikai SEO, gyors betöltés, mobilbarát design, meta adatok. Ez biztosítja, hogy a Google indexelje az oldalt. Haladó SEO szolgáltatást is kérhetsz további díjért.',
-  },
-  {
-    question: 'Elérlek titeket átadás után is?',
-    answer: 'Természetesen! 30 napos garanciát adunk minden projektre, ami alatt bármilyen hibát ingyen javítunk. Ezen túl opcionális karbantartási csomagokat kínálunk, amelyek tartalmazzák a frissítéseket, biztonsági mentéseket és a folyamatos támogatást.',
-  },
-];
-
-export const FAQ = () => {
+export const FAQ = ({ content }) => {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -57,13 +30,13 @@ export const FAQ = () => {
           className="text-center mb-16"
         >
           <span className="font-mono text-base text-[#00FF00] tracking-wider">
-            06 // GYAKORI KÉRDÉSEK
+            {content.tag}
           </span>
           <h2 className="text-headline font-bold mt-4" data-testid="faq-headline">
-            Minden, amit <span className="gradient-text">tudnod kell</span>
+            {content.headlineStart} <span className="gradient-text">{content.headlineAccent}</span>
           </h2>
           <p className="text-[#A1A1AA] mt-4">
-            Az oldalkészítésről egyszerűen
+            {content.subtitle}
           </p>
         </motion.div>
 
@@ -73,7 +46,7 @@ export const FAQ = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
         >
           <Accordion type="single" collapsible className="space-y-4">
-            {faqs.map((faq, index) => (
+            {content.items.map((faq, index) => (
               <AccordionItem
                 key={index}
                 value={`item-${index}`}
@@ -99,14 +72,14 @@ export const FAQ = () => {
           className="mt-12 text-center"
         >
           <p className="text-[#52525B] mb-4">
-            Nem találtad meg a választ a kérdésedre?
+            {content.missingAnswer}
           </p>
           <a
             href="#contact"
             className="text-[#00FF00] hover:underline font-medium"
             data-testid="faq-contact-link"
           >
-            Írj nekünk és válaszolunk!
+            {content.contactLink}
           </a>
         </motion.div>
       </div>

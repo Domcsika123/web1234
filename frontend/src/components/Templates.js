@@ -2,58 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
-const templates = [
-    {
-        id: 'gastro',
-        title: 'Étterem',
-        category: 'Gastro',
-        description: 'Modern éttermi bemutatkozó oldal online asztalfoglalás fókuszú felépítéssel.',
-        previewRoute: '/preview/gastro',
-        image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=900&q=80',
-    },
-    {
-        id: 'fitness',
-        title: 'Konditerem',
-        category: 'Fitness',
-        description: 'Bérlet- és órarendközpontú landing oldal edzői bemutatkozással és CTA blokkokkal.',
-        previewRoute: '/preview/fitness',
-        image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=900&q=80',
-    },
-    {
-        id: 'law',
-        title: 'Ügyvédi iroda',
-        category: 'Law',
-        description: 'Bizalmat építő vállalati megjelenés, szolgáltatásfókuszú struktúra és kapcsolatfelvétel.',
-        previewRoute: '/preview/law',
-        image: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=900&q=80',
-    },
-    {
-        id: 'barber',
-        title: 'Borbélyszalon',
-        category: 'Beauty',
-        description: 'Időpontfoglalásra optimalizált, vizuálisan erős sablon szolgáltatás- és árlistával.',
-        previewRoute: '/preview/barber',
-        image: 'https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=900&q=80',
-    },
-    {
-        id: 'wedding',
-        title: 'Esküvői dekoráció',
-        category: 'Wedding',
-        description: 'Portfólió- és ajánlatkérés-központú sablon prémium vizuális hangsúlyokkal.',
-        previewRoute: '/preview/wedding',
-        image: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=80',
-    },
-    {
-        id: 'moto',
-        title: 'Szépségszalon',
-        category: 'Beauty',
-        description: 'Prémium megjelenésű sablon online időpontfoglaláshoz, kezelési listához és bizalomépítő bemutatkozáshoz.',
-        previewRoute: '/preview/beauty',
-        image: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=900&q=80',
-    },
-];
-
-const TemplateCard = ({ template, index, mobile = false, onPreview, isExpanding, isActive, cardRef }) => (
+const TemplateCard = ({ template, index, mobile = false, onPreview, isExpanding, isActive, cardRef, previewLabel }) => (
     <motion.article
         ref={cardRef}
         initial={mobile ? false : { opacity: 0, y: 24 }}
@@ -88,13 +37,13 @@ const TemplateCard = ({ template, index, mobile = false, onPreview, isExpanding,
                     }`}
                 data-testid={`template-cta-${index}`}
             >
-                Előnézet
+                {previewLabel}
             </button>
         </div>
     </motion.article>
 );
 
-export const Templates = () => {
+export const Templates = ({ content }) => {
     const [ref, inView] = useInView({
         triggerOnce: true,
         threshold: 0.1,
@@ -156,13 +105,13 @@ export const Templates = () => {
                     className="mb-12 text-left lg:text-center"
                 >
                     <span className="font-mono text-base text-[#00FF00] tracking-wider">
-                        04 // WEBOLDAL SABLONOK
+                        {content.tag}
                     </span>
                     <h2 className="text-headline font-bold mt-4" data-testid="templates-headline">
-                        Választható <span className="gradient-text">iparági sablonok</span>
+                        {content.headlineStart} <span className="gradient-text">{content.headlineAccent}</span>
                     </h2>
                     <p className="mt-4 text-[#A1A1AA] lg:max-w-2xl lg:mx-auto">
-                        Ezek csak kiindulópontok. Bármilyen egyedi funkciót vagy designt megvalósítunk.
+                        {content.subtitle}
                     </p>
                 </motion.div>
 
@@ -172,7 +121,7 @@ export const Templates = () => {
                     style={{ scrollPaddingLeft: '24px', overscrollBehaviorX: 'contain', paddingTop: '8px', paddingBottom: '8px' }}
                 >
                     <div className="flex items-start snap-x snap-mandatory gap-4" style={{ paddingRight: '24px' }}>
-                        {templates.map((template, index) => (
+                        {content.list.map((template, index) => (
                             <TemplateCard
                                 key={template.id}
                                 template={template}
@@ -182,6 +131,7 @@ export const Templates = () => {
                                 isExpanding={expandedTemplate?.id === template.id}
                                 isActive={activeIndex === index}
                                 cardRef={el => cardRefs.current[index] = el}
+                                previewLabel={content.preview}
                             />
                         ))}
                     </div>
@@ -189,7 +139,7 @@ export const Templates = () => {
 
                 {/* Mobile dot indicators */}
                 <div className="lg:hidden flex justify-center gap-2 mt-5">
-                    {templates.map((_, i) => (
+                    {content.list.map((_, i) => (
                         <div
                             key={i}
                             className={`rounded-full transition-all duration-300 ${i === activeIndex ? 'w-5 h-2 bg-[#00FF00]' : 'w-2 h-2 bg-[#ffffff20]'}`}
@@ -198,13 +148,14 @@ export const Templates = () => {
                 </div>
 
                 <div className="hidden lg:grid grid-cols-3 gap-6">
-                    {templates.map((template, index) => (
+                    {content.list.map((template, index) => (
                         <TemplateCard
                             key={template.id}
                             template={template}
                             index={index}
                             onPreview={handlePreview}
                             isExpanding={expandedTemplate?.id === template.id}
+                            previewLabel={content.preview}
                         />
                     ))}
                 </div>
@@ -256,14 +207,14 @@ export const Templates = () => {
                                     onClick={handleClose}
                                     className="rounded-full border border-[#00FF00]/30 bg-[#121212]/90 px-4 py-2 text-xs font-semibold uppercase tracking-[0.08em] text-[#00FF00] transition-colors hover:bg-[#00FF00] hover:text-[#0a0a0a]"
                                 >
-                                    Vissza a sablonokhoz
+                                    {content.backToTemplates}
                                 </motion.button>
                             </div>
 
                             <div className="h-full pt-16">
                                 <iframe
                                     src={`${expandedTemplate.previewRoute}?embed=true`}
-                                    title={`${expandedTemplate.title} előnézet`}
+                                    title={`${expandedTemplate.title} ${content.preview}`}
                                     className="w-full h-full border-0"
                                 />
                             </div>

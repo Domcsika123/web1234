@@ -6,43 +6,43 @@ import { Shield, Wrench, Target, Zap, Search, BarChart3 } from 'lucide-react';
 const services = [
   {
     icon: Zap,
-    title: 'Gyors kivitelezés',
-    description: 'Rövid átfutás, transzparens kivitelezés, gyors élesítés. Projektjeid 1-4 hét alatt elkészülnek.',
+    title: '',
+    description: '',
     size: 'featured',
     gridArea: 'featured1',
   },
   {
     icon: Search,
-    title: 'SEO-alapok beépítve',
-    description: 'Technikai SEO-val és villámgyors betöltéssel biztosítjuk, hogy vevőid könnyen rátaláljanak. Google-barát struktúra alapból.',
+    title: '',
+    description: '',
     size: 'featured',
     gridArea: 'featured2',
   },
   {
     icon: Target,
-    title: 'Konverzió-fókusz',
-    description: 'Nem csak szép, hanem eredményes – minden elem az ügyfélszerzésért dolgozik.',
+    title: '',
+    description: '',
     size: 'medium',
     gridArea: 'medium1',
   },
   {
     icon: BarChart3,
-    title: 'Mérés beépítve',
-    description: 'Precíz analitikát állítunk be, hogy minden adatot láss a látogatók viselkedéséről.',
+    title: '',
+    description: '',
     size: 'medium',
     gridArea: 'medium2',
   },
   {
     icon: Shield,
-    title: 'Biztonság',
-    description: 'Teljes körű adatvédelem és maximális védelem.',
+    title: '',
+    description: '',
     size: 'small',
     gridArea: 'small1',
   },
   {
     icon: Wrench,
-    title: 'Karbantartás',
-    description: 'Nem vagy egyedül átadás után – támogatunk.',
+    title: '',
+    description: '',
     size: 'small',
     gridArea: 'small2',
   },
@@ -116,10 +116,19 @@ const BentoCard = ({ service, index, inView }) => {
   );
 };
 
-export const Services = () => {
+export const Services = ({ content }) => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
   const [activeIndex, setActiveIndex] = useState(0);
   const itemRefs = useRef([]);
+
+  const localizedServices = services.map((service, index) => {
+    const localized = content.items[index] || {};
+    return {
+      ...service,
+      title: localized.title || service.title,
+      description: localized.description || service.description,
+    };
+  });
 
   // Track which item is closest to viewport center on scroll (mobile only)
   useEffect(() => {
@@ -179,15 +188,15 @@ export const Services = () => {
             className="mb-16"
           >
             <span className="font-mono text-base text-[#00FF00] tracking-wider">
-              03 // AMIT KAPSZ TŐLÜNK
+              {content.tag}
             </span>
             <div className="mt-4">
               <h2 className="text-headline font-bold max-w-xl" data-testid="services-headline">
-                Nem csak egy weboldalt, hanem egy működő{' '}
-                <span className="gradient-text">ügyfélszerző rendszert</span>
+                {content.headlineStart}{' '}
+                <span className="gradient-text">{content.headlineAccent}</span>
               </h2>
               <p className="text-[#A1A1AA] mt-4 max-w-xs">
-                Minden fontos elemmel, ami a sikeres online jelenléthez kell
+                {content.subtitle}
               </p>
             </div>
           </motion.div>
@@ -199,7 +208,7 @@ export const Services = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="border-t border-[#ffffff08]"
           >
-            {services.map((service, index) => {
+            {localizedServices.map((service, index) => {
               const isActive = activeIndex === index;
               return (
                 <div
@@ -263,15 +272,14 @@ export const Services = () => {
             className="text-center mb-16"
           >
             <span className="font-mono text-sm text-[#00FF00] tracking-wider">
-              03 // AMIT KAPSZ TŐLÜNK
+              {content.tag}
             </span>
             <h2 className="text-headline font-bold mt-4" data-testid="services-headline-desktop">
-              Nem csak egy weboldalt, hanem egy működő{' '}
-              <span className="gradient-text">ügyfélszerző rendszert</span>{' '}
-              csinálunk
+              {content.headlineStart}{' '}
+              <span className="gradient-text">{content.headlineAccent}</span>
             </h2>
             <p className="text-[#A1A1AA] mt-4 max-w-2xl mx-auto">
-              Minden fontos elemmel, ami a sikeres online jelenléthez kell
+              {content.subtitle}
             </p>
           </motion.div>
 
@@ -301,7 +309,7 @@ export const Services = () => {
                 }
               }
             `}</style>
-            {services.map((service, index) => (
+            {localizedServices.map((service, index) => (
               <BentoCard key={index} service={service} index={index} inView={inView} />
             ))}
           </div>

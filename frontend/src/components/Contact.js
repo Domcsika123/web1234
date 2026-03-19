@@ -4,7 +4,7 @@ import { useInView } from 'react-intersection-observer';
 import { Mail, Phone, MapPin, Send, CheckCircle } from 'lucide-react';
 import { LegalModal } from './LegalModal';
 
-export const Contact = () => {
+export const Contact = ({ content }) => {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -47,20 +47,20 @@ export const Contact = () => {
   const contactInfo = [
     {
       icon: Mail,
-      label: 'EMAIL',
+      label: content.infoLabels[0],
       value: 'info@auracode.hu',
       href: 'mailto:info@auracode.hu',
     },
     {
       icon: Phone,
-      label: 'TELEFON',
+      label: content.infoLabels[1],
       value: '+36 30 648 9678',
       href: 'tel:+36306489678',
     },
     {
       icon: MapPin,
-      label: 'HELYSZÍN',
-      value: 'Budapest, Magyarország',
+      label: content.infoLabels[2],
+      value: content.location,
       href: null,
     },
   ];
@@ -80,13 +80,13 @@ export const Contact = () => {
           className="text-center mb-16"
         >
           <span className="font-mono text-base text-[#00FF00] tracking-wider">
-            07 // KEZDJÜK EL
+            {content.tag}
           </span>
           <h2 className="text-headline font-bold mt-4" data-testid="contact-headline">
-            Kérj <span className="gradient-text">egyedi ajánlatot</span>
+            {content.headlineStart} <span className="gradient-text">{content.headlineAccent}</span>
           </h2>
           <p className="text-[#A1A1AA] mt-4 max-w-xl mx-auto">
-            Építsünk egy olyan oldalt, ami valóban a te cégedet képviseli
+            {content.subtitle}
           </p>
         </motion.div>
 
@@ -97,9 +97,9 @@ export const Contact = () => {
             animate={inView ? { opacity: 1 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h3 className="text-2xl font-bold mb-8">Írj nekünk</h3>
+            <h3 className="text-2xl font-bold mb-8">{content.title}</h3>
             <p className="text-[#A1A1AA] mb-8 leading-relaxed">
-              Ajánlatkérés kötelezettségek nélkül. Te döntesz.
+              {content.lead}
             </p>
 
             <div className="divide-y divide-[#ffffff08] mb-12">
@@ -136,11 +136,11 @@ export const Contact = () => {
             <div className="flex flex-wrap gap-4 text-sm text-[#52525B]">
               <div className="flex items-center gap-2">
                 <CheckCircle className="w-4 h-4 text-[#00FF00]" />
-                <span>Nincs kötelezettség</span>
+                <span>{content.trust[0]}</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle className="w-4 h-4 text-[#00FF00]" />
-                <span>24 órán belül válaszolunk</span>
+                <span>{content.trust[1]}</span>
               </div>
             </div>
           </motion.div>
@@ -154,7 +154,7 @@ export const Contact = () => {
             <form onSubmit={handleSubmit} className="space-y-6" data-testid="contact-form">
               <div>
                 <label className="block font-mono text-xs text-white mb-2">
-                  NÉV *
+                  {content.form.name}
                 </label>
                 <input
                   type="text"
@@ -163,14 +163,14 @@ export const Contact = () => {
                   onChange={handleChange}
                   required
                   className="input-underline"
-                  placeholder="Teljes neved"
+                  placeholder={content.form.namePlaceholder}
                   data-testid="contact-input-name"
                 />
               </div>
 
               <div>
                 <label className="block font-mono text-xs text-white mb-2">
-                  EMAIL *
+                  {content.form.email}
                 </label>
                 <input
                   type="email"
@@ -179,14 +179,14 @@ export const Contact = () => {
                   onChange={handleChange}
                   required
                   className="input-underline"
-                  placeholder="email@pelda.hu"
+                  placeholder={content.form.emailPlaceholder}
                   data-testid="contact-input-email"
                 />
               </div>
 
               <div>
                 <label className="block font-mono text-xs text-white mb-2">
-                  TELEFON
+                  {content.form.phone}
                 </label>
                 <input
                   type="tel"
@@ -194,14 +194,14 @@ export const Contact = () => {
                   value={formData.phone}
                   onChange={handleChange}
                   className="input-underline"
-                  placeholder="+36 XX XXX XXXX"
+                  placeholder={content.form.phonePlaceholder}
                   data-testid="contact-input-phone"
                 />
               </div>
 
               <div>
                 <label className="block font-mono text-xs text-white mb-2">
-                  PROJEKT LEÍRÁSA *
+                  {content.form.message}
                 </label>
                 <textarea
                   name="message"
@@ -210,7 +210,7 @@ export const Contact = () => {
                   required
                   rows={4}
                   className="input-underline resize-none"
-                  placeholder="Mesélj a projektedről..."
+                  placeholder={content.form.messagePlaceholder}
                   data-testid="contact-input-message"
                 />
               </div>
@@ -227,10 +227,11 @@ export const Contact = () => {
                   data-testid="contact-checkbox-privacy"
                 />
                 <label htmlFor="privacy" className="text-sm text-[#A1A1AA]">
-                  Elfogadom az{' '}
-                  <button type="button" onClick={() => setModal('privacy')} className="underline hover:text-[#00FF00] transition-colors">adatvédelmi nyilatkozatot</button>
-                  {' '}és az{' '}
-                  <button type="button" onClick={() => setModal('aszf')} className="underline hover:text-[#00FF00] transition-colors">ÁSZF-et</button>.
+                  {content.form.privacyPrefix}{' '}
+                  <button type="button" onClick={() => setModal('privacy')} className="underline hover:text-[#00FF00] transition-colors">{content.form.privacyLink}</button>
+                  {' '}{content.form.privacyMiddle}{' '}
+                  <button type="button" onClick={() => setModal('aszf')} className="underline hover:text-[#00FF00] transition-colors">{content.form.termsLink}</button>
+                  {content.form.privacySuffix}
                 </label>
               </div>
 
@@ -245,13 +246,13 @@ export const Contact = () => {
                 {isSubmitted ? (
                   <>
                     <CheckCircle className="w-5 h-5" />
-                    Elküldve!
+                    {content.form.sent}
                   </>
                 ) : isLoading ? (
-                  'Küldés...'
+                  content.form.sending
                 ) : (
                   <>
-                    Küldés
+                    {content.form.send}
                     <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </>
                 )}

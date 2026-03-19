@@ -3,27 +3,7 @@ import { motion } from 'framer-motion';
 import { AuraCodeLogo } from './AuraCodeLogo';
 import { LegalModal } from './LegalModal';
 
-const footerLinks = [
-  {
-    title: 'Navigáció',
-    links: [
-      { name: 'Szolgáltatások', href: '#services' },
-      { name: 'Folyamat', href: '#process' },
-      { name: 'Kapcsolat', href: '#contact' },
-    ],
-  },
-  {
-    title: 'Szolgáltatások',
-    links: [
-      { name: 'Weboldal készítés', href: '#services' },
-      { name: 'Webshop fejlesztés', href: '#services' },
-      { name: 'SEO optimalizálás', href: '#services' },
-      { name: 'Karbantartás', href: '#services' },
-    ],
-  },
-];
-
-export const Footer = () => {
+export const Footer = ({ content }) => {
   const currentYear = new Date().getFullYear();
   const [modal, setModal] = useState(null);
 
@@ -50,13 +30,11 @@ export const Footer = () => {
             </motion.button>
 
             <p className="text-[#A1A1AA] leading-relaxed max-w-md mb-6">
-              Prémium weboldalak kis- és középvállalkozások részére.
-              Digitális partnerként dolgozunk a stratégiai tervezéstől
-              a megvalósításon át a folyamatos fejlesztésig.
+              {content.description}
             </p>
 
             <div className="flex gap-4">
-              {['30 nap garancia', 'Fix árak', 'Magyar csapat'].map((tag, index) => (
+              {content.tags.map((tag, index) => (
                 <span
                   key={index}
                   className="text-xs text-[#52525B] border border-[#ffffff10] px-3 py-1 rounded-full"
@@ -68,7 +46,7 @@ export const Footer = () => {
           </div>
 
           {/* Links Columns */}
-          {footerLinks.map((column, columnIndex) => (
+          {content.columns.map((column, columnIndex) => (
             <div key={columnIndex}>
               <h4 className="font-bold text-white mb-4">{column.title}</h4>
               <ul className="space-y-3">
@@ -91,15 +69,15 @@ export const Footer = () => {
         {/* Bottom bar */}
         <div className="pt-8 border-t border-[#ffffff10] flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-[#52525B] text-sm">
-            © {currentYear} AuraCode. Minden jog fenntartva.
+            © {currentYear} AuraCode. {content.copyright}
           </p>
 
           <div className="flex gap-6 text-sm text-[#52525B]">
             <button onClick={() => setModal('privacy')} className="hover:text-[#A1A1AA] transition-colors">
-              Adatvédelem
+              {content.privacy}
             </button>
             <button onClick={() => setModal('aszf')} className="hover:text-[#A1A1AA] transition-colors">
-              ÁSZF
+              {content.terms}
             </button>
           </div>
         </div>
