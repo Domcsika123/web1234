@@ -184,8 +184,55 @@ export const content = {
                 },
             ],
         },
+        pricing: {
+            tag: "06 // ÁRAZÁS",
+            headlineStart: "Átlátható árazás, ",
+            headlineAccent: "rejtett költségek nélkül",
+            subtitle: "Az végösszeg egy becsült ár, a tényleges összeg lehet alacsonyabb és magasabb is egyéni igényektől függően.",
+            labels: {
+                type: "Weboldal típusa",
+                design: "Design",
+                pages: "Oldalak száma",
+                urgency: "Sürgősség",
+            },
+            hints: {
+                pages: "3 oldal felett minden további oldal +6.000 Ft.",
+            },
+            typeOptions: [
+                { value: "landing", label: "Landing Page" },
+                { value: "business", label: "Üzleti weboldal (többoldalas)" },
+                { value: "webshop", label: "Webshop / E-kereskedelem" },
+                { value: "booking", label: "Foglalási rendszerrel ellátott weboldal" },
+            ],
+            designOptions: [
+                { value: "template", label: "Modern sablon alapú - 0 Ft" },
+                { value: "custom", label: "Egyedi UI/UX tervezés - +65.000 Ft" },
+            ],
+            extras: {
+                seo: "SEO optimalizálás (+29.000 Ft)",
+                copywriting: "Profi szövegírás (+7.800 Ft / oldal)",
+            },
+            urgencyOptions: [
+                { value: "normal", label: "Normál tempó (1.0x)" },
+                { value: "urgent", label: "Sürgős, 1 héten belül (1.4x)" },
+            ],
+            summary: {
+                title: "Árkalkuláció",
+                base: "Alapár",
+                design: "Design felár",
+                extraPages: "További oldalak",
+                seo: "SEO",
+                copywriting: "Szövegírás",
+                subtotal: "Részösszeg",
+                multiplier: "Sürgősségi szorzó",
+                total: "Végösszeg",
+                eta: "Becsült elkészülési idő",
+                days: "nap",
+            },
+            cta: "Ingyenes konzultáció",
+        },
         faq: {
-            tag: "06 // GYAKORI KÉRDÉSEK",
+            tag: "07 // GYAKORI KÉRDÉSEK",
             headlineStart: "Minden, amit",
             headlineAccent: "tudnod kell",
             subtitle: "Az oldalkészítésről egyszerűen",
@@ -219,7 +266,7 @@ export const content = {
             contactLink: "Írj nekünk és válaszolunk!",
         },
         contact: {
-            tag: "07 // KEZDJÜK EL",
+            tag: "08 // KEZDJÜK EL",
             headlineStart: "Kérj",
             headlineAccent: "egyedi ajánlatot",
             subtitle: "Építsünk egy olyan oldalt, ami valóban a te cégedet képviseli.",
@@ -275,6 +322,14 @@ export const content = {
             terms: "ÁSZF",
         },
     },
+
+    // ANGOL VERZIO
+    // ANGOL VERZIO
+    // ANGOL VERZIO
+    // ANGOL VERZIO
+
+
+
     en: {
         meta: {
             title: "AuraCode | Website Creation for Businesses",
@@ -460,8 +515,55 @@ export const content = {
                 },
             ],
         },
+        pricing: {
+            tag: "06 // PRICING",
+            headlineStart: "Modern",
+            headlineAccent: "website cost calculator",
+            subtitle: "35% below market average with real-time estimation.",
+            labels: {
+                type: "Website type",
+                design: "Design",
+                pages: "Number of pages",
+                urgency: "Urgency",
+            },
+            hints: {
+                pages: "Above 3 pages, each additional page adds +6,000 HUF.",
+            },
+            typeOptions: [
+                { value: "landing", label: "Landing Page" },
+                { value: "business", label: "Business website (multi-page)" },
+                { value: "webshop", label: "Webshop / E-commerce" },
+                { value: "booking", label: "Landing page with integrated booking system" },
+            ],
+            designOptions: [
+                { value: "template", label: "Modern template-based - 0 HUF" },
+                { value: "custom", label: "Custom UI/UX design (Figma) - +65,000 HUF" },
+            ],
+            extras: {
+                seo: "SEO optimization (+29,000 HUF)",
+                copywriting: "Professional copywriting (+7,800 HUF / page)",
+            },
+            urgencyOptions: [
+                { value: "normal", label: "Normal pace (1.0x)" },
+                { value: "urgent", label: "Urgent, within 1 week (1.4x)" },
+            ],
+            summary: {
+                title: "Price estimation",
+                base: "Base price",
+                design: "Design surcharge",
+                extraPages: "Additional pages",
+                seo: "SEO",
+                copywriting: "Copywriting",
+                subtotal: "Subtotal",
+                multiplier: "Urgency multiplier",
+                total: "Total",
+                eta: "Estimated delivery time",
+                days: "days",
+            },
+            cta: "Request free consultation",
+        },
         faq: {
-            tag: "06 // FREQUENTLY ASKED QUESTIONS",
+            tag: "07 // FREQUENTLY ASKED QUESTIONS",
             headlineStart: "Everything you",
             headlineAccent: "need to know",
             subtitle: "Website creation made simple",
@@ -495,7 +597,7 @@ export const content = {
             contactLink: "Contact us and we will answer.",
         },
         contact: {
-            tag: "07 // LETS GET STARTED",
+            tag: "08 // LETS GET STARTED",
             headlineStart: "Request a",
             headlineAccent: "custom quote",
             subtitle: "Lets build a website that truly represents your business.",

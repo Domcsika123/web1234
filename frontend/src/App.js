@@ -8,6 +8,7 @@ import { Stats } from "./components/Stats";
 import { Services } from "./components/Services";
 import { Templates } from "./components/Templates";
 import { Process } from "./components/Process";
+import { Pricing } from "./components/Pricing";
 import { FAQ } from "./components/FAQ";
 import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
@@ -53,6 +54,7 @@ function App() {
                 <Services content={copy.services} />
                 <Templates content={copy.templates} />
                 <Process content={copy.process} />
+                <Pricing content={copy.pricing} />
                 <FAQ content={copy.faq} />
                 <Contact content={copy.contact} />
               </main>
