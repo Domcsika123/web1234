@@ -2,7 +2,6 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import {
   ArrowRight,
-  ChevronDown,
   TrendingUp,
   Zap,
   Search,
@@ -32,36 +31,9 @@ export const Hero = ({ content }) => {
   return (
     <section
       ref={containerRef}
-      className="relative min-h-screen flex items-center overflow-hidden noise-overlay"
+      className="relative min-h-screen flex items-center overflow-hidden"
       data-testid="hero-section"
     >
-      {/* Background Grid */}
-      <div className="absolute inset-0 grid-bg opacity-50" />
-
-      {/* Floating particles */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(20)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-1.5 h-1.5 bg-[#00FF00] rounded-full"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              y: [0, -100, 0],
-              x: [0, Math.random() * 50 - 25, 0],
-              opacity: [0.35, 1, 0.35],
-            }}
-            transition={{
-              duration: 5 + Math.random() * 5,
-              repeat: Infinity,
-              delay: Math.random() * 5,
-            }}
-          />
-        ))}
-      </div>
-
       <motion.div style={{ y, opacity, willChange: 'transform', backfaceVisibility: 'hidden' }} className="w-full">
         <div className="max-w-7xl mx-auto px-6 lg:px-12 pt-32 pb-20">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -218,23 +190,6 @@ export const Hero = ({ content }) => {
         </div>
       </motion.div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        data-testid="scroll-indicator"
-      >
-        <motion.button
-          onClick={() => scrollToSection('#approach')}
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="text-[#52525B] hover:text-[#00FF00] transition-colors"
-        >
-          <ChevronDown size={32} />
-        </motion.button>
-      </motion.div>
     </section>
   );
 };

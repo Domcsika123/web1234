@@ -36,32 +36,6 @@ export const Approach = ({ content }) => {
       className="py-24 lg:py-32 relative overflow-hidden"
       data-testid="approach-section"
     >
-      <div className="absolute inset-0 grid-bg opacity-40" />
-
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(20)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-1.5 h-1.5 bg-[#00FF00] rounded-full"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              y: [0, -100, 0],
-              x: [0, Math.random() * 50 - 25, 0],
-              opacity: [0.35, 1, 0.35],
-            }}
-            transition={{
-              duration: 3.5 + Math.random() * 2.5,
-              repeat: Infinity,
-              delay: Math.random() * 5,
-            }}
-          />
-        ))}
-      </div>
-      <div className="absolute inset-0 bg-black/15" />
-
       <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
         <motion.div
           variants={containerVariants}

@@ -48,8 +48,26 @@ function App() {
             <div className="App bg-[#0A0A0A] min-h-screen">
               <Navbar lang={lang} setLang={setLang} content={copy.navbar} />
               <main>
-                <Hero content={copy.hero} />
-                <Approach content={copy.approach} />
+                <div className="relative overflow-hidden noise-overlay">
+                  <div className="absolute inset-0 grid-bg opacity-45 pointer-events-none" />
+                  <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                    {[...Array(40)].map((_, i) => (
+                      <span
+                        key={i}
+                        className="particle"
+                        style={{
+                          left: `${Math.random() * 100}%`,
+                          top: `${Math.random() * 100}%`,
+                          animationDuration: `${4 + Math.random() * 4}s`,
+                          animationDelay: `${Math.random() * 4}s`,
+                          opacity: 0.35 + Math.random() * 0.4,
+                        }}
+                      />
+                    ))}
+                  </div>
+                  <Hero content={copy.hero} />
+                  <Approach content={copy.approach} />
+                </div>
                 <Stats content={copy.stats} />
                 <Services content={copy.services} />
                 <Templates content={copy.templates} />
