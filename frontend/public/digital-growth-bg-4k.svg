@@ -1,0 +1,94 @@
+<svg width="3840" height="2160" viewBox="0 0 3840 2160" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="3840" y2="2160" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#000000"/>
+      <stop offset="0.5" stop-color="#030604"/>
+      <stop offset="1" stop-color="#000000"/>
+    </linearGradient>
+
+    <radialGradient id="vignette" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1920 1080) rotate(90) scale(1400 2300)">
+      <stop offset="0" stop-color="#000000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0.7"/>
+    </radialGradient>
+
+    <pattern id="grid" width="120" height="120" patternUnits="userSpaceOnUse">
+      <path d="M120 0H0V120" stroke="#39FF14" stroke-opacity="0.07" stroke-width="1"/>
+    </pattern>
+
+    <filter id="glowSoft" x="-50%" y="-50%" width="200%" height="200%" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="12" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="glowStrong" x="-50%" y="-50%" width="200%" height="200%" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="24" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <mask id="centerKeepClear">
+      <rect width="3840" height="2160" fill="white"/>
+      <ellipse cx="1920" cy="1080" rx="760" ry="560" fill="black"/>
+    </mask>
+
+    <linearGradient id="lineGlow" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#39FF14" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#39FF14" stop-opacity="0.2"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="3840" height="2160" fill="url(#bgGrad)"/>
+  <rect width="3840" height="2160" fill="url(#grid)"/>
+
+  <g mask="url(#centerKeepClear)">
+    <g opacity="0.9" filter="url(#glowSoft)">
+      <path d="M-80 260C520 160 880 420 1210 760" stroke="url(#lineGlow)" stroke-width="2"/>
+      <path d="M-40 570C510 420 820 630 1140 980" stroke="#39FF14" stroke-opacity="0.5" stroke-width="1.8"/>
+      <path d="M40 930C510 730 850 890 1180 1200" stroke="#39FF14" stroke-opacity="0.45" stroke-width="1.6"/>
+      <path d="M100 1300C560 1120 860 1230 1200 1510" stroke="#39FF14" stroke-opacity="0.4" stroke-width="1.4"/>
+      <path d="M200 1700C600 1550 900 1620 1220 1840" stroke="#39FF14" stroke-opacity="0.35" stroke-width="1.2"/>
+    </g>
+
+    <g opacity="0.9" filter="url(#glowSoft)">
+      <path d="M3920 320C3340 180 2980 430 2650 760" stroke="url(#lineGlow)" stroke-width="2"/>
+      <path d="M3880 650C3310 500 3000 700 2680 1000" stroke="#39FF14" stroke-opacity="0.5" stroke-width="1.8"/>
+      <path d="M3800 980C3330 790 2990 950 2660 1270" stroke="#39FF14" stroke-opacity="0.45" stroke-width="1.6"/>
+      <path d="M3740 1350C3280 1170 2980 1280 2640 1550" stroke="#39FF14" stroke-opacity="0.4" stroke-width="1.4"/>
+      <path d="M3660 1750C3260 1600 2960 1670 2620 1880" stroke="#39FF14" stroke-opacity="0.35" stroke-width="1.2"/>
+    </g>
+
+    <g filter="url(#glowStrong)">
+      <circle cx="540" cy="420" r="3" fill="#39FF14"/>
+      <circle cx="770" cy="720" r="2.5" fill="#39FF14"/>
+      <circle cx="980" cy="980" r="2" fill="#39FF14"/>
+      <circle cx="680" cy="1320" r="2.5" fill="#39FF14"/>
+      <circle cx="980" cy="1650" r="2" fill="#39FF14"/>
+
+      <circle cx="3290" cy="420" r="3" fill="#39FF14"/>
+      <circle cx="3060" cy="720" r="2.5" fill="#39FF14"/>
+      <circle cx="2850" cy="980" r="2" fill="#39FF14"/>
+      <circle cx="3170" cy="1320" r="2.5" fill="#39FF14"/>
+      <circle cx="2860" cy="1650" r="2" fill="#39FF14"/>
+    </g>
+
+    <g opacity="0.3">
+      <path d="M320 240L560 420L760 360L940 570" stroke="#39FF14" stroke-width="1"/>
+      <path d="M260 980L520 1130L790 1080L1020 1240" stroke="#39FF14" stroke-width="1"/>
+      <path d="M2870 360L3100 520L3330 450L3530 640" stroke="#39FF14" stroke-width="1"/>
+      <path d="M2800 1280L3020 1430L3280 1400L3520 1600" stroke="#39FF14" stroke-width="1"/>
+    </g>
+
+    <g opacity="0.18" filter="url(#glowSoft)">
+      <circle cx="420" cy="1760" r="130" fill="#39FF14"/>
+      <circle cx="3440" cy="320" r="180" fill="#39FF14"/>
+      <circle cx="3580" cy="1820" r="140" fill="#39FF14"/>
+    </g>
+  </g>
+
+  <rect width="3840" height="2160" fill="url(#vignette)"/>
+</svg>

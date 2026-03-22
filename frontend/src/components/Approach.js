@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { AlertCircle, Target, TrendingUp, Wrench } from 'lucide-react';
+import { Target, TrendingUp, Wrench } from 'lucide-react';
 
 const goalIcons = [Target, TrendingUp, Wrench];
 
@@ -15,7 +15,7 @@ export const Approach = ({ content }) => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15,
+        staggerChildren: 0.1,
       },
     },
   };
@@ -25,7 +25,7 @@ export const Approach = ({ content }) => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6 },
+      transition: { duration: 0.45 },
     },
   };
 
@@ -36,67 +36,39 @@ export const Approach = ({ content }) => {
       className="py-24 lg:py-32 relative overflow-hidden"
       data-testid="approach-section"
     >
-      <div className="absolute inset-0 grid-bg opacity-30" />
+      <div className="absolute inset-0 grid-bg opacity-40" />
+
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {[...Array(20)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1.5 h-1.5 bg-[#00FF00] rounded-full"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              y: [0, -100, 0],
+              x: [0, Math.random() * 50 - 25, 0],
+              opacity: [0.35, 1, 0.35],
+            }}
+            transition={{
+              duration: 3.5 + Math.random() * 2.5,
+              repeat: Infinity,
+              delay: Math.random() * 5,
+            }}
+          />
+        ))}
+      </div>
+      <div className="absolute inset-0 bg-black/15" />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate={inView ? 'visible' : 'hidden'}
-          className="grid lg:grid-cols-2 gap-16 items-start"
+          className="max-w-3xl mx-auto"
         >
-          {/* Left Column */}
-          <div>
-            <motion.span
-              variants={itemVariants}
-              className="font-mono text-base text-[#00FF00] tracking-wider"
-            >
-              {content.tag}
-            </motion.span>
-
-            <motion.h2
-              variants={itemVariants}
-              className="text-headline font-bold mt-4 mb-6"
-              data-testid="approach-headline"
-            >
-              {content.headlineStart}{' '}
-              <span className="gradient-text">{content.headlineAccent}</span>
-            </motion.h2>
-
-            <motion.div variants={itemVariants} className="space-y-4 mb-10">
-              {content.paragraphs.map((paragraph) => (
-                <p key={paragraph} className="text-[#A1A1AA]">
-                  {paragraph}
-                </p>
-              ))}
-            </motion.div>
-
-            <motion.div variants={itemVariants} className="mb-8">
-              <p className="text-[#52525B] font-medium mb-4">{content.painPointsTitle}</p>
-              <div className="space-y-4">
-                {content.painPoints.map((point, index) => (
-                  <motion.div
-                    key={index}
-                    variants={itemVariants}
-                    className="flex items-start gap-3 p-4 bg-[#121212] rounded-lg border border-[#ffffff10]"
-                  >
-                    <AlertCircle className="w-5 h-5 text-red-500 mt-0.5 flex-shrink-0" />
-                    <span className="text-[#A1A1AA]">{point}</span>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-
-            <motion.p
-              variants={itemVariants}
-              className="text-white font-medium"
-            >
-              {content.strategyStart}{' '}
-              <span className="text-[#00FF00]">{content.strategyAccent}</span> {content.strategyEnd}
-            </motion.p>
-          </div>
-
-          {/* Right Column */}
           <div>
             <motion.div
               variants={itemVariants}
@@ -106,7 +78,7 @@ export const Approach = ({ content }) => {
                 {content.questionIntro}
               </p>
 
-              <h3 className="text-xl lg:text-2xl font-bold mb-8 text-[#00FF00]">
+              <h3 className="text-xl lg:text-2xl font-bold mb-8 gradient-text">
                 {content.question}
               </h3>
 

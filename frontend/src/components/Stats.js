@@ -33,7 +33,7 @@ export const Stats = ({ content }) => {
           </span>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8 lg:gap-16 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-2 lg:gap-2 max-w-2xl mx-auto">
           {content.items.map((stat, index) => (
             <motion.div
               key={index}

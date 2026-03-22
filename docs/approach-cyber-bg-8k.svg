@@ -1,0 +1,87 @@
+<svg width="7680" height="4320" viewBox="0 0 7680 4320" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="microGrid" width="80" height="80" patternUnits="userSpaceOnUse">
+      <path d="M80 0H0V80" stroke="#39FF14" stroke-opacity="0.035" stroke-width="1"/>
+    </pattern>
+
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="8" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="strongGlow" x="-50%" y="-50%" width="200%" height="200%" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="18" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <radialGradient id="fadeEdge" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(3840 2160) rotate(90) scale(1800 3200)">
+      <stop offset="0" stop-color="#000000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0.88"/>
+    </radialGradient>
+
+    <mask id="clearCenterMask">
+      <rect width="7680" height="4320" fill="white"/>
+      <ellipse cx="3840" cy="2160" rx="1450" ry="980" fill="black"/>
+    </mask>
+  </defs>
+
+  <rect width="7680" height="4320" fill="#000000"/>
+  <rect width="7680" height="4320" fill="url(#microGrid)"/>
+
+  <g mask="url(#clearCenterMask)">
+    <g filter="url(#softGlow)">
+      <path d="M-120 540C1180 280 1960 760 2460 1360" stroke="#39FF14" stroke-opacity="0.48" stroke-width="2"/>
+      <path d="M-80 1040C1080 760 1880 1180 2440 1700" stroke="#39FF14" stroke-opacity="0.4" stroke-width="1.8"/>
+      <path d="M20 1680C1160 1420 1880 1760 2420 2200" stroke="#39FF14" stroke-opacity="0.34" stroke-width="1.6"/>
+      <path d="M180 2420C1240 2220 1880 2440 2460 2860" stroke="#39FF14" stroke-opacity="0.3" stroke-width="1.5"/>
+      <path d="M340 3240C1300 3040 1960 3200 2520 3620" stroke="#39FF14" stroke-opacity="0.26" stroke-width="1.4"/>
+    </g>
+
+    <g filter="url(#softGlow)">
+      <path d="M7800 520C6500 260 5720 740 5220 1340" stroke="#39FF14" stroke-opacity="0.48" stroke-width="2"/>
+      <path d="M7740 1020C6580 740 5780 1160 5220 1680" stroke="#39FF14" stroke-opacity="0.4" stroke-width="1.8"/>
+      <path d="M7640 1660C6500 1400 5780 1740 5240 2180" stroke="#39FF14" stroke-opacity="0.34" stroke-width="1.6"/>
+      <path d="M7480 2400C6420 2200 5780 2420 5200 2840" stroke="#39FF14" stroke-opacity="0.3" stroke-width="1.5"/>
+      <path d="M7320 3220C6360 3020 5700 3180 5140 3600" stroke="#39FF14" stroke-opacity="0.26" stroke-width="1.4"/>
+    </g>
+
+    <g stroke="#39FF14" stroke-opacity="0.22" stroke-width="1">
+      <path d="M640 500L1020 760L1380 700L1700 980L2040 920"/>
+      <path d="M520 1680L920 1900L1300 1860L1660 2080L2040 2020"/>
+      <path d="M6100 660L5760 900L5420 860L5100 1120L4740 1060"/>
+      <path d="M6200 1780L5820 2020L5480 1980L5140 2240L4740 2200"/>
+      <path d="M760 3380L1140 3540L1480 3460L1820 3640L2180 3560"/>
+      <path d="M6140 3320L5800 3500L5460 3440L5100 3620L4720 3560"/>
+    </g>
+
+    <g filter="url(#strongGlow)" fill="#39FF14">
+      <circle cx="860" cy="620" r="2.8"/>
+      <circle cx="1200" cy="830" r="2.2"/>
+      <circle cx="1640" cy="980" r="2.6"/>
+      <circle cx="900" cy="1920" r="2.4"/>
+      <circle cx="1540" cy="2100" r="2.2"/>
+      <circle cx="1200" cy="3520" r="2.5"/>
+
+      <circle cx="6820" cy="620" r="2.8"/>
+      <circle cx="6480" cy="830" r="2.2"/>
+      <circle cx="6040" cy="980" r="2.6"/>
+      <circle cx="6780" cy="1920" r="2.4"/>
+      <circle cx="6120" cy="2100" r="2.2"/>
+      <circle cx="6480" cy="3520" r="2.5"/>
+    </g>
+
+    <g opacity="0.14" filter="url(#softGlow)">
+      <circle cx="500" cy="3900" r="210" fill="#39FF14"/>
+      <circle cx="7150" cy="360" r="220" fill="#39FF14"/>
+      <circle cx="7250" cy="3860" r="160" fill="#39FF14"/>
+    </g>
+  </g>
+
+  <rect width="7680" height="4320" fill="url(#fadeEdge)"/>
+</svg>
