@@ -5,12 +5,12 @@ import { Calculator, Clock3, Sparkles } from 'lucide-react';
 
 const typeConfig = {
     landing: { basePrice: 90000, days: 7 },
-    business: { basePrice: 160000, days: 14 },
-    webshop: { basePrice: 325000, days: 18 },
-    booking: { basePrice: 260000, days: 18 },
+    business: { basePrice: 130000, days: 14 },
+    webshop: { basePrice: 150000, days: 14 },
+    booking: { basePrice: 140000, days: 18 },
 };
 
-const DESIGN_CUSTOM_PRICE = 65000;
+const DESIGN_CUSTOM_PRICE = 50000;
 const EXTRA_PAGE_PRICE = 6000;
 const SEO_PRICE = 29000;
 const COPYWRITING_PER_PAGE = 7800;

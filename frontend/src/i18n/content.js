@@ -188,7 +188,7 @@ export const content = {
             tag: "06 // ÁRAZÁS",
             headlineStart: "Átlátható árazás, ",
             headlineAccent: "rejtett költségek nélkül",
-            subtitle: "Az végösszeg egy becsült ár, a tényleges összeg lehet alacsonyabb és magasabb is egyéni igényektől függően.",
+            subtitle: "A végösszeg egy becsült ár, a tényleges összeg lehet alacsonyabb és magasabb is egyéni igényektől függően.",
             labels: {
                 type: "Weboldal típusa",
                 design: "Design",
@@ -206,7 +206,7 @@ export const content = {
             ],
             designOptions: [
                 { value: "template", label: "Modern sablon alapú - 0 Ft" },
-                { value: "custom", label: "Egyedi UI/UX tervezés - +65.000 Ft" },
+                { value: "custom", label: "Egyedi UI/UX tervezés - +50.000 Ft" },
             ],
             extras: {
                 seo: "SEO optimalizálás (+29.000 Ft)",
@@ -517,9 +517,9 @@ export const content = {
         },
         pricing: {
             tag: "06 // PRICING",
-            headlineStart: "Modern",
-            headlineAccent: "website cost calculator",
-            subtitle: "35% below market average with real-time estimation.",
+            headlineStart: "Transparent pricing, ",
+            headlineAccent: "without hidden costs",
+            subtitle: "The final price is an estimated cost, the actual amount may be lower or higher depending on individual needs.",
             labels: {
                 type: "Website type",
                 design: "Design",
@@ -537,7 +537,7 @@ export const content = {
             ],
             designOptions: [
                 { value: "template", label: "Modern template-based - 0 HUF" },
-                { value: "custom", label: "Custom UI/UX design (Figma) - +65,000 HUF" },
+                { value: "custom", label: "Custom UI/UX design (Figma) - +50,000 HUF" },
             ],
             extras: {
                 seo: "SEO optimization (+29,000 HUF)",
