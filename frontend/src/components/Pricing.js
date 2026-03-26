@@ -22,7 +22,7 @@ export const Pricing = ({ content }) => {
 
     const [websiteType, setWebsiteType] = useState('landing');
     const [designType, setDesignType] = useState('template');
-    const [pages, setPages] = useState(5);
+    const [pages, setPages] = useState(1);
     const [seo, setSeo] = useState(false);
     const [copywriting, setCopywriting] = useState(false);
     const [urgent, setUrgent] = useState(false);

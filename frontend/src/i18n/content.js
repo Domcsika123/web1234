@@ -205,8 +205,8 @@ export const content = {
                 { value: "booking", label: "Foglalási rendszerrel ellátott weboldal" },
             ],
             designOptions: [
-                { value: "template", label: "Modern sablon alapú - 0 Ft" },
-                { value: "custom", label: "Egyedi UI/UX tervezés - +50.000 Ft" },
+                { value: "template", label: "Modern alapdesign - 0 Ft" },
+                { value: "custom", label: "Teljesen személyre szabott megjelenés - +50000 Ft" },
             ],
             extras: {
                 seo: "SEO optimalizálás (+29.000 Ft)",
