@@ -350,7 +350,7 @@ export const content = {
         },
         hero: {
             headlineStart: "Professional website for your",
-            headlineAccent: "business growth",
+            headlineAccent: "business's growth",
             subtitle:
                 "Premium websites for small and medium-sized businesses. Modern, SEO-optimized websites in 1-4 weeks, at a fixed price.",
             primaryCta: "Free consultation",
