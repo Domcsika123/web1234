@@ -103,7 +103,7 @@ export const Navbar = ({ lang, setLang, content }) => {
               whileHover={{ scale: 1.05 }}
               data-testid="navbar-logo"
             >
-              <AuraCodeLogo className="h-10 w-10" />
+              <AuraCodeLogo className="h-[62px] w-[62px]" />
               <span className="font-black text-xl tracking-tight" style={{ fontWeight: 900, WebkitTextStroke: '0.35px rgba(255,255,255,0.55)' }}>
                 Aura<span className="gradient-text font-black" style={{ fontWeight: 900, WebkitTextStroke: '0.35px rgba(0,255,0,0.4)' }}>Code</span>
               </span>
