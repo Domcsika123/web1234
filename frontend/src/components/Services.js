@@ -70,16 +70,16 @@ const BentoCard = ({ service, index, inView }) => {
       className={`
         ${sizeClasses[service.size]}
         relative overflow-hidden rounded-2xl
-        bg-[#0d0d0d] border border-[#ffffff08]
+        bg-[#0d0d0d] border border-[#00FF00]/20
         group cursor-default
         transition-all duration-500 ease-out
-        hover:border-[#00FF00]/40
+        hover:border-[#00FF00]/50
         hover:shadow-[0_0_40px_-10px_rgba(0,255,0,0.25)]
       `}
       style={{ gridArea: service.gridArea }}
       data-testid={`service-card-${index}`}
     >
-      <div className="absolute -right-8 -bottom-8 pointer-events-none opacity-[0.04] group-hover:opacity-[0.08] transition-opacity duration-500">
+      <div className="absolute -right-8 -bottom-8 pointer-events-none opacity-[0.15] group-hover:opacity-[0.25] transition-opacity duration-500">
         <Icon className={`${bgIconSize[service.size]} text-[#00FF00]`} strokeWidth={1} />
       </div>
       <div className="absolute top-3 left-3 w-1.5 h-1.5 rounded-full bg-[#00FF00]/20 group-hover:bg-[#00FF00]/50 transition-colors" />

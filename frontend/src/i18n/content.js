@@ -201,7 +201,6 @@ export const content = {
             },
             typeOptions: [
                 { value: "landing", label: "Landing Page" },
-                { value: "business", label: "Üzleti weboldal (többoldalas)" },
                 { value: "webshop", label: "Webshop / E-kereskedelem" },
                 { value: "booking", label: "Foglalási rendszerrel ellátott weboldal" },
             ],
@@ -533,7 +532,6 @@ export const content = {
             },
             typeOptions: [
                 { value: "landing", label: "Landing Page" },
-                { value: "business", label: "Business website (multi-page)" },
                 { value: "webshop", label: "Webshop / E-commerce" },
                 { value: "booking", label: "Landing page with integrated booking system" },
             ],

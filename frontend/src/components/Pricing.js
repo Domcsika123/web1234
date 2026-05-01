@@ -4,10 +4,9 @@ import { useInView } from 'react-intersection-observer';
 import { Calculator, Clock3, Sparkles } from 'lucide-react';
 
 const typeConfig = {
-    landing: { basePrice: 90000, days: 7 },
-    business: { basePrice: 130000, days: 14 },
-    webshop: { basePrice: 150000, days: 14 },
-    booking: { basePrice: 140000, days: 18 },
+    landing: { basePrice: 140000, days: 7 },
+    webshop: { basePrice: 190000, days: 14 },
+    booking: { basePrice: 170000, days: 14 },
 };
 
 const DESIGN_CUSTOM_PRICE = 50000;
@@ -40,7 +39,8 @@ export const Pricing = ({ content }) => {
         const subtotal = base + design + extraPages + seoFee + copywritingFee;
         const multiplier = urgent ? 1.4 : 1;
         const total = subtotal * multiplier;
-        const estimateDays = urgent ? Math.ceil(selectedType.days / 2) : selectedType.days;
+        const baseDays = selectedType.days + (designType === 'custom' ? 4 : 0);
+        const estimateDays = urgent ? Math.ceil(baseDays / 2) : baseDays;
 
         return {
             base,
