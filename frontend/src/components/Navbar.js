@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
 import { AuraCodeLogo } from './AuraCodeLogo';
 
 const FlagHungary = () => (
@@ -141,34 +140,24 @@ export const Navbar = ({ lang, setLang, content }) => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-2 text-white relative w-10 h-10 flex items-center justify-center"
+              className="lg:hidden p-2 text-white relative w-10 h-10 flex flex-col items-center justify-center gap-[5px]"
               data-testid="mobile-menu-toggle"
             >
-              <AnimatePresence mode="wait" initial={false}>
-                {isMobileMenuOpen ? (
-                  <motion.span
-                    key="close"
-                    initial={{ rotate: -90, opacity: 0 }}
-                    animate={{ rotate: 0, opacity: 1 }}
-                    exit={{ rotate: 90, opacity: 0 }}
-                    transition={{ duration: 0.2, ease: 'easeInOut' }}
-                    className="absolute"
-                  >
-                    <X size={24} />
-                  </motion.span>
-                ) : (
-                  <motion.span
-                    key="open"
-                    initial={{ rotate: 90, opacity: 0 }}
-                    animate={{ rotate: 0, opacity: 1 }}
-                    exit={{ rotate: -90, opacity: 0 }}
-                    transition={{ duration: 0.2, ease: 'easeInOut' }}
-                    className="absolute"
-                  >
-                    <Menu size={24} />
-                  </motion.span>
-                )}
-              </AnimatePresence>
+              <motion.span
+                animate={isMobileMenuOpen ? { rotate: -45, y: 7 } : { rotate: 0, y: 0 }}
+                transition={{ duration: 0.3, ease: 'easeInOut' }}
+                className="block w-6 h-[2px] bg-white rounded-full origin-center"
+              />
+              <motion.span
+                animate={isMobileMenuOpen ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
+                transition={{ duration: 0.2, ease: 'easeInOut' }}
+                className="block w-6 h-[2px] bg-white rounded-full"
+              />
+              <motion.span
+                animate={isMobileMenuOpen ? { rotate: 45, y: -7 } : { rotate: 0, y: 0 }}
+                transition={{ duration: 0.3, ease: 'easeInOut' }}
+                className="block w-6 h-[2px] bg-white rounded-full origin-center"
+              />
             </button>
           </div>
         </div>
