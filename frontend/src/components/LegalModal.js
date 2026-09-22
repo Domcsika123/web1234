@@ -73,8 +73,11 @@ A szolgáltatás igénybevételével az Ügyfél elfogadja jelen ÁSZF-ben fogla
 
 2. A Szolgáltató adatai
 Név: AuraCode
+Üzemeltető: Zsarnóci Benedek
+Székhely: 2098 Pilisszentkereszt, Erdősor utca 32.
+Adószám: 91782809-1-33
 E-mail: info@auracode.hu
-Székhely: Budapest, Magyarország
+Telefon: +36 30 648 9678
 
 3. Szolgáltatások
 A Szolgáltató az alábbi szolgáltatásokat nyújtja:

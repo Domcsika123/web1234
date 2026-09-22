@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-NetTCPConnection -LocalPort 8000 -State Listen -ErrorAction SilentlyContinue)",
+      "PowerShell($env:PORT='8000'; $env:BROWSER='none'; Set-Location frontend; npm start)",
+      "Bash(seq 1 180)",
+      "Bash(grep -qE 'Compiled|compiled|Failed|ERR|Error|Something is already' C:/Users/DELL/AppData/Local/Temp/claude/c--src-kozosmappa-web1234/ff10777c-c3d1-4c32-9e48-82178c229187/tasks/bd1j3tbv2.output)",
+      "Bash(break)",
+      "Bash(sleep 1)",
+      "Bash(tail -n 20 C:/Users/DELL/AppData/Local/Temp/claude/c--src-kozosmappa-web1234/ff10777c-c3d1-4c32-9e48-82178c229187/tasks/bd1j3tbv2.output)"
+    ]
+  }
+}
