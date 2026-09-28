@@ -1,22 +1,8 @@
-import { useEffect, useRef, useState } from 'react';
-import {
-  motion,
-  useMotionValue,
-  useReducedMotion,
-  useScroll,
-  useSpring,
-  useTransform,
-} from 'framer-motion';
+import { useRef } from 'react';
+import { motion, useMotionValue, useReducedMotion, useSpring, useTransform } from 'framer-motion';
 
 export const isTouchDevice = () =>
   typeof window !== 'undefined' && window.matchMedia('(hover: none), (pointer: coarse)').matches;
-
-export const scrollToId = (href) => {
-  const el = document.querySelector(href);
-  if (!el) return;
-  const top = el.getBoundingClientRect().top + window.scrollY - 24;
-  window.scrollTo({ top, behavior: 'smooth' });
-};
 
 /* ── Section tag pill ─────────────────────────────────────────── */
 export const SectionTag = ({ children, className = '' }) => (
@@ -181,89 +167,4 @@ export const TiltCard = ({ children, className = '', max = 10, glare = true, sty
       </motion.div>
     </div>
   );
-};
-
-/* ── Scrambling text (decodes into the final string) ──────────── */
-const GLYPHS = '!<>-_\\/[]{}=+*^?#01';
-export const ScrambleText = ({ text, trigger = true, className = '', speed = 28 }) => {
-  const [out, setOut] = useState(text);
-  const reduce = useReducedMotion();
-
-  useEffect(() => {
-    if (!trigger || reduce) {
-      setOut(text);
-      return undefined;
-    }
-    let frame = 0;
-    const total = text.length;
-    const id = setInterval(() => {
-      frame += 1;
-      const revealed = Math.floor(frame / 1.6);
-      setOut(
-        text
-          .split('')
-          .map((ch, i) => {
-            if (ch === ' ' || i < revealed) return ch;
-            return GLYPHS[Math.floor(Math.random() * GLYPHS.length)];
-          })
-          .join('')
-      );
-      if (revealed >= total) clearInterval(id);
-    }, speed);
-    return () => clearInterval(id);
-  }, [text, trigger, reduce, speed]);
-
-  return <span className={className}>{out}</span>;
-};
-
-/* ── Infinite marquee row ─────────────────────────────────────── */
-export const Marquee = ({ items, reverse = false, className = '', itemClassName = '', separator = '✦', speed = 40 }) => {
-  const group = (hidden) => (
-    <div className="marquee-group" aria-hidden={hidden}>
-      {items.map((item, i) => (
-        <span key={i} className={`inline-flex items-center gap-6 ${itemClassName}`}>
-          {item}
-          <span className="marquee-sep">{separator}</span>
-        </span>
-      ))}
-    </div>
-  );
-  return (
-    <div className={`marquee ${className}`} style={{ '--marquee-duration': `${speed}s` }}>
-      <div className={`marquee-track ${reverse ? 'marquee-reverse' : ''}`}>
-        {group(false)}
-        {group(true)}
-      </div>
-    </div>
-  );
-};
-
-/* ── Top scroll progress bar ──────────────────────────────────── */
-export const ScrollProgress = () => {
-  const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, { stiffness: 120, damping: 24, restDelta: 0.001 });
-  return <motion.div className="scroll-progress" style={{ scaleX }} />;
-};
-
-/* ── Soft glow following the cursor (desktop only) ────────────── */
-export const CursorGlow = () => {
-  const x = useMotionValue(-500);
-  const y = useMotionValue(-500);
-  const sx = useSpring(x, { stiffness: 90, damping: 20 });
-  const sy = useSpring(y, { stiffness: 90, damping: 20 });
-  const [enabled, setEnabled] = useState(false);
-
-  useEffect(() => {
-    if (isTouchDevice()) return undefined;
-    setEnabled(true);
-    const move = (e) => {
-      x.set(e.clientX);
-      y.set(e.clientY);
-    };
-    window.addEventListener('mousemove', move, { passive: true });
-    return () => window.removeEventListener('mousemove', move);
-  }, [x, y]);
-
-  if (!enabled) return null;
-  return <motion.div className="cursor-glow" style={{ x: sx, y: sy }} aria-hidden="true" />;
 };

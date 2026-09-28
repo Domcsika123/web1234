@@ -1,51 +1,50 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef, useState } from 'react';
-import { ArrowRight, CheckCircle2 } from 'lucide-react';
-import { ParticleField } from './ParticleField';
-import { BuildMockup } from './BuildMockup';
-import { Magnetic, RevealWords, SectionTag, scrollToId } from './fx';
+import { useRef } from 'react';
+import {
+  ArrowRight,
+  TrendingUp,
+  Zap,
+  Search,
+  Smartphone,
+  Cog,
+} from 'lucide-react';
+import { AuraCodeLogo } from './AuraCodeLogo';
+import { RevealWords } from './fx';
 
-export const Hero = ({ content, ready = true }) => {
+export const Hero = ({ content }) => {
   const containerRef = useRef(null);
-  const [isMobile] = useState(() => window.matchMedia('(max-width: 1023px)').matches);
-  const { scrollYProgress } = useScroll({ target: containerRef, offset: ['start start', 'end start'] });
-  // On mobile the hero is taller than the viewport, so parallax/fade would hide the mockup.
-  const y = useTransform(scrollYProgress, [0, 1], isMobile ? [0, 0] : [0, 140]);
-  const opacity = useTransform(scrollYProgress, [0.3, 0.85], isMobile ? [1, 1] : [1, 0]);
-  const mockupY = useTransform(scrollYProgress, [0, 1], isMobile ? [0, 0] : [0, -60]);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start start', 'end start']
+  });
 
-  const startWords = content.headlineStart.split(' ').length;
+  const isMobile = typeof window !== 'undefined' && window.matchMedia('(max-width: 768px)').matches;
+  const y = useTransform(scrollYProgress, [0, 1], isMobile ? [0, 0] : [0, 200]);
+  const opacity = useTransform(scrollYProgress, [0.25, 0.8], [1, 0]);
+
+  const scrollToSection = (href) => {
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <section
       ref={containerRef}
-      className="relative min-h-[100svh] flex items-center overflow-hidden"
+      className="relative min-h-screen flex items-center overflow-hidden"
       data-testid="hero-section"
     >
-      <div className="absolute inset-0 fade-mask-y">
-        <ParticleField />
-      </div>
-      <div className="aurora aurora-green w-[520px] h-[520px] -top-40 -left-40" />
-      <div className="aurora aurora-cyan w-[480px] h-[480px] top-1/3 -right-40" style={{ animationDelay: '-6s' }} />
-
-      <motion.div style={{ y, opacity }} className="relative z-10 w-full">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 pt-32 pb-24 lg:pt-36">
-          <div className="grid lg:grid-cols-[1.05fr_1fr] gap-14 lg:gap-10 items-center">
-            <div>
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={ready ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.1 }}
-              >
-                <SectionTag>{content.eyebrow}</SectionTag>
-              </motion.div>
-
-              <h1 className="text-[clamp(2.6rem,6vw,4.6rem)] font-bold leading-[1.03] mt-6 mb-7" data-testid="hero-headline">
-                <RevealWords text={content.headlineStart} inView={ready} delay={0.2} stagger={0.06} />{' '}
+      <motion.div style={{ y, opacity, willChange: 'transform', backfaceVisibility: 'hidden' }} className="w-full">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12 pt-32 pb-20">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            {/* Text Content */}
+            <div className="order-2 lg:order-1">
+              <h1 className="text-display font-bold leading-tight mb-6" data-testid="hero-headline">
+                <RevealWords text={content.headlineStart} delay={0.2} stagger={0.06} />{' '}
                 <RevealWords
                   text={content.headlineAccent}
-                  inView={ready}
-                  delay={0.2 + startWords * 0.06}
+                  delay={0.2 + content.headlineStart.split(' ').length * 0.06}
                   stagger={0.06}
                   className="gradient-text-animated"
                 />
@@ -53,9 +52,9 @@ export const Hero = ({ content, ready = true }) => {
 
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
-                animate={ready ? { opacity: 1, y: 0 } : {}}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.7 }}
-                className="text-lg lg:text-xl text-[#A1A1AA] mb-10 max-w-xl leading-relaxed"
+                className="text-lg lg:text-xl text-[#A1A1AA] mb-10 max-w-xl"
                 data-testid="hero-subtitle"
               >
                 {content.subtitle}
@@ -63,74 +62,138 @@ export const Hero = ({ content, ready = true }) => {
 
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
-                animate={ready ? { opacity: 1, y: 0 } : {}}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.85 }}
-                className="flex flex-wrap items-center gap-4"
+                className="flex flex-wrap gap-4"
               >
-                <Magnetic>
-                  <button
-                    onClick={() => scrollToId('#contact')}
-                    className="btn-primary flex items-center gap-2 group"
-                    data-testid="hero-cta-primary"
-                  >
-                    {content.primaryCta}
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </button>
-                </Magnetic>
-                <Magnetic strength={0.25}>
-                  <button
-                    onClick={() => scrollToId('#services')}
-                    className="btn-secondary"
-                    data-testid="hero-cta-secondary"
-                  >
-                    {content.secondaryCta}
-                  </button>
-                </Magnetic>
+                <motion.button
+                  onClick={() => scrollToSection('#contact')}
+                  className="btn-primary flex items-center gap-2 group"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  data-testid="hero-cta-primary"
+                >
+                  {content.primaryCta}
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </motion.button>
+
+                <motion.button
+                  onClick={() => scrollToSection('#services')}
+                  className="btn-secondary"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  data-testid="hero-cta-secondary"
+                >
+                  {content.secondaryCta}
+                </motion.button>
               </motion.div>
 
-              <motion.ul
+              {/* Trust badges */}
+              <motion.div
                 initial="hidden"
-                animate={ready ? 'visible' : 'hidden'}
+                animate="visible"
                 variants={{ visible: { transition: { staggerChildren: 0.1, delayChildren: 1.05 } } }}
-                className="mt-12 flex flex-wrap gap-x-6 gap-y-3 text-sm text-[#A1A1AA]"
+                className="mt-12 flex flex-wrap gap-6 text-sm text-[#52525B]"
               >
                 {content.badges.map((badge) => (
-                  <motion.li
+                  <motion.div
                     key={badge}
                     variants={{ hidden: { opacity: 0, y: 8 }, visible: { opacity: 1, y: 0 } }}
                     className="flex items-center gap-2"
                   >
-                    <CheckCircle2 className="w-4 h-4 text-[#00FF00]" />
+                    <div className="w-2 h-2 bg-[#00FF00] rounded-full" />
                     <span>{badge}</span>
-                  </motion.li>
+                  </motion.div>
                 ))}
-              </motion.ul>
+              </motion.div>
             </div>
 
-            <motion.div
-              style={{ y: mockupY }}
-              initial={{ opacity: 0, scale: 0.92, rotateX: 12 }}
-              animate={ready ? { opacity: 1, scale: 1, rotateX: 0 } : {}}
-              transition={{ duration: 1.1, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
-              className="relative"
-            >
-              <BuildMockup m={content.mockup} />
-            </motion.div>
+            {/* 3D Element */}
+            <div className="order-1 lg:order-2 flex justify-center items-center">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                className="relative"
+              >
+                {/* 3D Rotating Cube */}
+                <div className="cube-container">
+                  <div className="cube">
+                    <div className="cube-face cube-face-front" style={{ background: 'transparent', border: 'none', boxShadow: 'none' }}>
+                      <svg viewBox="0 0 120 120" style={{ width: '4.5rem', height: '4.5rem', filter: 'drop-shadow(0 0 12px rgba(0,255,0,0.8)) drop-shadow(0 0 25px rgba(0,255,0,0.4))' }}>
+                        {/* Hexagon outline */}
+                        <polygon
+                          points="60,5 110,30 110,80 60,105 10,80 10,30"
+                          fill="none"
+                          stroke="#00FF00"
+                          strokeWidth="5"
+                          strokeLinejoin="round"
+                        />
+                        {/* Left bracket < */}
+                        <path
+                          d="M 48 40 L 30 55 L 48 70"
+                          fill="none"
+                          stroke="#00FF00"
+                          strokeWidth="6.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                        {/* Slash / */}
+                        <path
+                          d="M 66 35 L 54 75"
+                          fill="none"
+                          stroke="#00FF00"
+                          strokeWidth="6.5"
+                          strokeLinecap="round"
+                        />
+                        {/* Right bracket > */}
+                        <path
+                          d="M 72 40 L 90 55 L 72 70"
+                          fill="none"
+                          stroke="#00FF00"
+                          strokeWidth="6.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </div>
+                    <div className="cube-face cube-face-back">
+                      <TrendingUp className="w-12 h-12 text-[#00FF00]" strokeWidth={1.75} />
+                    </div>
+                    <div className="cube-face cube-face-right">
+                      <Zap className="w-12 h-12 text-[#00FF00]" strokeWidth={1.75} />
+                    </div>
+                    <div className="cube-face cube-face-left">
+                      <Search className="w-12 h-12 text-[#00FF00]" strokeWidth={1.75} />
+                    </div>
+                    <div className="cube-face cube-face-top">
+                      <Smartphone className="w-12 h-12 text-[#00FF00]" strokeWidth={1.75} />
+                    </div>
+                    <div className="cube-face cube-face-bottom">
+                      <Cog className="w-12 h-12 text-[#00FF00]" strokeWidth={1.75} />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Glowing rings */}
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                  <motion.div
+                    className="w-[350px] h-[350px] border border-[#00FF00]/20 rounded-full"
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+                  />
+                  <motion.div
+                    className="absolute w-[400px] h-[400px] border border-[#00F0FF]/10 rounded-full"
+                    animate={{ rotate: -360 }}
+                    transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
+                  />
+                </div>
+              </motion.div>
+            </div>
           </div>
         </div>
       </motion.div>
 
-      <motion.button
-        onClick={() => scrollToId('#approach')}
-        initial={{ opacity: 0 }}
-        animate={ready ? { opacity: 1 } : {}}
-        transition={{ delay: 1.6 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 hidden md:flex flex-col items-center gap-2 text-[10px] font-mono tracking-[0.3em] text-white/40 hover:text-white/80 transition-colors"
-        aria-label={content.scroll}
-      >
-        <span className="scroll-cue" />
-        {content.scroll}
-      </motion.button>
     </section>
   );
 };

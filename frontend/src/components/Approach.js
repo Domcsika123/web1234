@@ -1,60 +1,10 @@
-import { useRef, useState } from 'react';
-import { AnimatePresence, motion, useScroll, useTransform } from 'framer-motion';
+import { useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { ArrowRight, Check, Target, TrendingUp, Wrench, X } from 'lucide-react';
-import { SectionTag, SpotlightCard } from './fx';
+import { ArrowRight, Check, Target, TrendingUp, Wrench } from 'lucide-react';
+import { SpotlightCard } from './fx';
 
 const goalIcons = [Target, TrendingUp, Wrench];
-
-const ScrubWord = ({ children, progress, range, accent }) => {
-  const opacity = useTransform(progress, range, [0.12, 1]);
-  const y = useTransform(progress, range, [8, 0]);
-  return (
-    <motion.span style={{ opacity, y }} className={`inline-block mr-[0.25em] ${accent ? 'gradient-text-animated' : ''}`}>
-      {children}
-    </motion.span>
-  );
-};
-
-// Large statement that "reads itself" as the user scrolls.
-const ScrubStatement = ({ start, accent }) => {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start 0.85', 'end 0.45'] });
-  const words = [
-    ...start.split(' ').map((w) => ({ w, accent: false })),
-    ...accent.split(' ').map((w) => ({ w, accent: true })),
-  ];
-  return (
-    <p ref={ref} className="text-[clamp(2rem,5.2vw,4.25rem)] font-bold leading-[1.08] tracking-tight" style={{ fontFamily: 'Outfit, sans-serif' }}>
-      {words.map(({ w, accent: isAccent }, i) => (
-        <ScrubWord key={i} progress={scrollYProgress} range={[i / words.length, (i + 1) / words.length]} accent={isAccent}>
-          {w}
-        </ScrubWord>
-      ))}
-    </p>
-  );
-};
-
-const StruckItem = ({ text, index, inView }) => (
-  <motion.li
-    initial={{ opacity: 0, x: -12 }}
-    animate={inView ? { opacity: 1, x: 0 } : {}}
-    transition={{ duration: 0.5, delay: 0.2 + index * 0.15 }}
-    className="flex items-start gap-3 py-3 border-b border-white/5 last:border-0"
-  >
-    <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-[#ff4d4d]/10">
-      <X className="h-3 w-3 text-[#ff6b6b]" />
-    </span>
-    <motion.span
-      style={{ textDecorationLine: 'line-through', textDecorationThickness: '1.5px' }}
-      initial={{ color: '#D4D4D8', textDecorationColor: 'rgba(255,107,107,0)' }}
-      animate={inView ? { color: '#71717A', textDecorationColor: 'rgba(255,107,107,0.85)' } : {}}
-      transition={{ duration: 0.6, delay: 0.9 + index * 0.3, ease: 'easeInOut' }}
-    >
-      {text}
-    </motion.span>
-  </motion.li>
-);
 
 const GoalSelector = ({ content }) => {
   const [active, setActive] = useState(0);
@@ -136,58 +86,14 @@ const GoalSelector = ({ content }) => {
 };
 
 export const Approach = ({ content }) => {
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
   const [goalRef, goalInView] = useInView({ triggerOnce: true, threshold: 0.2 });
 
   return (
-    <section id="approach" className="relative pt-10 pb-24 lg:pt-16 lg:pb-36 overflow-hidden" data-testid="approach-section">
+    <section id="approach" className="relative py-24 lg:py-32 overflow-hidden" data-testid="approach-section">
       <div className="aurora aurora-green w-[600px] h-[600px] top-1/2 -right-60 opacity-30" />
       <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
-        <SectionTag>{content.tag}</SectionTag>
-        <div className="mt-8 max-w-5xl">
-          <ScrubStatement start={content.headlineStart} accent={content.headlineAccent} />
-        </div>
-
-        {/* Problems we have seen */}
-        <div ref={ref} className="mt-20 grid lg:grid-cols-2 gap-6">
-          <div className="grid gap-4">
-            {content.paragraphs.map((p, i) => (
-              <motion.div
-                key={p}
-                initial={{ opacity: 0, y: 24 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: i * 0.15 }}
-                className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] p-6"
-              >
-                <span className="font-mono text-[11px] tracking-[0.2em] text-[#ff6b6b]/80">
-                  {content.issueLabel} #{String(i + 1).padStart(2, '0')}
-                </span>
-                <p className="mt-3 text-xl lg:text-2xl font-semibold text-white">{p}</p>
-                <div className="absolute -right-6 -bottom-6 h-24 w-24 rounded-full bg-[#ff4d4d]/10 blur-2xl" />
-              </motion.div>
-            ))}
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="rounded-2xl border border-white/10 bg-white/[0.02] p-6 lg:p-8"
-          >
-            <p className="font-mono text-xs uppercase tracking-[0.2em] text-white/40">{content.painPointsTitle}</p>
-            <ul className="mt-3">
-              {content.painPoints.map((point, i) => (
-                <StruckItem key={point} text={point} index={i} inView={inView} />
-              ))}
-            </ul>
-            <p className="mt-6 text-lg text-white">
-              {content.strategyStart} <span className="gradient-text font-semibold">{content.strategyAccent}</span> {content.strategyEnd}
-            </p>
-          </motion.div>
-        </div>
-
         {/* Interactive goal selector */}
-        <div ref={goalRef} className="mt-24">
+        <div ref={goalRef}>
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={goalInView ? { opacity: 1, y: 0 } : {}}
