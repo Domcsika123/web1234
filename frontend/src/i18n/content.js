@@ -23,6 +23,25 @@ export const content = {
             primaryCta: "Ingyenes konzultáció",
             secondaryCta: "Szolgáltatások megtekintése",
             badges: ["30 napos garancia", "Fix áras projektek", "Ingyenes konzultáció"],
+            eyebrow: "Weboldalkészítés KKV-knak",
+            scroll: "GÖRGESS",
+            mockup: {
+                brand: "Bistro Aura",
+                domain: "bistro-aura.hu",
+                kicker: "ÉTTEREM • BUDAPEST",
+                title: "Foglalj asztalt ma estére",
+                titleShort: "Foglalj asztalt",
+                cta: "Foglalás",
+                cards: ["Napi menü", "Borlap", "Rendezvények"],
+                leads: "Foglalások",
+                chips: ["SEO-optimalizált", "Mobilbarát", "Villámgyors"],
+            },
+        },
+        intro: ["betöltés: aura.core", "design rendszer kész", "weboldal élesítése"],
+        marquee: {
+            label: "Szolgáltatások és iparágak",
+            primary: ["Weboldal készítés", "Webshop", "Időpontfoglalás", "SEO", "Analitika", "Karbantartás"],
+            secondary: ["Éttermek", "Szépségszalonok", "Ügyvédi irodák", "Konditermek", "Borbélyok", "Esküvői dekoráció"],
         },
         approach: {
             tag: "01 // A SZEMLÉLETÜNK",
@@ -49,6 +68,35 @@ export const content = {
                 "Kevesebb manuális adminisztrációt?",
             ],
             answerLine: "A válasz határozza meg, mit és hogyan építünk.",
+            issueLabel: "PROBLÉMA",
+            tapHint: "↑ Válassz egy célt, és megmutatjuk, mit építünk hozzá.",
+            weBuild: "Ezt építjük hozzá",
+            goalAnswers: [
+                {
+                    title: "Oldal, ami megkeresést hoz",
+                    points: [
+                        "Egyértelmű ajánlatkérő és kapcsolati pontok minden szekcióban",
+                        "Gyors betöltés, hogy senki ne lépjen le várakozás miatt",
+                        "Bizalomépítő elemek: garancia, folyamat, válaszidő",
+                    ],
+                },
+                {
+                    title: "Értékesítést támogató felület",
+                    points: [
+                        "Átlátható termék- és szolgáltatásbemutatás",
+                        "Egyszerű vásárlási vagy foglalási útvonal",
+                        "Mérés, hogy lásd, mi működik és mi nem",
+                    ],
+                },
+                {
+                    title: "Automatizált, időt spóroló rendszer",
+                    points: [
+                        "Online időpontfoglalás telefonálgatás helyett",
+                        "Automatikus visszaigazolások és értesítések",
+                        "Kevesebb kézi adminisztráció a mindennapokban",
+                    ],
+                },
+            ],
             partnerStart: "Nem klasszikus webfejlesztőként gondolkodunk.",
             partnerAccent: "Digitális partnerként dolgozunk",
             partnerEnd: ", a stratégiai tervezéstől a megvalósításon át a folyamatos fejlesztésig.",
@@ -58,8 +106,10 @@ export const content = {
             items: [
                 { value: 30, suffix: "", label: "Nap Garancia", description: "minden projektre" },
                 { value: 3, suffix: "x", label: "Konverzió Növekedés", description: "átlagos eredmény" },
+                { value: 4, start: 1, prefix: "1–", suffix: " hét", label: "Átfutási idő", description: "a komplexitástól függően" },
             ],
-            tags: ["1-4 HÉT", "FIX ÁR", "EREDMÉNYGARANCIA"],
+            weekLabels: ["1. HÉT", "2. HÉT", "3. HÉT", "4. HÉT"],
+            tags: ["1-4 HÉT", "FIX ÁR", "EREDMÉNYGARANCIA", "30 NAP GARANCIA", "INGYENES KONZULTÁCIÓ"],
         },
         services: {
             tag: "03 // AMIT KAPSZ TŐLÜNK",
@@ -92,14 +142,26 @@ export const content = {
                     description: "Támogatás az átadás után is.",
                 },
             ],
+            viz: {
+                seoQuery: "fodrász a közelben",
+                seoYou: "A te weboldalad",
+                conversionCta: "Ajánlatkérés",
+                conversionToast: "Új megkeresés érkezett",
+                online: "Online • felügyelve",
+                ctaKicker: "Nem tudod, mi kell?",
+                ctaTitle: "Beszéljük át 20 percben, ingyen.",
+                ctaText: "Megmondjuk, milyen oldal hozná a legtöbbet a vállalkozásodnak.",
+                ctaButton: "Időpontot kérek",
+            },
         },
         templates: {
             tag: "04 // WEBOLDAL SABLONOK",
             headlineStart: "Választható",
             headlineAccent: "iparági sablonok",
             subtitle: "Ezek csak kiindulópontok. Bármilyen egyedi funkciót vagy designt megvalósítunk.",
-            preview: "Előnézet",
+            preview: "Élő előnézet",
             backToTemplates: "Vissza a sablonokhoz",
+            domain: "auracode.hu",
             list: [
                 {
                     id: "gastro",
@@ -245,7 +307,10 @@ export const content = {
                 send: "Küldés",
                 sending: "Küldés...",
                 sent: "Elküldve!",
+                error: "Nem sikerült elküldeni. Próbáld újra, vagy írj az info@auracode.hu címre.",
             },
+            copyEmail: "Email cím másolása",
+            copied: "Másolva!",
         },
         footer: {
             description:
@@ -271,6 +336,7 @@ export const content = {
                 },
             ],
             copyright: "Minden jog fenntartva.",
+            backToTop: "Vissza a tetejére",
             privacy: "Adatvédelem",
             terms: "ÁSZF",
         },
@@ -307,6 +373,25 @@ export const content = {
             primaryCta: "Free consultation",
             secondaryCta: "View services",
             badges: ["30-day guarantee", "Fixed-price projects", "Free consultation"],
+            eyebrow: "Websites for small businesses",
+            scroll: "SCROLL",
+            mockup: {
+                brand: "Bistro Aura",
+                domain: "bistro-aura.com",
+                kicker: "RESTAURANT • BUDAPEST",
+                title: "Book a table for tonight",
+                titleShort: "Book a table",
+                cta: "Reserve",
+                cards: ["Daily menu", "Wine list", "Events"],
+                leads: "Bookings",
+                chips: ["SEO-optimized", "Mobile-first", "Lightning fast"],
+            },
+        },
+        intro: ["loading: aura.core", "design system ready", "deploying website"],
+        marquee: {
+            label: "Services and industries",
+            primary: ["Web design", "Webshop", "Online booking", "SEO", "Analytics", "Maintenance"],
+            secondary: ["Restaurants", "Beauty salons", "Law offices", "Gyms", "Barbers", "Wedding decor"],
         },
         approach: {
             tag: "01 // OUR APPROACH",
@@ -333,6 +418,35 @@ export const content = {
                 "Less manual administration?",
             ],
             answerLine: "The answer defines what we build and how we build it.",
+            issueLabel: "ISSUE",
+            tapHint: "↑ Pick a goal and we will show you what we build for it.",
+            weBuild: "What we build for it",
+            goalAnswers: [
+                {
+                    title: "A site that generates inquiries",
+                    points: [
+                        "Clear quote-request and contact points in every section",
+                        "Fast loading, so nobody leaves while waiting",
+                        "Trust-building elements: guarantee, process, response time",
+                    ],
+                },
+                {
+                    title: "A sales-supporting experience",
+                    points: [
+                        "Clear presentation of products and services",
+                        "A simple purchase or booking path",
+                        "Tracking, so you see what works and what does not",
+                    ],
+                },
+                {
+                    title: "An automated, time-saving system",
+                    points: [
+                        "Online booking instead of phone calls",
+                        "Automatic confirmations and notifications",
+                        "Less manual admin in your day-to-day",
+                    ],
+                },
+            ],
             partnerStart: "We do not think like classic web developers.",
             partnerAccent: "We work as digital partners",
             partnerEnd: ", from strategic planning through delivery to continuous improvement.",
@@ -342,8 +456,10 @@ export const content = {
             items: [
                 { value: 30, suffix: "", label: "Day Guarantee", description: "for every project" },
                 { value: 3, suffix: "x", label: "Conversion Growth", description: "average result" },
+                { value: 4, start: 1, prefix: "1–", suffix: " weeks", label: "Turnaround", description: "depending on complexity" },
             ],
-            tags: ["1-4 WEEKS", "FIXED PRICE", "RESULT GUARANTEE"],
+            weekLabels: ["WEEK 1", "WEEK 2", "WEEK 3", "WEEK 4"],
+            tags: ["1-4 WEEKS", "FIXED PRICE", "RESULT GUARANTEE", "30-DAY GUARANTEE", "FREE CONSULTATION"],
         },
         services: {
             tag: "03 // WHAT YOU GET FROM US",
@@ -376,14 +492,26 @@ export const content = {
                     description: "Support even after delivery.",
                 },
             ],
+            viz: {
+                seoQuery: "hairdresser near me",
+                seoYou: "Your website",
+                conversionCta: "Get a quote",
+                conversionToast: "New inquiry received",
+                online: "Online • monitored",
+                ctaKicker: "Not sure what you need?",
+                ctaTitle: "Let's talk it through in 20 minutes, free.",
+                ctaText: "We will tell you what kind of site would do the most for your business.",
+                ctaButton: "Book a call",
+            },
         },
         templates: {
             tag: "04 // WEBSITE TEMPLATES",
             headlineStart: "Selectable",
             headlineAccent: "industry templates",
             subtitle: "These are starting points only. We can implement fully custom features and design.",
-            preview: "Preview",
+            preview: "Live preview",
             backToTemplates: "Back to templates",
+            domain: "auracode.hu",
             list: [
                 {
                     id: "gastro",
@@ -529,7 +657,10 @@ export const content = {
                 send: "Send",
                 sending: "Sending...",
                 sent: "Sent!",
+                error: "Something went wrong. Please try again or email info@auracode.hu.",
             },
+            copyEmail: "Copy email address",
+            copied: "Copied!",
         },
         footer: {
             description:
@@ -555,6 +686,7 @@ export const content = {
                 },
             ],
             copyright: "All rights reserved.",
+            backToTop: "Back to top",
             privacy: "Privacy",
             terms: "T&C",
         },

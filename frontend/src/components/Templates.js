@@ -1,53 +1,95 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { ArrowUpRight, Eye } from 'lucide-react';
+import { SectionHeader, TiltCard } from './fx';
 
-const TemplateCard = ({ template, index, mobile = false, onPreview, isExpanding, isActive, cardRef, previewLabel }) => (
-    <motion.article
-        ref={cardRef}
-        initial={mobile ? false : { opacity: 0, y: 24 }}
-        whileInView={mobile ? undefined : { opacity: 1, y: 0 }}
-        viewport={mobile ? undefined : { once: true, amount: 0.2 }}
-        transition={{ duration: 0.45, delay: mobile ? 0 : index * 0.06 }}
-        className={`relative flex h-[420px] lg:h-[460px] flex-col overflow-hidden rounded-[12px] border bg-[#1e1e1e] transition-all duration-300
-            ${mobile ? 'min-w-[78%] max-w-[78%] snap-start flex-shrink-0' : 'group hover:-translate-y-[5px]'}
-            ${mobile && isActive ? 'border-[#00FF00]/70' : 'border-[#ffffff1a]'}
-            ${mobile && !isActive ? 'opacity-50' : ''}
-            ${isExpanding ? 'invisible' : ''}`}
-        data-testid={`template-card-${index}`}
-    >
-        <div className="aspect-[16/10] w-full overflow-hidden pointer-events-none">
-            <img
-                src={template.image}
-                alt={`${template.title} sablon előnézet`}
-                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                loading="lazy"
-            />
+const TemplateCard = ({ template, index, mobile = false, onPreview, isExpanding, isActive, cardRef, previewLabel, domain }) => {
+    const card = (
+        <div
+            className={`relative flex h-full flex-col overflow-hidden rounded-2xl border bg-[#101010] transition-colors duration-300
+                ${mobile && isActive ? 'border-[#00FF00]/60' : 'border-white/10 group-hover/tilt:border-[#00FF00]/40'}`}
+        >
+            {/* browser chrome */}
+            <div className="flex h-8 items-center gap-1.5 border-b border-white/10 bg-[#151515] px-3">
+                <span className="h-2 w-2 rounded-full bg-[#ff5f57]" />
+                <span className="h-2 w-2 rounded-full bg-[#febc2e]" />
+                <span className="h-2 w-2 rounded-full bg-[#28c840]" />
+                <span className="ml-3 truncate rounded bg-white/5 px-2 py-0.5 font-mono text-[10px] text-white/40">
+                    {template.id}.{domain}
+                </span>
+            </div>
+
+            <div className="relative aspect-[16/10] w-full overflow-hidden">
+                <img
+                    src={template.image}
+                    alt={`${template.title} – ${previewLabel}`}
+                    className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover/tilt:scale-110"
+                    loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#101010] via-transparent to-transparent" />
+                <span className="absolute left-3 top-3 rounded-full border border-white/15 bg-black/50 px-2.5 py-1 font-mono text-[10px] text-white/80 backdrop-blur">
+                    {String(index + 1).padStart(2, '0')}
+                </span>
+                {!mobile && (
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover/tilt:opacity-100">
+                        <span className="flex items-center gap-2 rounded-full bg-[#00FF00] px-4 py-2 text-sm font-bold text-black shadow-[0_0_30px_rgba(0,255,0,0.6)] translate-y-3 group-hover/tilt:translate-y-0 transition-transform duration-300">
+                            <Eye className="h-4 w-4" />
+                            {previewLabel}
+                        </span>
+                    </div>
+                )}
+            </div>
+
+            <div className="flex flex-1 flex-col p-5">
+                <div className="flex items-start justify-between gap-3">
+                    <h3 className="text-xl font-bold text-white">{template.title}</h3>
+                    <ArrowUpRight className="h-5 w-5 flex-shrink-0 text-white/30 transition-all duration-300 group-hover/tilt:rotate-45 group-hover/tilt:text-[#00FF00]" />
+                </div>
+                <p className="mt-2 text-sm leading-relaxed text-[#A1A1AA]">{template.description}</p>
+                <button
+                    onClick={() => onPreview && onPreview(template)}
+                    className={`mt-auto pt-5 inline-flex items-center gap-2 text-sm font-semibold transition-colors ${mobile && isActive ? 'text-[#00FF00]' : 'text-white/70 hover:text-[#00FF00]'}`}
+                    data-testid={`template-cta-${index}`}
+                >
+                    {previewLabel}
+                    <span className="h-px w-8 bg-current transition-all duration-300 group-hover/tilt:w-14" />
+                </button>
+            </div>
         </div>
+    );
 
-        <div className="p-5 flex flex-1 flex-col pointer-events-none">
-            <h3 className="text-xl font-bold text-white">{template.title}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-[#A1A1AA]">{template.description}</p>
-            <button
-                onClick={() => onPreview && onPreview(template)}
-                className={`pointer-events-auto mt-auto inline-flex items-center justify-center rounded-lg border px-4 py-2 text-sm font-semibold transition-colors duration-300
-                    ${mobile && isActive
-                        ? 'border-[#00FF00] bg-[#00FF00] text-[#0A0A0A]'
-                        : 'border-[#00FF00]/35 text-[#00FF00] hover:bg-[#00FF00] hover:text-[#0A0A0A]'
-                    }`}
-                data-testid={`template-cta-${index}`}
+    if (mobile) {
+        return (
+            <article
+                ref={cardRef}
+                className={`min-w-[80%] max-w-[80%] snap-start flex-shrink-0 transition-opacity duration-300 ${isActive ? 'opacity-100' : 'opacity-50'} ${isExpanding ? 'invisible' : ''}`}
+                data-testid={`template-card-${index}`}
             >
-                {previewLabel}
-            </button>
-        </div>
-    </motion.article>
-);
+                {card}
+            </article>
+        );
+    }
+
+    return (
+        <motion.article
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6, delay: (index % 3) * 0.1, ease: [0.22, 1, 0.36, 1] }}
+            className={`cursor-pointer ${isExpanding ? 'invisible' : ''}`}
+            onClick={() => onPreview && onPreview(template)}
+            data-testid={`template-card-${index}`}
+        >
+            <TiltCard max={8} className="h-full rounded-2xl">
+                {card}
+            </TiltCard>
+        </motion.article>
+    );
+};
 
 export const Templates = ({ content }) => {
-    const [ref, inView] = useInView({
-        triggerOnce: true,
-        threshold: 0.1,
-    });
+    const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
     const [expandedTemplate, setExpandedTemplate] = useState(null);
     const [activeIndex, setActiveIndex] = useState(0);
     const scrollRef = useRef(null);
@@ -55,7 +97,7 @@ export const Templates = ({ content }) => {
 
     useEffect(() => {
         const el = scrollRef.current;
-        if (!el) return;
+        if (!el) return undefined;
         const handleScroll = () => {
             const containerCenter = el.scrollLeft + el.clientWidth / 2;
             let closest = 0;
@@ -92,35 +134,28 @@ export const Templates = ({ content }) => {
         <section
             id="templates"
             ref={ref}
-            className="py-24 lg:py-32 relative overflow-hidden bg-[#0A0A0A]"
+            className="py-24 lg:py-36 relative overflow-hidden"
             data-testid="templates-section"
         >
-            <div className="absolute inset-0 grid-bg opacity-20" />
+            <div className="aurora aurora-cyan w-[560px] h-[560px] -left-60 top-20 opacity-25" />
 
             <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
-                <motion.div
-                    initial={{ opacity: 0, y: 24 }}
-                    animate={inView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.5 }}
-                    className="mb-12 text-left lg:text-center"
-                >
-                    <span className="font-mono text-base text-[#00FF00] tracking-wider">
-                        {content.tag}
-                    </span>
-                    <h2 className="text-headline font-bold mt-4" data-testid="templates-headline">
-                        {content.headlineStart} <span className="gradient-text">{content.headlineAccent}</span>
-                    </h2>
-                    <p className="mt-4 text-[#A1A1AA] lg:max-w-2xl lg:mx-auto">
-                        {content.subtitle}
-                    </p>
-                </motion.div>
+                <SectionHeader
+                    tag={content.tag}
+                    start={content.headlineStart}
+                    accent={content.headlineAccent}
+                    subtitle={content.subtitle}
+                    inView={inView}
+                    testId="templates-headline"
+                    className="mb-14"
+                />
 
                 <div
                     ref={scrollRef}
                     className="lg:hidden -mx-6 px-6 overflow-x-auto hide-scrollbar"
                     style={{ scrollPaddingLeft: '24px', overscrollBehaviorX: 'contain', paddingTop: '8px', paddingBottom: '8px' }}
                 >
-                    <div className="flex items-start snap-x snap-mandatory gap-4" style={{ paddingRight: '24px' }}>
+                    <div className="flex items-stretch snap-x snap-mandatory gap-4" style={{ paddingRight: '24px' }}>
                         {content.list.map((template, index) => (
                             <TemplateCard
                                 key={template.id}
@@ -132,22 +167,22 @@ export const Templates = ({ content }) => {
                                 isActive={activeIndex === index}
                                 cardRef={el => cardRefs.current[index] = el}
                                 previewLabel={content.preview}
+                                domain={content.domain}
                             />
                         ))}
                     </div>
                 </div>
 
-                {/* Mobile dot indicators */}
                 <div className="lg:hidden flex justify-center gap-2 mt-5">
                     {content.list.map((_, i) => (
                         <div
                             key={i}
-                            className={`rounded-full transition-all duration-300 ${i === activeIndex ? 'w-5 h-2 bg-[#00FF00]' : 'w-2 h-2 bg-[#ffffff20]'}`}
+                            className={`rounded-full transition-all duration-300 ${i === activeIndex ? 'w-6 h-2 bg-[#00FF00]' : 'w-2 h-2 bg-[#ffffff20]'}`}
                         />
                     ))}
                 </div>
 
-                <div className="hidden lg:grid grid-cols-3 gap-6">
+                <div className="hidden lg:grid grid-cols-3 gap-7">
                     {content.list.map((template, index) => (
                         <TemplateCard
                             key={template.id}
@@ -156,6 +191,7 @@ export const Templates = ({ content }) => {
                             onPreview={handlePreview}
                             isExpanding={expandedTemplate?.id === template.id}
                             previewLabel={content.preview}
+                            domain={content.domain}
                         />
                     ))}
                 </div>
@@ -165,38 +201,22 @@ export const Templates = ({ content }) => {
             <AnimatePresence mode="wait">
                 {expandedTemplate && (
                     <>
-                        {/* Backdrop */}
                         <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
                             transition={{ duration: 0.35, ease: 'easeInOut' }}
-                            className="fixed inset-0 z-40 bg-black/80 backdrop-blur-sm"
+                            className="fixed inset-0 z-[60] bg-black/80 backdrop-blur-sm"
                             onClick={handleClose}
                         />
 
-                        {/* Expanding Card → Fullscreen */}
                         <motion.div
-                            className="fixed z-50 overflow-hidden rounded-xl border border-[#ffffff1a] bg-[#0a0a0a]"
-                            style={{
-                                top: '3vh',
-                                left: '2.5vw',
-                                width: '95vw',
-                                height: '94vh',
-                            }}
+                            className="fixed z-[61] overflow-hidden rounded-xl border border-[#ffffff1a] bg-[#0a0a0a]"
+                            style={{ top: '3vh', left: '2.5vw', width: '95vw', height: '94vh' }}
                             initial={{ opacity: 0, y: '100vh' }}
-                            animate={{
-                                opacity: 1,
-                                y: 0,
-                            }}
-                            exit={{
-                                opacity: 0,
-                                y: '100vh',
-                            }}
-                            transition={{
-                                duration: 0.65,
-                                ease: [0.32, 0.72, 0, 1],
-                            }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: '100vh' }}
+                            transition={{ duration: 0.65, ease: [0.32, 0.72, 0, 1] }}
                         >
                             <div className="absolute top-0 left-0 right-0 z-50 flex h-16 items-center justify-center border-b border-[#ffffff14] bg-[#0a0a0a] px-4">
                                 <motion.button

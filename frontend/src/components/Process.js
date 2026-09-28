@@ -1,147 +1,125 @@
-import { motion } from 'framer-motion';
+import { useRef, useState } from 'react';
+import { AnimatePresence, motion, useMotionValueEvent, useScroll, useSpring } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { MessageSquare, PenTool, Code, Rocket, HeartHandshake } from 'lucide-react';
+import { SectionHeader } from './fx';
 
 const stepIcons = [MessageSquare, PenTool, Code, Rocket, HeartHandshake];
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.6,
-      delayChildren: 0.4,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: (index) => ({
-    opacity: 0,
-    x: index % 2 === 0 ? -30 : 30,
-  }),
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: {
-      duration: 1.4,
-      ease: [0.25, 0.1, 0.25, 1],
-    },
-  },
-};
-
-const dotVariants = {
-  hidden: { scale: 0, opacity: 0 },
-  visible: {
-    scale: 1,
-    opacity: 1,
-    transition: {
-      duration: 0.85,
-      ease: [0.34, 1.56, 0.64, 1],
-    },
-  },
-};
-
 export const Process = ({ content }) => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.35,
+  const [headRef, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
+  const listRef = useRef(null);
+  const [active, setActive] = useState(0);
+  const steps = content.steps;
+
+  const { scrollYProgress } = useScroll({ target: listRef, offset: ['start 0.6', 'end 0.6'] });
+  const fill = useSpring(scrollYProgress, { stiffness: 120, damping: 25 });
+
+  useMotionValueEvent(scrollYProgress, 'change', (v) => {
+    const idx = Math.min(steps.length - 1, Math.max(0, Math.floor(v * steps.length)));
+    setActive(idx);
   });
 
-  const steps = content.steps.map((step, index) => ({
-    ...step,
-    icon: stepIcons[index] || MessageSquare,
-  }));
-
   return (
-    <section
-      id="process"
-      ref={ref}
-      className="py-24 lg:py-32 relative overflow-hidden bg-[#121212]"
-      data-testid="process-section"
-    >
+    <section id="process" className="relative py-24 lg:py-36" data-testid="process-section">
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0c0c0c] to-transparent" />
       <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-          className="text-center mb-16"
-        >
-          <span className="font-mono text-base text-[#00FF00] tracking-wider">
-            {content.tag}
-          </span>
-          <h2 className="text-headline font-bold mt-4" data-testid="process-headline">
-            {content.headlineStart} <span className="gradient-text">{content.headlineAccent}</span>
-          </h2>
-          <p className="text-[#A1A1AA] mt-4">
-            {content.subtitle}
-          </p>
-        </motion.div>
-
-        <div className="relative">
-          {/* Timeline line - Desktop */}
-          <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-[#00FF00] via-[#00FF00]/50 to-transparent" />
-
-          <motion.div
-            className="space-y-0 lg:space-y-0"
-            variants={containerVariants}
-            initial="hidden"
-            animate={inView ? "visible" : "hidden"}
-          >
-            {steps.map((step, index) => (
-              <motion.div
-                key={index}
-                custom={index}
-                variants={itemVariants}
-                className={`relative lg:flex lg:items-center ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}
-                data-testid={`process-step-${index}`}
-              >
-                {/* Mobile layout */}
-                <div className="lg:hidden flex gap-4 mb-6">
-                  <div className="flex flex-col items-center flex-shrink-0">
-                    <motion.div
-                      variants={dotVariants}
-                      className="w-12 h-12 rounded-full bg-[#0A0A0A] border-2 border-[#00FF00] flex items-center justify-center neon-glow"
-                    >
-                      <step.icon className="w-5 h-5 text-[#00FF00]" />
-                    </motion.div>
-                    {index < steps.length - 1 && (
-                      <div className="w-[2px] flex-1 min-h-[2rem] bg-gradient-to-b from-[#00FF00]/60 to-transparent mt-2" />
-                    )}
-                  </div>
-                  <div className="glass p-5 rounded-xl flex-1">
-                    <span className="font-mono text-[#00FF00] text-sm">{step.number}</span>
-                    <h3 className="text-lg font-bold mt-2 mb-2">{step.title}</h3>
-                    <p className="text-[#A1A1AA] leading-relaxed text-sm">{step.description}</p>
-                  </div>
-                </div>
-
-                {/* Desktop layout - Content */}
-                <div className={`hidden lg:block lg:w-1/2 ${index % 2 === 0 ? 'lg:pr-16 lg:text-right' : 'lg:pl-16'}`}>
-                  <div className="glass p-6 lg:p-8 rounded-xl group hover:border-[#00FF00]/30 transition-colors duration-300">
-                    <span className="font-mono text-[#00FF00] text-sm">{step.number}</span>
-                    <div className="flex items-center gap-4 mt-3 mb-4">
-                      <h3 className="text-xl font-bold">{step.title}</h3>
-                    </div>
-                    <p className="text-[#A1A1AA] leading-relaxed">{step.description}</p>
-                  </div>
-                </div>
-
-                {/* Center dot - Desktop only */}
-                <div className="hidden lg:flex absolute left-1/2 -translate-x-1/2 w-14 h-14 items-center justify-center">
-                  <motion.div
-                    variants={dotVariants}
-                    className="w-14 h-14 rounded-full bg-[#0A0A0A] border-2 border-[#00FF00] flex items-center justify-center neon-glow"
+        <div className="grid lg:grid-cols-[0.85fr_1.15fr] gap-12 lg:gap-20">
+          {/* Sticky side */}
+          <div ref={headRef} className="lg:sticky lg:top-32 lg:self-start">
+            <SectionHeader
+              tag={content.tag}
+              start={content.headlineStart}
+              accent={content.headlineAccent}
+              subtitle={content.subtitle}
+              inView={inView}
+              align="left"
+              testId="process-headline"
+            />
+            <div className="mt-12 hidden lg:flex items-end gap-4">
+              <div className="relative h-[7rem] overflow-hidden">
+                <AnimatePresence mode="popLayout" initial={false}>
+                  <motion.span
+                    key={active}
+                    initial={{ y: '100%', opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    exit={{ y: '-100%', opacity: 0 }}
+                    transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                    className="block text-[7rem] font-black leading-none gradient-text"
+                    style={{ fontFamily: 'Outfit, sans-serif' }}
                   >
-                    <step.icon className="w-6 h-6 text-[#00FF00]" />
-                  </motion.div>
-                </div>
+                    {steps[active].number}
+                  </motion.span>
+                </AnimatePresence>
+              </div>
+              <div className="pb-4">
+                <p className="font-mono text-sm text-white/30">/ {String(steps.length).padStart(2, '0')}</p>
+                <AnimatePresence mode="wait">
+                  <motion.p
+                    key={active}
+                    initial={{ opacity: 0, y: 6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -6 }}
+                    className="mt-1 text-lg font-semibold text-white"
+                  >
+                    {steps[active].title}
+                  </motion.p>
+                </AnimatePresence>
+              </div>
+            </div>
+          </div>
 
-                {/* Empty space for the other side - Desktop */}
-                <div className="hidden lg:block lg:w-1/2" />
-              </motion.div>
-            ))}
-          </motion.div>
+          {/* Steps */}
+          <div ref={listRef} className="relative">
+            <div className="absolute left-[27px] top-2 bottom-2 w-[2px] bg-white/[0.06]" />
+            <motion.div
+              className="absolute left-[27px] top-2 bottom-2 w-[2px] origin-top bg-gradient-to-b from-[#00FF00] to-[#00F0FF] shadow-[0_0_12px_rgba(0,255,0,0.7)]"
+              style={{ scaleY: fill }}
+            />
+
+            <div className="space-y-6 lg:space-y-10">
+              {steps.map((step, index) => {
+                const Icon = stepIcons[index] || MessageSquare;
+                const reached = index <= active;
+                return (
+                  <motion.div
+                    key={step.number}
+                    initial={{ opacity: 0, x: 30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, amount: 0.5 }}
+                    transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                    className="relative flex gap-6"
+                    data-testid={`process-step-${index}`}
+                  >
+                    <div className="relative z-10 flex-shrink-0">
+                      <div
+                        className={`flex h-14 w-14 items-center justify-center rounded-2xl border-2 transition-all duration-500 ${
+                          reached
+                            ? 'border-[#00FF00] bg-[#00FF00] text-black shadow-[0_0_30px_rgba(0,255,0,0.5)]'
+                            : 'border-white/10 bg-[#0c0c0c] text-white/40'
+                        }`}
+                      >
+                        <Icon className="h-6 w-6" />
+                      </div>
+                    </div>
+                    <div
+                      className={`flex-1 rounded-2xl border p-6 lg:p-7 transition-all duration-500 ${
+                        index === active
+                          ? 'border-[#00FF00]/30 bg-gradient-to-br from-[#00FF00]/[0.07] to-transparent'
+                          : 'border-white/[0.06] bg-white/[0.015]'
+                      }`}
+                    >
+                      <span className={`font-mono text-sm transition-colors ${reached ? 'text-[#00FF00]' : 'text-white/30'}`}>
+                        {step.number}
+                      </span>
+                      <h3 className="mt-2 text-xl lg:text-2xl font-bold text-white">{step.title}</h3>
+                      <p className="mt-2 text-[#A1A1AA] leading-relaxed">{step.description}</p>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </div>
     </section>

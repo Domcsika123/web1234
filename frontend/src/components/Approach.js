@@ -1,99 +1,229 @@
-import { motion } from 'framer-motion';
+import { useRef, useState } from 'react';
+import { AnimatePresence, motion, useScroll, useTransform } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Target, TrendingUp, Wrench } from 'lucide-react';
+import { ArrowRight, Check, Target, TrendingUp, Wrench, X } from 'lucide-react';
+import { SectionTag, SpotlightCard } from './fx';
 
 const goalIcons = [Target, TrendingUp, Wrench];
 
-export const Approach = ({ content }) => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
+const ScrubWord = ({ children, progress, range, accent }) => {
+  const opacity = useTransform(progress, range, [0.12, 1]);
+  const y = useTransform(progress, range, [8, 0]);
+  return (
+    <motion.span style={{ opacity, y }} className={`inline-block mr-[0.25em] ${accent ? 'gradient-text-animated' : ''}`}>
+      {children}
+    </motion.span>
+  );
+};
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
+// Large statement that "reads itself" as the user scrolls.
+const ScrubStatement = ({ start, accent }) => {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start 0.85', 'end 0.45'] });
+  const words = [
+    ...start.split(' ').map((w) => ({ w, accent: false })),
+    ...accent.split(' ').map((w) => ({ w, accent: true })),
+  ];
+  return (
+    <p ref={ref} className="text-[clamp(2rem,5.2vw,4.25rem)] font-bold leading-[1.08] tracking-tight" style={{ fontFamily: 'Outfit, sans-serif' }}>
+      {words.map(({ w, accent: isAccent }, i) => (
+        <ScrubWord key={i} progress={scrollYProgress} range={[i / words.length, (i + 1) / words.length]} accent={isAccent}>
+          {w}
+        </ScrubWord>
+      ))}
+    </p>
+  );
+};
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.45 },
-    },
-  };
+const StruckItem = ({ text, index, inView }) => (
+  <motion.li
+    initial={{ opacity: 0, x: -12 }}
+    animate={inView ? { opacity: 1, x: 0 } : {}}
+    transition={{ duration: 0.5, delay: 0.2 + index * 0.15 }}
+    className="flex items-start gap-3 py-3 border-b border-white/5 last:border-0"
+  >
+    <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-[#ff4d4d]/10">
+      <X className="h-3 w-3 text-[#ff6b6b]" />
+    </span>
+    <motion.span
+      style={{ textDecorationLine: 'line-through', textDecorationThickness: '1.5px' }}
+      initial={{ color: '#D4D4D8', textDecorationColor: 'rgba(255,107,107,0)' }}
+      animate={inView ? { color: '#71717A', textDecorationColor: 'rgba(255,107,107,0.85)' } : {}}
+      transition={{ duration: 0.6, delay: 0.9 + index * 0.3, ease: 'easeInOut' }}
+    >
+      {text}
+    </motion.span>
+  </motion.li>
+);
+
+const GoalSelector = ({ content }) => {
+  const [active, setActive] = useState(0);
+  const answer = content.goalAnswers[active];
+  const ActiveIcon = goalIcons[active] || Target;
 
   return (
-    <section
-      id="approach"
-      ref={ref}
-      className="py-24 lg:py-32 relative overflow-hidden"
-      data-testid="approach-section"
-    >
+    <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-4 lg:gap-6">
+      <div className="flex flex-col gap-3" role="tablist" aria-label={content.question}>
+        {content.goals.map((goal, index) => {
+          const Icon = goalIcons[index] || Target;
+          const isActive = index === active;
+          return (
+            <button
+              key={goal}
+              role="tab"
+              aria-selected={isActive}
+              onClick={() => setActive(index)}
+              onMouseEnter={() => setActive(index)}
+              className={`relative flex items-center gap-4 rounded-2xl border p-4 lg:p-5 text-left transition-colors duration-300 ${
+                isActive ? 'border-[#00FF00]/50 text-white' : 'border-white/10 text-[#A1A1AA] hover:text-white hover:border-white/20'
+              }`}
+            >
+              {isActive && (
+                <motion.span
+                  layoutId="goal-active-bg"
+                  className="absolute inset-0 rounded-2xl bg-gradient-to-r from-[#00FF00]/[0.12] to-transparent"
+                  transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                />
+              )}
+              <span className={`relative flex h-11 w-11 items-center justify-center rounded-xl transition-colors ${isActive ? 'bg-[#00FF00] text-black' : 'bg-white/5 text-[#00FF00]'}`}>
+                <Icon className="h-5 w-5" />
+              </span>
+              <span className="relative text-lg font-semibold">{goal}</span>
+              <ArrowRight className={`relative ml-auto h-5 w-5 transition-all ${isActive ? 'opacity-100 translate-x-0 text-[#00FF00]' : 'opacity-0 -translate-x-2'}`} />
+            </button>
+          );
+        })}
+        <p className="px-1 pt-1 font-mono text-xs text-white/30">{content.tapHint}</p>
+      </div>
+
+      <SpotlightCard className="p-6 lg:p-8 min-h-[280px]">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={active}
+            initial={{ opacity: 0, y: 16, filter: 'blur(6px)' }}
+            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+            exit={{ opacity: 0, y: -10, filter: 'blur(6px)' }}
+            transition={{ duration: 0.35 }}
+          >
+            <div className="flex items-center gap-3">
+              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#00FF00]/10">
+                <ActiveIcon className="h-5 w-5 text-[#00FF00]" />
+              </span>
+              <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#00FF00]">{content.weBuild}</span>
+            </div>
+            <h4 className="mt-5 text-2xl lg:text-3xl font-bold text-white">{answer.title}</h4>
+            <ul className="mt-6 space-y-3">
+              {answer.points.map((point, i) => (
+                <motion.li
+                  key={point}
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.15 + i * 0.08 }}
+                  className="flex items-start gap-3 text-[#D4D4D8]"
+                >
+                  <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-[#00FF00]/15">
+                    <Check className="h-3 w-3 text-[#00FF00]" />
+                  </span>
+                  {point}
+                </motion.li>
+              ))}
+            </ul>
+          </motion.div>
+        </AnimatePresence>
+      </SpotlightCard>
+    </div>
+  );
+};
+
+export const Approach = ({ content }) => {
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
+  const [goalRef, goalInView] = useInView({ triggerOnce: true, threshold: 0.2 });
+
+  return (
+    <section id="approach" className="relative pt-10 pb-24 lg:pt-16 lg:pb-36 overflow-hidden" data-testid="approach-section">
+      <div className="aurora aurora-green w-[600px] h-[600px] top-1/2 -right-60 opacity-30" />
       <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate={inView ? 'visible' : 'hidden'}
-          className="max-w-3xl mx-auto"
-        >
-          <div>
-            <motion.div
-              variants={itemVariants}
-              className="glass p-8 lg:p-10 rounded-2xl"
-            >
-              <p className="text-[#52525B] font-mono text-sm mb-4">
-                {content.questionIntro}
-              </p>
+        <SectionTag>{content.tag}</SectionTag>
+        <div className="mt-8 max-w-5xl">
+          <ScrubStatement start={content.headlineStart} accent={content.headlineAccent} />
+        </div>
 
-              <h3 className="text-xl lg:text-2xl font-bold mb-8 gradient-text">
-                {content.question}
-              </h3>
-
-              <div className="space-y-4 mb-8">
-                {content.goals.map((goal, index) => {
-                  const Icon = goalIcons[index] || Target;
-
-                  return (
-                    <motion.div
-                      key={index}
-                      variants={itemVariants}
-                      className="flex items-center gap-4 p-4 rounded-lg border border-[#ffffff10] hover:border-[#00FF00]/30 transition-colors group cursor-default"
-                    >
-                      <div className="p-2 rounded-lg bg-[#00FF00]/10 group-hover:bg-[#00FF00]/20 transition-colors">
-                        <Icon className="w-5 h-5 text-[#00FF00]" />
-                      </div>
-                      <span className="text-white font-medium">{goal}</span>
-                    </motion.div>
-                  );
-                })}
-              </div>
-
-              <p className="text-[#A1A1AA] leading-relaxed">
-                {content.answerLine}
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={itemVariants}
-              className="mt-8 p-6 border-l-2 border-[#00FF00]"
-            >
-              <p className="text-[#A1A1AA] leading-relaxed">
-                {content.partnerStart}{' '}
-                <span className="text-white font-medium">
-                  {content.partnerAccent}
+        {/* Problems we have seen */}
+        <div ref={ref} className="mt-20 grid lg:grid-cols-2 gap-6">
+          <div className="grid gap-4">
+            {content.paragraphs.map((p, i) => (
+              <motion.div
+                key={p}
+                initial={{ opacity: 0, y: 24 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: i * 0.15 }}
+                className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] p-6"
+              >
+                <span className="font-mono text-[11px] tracking-[0.2em] text-[#ff6b6b]/80">
+                  {content.issueLabel} #{String(i + 1).padStart(2, '0')}
                 </span>
-                {content.partnerEnd}
-              </p>
-            </motion.div>
+                <p className="mt-3 text-xl lg:text-2xl font-semibold text-white">{p}</p>
+                <div className="absolute -right-6 -bottom-6 h-24 w-24 rounded-full bg-[#ff4d4d]/10 blur-2xl" />
+              </motion.div>
+            ))}
           </div>
-        </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="rounded-2xl border border-white/10 bg-white/[0.02] p-6 lg:p-8"
+          >
+            <p className="font-mono text-xs uppercase tracking-[0.2em] text-white/40">{content.painPointsTitle}</p>
+            <ul className="mt-3">
+              {content.painPoints.map((point, i) => (
+                <StruckItem key={point} text={point} index={i} inView={inView} />
+              ))}
+            </ul>
+            <p className="mt-6 text-lg text-white">
+              {content.strategyStart} <span className="gradient-text font-semibold">{content.strategyAccent}</span> {content.strategyEnd}
+            </p>
+          </motion.div>
+        </div>
+
+        {/* Interactive goal selector */}
+        <div ref={goalRef} className="mt-24">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={goalInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6 }}
+            className="mb-10 max-w-3xl"
+          >
+            <p className="font-mono text-sm text-[#71717A]">{content.questionIntro}</p>
+            <h3 className="mt-3 text-2xl lg:text-4xl font-bold gradient-text">{content.question}</h3>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={goalInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.15 }}
+          >
+            <GoalSelector content={content} />
+          </motion.div>
+          <p className="mt-8 text-[#A1A1AA]">{content.answerLine}</p>
+        </div>
+
+        {/* Partner statement */}
+        <motion.blockquote
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.7 }}
+          className="relative mt-24 max-w-4xl pl-8 lg:pl-12"
+        >
+          <span className="absolute left-0 top-0 h-full w-[3px] rounded-full bg-gradient-to-b from-[#00FF00] via-[#00F0FF] to-transparent" />
+          <span className="absolute -left-2 -top-10 select-none text-[7rem] leading-none text-[#00FF00]/15" style={{ fontFamily: 'Outfit, sans-serif' }}>
+            “
+          </span>
+          <p className="text-xl lg:text-3xl leading-snug text-[#D4D4D8]">
+            {content.partnerStart} <span className="text-white font-semibold">{content.partnerAccent}</span>
+            {content.partnerEnd}
+          </p>
+        </motion.blockquote>
       </div>
     </section>
   );

@@ -1,0 +1,269 @@
+import { useEffect, useRef, useState } from 'react';
+import {
+  motion,
+  useMotionValue,
+  useReducedMotion,
+  useScroll,
+  useSpring,
+  useTransform,
+} from 'framer-motion';
+
+export const isTouchDevice = () =>
+  typeof window !== 'undefined' && window.matchMedia('(hover: none), (pointer: coarse)').matches;
+
+export const scrollToId = (href) => {
+  const el = document.querySelector(href);
+  if (!el) return;
+  const top = el.getBoundingClientRect().top + window.scrollY - 24;
+  window.scrollTo({ top, behavior: 'smooth' });
+};
+
+/* ── Section tag pill ─────────────────────────────────────────── */
+export const SectionTag = ({ children, className = '' }) => (
+  <span className={`section-tag ${className}`}>
+    <span className="section-tag-dot" />
+    {children}
+  </span>
+);
+
+/* ── Word-by-word masked reveal ───────────────────────────────── */
+export const RevealWords = ({ text, className = '', delay = 0, inView = true, stagger = 0.045 }) => {
+  const words = String(text).split(' ');
+  return (
+    <span className={className}>
+      {words.map((word, i) => (
+        <span key={i} className="inline-block overflow-hidden align-bottom pb-[0.12em] -mb-[0.12em]">
+          <motion.span
+            className="inline-block"
+            initial={{ y: '110%' }}
+            animate={inView ? { y: 0 } : { y: '110%' }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: delay + i * stagger }}
+          >
+            {word}
+            {i < words.length - 1 ? ' ' : ''}
+          </motion.span>
+        </span>
+      ))}
+    </span>
+  );
+};
+
+/* ── Standard section header ──────────────────────────────────── */
+export const SectionHeader = ({ tag, start, accent, subtitle, inView, align = 'center', testId, className = '' }) => {
+  const centered = align === 'center';
+  return (
+    <div className={`${centered ? 'text-center mx-auto' : ''} max-w-3xl ${className}`}>
+      <motion.div
+        initial={{ opacity: 0, y: 12 }}
+        animate={inView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.5 }}
+      >
+        <SectionTag>{tag}</SectionTag>
+      </motion.div>
+      <h2 className="text-headline font-bold mt-5" data-testid={testId}>
+        <RevealWords text={start} inView={inView} delay={0.1} />{' '}
+        <RevealWords
+          text={accent}
+          inView={inView}
+          delay={0.1 + start.split(' ').length * 0.045}
+          className="gradient-text-animated"
+        />
+      </h2>
+      {subtitle && (
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.35 }}
+          className={`text-[#A1A1AA] mt-5 text-lg ${centered ? 'max-w-2xl mx-auto' : 'max-w-xl'}`}
+        >
+          {subtitle}
+        </motion.p>
+      )}
+    </div>
+  );
+};
+
+/* ── Card with a cursor-following border + inner glow ─────────── */
+export const SpotlightCard = ({ className = '', children, ...rest }) => {
+  const ref = useRef(null);
+  const handleMove = (e) => {
+    const el = ref.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    el.style.setProperty('--mx', `${e.clientX - rect.left}px`);
+    el.style.setProperty('--my', `${e.clientY - rect.top}px`);
+  };
+  return (
+    <div ref={ref} onMouseMove={handleMove} className={`spotlight-card ${className}`} {...rest}>
+      {children}
+    </div>
+  );
+};
+
+/* ── Magnetic wrapper (pulls toward the cursor) ───────────────── */
+export const Magnetic = ({ children, strength = 0.35, className = '' }) => {
+  const ref = useRef(null);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const sx = useSpring(x, { stiffness: 220, damping: 15, mass: 0.4 });
+  const sy = useSpring(y, { stiffness: 220, damping: 15, mass: 0.4 });
+
+  const handleMove = (e) => {
+    if (isTouchDevice()) return;
+    const rect = ref.current.getBoundingClientRect();
+    x.set((e.clientX - rect.left - rect.width / 2) * strength);
+    y.set((e.clientY - rect.top - rect.height / 2) * strength);
+  };
+  const reset = () => {
+    x.set(0);
+    y.set(0);
+  };
+
+  return (
+    <motion.div
+      ref={ref}
+      onMouseMove={handleMove}
+      onMouseLeave={reset}
+      style={{ x: sx, y: sy }}
+      className={`inline-block ${className}`}
+    >
+      {children}
+    </motion.div>
+  );
+};
+
+/* ── 3D tilt with glare ───────────────────────────────────────── */
+export const TiltCard = ({ children, className = '', max = 10, glare = true, style }) => {
+  const ref = useRef(null);
+  const reduce = useReducedMotion();
+  const rx = useMotionValue(0);
+  const ry = useMotionValue(0);
+  const gx = useMotionValue(50);
+  const gy = useMotionValue(50);
+  const srx = useSpring(rx, { stiffness: 180, damping: 18 });
+  const sry = useSpring(ry, { stiffness: 180, damping: 18 });
+  const glareBg = useTransform(
+    [gx, gy],
+    ([px, py]) => `radial-gradient(circle at ${px}% ${py}%, rgba(255,255,255,0.14), transparent 55%)`
+  );
+
+  const handleMove = (e) => {
+    if (reduce || isTouchDevice()) return;
+    const rect = ref.current.getBoundingClientRect();
+    const px = (e.clientX - rect.left) / rect.width;
+    const py = (e.clientY - rect.top) / rect.height;
+    ry.set((px - 0.5) * max * 2);
+    rx.set(-(py - 0.5) * max * 2);
+    gx.set(px * 100);
+    gy.set(py * 100);
+  };
+  const reset = () => {
+    rx.set(0);
+    ry.set(0);
+  };
+
+  return (
+    <div style={{ perspective: 1000, ...style }} className={className}>
+      <motion.div
+        ref={ref}
+        onMouseMove={handleMove}
+        onMouseLeave={reset}
+        style={{ rotateX: srx, rotateY: sry, transformStyle: 'preserve-3d' }}
+        className="relative h-full group/tilt"
+      >
+        {children}
+        {glare && (
+          <motion.div
+            className="pointer-events-none absolute inset-0 rounded-[inherit] opacity-0 group-hover/tilt:opacity-100 transition-opacity duration-300"
+            style={{ background: glareBg }}
+          />
+        )}
+      </motion.div>
+    </div>
+  );
+};
+
+/* ── Scrambling text (decodes into the final string) ──────────── */
+const GLYPHS = '!<>-_\\/[]{}=+*^?#01';
+export const ScrambleText = ({ text, trigger = true, className = '', speed = 28 }) => {
+  const [out, setOut] = useState(text);
+  const reduce = useReducedMotion();
+
+  useEffect(() => {
+    if (!trigger || reduce) {
+      setOut(text);
+      return undefined;
+    }
+    let frame = 0;
+    const total = text.length;
+    const id = setInterval(() => {
+      frame += 1;
+      const revealed = Math.floor(frame / 1.6);
+      setOut(
+        text
+          .split('')
+          .map((ch, i) => {
+            if (ch === ' ' || i < revealed) return ch;
+            return GLYPHS[Math.floor(Math.random() * GLYPHS.length)];
+          })
+          .join('')
+      );
+      if (revealed >= total) clearInterval(id);
+    }, speed);
+    return () => clearInterval(id);
+  }, [text, trigger, reduce, speed]);
+
+  return <span className={className}>{out}</span>;
+};
+
+/* ── Infinite marquee row ─────────────────────────────────────── */
+export const Marquee = ({ items, reverse = false, className = '', itemClassName = '', separator = '✦', speed = 40 }) => {
+  const group = (hidden) => (
+    <div className="marquee-group" aria-hidden={hidden}>
+      {items.map((item, i) => (
+        <span key={i} className={`inline-flex items-center gap-6 ${itemClassName}`}>
+          {item}
+          <span className="marquee-sep">{separator}</span>
+        </span>
+      ))}
+    </div>
+  );
+  return (
+    <div className={`marquee ${className}`} style={{ '--marquee-duration': `${speed}s` }}>
+      <div className={`marquee-track ${reverse ? 'marquee-reverse' : ''}`}>
+        {group(false)}
+        {group(true)}
+      </div>
+    </div>
+  );
+};
+
+/* ── Top scroll progress bar ──────────────────────────────────── */
+export const ScrollProgress = () => {
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, { stiffness: 120, damping: 24, restDelta: 0.001 });
+  return <motion.div className="scroll-progress" style={{ scaleX }} />;
+};
+
+/* ── Soft glow following the cursor (desktop only) ────────────── */
+export const CursorGlow = () => {
+  const x = useMotionValue(-500);
+  const y = useMotionValue(-500);
+  const sx = useSpring(x, { stiffness: 90, damping: 20 });
+  const sy = useSpring(y, { stiffness: 90, damping: 20 });
+  const [enabled, setEnabled] = useState(false);
+
+  useEffect(() => {
+    if (isTouchDevice()) return undefined;
+    setEnabled(true);
+    const move = (e) => {
+      x.set(e.clientX);
+      y.set(e.clientY);
+    };
+    window.addEventListener('mousemove', move, { passive: true });
+    return () => window.removeEventListener('mousemove', move);
+  }, [x, y]);
+
+  if (!enabled) return null;
+  return <motion.div className="cursor-glow" style={{ x: sx, y: sy }} aria-hidden="true" />;
+};
