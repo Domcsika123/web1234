@@ -99,45 +99,6 @@
   opacity: 1;
 }
 
-/* ── Marquee ── */
-.marquee {
-  overflow: hidden;
-  display: flex;
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-}
-
-.marquee-track {
-  display: flex;
-  flex-shrink: 0;
-  animation: marquee-scroll var(--marquee-duration, 40s) linear infinite;
-}
-
-.marquee-reverse {
-  animation-direction: reverse;
-}
-
-.marquee:hover .marquee-track {
-  animation-play-state: paused;
-}
-
-.marquee-group {
-  display: flex;
-  flex-shrink: 0;
-  align-items: center;
-  gap: 1.5rem;
-  padding-right: 1.5rem;
-}
-
-.marquee-sep {
-  opacity: 0.55;
-}
-
-@keyframes marquee-scroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-
 /* ── Aurora blobs ── */
 .aurora {
   position: absolute;

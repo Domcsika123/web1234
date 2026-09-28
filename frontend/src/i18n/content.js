@@ -86,10 +86,8 @@ export const content = {
             items: [
                 { value: 30, suffix: "", label: "Nap Garancia", description: "minden projektre" },
                 { value: 3, suffix: "x", label: "Konverzió Növekedés", description: "átlagos eredmény" },
-                { value: 4, start: 1, prefix: "1–", suffix: " hét", label: "Átfutási idő", description: "a komplexitástól függően" },
             ],
-            weekLabels: ["1. HÉT", "2. HÉT", "3. HÉT", "4. HÉT"],
-            tags: ["1-4 HÉT", "FIX ÁR", "EREDMÉNYGARANCIA", "30 NAP GARANCIA", "INGYENES KONZULTÁCIÓ"],
+            tags: ["1-4 HÉT", "FIX ÁR", "EREDMÉNYGARANCIA"],
         },
         services: {
             tag: "03 // AMIT KAPSZ TŐLÜNK",
@@ -401,10 +399,8 @@ export const content = {
             items: [
                 { value: 30, suffix: "", label: "Day Guarantee", description: "for every project" },
                 { value: 3, suffix: "x", label: "Conversion Growth", description: "average result" },
-                { value: 4, start: 1, prefix: "1–", suffix: " weeks", label: "Turnaround", description: "depending on complexity" },
             ],
-            weekLabels: ["WEEK 1", "WEEK 2", "WEEK 3", "WEEK 4"],
-            tags: ["1-4 WEEKS", "FIXED PRICE", "RESULT GUARANTEE", "30-DAY GUARANTEE", "FREE CONSULTATION"],
+            tags: ["1-4 WEEKS", "FIXED PRICE", "RESULT GUARANTEE"],
         },
         services: {
             tag: "03 // WHAT YOU GET FROM US",
