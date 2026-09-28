@@ -118,6 +118,28 @@ export const Magnetic = ({ children, strength = 0.35, className = '' }) => {
   );
 };
 
+/* ── Infinite marquee row ─────────────────────────────────────── */
+export const Marquee = ({ items, reverse = false, className = '', itemClassName = '', separator = '✦', speed = 40 }) => {
+  const group = (hidden) => (
+    <div className="marquee-group" aria-hidden={hidden}>
+      {items.map((item, i) => (
+        <span key={i} className={`inline-flex items-center gap-6 ${itemClassName}`}>
+          {item}
+          <span className="marquee-sep">{separator}</span>
+        </span>
+      ))}
+    </div>
+  );
+  return (
+    <div className={`marquee ${className}`} style={{ '--marquee-duration': `${speed}s` }}>
+      <div className={`marquee-track ${reverse ? 'marquee-reverse' : ''}`}>
+        {group(false)}
+        {group(true)}
+      </div>
+    </div>
+  );
+};
+
 /* ── 3D tilt with glare ───────────────────────────────────────── */
 export const TiltCard = ({ children, className = '', max = 10, glare = true, style }) => {
   const ref = useRef(null);
