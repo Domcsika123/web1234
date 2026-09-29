@@ -37,8 +37,9 @@ export const RevealWords = ({ text, className = '', delay = 0, inView = true, st
 /* ── Standard section header ──────────────────────────────────── */
 export const SectionHeader = ({ tag, start, accent, subtitle, inView, align = 'center', testId, className = '' }) => {
   const centered = align === 'center';
+  // Headers are always centred on mobile; `left` only applies from lg up.
   return (
-    <div className={`${centered ? 'text-center mx-auto' : ''} max-w-3xl ${className}`}>
+    <div className={`text-center mx-auto ${centered ? '' : 'lg:text-left lg:mx-0'} max-w-3xl ${className}`}>
       <motion.div
         initial={{ opacity: 0, y: 12 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -60,7 +61,7 @@ export const SectionHeader = ({ tag, start, accent, subtitle, inView, align = 'c
           initial={{ opacity: 0, y: 12 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.35 }}
-          className={`text-[#A1A1AA] mt-5 text-lg ${centered ? 'max-w-2xl mx-auto' : 'max-w-xl'}`}
+          className={`text-[#A1A1AA] mt-5 text-lg mx-auto ${centered ? 'max-w-2xl' : 'max-w-xl lg:mx-0'}`}
         >
           {subtitle}
         </motion.p>

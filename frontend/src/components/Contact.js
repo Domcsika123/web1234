@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Mail, Phone, MapPin, Send, CheckCircle } from 'lucide-react';
 import { LegalModal } from './LegalModal';
+import { SectionTag } from './fx';
 
 export const Contact = ({ content }) => {
   const [ref, inView] = useInView({
@@ -79,9 +80,7 @@ export const Contact = ({ content }) => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="font-mono text-base text-[#00FF00] tracking-wider">
-            {content.tag}
-          </span>
+          <SectionTag>{content.tag}</SectionTag>
           <h2 className="text-headline font-bold mt-4" data-testid="contact-headline">
             {content.headlineStart} <span className="gradient-text">{content.headlineAccent}</span>
           </h2>

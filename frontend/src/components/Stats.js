@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import CountUp from 'react-countup';
+import { SectionTag } from './fx';
 
 export const Stats = ({ content }) => {
   const [ref, inView] = useInView({
@@ -28,9 +29,7 @@ export const Stats = ({ content }) => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="font-mono text-base text-[#00FF00] tracking-wider">
-            {content.tag}
-          </span>
+          <SectionTag>{content.tag}</SectionTag>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-2 lg:gap-2 max-w-2xl mx-auto">

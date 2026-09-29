@@ -18,9 +18,10 @@ export const Hero = ({ content }) => {
     offset: ['start start', 'end start']
   });
 
-  const isMobile = typeof window !== 'undefined' && window.matchMedia('(max-width: 768px)').matches;
+  // Below lg the hero is taller than the viewport, so parallax/fade would hide content before it is read.
+  const isMobile = typeof window !== 'undefined' && window.matchMedia('(max-width: 1023px)').matches;
   const y = useTransform(scrollYProgress, [0, 1], isMobile ? [0, 0] : [0, 200]);
-  const opacity = useTransform(scrollYProgress, [0.25, 0.8], [1, 0]);
+  const opacity = useTransform(scrollYProgress, [0.25, 0.8], isMobile ? [1, 1] : [1, 0]);
 
   const scrollToSection = (href) => {
     const element = document.querySelector(href);
@@ -36,8 +37,8 @@ export const Hero = ({ content }) => {
       data-testid="hero-section"
     >
       <motion.div style={{ y, opacity, willChange: 'transform', backfaceVisibility: 'hidden' }} className="w-full">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 pt-32 pb-20">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12 pt-24 pb-12 lg:pt-32 lg:pb-20">
+          <div className="grid lg:grid-cols-2 gap-4 lg:gap-16 items-center">
             {/* Text Content */}
             <div className="order-2 lg:order-1">
               <h1 className="text-display font-bold leading-tight mb-6" data-testid="hero-headline">
@@ -109,7 +110,7 @@ export const Hero = ({ content }) => {
             </div>
 
             {/* 3D Element */}
-            <div className="order-1 lg:order-2 flex justify-center items-center">
+            <div className="order-1 lg:order-2 flex justify-center items-center scale-[0.7] -my-8 lg:scale-100 lg:my-0">
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}

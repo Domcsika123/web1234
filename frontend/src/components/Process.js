@@ -21,7 +21,7 @@ export const Process = ({ content }) => {
   });
 
   return (
-    <section id="process" className="relative py-24 lg:py-36" data-testid="process-section">
+    <section id="process" className="relative pt-24 pb-8 lg:py-36" data-testid="process-section">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0c0c0c] to-transparent" />
       <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
         <div className="grid lg:grid-cols-[0.85fr_1.15fr] gap-12 lg:gap-20">

@@ -561,7 +561,7 @@ export const content = {
             contactLink: "Contact us and we will answer.",
         },
         contact: {
-            tag: "07 // LETS GET STARTED",
+            tag: "07 // LET'S GET STARTED",
             headlineStart: "Request a",
             headlineAccent: "custom quote",
             subtitle: "Lets build a website that truly represents your business.",

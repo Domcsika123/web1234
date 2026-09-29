@@ -6,6 +6,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '../components/ui/accordion';
+import { SectionTag } from './fx';
 
 export const FAQ = ({ content }) => {
   const [ref, inView] = useInView({
@@ -29,9 +30,7 @@ export const FAQ = ({ content }) => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="font-mono text-base text-[#00FF00] tracking-wider">
-            {content.tag}
-          </span>
+          <SectionTag>{content.tag}</SectionTag>
           <h2 className="text-headline font-bold mt-4" data-testid="faq-headline">
             {content.headlineStart} <span className="gradient-text">{content.headlineAccent}</span>
           </h2>

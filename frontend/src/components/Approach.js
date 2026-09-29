@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { ArrowRight, Check, Target, TrendingUp, Wrench } from 'lucide-react';
-import { SpotlightCard } from './fx';
+import { SectionTag, SpotlightCard } from './fx';
 
 const goalIcons = [Target, TrendingUp, Wrench];
 
@@ -38,12 +38,12 @@ const GoalSelector = ({ content }) => {
               <span className={`relative flex h-11 w-11 items-center justify-center rounded-xl transition-colors ${isActive ? 'bg-[#00FF00] text-black' : 'bg-white/5 text-[#00FF00]'}`}>
                 <Icon className="h-5 w-5" />
               </span>
-              <span className="relative text-lg font-semibold">{goal}</span>
+              <span className="relative text-base lg:text-lg font-semibold">{goal}</span>
               <ArrowRight className={`relative ml-auto h-5 w-5 transition-all ${isActive ? 'opacity-100 translate-x-0 text-[#00FF00]' : 'opacity-0 -translate-x-2'}`} />
             </button>
           );
         })}
-        <p className="px-1 pt-1 font-mono text-xs text-white/30">{content.tapHint}</p>
+        <p className="px-1 pt-1 text-center lg:text-left font-mono text-xs text-white/30">{content.tapHint}</p>
       </div>
 
       <SpotlightCard className="p-6 lg:p-8 min-h-[280px]">
@@ -89,7 +89,7 @@ export const Approach = ({ content }) => {
   const [goalRef, goalInView] = useInView({ triggerOnce: true, threshold: 0.2 });
 
   return (
-    <section id="approach" className="relative py-24 lg:py-32 overflow-hidden" data-testid="approach-section">
+    <section id="approach" className="relative pt-10 pb-20 lg:py-32 overflow-hidden" data-testid="approach-section">
       <div className="aurora aurora-green w-[600px] h-[600px] top-1/2 -right-60 opacity-30" />
       <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
         {/* Interactive goal selector */}
@@ -98,9 +98,10 @@ export const Approach = ({ content }) => {
             initial={{ opacity: 0, y: 24 }}
             animate={goalInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
-            className="mb-10 max-w-3xl"
+            className="mb-10 max-w-3xl mx-auto text-center lg:mx-0 lg:text-left"
           >
-            <p className="font-mono text-sm text-[#71717A]">{content.questionIntro}</p>
+            <SectionTag>{content.tag}</SectionTag>
+            <p className="mt-6 font-mono text-sm text-[#71717A]">{content.questionIntro}</p>
             <h3 className="mt-3 text-2xl lg:text-4xl font-bold gradient-text">{content.question}</h3>
           </motion.div>
           <motion.div
@@ -110,7 +111,7 @@ export const Approach = ({ content }) => {
           >
             <GoalSelector content={content} />
           </motion.div>
-          <p className="mt-8 text-[#A1A1AA]">{content.answerLine}</p>
+          <p className="mt-8 text-center lg:text-left text-[#A1A1AA]">{content.answerLine}</p>
         </div>
 
         {/* Partner statement */}

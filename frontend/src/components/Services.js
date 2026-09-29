@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Shield, Wrench, Target, Zap, Search, BarChart3 } from 'lucide-react';
+import { SectionTag } from './fx';
 
 const services = [
   {
@@ -185,17 +186,15 @@ export const Services = ({ content }) => {
             initial={{ opacity: 0 }}
             animate={inView ? { opacity: 1 } : {}}
             transition={{ duration: 0.6 }}
-            className="mb-16"
+            className="mb-12 text-center"
           >
-            <span className="font-mono text-base text-[#00FF00] tracking-wider">
-              {content.tag}
-            </span>
+            <SectionTag>{content.tag}</SectionTag>
             <div className="mt-4">
-              <h2 className="text-headline font-bold max-w-xl" data-testid="services-headline">
+              <h2 className="text-headline font-bold max-w-xl mx-auto" data-testid="services-headline">
                 {content.headlineStart}{' '}
                 <span className="gradient-text">{content.headlineAccent}</span>
               </h2>
-              <p className="text-[#A1A1AA] mt-4 max-w-xs">
+              <p className="text-[#A1A1AA] mt-4 max-w-sm mx-auto">
                 {content.subtitle}
               </p>
             </div>
@@ -271,9 +270,7 @@ export const Services = ({ content }) => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <span className="font-mono text-sm text-[#00FF00] tracking-wider">
-              {content.tag}
-            </span>
+            <SectionTag>{content.tag}</SectionTag>
             <h2 className="text-headline font-bold mt-4" data-testid="services-headline-desktop">
               {content.headlineStart}{' '}
               <span className="gradient-text">{content.headlineAccent}</span>
