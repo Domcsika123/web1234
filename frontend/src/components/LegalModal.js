@@ -1,5 +1,8 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
+import * as Dialog from '@radix-ui/react-dialog';
 import { X } from 'lucide-react';
+
+// Legal texts are Hungarian-only on purpose: they are the binding versions.
 
 const privacy = `Adatvédelmi nyilatkozat
 
@@ -190,44 +193,43 @@ A Szolgáltató fenntartja a jogot az ÁSZF egyoldalú módosítására. A módo
 
 Utolsó frissítés: 2026. 03. 01.`;
 
-export const LegalModal = ({ type, onClose }) => {
-  const isPrivacy = type === 'privacy';
-  const title = isPrivacy ? 'Adatvédelmi nyilatkozat' : 'Általános Szerződési Feltételek';
-  const content = isPrivacy ? privacy : aszf;
-
-  useEffect(() => {
-    document.body.style.overflow = 'hidden';
-    const onKey = (e) => { if (e.key === 'Escape') onClose(); };
-    window.addEventListener('keydown', onKey);
-    return () => {
-      document.body.style.overflow = '';
-      window.removeEventListener('keydown', onKey);
-    };
-  }, [onClose]);
-
-  return (
-    <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4"
-      onClick={onClose}
-    >
-      <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
-      <div
-        className="relative bg-[#161616] border border-[#ffffff15] rounded-2xl w-full max-w-2xl max-h-[85vh] flex flex-col"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <div className="flex items-center justify-between px-8 py-5 border-b border-[#ffffff10]">
-          <h2 className="text-lg font-bold text-white">{title}</h2>
-          <button
-            onClick={onClose}
-            className="text-[#52525B] hover:text-white transition-colors"
-          >
-            <X className="w-5 h-5" />
-          </button>
-        </div>
-        <div className="overflow-y-auto px-8 py-6 text-[#A1A1AA] text-sm leading-relaxed whitespace-pre-wrap">
-          {content}
-        </div>
-      </div>
-    </div>
-  );
+const docs = {
+  privacy: { title: 'Adatvédelmi nyilatkozat', body: privacy },
+  aszf: { title: 'Általános Szerződési Feltételek', body: aszf },
 };
+
+/** Accessible modal for the privacy policy and the terms (focus trap, Escape, scroll lock). */
+export function LegalDialog({ type, onOpenChange, closeLabel = 'Bezárás', returnFocusRef }) {
+  // Keep showing the same document while the dialog animates out
+  const last = useRef(type);
+  useEffect(() => {
+    if (type) last.current = type;
+  }, [type]);
+  const doc = docs[type || last.current] || docs.privacy;
+  return (
+    <Dialog.Root open={Boolean(type)} onOpenChange={onOpenChange}>
+      <Dialog.Portal>
+        <Dialog.Overlay className="sheet-overlay fixed inset-0 z-[80] bg-ink/80 backdrop-blur-sm" />
+        <Dialog.Content
+          className="modal legal-modal"
+          aria-describedby={undefined}
+          onCloseAutoFocus={(e) => {
+            // Opened from state: return focus to the link that opened it
+            e.preventDefault();
+            returnFocusRef?.current?.focus({ preventScroll: true });
+          }}
+        >
+          <div className="flex items-center justify-between gap-4 border-b border-line px-6 py-4 sm:px-8">
+            <Dialog.Title className="text-lg font-semibold text-hi">{doc.title}</Dialog.Title>
+            <Dialog.Close asChild>
+              <button type="button" className="icon-btn" aria-label={closeLabel}>
+                <X className="h-5 w-5" aria-hidden="true" />
+              </button>
+            </Dialog.Close>
+          </div>
+          <div className="overflow-y-auto whitespace-pre-wrap px-6 py-6 text-sm leading-relaxed text-lo sm:px-8">{doc.body}</div>
+        </Dialog.Content>
+      </Dialog.Portal>
+    </Dialog.Root>
+  );
+}

@@ -148,13 +148,13 @@ export const LawPreview = () => {
                         animate={{ y: 0 }}
                         transition={{ duration: 0.5 }}
                         className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl border-b"
-                        style={{ backgroundColor: `${BG}ee`, borderColor: '#00FF0033' }}
+                        style={{ backgroundColor: `${BG}ee`, borderColor: '#00FF8533' }}
                     >
                         <div className="max-w-7xl mx-auto px-5 py-2.5 flex items-center justify-between">
                             <button
                                 onClick={() => { navigate('/'); setTimeout(() => document.getElementById('templates')?.scrollIntoView({ behavior: 'smooth' }), 100); }}
                                 className="flex items-center gap-2 font-semibold text-sm transition-colors"
-                                style={{ color: '#00FF00' }}
+                                style={{ color: '#00FF85' }}
                             >
                                 <ArrowLeft size={17} />
                                 Vissza a sablonokhoz

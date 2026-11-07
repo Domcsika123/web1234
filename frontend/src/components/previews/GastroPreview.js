@@ -47,12 +47,12 @@ export const GastroPreview = () => {
                         initial={{ y: -60 }}
                         animate={{ y: 0 }}
                         transition={{ duration: 0.5 }}
-                        className="fixed top-0 left-0 right-0 z-50 bg-[#121212]/95 backdrop-blur-md border-b border-[#00FF00]/20"
+                        className="fixed top-0 left-0 right-0 z-50 bg-[#121212]/95 backdrop-blur-md border-b border-[#00FF85]/20"
                     >
                         <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
                             <button
                                 onClick={() => { navigate('/'); setTimeout(() => document.getElementById('templates')?.scrollIntoView({ behavior: 'smooth' }), 100); }}
-                                className="flex items-center gap-2 text-[#00FF00] font-semibold hover:text-white transition-colors"
+                                className="flex items-center gap-2 text-[#00FF85] font-semibold hover:text-white transition-colors"
                             >
                                 <ArrowLeft size={18} />
                                 <span>Vissza a sablonokhoz</span>

@@ -180,7 +180,7 @@ export const FitnessPreview = () => {
                             <button
                                 onClick={() => { navigate('/'); setTimeout(() => document.getElementById('templates')?.scrollIntoView({ behavior: 'smooth' }), 100); }}
                                 className="flex items-center gap-2 font-semibold text-sm transition-colors"
-                                style={{ color: '#00FF00' }}
+                                style={{ color: '#00FF85' }}
                             >
                                 <ArrowLeft size={17} />
                                 Vissza a sablonokhoz

@@ -1,92 +1,76 @@
-import { useEffect, useMemo, useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import "@/App.css";
-import "@/fx.css";
-import { Navbar } from "./components/Navbar";
-import { Hero } from "./components/Hero";
-import { Approach } from "./components/Approach";
-import { Stats } from "./components/Stats";
-import { Services } from "./components/Services";
-import { Templates } from "./components/Templates";
-import { Process } from "./components/Process";
-import { FAQ } from "./components/FAQ";
-import { Contact } from "./components/Contact";
-import { Footer } from "./components/Footer";
-import { GastroPreview } from "./components/previews/GastroPreview";
-import { FitnessPreview } from "./components/previews/FitnessPreview";
-import { LawPreview } from "./components/previews/LawPreview";
-import { BarberPreview } from "./components/previews/BarberPreview";
-import { WeddingPreview } from "./components/previews/WeddingPreview";
-import { BeautyPreview } from "./components/previews/BeautyPreview";
-import { content } from "./i18n/content";
+import { lazy, Suspense, useCallback, useEffect, useMemo, useState } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { MotionConfig } from 'framer-motion';
+import { Landing } from './components/site/Landing';
+import { content } from './i18n/content';
+
+// Template demos are separate pages: load them only when a preview route is opened
+const named = (load, name) => lazy(() => load().then((m) => ({ default: m[name] })));
+const GastroPreview = named(() => import('./components/previews/GastroPreview'), 'GastroPreview');
+const FitnessPreview = named(() => import('./components/previews/FitnessPreview'), 'FitnessPreview');
+const LawPreview = named(() => import('./components/previews/LawPreview'), 'LawPreview');
+const BarberPreview = named(() => import('./components/previews/BarberPreview'), 'BarberPreview');
+const WeddingPreview = named(() => import('./components/previews/WeddingPreview'), 'WeddingPreview');
+const BeautyPreview = named(() => import('./components/previews/BeautyPreview'), 'BeautyPreview');
+
+const LANG_KEY = 'auracode-lang';
+
+const readLang = () => {
+  try {
+    return window.localStorage.getItem(LANG_KEY) === 'en' ? 'en' : 'hu';
+  } catch {
+    return 'hu';
+  }
+};
+
+// The template demos keep the typography of the previous site
+const Preview = ({ children }) => (
+  <div className="tpl-preview">
+    <Suspense fallback={<div className="min-h-screen bg-ink" />}>{children}</Suspense>
+  </div>
+);
 
 function App() {
-  const [lang, setLang] = useState("hu");
+  const [lang, setLangState] = useState(readLang);
   const copy = useMemo(() => content[lang], [lang]);
 
-  useEffect(() => {
-    const remove = () => {
-      const badge = document.getElementById("emergent-badge");
-      if (badge) badge.remove();
-    };
-    remove();
-    const observer = new MutationObserver(remove);
-    observer.observe(document.body, { childList: true, subtree: true });
-    return () => observer.disconnect();
+  const setLang = useCallback((next) => {
+    setLangState(next);
+    try {
+      window.localStorage.setItem(LANG_KEY, next);
+    } catch {
+      /* private mode: the choice just isn't remembered */
+    }
   }, []);
 
   useEffect(() => {
+    document.documentElement.lang = lang;
     document.title = copy.meta.title;
-  }, [copy.meta.title]);
+    document.querySelector('meta[name="description"]')?.setAttribute('content', copy.meta.description);
+  }, [lang, copy]);
+
+  // Some hosting previews inject a badge; CSS hides it, this removes it once it shows up
+  useEffect(() => {
+    const remove = () => document.getElementById('emergent-badge')?.remove();
+    remove();
+    const timers = [1000, 3000].map((ms) => window.setTimeout(remove, ms));
+    return () => timers.forEach(window.clearTimeout);
+  }, []);
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <div className="App bg-[#0A0A0A] min-h-screen">
-              <Navbar lang={lang} setLang={setLang} content={copy.navbar} />
-              <main>
-                <div className="relative overflow-hidden noise-overlay">
-                  <div className="absolute inset-0 grid-bg opacity-45 pointer-events-none" />
-                  <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                    {[...Array(40)].map((_, i) => (
-                      <span
-                        key={i}
-                        className="particle"
-                        style={{
-                          left: `${Math.random() * 100}%`,
-                          top: `${Math.random() * 100}%`,
-                          animationDuration: `${4 + Math.random() * 4}s`,
-                          animationDelay: `${Math.random() * 4}s`,
-                          opacity: 0.35 + Math.random() * 0.4,
-                        }}
-                      />
-                    ))}
-                  </div>
-                  <Hero content={copy.hero} />
-                  <Approach content={copy.approach} />
-                </div>
-                <Stats content={copy.stats} />
-                <Services content={copy.services} />
-                <Templates content={copy.templates} />
-                <Process content={copy.process} />
-                <FAQ content={copy.faq} />
-                <Contact content={copy.contact} />
-              </main>
-              <Footer content={copy.footer} />
-            </div>
-          }
-        />
-        <Route path="/preview/gastro" element={<GastroPreview />} />
-        <Route path="/preview/fitness" element={<FitnessPreview />} />
-        <Route path="/preview/law" element={<LawPreview />} />
-        <Route path="/preview/barber" element={<BarberPreview />} />
-        <Route path="/preview/wedding" element={<WeddingPreview />} />
-        <Route path="/preview/beauty" element={<BeautyPreview />} />
-      </Routes>
-    </BrowserRouter>
+    <MotionConfig reducedMotion="user">
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Landing copy={copy} lang={lang} setLang={setLang} />} />
+          <Route path="/preview/gastro" element={<Preview><GastroPreview /></Preview>} />
+          <Route path="/preview/fitness" element={<Preview><FitnessPreview /></Preview>} />
+          <Route path="/preview/law" element={<Preview><LawPreview /></Preview>} />
+          <Route path="/preview/barber" element={<Preview><BarberPreview /></Preview>} />
+          <Route path="/preview/wedding" element={<Preview><WeddingPreview /></Preview>} />
+          <Route path="/preview/beauty" element={<Preview><BeautyPreview /></Preview>} />
+        </Routes>
+      </BrowserRouter>
+    </MotionConfig>
   );
 }
 
