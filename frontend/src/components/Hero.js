@@ -8,7 +8,6 @@ import {
   Smartphone,
   Cog,
 } from 'lucide-react';
-import { AuraCodeLogo } from './AuraCodeLogo';
 import { RevealWords } from './fx';
 
 export const Hero = ({ content }) => {

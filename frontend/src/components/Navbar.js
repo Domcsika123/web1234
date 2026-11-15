@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Mail, Phone } from 'lucide-react';
-import { AuraCodeLogo } from './AuraCodeLogo';
+import { AuraCodeLockup } from './AuraCodeLogo';
 import { Magnetic } from './fx';
 
 const FlagHungary = () => (
@@ -142,8 +142,7 @@ export const Navbar = ({ lang, setLang, content, ready = true }) => {
             className="flex items-center gap-2.5"
             data-testid="navbar-logo"
           >
-            <AuraCodeLogo className={`transition-all duration-500 ${isScrolled ? 'h-11 w-11' : 'h-[56px] w-[56px]'}`} />
-            <span className="font-black text-xl tracking-tight text-on-dark">AuraCode</span>
+            <AuraCodeLockup className={`transition-all duration-500 ${isScrolled ? 'h-9 w-auto' : 'h-11 w-auto'}`} />
           </a>
 
           <div

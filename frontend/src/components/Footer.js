@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { AuraCodeLogo } from './AuraCodeLogo';
+import { AuraCodeLockup } from './AuraCodeLogo';
 import { LegalModal } from './LegalModal';
 
 export const Footer = ({ content }) => {
@@ -23,8 +23,7 @@ export const Footer = ({ content }) => {
               whileHover={{ scale: 1.05 }}
               data-testid="footer-logo"
             >
-              <AuraCodeLogo className="h-[62px] w-[62px]" />
-              <span className="font-black text-xl tracking-tight text-on-dark">AuraCode</span>
+              <AuraCodeLockup className="h-12 w-auto" />
             </motion.button>
 
             <p className="text-fg-2 leading-relaxed max-w-md mb-6">
