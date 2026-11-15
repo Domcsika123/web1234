@@ -22,7 +22,6 @@ export const content = {
                 "Prémium weboldalak kis- és középvállalkozások részére. Modern, SEO-optimalizált honlapok 1-4 hét alatt, fix áron.",
             primaryCta: "Ingyenes konzultáció",
             secondaryCta: "Szolgáltatások megtekintése",
-            badges: ["30 napos garancia", "Fix áras projektek", "Ingyenes konzultáció"],
         },
         approach: {
             tag: "01 // A SZEMLÉLETÜNK",
@@ -49,7 +48,6 @@ export const content = {
                 "Kevesebb manuális adminisztrációt?",
             ],
             answerLine: "A válasz határozza meg, mit és hogyan építünk.",
-            tapHint: "↑ Válassz egy célt, és megmutatjuk, mit építünk hozzá.",
             weBuild: "Ezt építjük hozzá",
             goalAnswers: [
                 {
@@ -85,7 +83,7 @@ export const content = {
             tag: "02 // AMIT GARANTÁLUNK",
             items: [
                 { value: 30, suffix: "", label: "Nap Garancia", description: "minden projektre" },
-                { value: 3, suffix: "x", label: "Konverzió Növekedés", description: "átlagos eredmény" },
+                { value: 100, suffix: "%", label: "Mobilbarát", description: "minden képernyőméreten" },
             ],
             tags: ["1-4 HÉT", "FIX ÁR", "EREDMÉNYGARANCIA"],
         },
@@ -106,10 +104,6 @@ export const content = {
                 {
                     title: "Konverzió-fókusz",
                     description: "Minden elem az ügyfélszerzésért dolgozik.",
-                },
-                {
-                    title: "Mérés beépítve",
-                    description: "Precíz analitika a látogatók viselkedéséről.",
                 },
                 {
                     title: "Biztonság",
@@ -213,8 +207,46 @@ export const content = {
                 },
             ],
         },
+        pricing: {
+            tag: "06 // ÁRAZÁS",
+            headlineStart: "Átlátható árak,",
+            headlineAccent: "rejtett költségek nélkül",
+            subtitle: "Válaszd ki a vállalkozásodhoz illő csomagot. Minden ár bruttó végösszeg.",
+            priceNote: "bruttó végösszeg",
+            includesLabel: "Tartalmazza",
+            excludesLabel: "Nem tartalmazza (külön felár)",
+            popular: "Legnépszerűbb",
+            cta: "Ajánlatot kérek",
+            customStart: "Egyedi igényed van?",
+            customLink: "Kérj személyre szabott ajánlatot.",
+            vatNote: "Az árak végösszegek, nem tartalmaznak ÁFA-t, mivel alanyi adómentes vállalkozásként számlázunk.",
+            plans: [
+                {
+                    name: "Landing page",
+                    subtitle: "1 termék vagy szolgáltatás bemutatására",
+                    price: "149 990 Ft-tól",
+                    includes: ["1 oldal", "Reszponzív dizájn", "Kapcsolatűrlap", "Alap SEO beállítás", "Domain és tárhely beüzemelés", "30 nap garancia"],
+                    excludes: ["Tartalomírás", "Fotózás"],
+                },
+                {
+                    name: "Céges weboldal",
+                    subtitle: "Bemutatkozó oldal több aloldallal",
+                    price: "199 990 Ft-tól",
+                    featured: true,
+                    includes: ["4-6 aloldal (kezdőlap, szolgáltatások, rólunk, referenciák, kapcsolat)", "Reszponzív dizájn", "SEO alapok", "Kapcsolatűrlap", "Domain és tárhely beüzemelés", "30 nap garancia"],
+                    excludes: ["Tartalomírás", "Fotózás"],
+                },
+                {
+                    name: "Webshop",
+                    subtitle: "Online értékesítés, korlátlan termékkel",
+                    price: "249 990 Ft-tól",
+                    includes: ["Korlátlan termékszám", "Kosár és fizetési integráció", "Reszponzív dizájn", "Alap SEO", "Domain és tárhely beüzemelés", "30 nap garancia"],
+                    excludes: ["Termékfotózás", "Termékleírások", "Egyedi szállítási integráció"],
+                },
+            ],
+        },
         faq: {
-            tag: "06 // GYAKORI KÉRDÉSEK",
+            tag: "07 // GYAKORI KÉRDÉSEK",
             headlineStart: "Minden, amit",
             headlineAccent: "tudnod kell",
             subtitle: "Az oldalkészítésről egyszerűen",
@@ -248,7 +280,7 @@ export const content = {
             contactLink: "Írj nekünk és válaszolunk!",
         },
         contact: {
-            tag: "07 // KEZDJÜK EL",
+            tag: "08 // KEZDJÜK EL",
             headlineStart: "Kérj",
             headlineAccent: "egyedi ajánlatot",
             subtitle: "Építsünk egy olyan oldalt, ami valóban a te cégedet képviseli.",
@@ -335,7 +367,6 @@ export const content = {
                 "Premium websites for small and medium-sized businesses. Modern, SEO-optimized websites in 1-4 weeks, at a fixed price.",
             primaryCta: "Free consultation",
             secondaryCta: "View services",
-            badges: ["30-day guarantee", "Fixed-price projects", "Free consultation"],
         },
         approach: {
             tag: "01 // OUR APPROACH",
@@ -362,7 +393,6 @@ export const content = {
                 "Less manual administration?",
             ],
             answerLine: "The answer defines what we build and how we build it.",
-            tapHint: "↑ Pick a goal and we will show you what we build for it.",
             weBuild: "What we build for it",
             goalAnswers: [
                 {
@@ -398,7 +428,7 @@ export const content = {
             tag: "02 // WHAT WE GUARANTEE",
             items: [
                 { value: 30, suffix: "", label: "Day Guarantee", description: "for every project" },
-                { value: 3, suffix: "x", label: "Conversion Growth", description: "average result" },
+                { value: 100, suffix: "%", label: "Mobile-Friendly", description: "on every screen size" },
             ],
             tags: ["1-4 WEEKS", "FIXED PRICE", "RESULT GUARANTEE"],
         },
@@ -419,10 +449,6 @@ export const content = {
                 {
                     title: "Conversion focus",
                     description: "Every element is built for customer acquisition.",
-                },
-                {
-                    title: "Analytics included",
-                    description: "Precise visitor behavior tracking and measurement.",
                 },
                 {
                     title: "Security",
@@ -526,8 +552,46 @@ export const content = {
                 },
             ],
         },
+        pricing: {
+            tag: "06 // PRICING",
+            headlineStart: "Transparent prices,",
+            headlineAccent: "no hidden costs",
+            subtitle: "Pick the package that fits your business. Every price is a final gross amount.",
+            priceNote: "final gross amount",
+            includesLabel: "Included",
+            excludesLabel: "Not included (extra charge)",
+            popular: "Most popular",
+            cta: "Request a quote",
+            customStart: "Have a custom need?",
+            customLink: "Ask for a tailored quote.",
+            vatNote: "Prices are final amounts and include no VAT, as we invoice as a VAT-exempt sole trader.",
+            plans: [
+                {
+                    name: "Landing page",
+                    subtitle: "To present 1 product or service",
+                    price: "from 149 990 HUF",
+                    includes: ["1 page", "Responsive design", "Contact form", "Basic SEO setup", "Domain and hosting setup", "30-day guarantee"],
+                    excludes: ["Copywriting", "Photography"],
+                },
+                {
+                    name: "Business website",
+                    subtitle: "Company site with several subpages",
+                    price: "from 199 990 HUF",
+                    featured: true,
+                    includes: ["4-6 subpages (home, services, about, references, contact)", "Responsive design", "SEO basics", "Contact form", "Domain and hosting setup", "30-day guarantee"],
+                    excludes: ["Copywriting", "Photography"],
+                },
+                {
+                    name: "Webshop",
+                    subtitle: "Sell online with unlimited products",
+                    price: "from 249 990 HUF",
+                    includes: ["Unlimited products", "Cart and payment integration", "Responsive design", "Basic SEO", "Domain and hosting setup", "30-day guarantee"],
+                    excludes: ["Product photography", "Product descriptions", "Custom shipping integration"],
+                },
+            ],
+        },
         faq: {
-            tag: "06 // FREQUENTLY ASKED QUESTIONS",
+            tag: "07 // FREQUENTLY ASKED QUESTIONS",
             headlineStart: "Everything you",
             headlineAccent: "need to know",
             subtitle: "Website creation made simple",
@@ -561,7 +625,7 @@ export const content = {
             contactLink: "Contact us and we will answer.",
         },
         contact: {
-            tag: "07 // LET'S GET STARTED",
+            tag: "08 // LET'S GET STARTED",
             headlineStart: "Request a",
             headlineAccent: "custom quote",
             subtitle: "Lets build a website that truly represents your business.",

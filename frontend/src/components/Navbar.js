@@ -32,7 +32,7 @@ const LanguageSwitcher = ({ lang, setLang, content, compact = false }) => {
 
   return (
     <div
-      className="relative inline-flex items-center gap-1 rounded-full border border-white/10 bg-black/40 p-1"
+      className="relative inline-flex items-center gap-1 rounded-full border border-line bg-canvas/40 p-1"
       aria-label={content.languageLabel}
       role="group"
     >
@@ -43,7 +43,7 @@ const LanguageSwitcher = ({ lang, setLang, content, compact = false }) => {
             key={option.key}
             type="button"
             onClick={() => setLang(option.key)}
-            className={`relative inline-flex items-center gap-2 rounded-full px-2.5 py-1.5 text-xs font-semibold transition-colors ${isActive ? 'text-[#0A0A0A]' : 'text-[#A1A1AA] hover:text-white'}`}
+            className={`relative inline-flex items-center gap-2 rounded-full px-2.5 py-1.5 text-xs font-semibold transition-colors ${isActive ? 'text-canvas' : 'text-fg-2 hover:text-fg'}`}
             title={option.title}
             aria-pressed={isActive}
             data-testid={`lang-switch-${option.key}`}
@@ -51,7 +51,7 @@ const LanguageSwitcher = ({ lang, setLang, content, compact = false }) => {
             {isActive && (
               <motion.span
                 layoutId={compact ? 'lang-pill-mobile' : 'lang-pill'}
-                className="absolute inset-0 rounded-full bg-[#00FF00]"
+                className="absolute inset-0 rounded-full bg-tone"
                 transition={{ type: 'spring', stiffness: 400, damping: 30 }}
               />
             )}
@@ -129,7 +129,7 @@ export const Navbar = ({ lang, setLang, content, ready = true }) => {
         <div
           className={`mx-auto flex items-center justify-between rounded-2xl border transition-all duration-500 ${
             isScrolled
-              ? 'max-w-6xl h-16 px-4 lg:px-5 border-white/10 bg-[#0a0a0a]/70 backdrop-blur-xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.8)]'
+              ? 'max-w-6xl h-16 px-4 lg:px-5 border-line bg-primary-dark/95 backdrop-blur-xl shadow-lg shadow-primary-dark/20'
               : 'max-w-7xl h-20 px-2 lg:px-8 border-transparent bg-transparent'
           }`}
         >
@@ -143,13 +143,11 @@ export const Navbar = ({ lang, setLang, content, ready = true }) => {
             data-testid="navbar-logo"
           >
             <AuraCodeLogo className={`transition-all duration-500 ${isScrolled ? 'h-11 w-11' : 'h-[56px] w-[56px]'}`} />
-            <span className="font-black text-xl tracking-tight" style={{ fontWeight: 900, WebkitTextStroke: '0.35px rgba(255,255,255,0.55)' }}>
-              Aura<span className="gradient-text font-black" style={{ fontWeight: 900, WebkitTextStroke: '0.35px rgba(0,255,0,0.4)' }}>Code</span>
-            </span>
+            <span className="font-black text-xl tracking-tight text-on-dark">AuraCode</span>
           </a>
 
           <div
-            className="hidden lg:flex items-center gap-1 rounded-full border border-white/[0.08] bg-white/[0.03] p-1"
+            className="hidden lg:flex items-center gap-1 rounded-full border border-line bg-fg/[0.03] p-1"
             onMouseLeave={() => setHovered(null)}
           >
             {content.links.map((link) => {
@@ -160,17 +158,21 @@ export const Navbar = ({ lang, setLang, content, ready = true }) => {
                   key={link.key}
                   onClick={() => scrollToSection(link.href)}
                   onMouseEnter={() => setHovered(id)}
-                  className={`relative rounded-full px-4 py-2 text-sm font-medium transition-colors ${isHi ? 'text-white' : 'text-[#A1A1AA] hover:text-white'}`}
+                  className={`relative rounded-full px-4 py-2 text-sm font-medium transition-colors duration-200 hover:text-accent ${activeSection === id ? 'text-accent' : isHi ? 'text-fg' : 'text-fg-2'}`}
                   data-testid={`nav-link-${link.key}`}
                 >
                   {isHi && (
                     <motion.span
                       layoutId="nav-pill"
-                      className="absolute inset-0 rounded-full border border-[#00FF00]/30 bg-[#00FF00]/10"
+                      className="absolute inset-0 rounded-full border border-tone/30 bg-tone/10"
                       transition={{ type: 'spring', stiffness: 380, damping: 32 }}
                     />
                   )}
                   <span className="relative">{link.name}</span>
+                  <span
+                    aria-hidden="true"
+                    className={`absolute left-1/2 bottom-[3px] h-1 w-1 -translate-x-1/2 rounded-full bg-accent transition-[opacity,transform] duration-300 ${activeSection === id ? 'opacity-100 scale-100' : 'opacity-0 scale-50'}`}
+                  />
                 </button>
               );
             })}
@@ -192,7 +194,7 @@ export const Navbar = ({ lang, setLang, content, ready = true }) => {
 
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden relative z-[60] flex h-11 w-11 flex-col items-center justify-center gap-[5px] rounded-xl border border-white/10 bg-black/40 text-white backdrop-blur"
+            className="lg:hidden relative z-[60] flex h-11 w-11 flex-col items-center justify-center gap-[5px] rounded-xl border border-line bg-primary-dark/90 text-fg backdrop-blur"
             aria-label="Menu"
             aria-expanded={isMobileMenuOpen}
             data-testid="mobile-menu-toggle"
@@ -200,17 +202,17 @@ export const Navbar = ({ lang, setLang, content, ready = true }) => {
             <motion.span
               animate={isMobileMenuOpen ? { rotate: -45, y: 7 } : { rotate: 0, y: 0 }}
               transition={{ duration: 0.3, ease: 'easeInOut' }}
-              className="block w-5 h-[2px] bg-white rounded-full origin-center"
+              className="block w-5 h-[2px] bg-fg rounded-full origin-center"
             />
             <motion.span
               animate={isMobileMenuOpen ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
               transition={{ duration: 0.2, ease: 'easeInOut' }}
-              className="block w-5 h-[2px] bg-white rounded-full"
+              className="block w-5 h-[2px] bg-fg rounded-full"
             />
             <motion.span
               animate={isMobileMenuOpen ? { rotate: 45, y: -7 } : { rotate: 0, y: 0 }}
               transition={{ duration: 0.3, ease: 'easeInOut' }}
-              className="block w-5 h-[2px] bg-white rounded-full origin-center"
+              className="block w-5 h-[2px] bg-fg rounded-full origin-center"
             />
           </button>
         </div>
@@ -223,11 +225,10 @@ export const Navbar = ({ lang, setLang, content, ready = true }) => {
             animate={{ clipPath: 'circle(150% at calc(100% - 44px) 44px)' }}
             exit={{ clipPath: 'circle(0% at calc(100% - 44px) 44px)' }}
             transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1] }}
-            className="fixed inset-0 z-40 flex flex-col bg-[#060606] px-6 pt-28 pb-10 lg:hidden"
+            className="fixed inset-0 z-40 flex flex-col bg-canvas px-6 pt-28 pb-10 lg:hidden"
             data-testid="mobile-menu"
           >
             <div className="absolute inset-0 grid-bg opacity-40" />
-            <div className="aurora aurora-green w-80 h-80 -bottom-20 -left-20 opacity-40" />
             <nav className="relative flex flex-col">
               {content.links.map((link, index) => (
                 <motion.button
@@ -236,11 +237,11 @@ export const Navbar = ({ lang, setLang, content, ready = true }) => {
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.25 + index * 0.07, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                  className="group flex items-baseline gap-4 border-b border-white/[0.06] py-4 text-left"
+                  className="group flex items-baseline gap-4 border-b border-line py-4 text-left"
                   data-testid={`mobile-nav-link-${link.key}`}
                 >
-                  <span className="font-mono text-xs text-[#00FF00]/60">{String(index + 1).padStart(2, '0')}</span>
-                  <span className="text-4xl font-bold text-white transition-colors group-active:text-[#00FF00]" style={{ fontFamily: 'Outfit, sans-serif' }}>
+                  <span className="font-mono text-xs text-tone/60">{String(index + 1).padStart(2, '0')}</span>
+                  <span className="text-4xl font-bold text-fg transition-colors group-active:text-tone" style={{ fontFamily: 'Outfit, sans-serif' }}>
                     {link.name}
                   </span>
                 </motion.button>
@@ -254,12 +255,12 @@ export const Navbar = ({ lang, setLang, content, ready = true }) => {
               className="relative mt-auto space-y-5"
             >
               <div className="flex items-center justify-between">
-                <span className="text-sm font-medium text-[#A1A1AA]">{content.languageLabel}</span>
+                <span className="text-sm font-medium text-fg-2">{content.languageLabel}</span>
                 <LanguageSwitcher lang={lang} setLang={setLang} content={content} compact />
               </div>
-              <div className="flex flex-col gap-2 text-sm text-[#A1A1AA]">
-                <a href="mailto:info@auracode.hu" className="flex items-center gap-2"><Mail className="h-4 w-4 text-[#00FF00]" />info@auracode.hu</a>
-                <a href="tel:+36306489678" className="flex items-center gap-2"><Phone className="h-4 w-4 text-[#00FF00]" />+36 30 648 9678</a>
+              <div className="flex flex-col gap-2 text-sm text-fg-2">
+                <a href="mailto:info@auracode.hu" className="flex items-center gap-2"><Mail className="h-4 w-4 text-tone" />info@auracode.hu</a>
+                <a href="tel:+36306489678" className="flex items-center gap-2"><Phone className="h-4 w-4 text-tone" />+36 30 648 9678</a>
               </div>
               <button
                 onClick={() => scrollToSection('#contact')}

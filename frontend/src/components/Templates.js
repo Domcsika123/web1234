@@ -7,15 +7,15 @@ import { SectionHeader, TiltCard } from './fx';
 const TemplateCard = ({ template, index, mobile = false, onPreview, isExpanding, isActive, cardRef, previewLabel, domain }) => {
     const card = (
         <div
-            className={`relative flex h-full flex-col overflow-hidden rounded-2xl border bg-[#101010] transition-colors duration-300
-                ${mobile && isActive ? 'border-[#00FF00]/60' : 'border-white/10 group-hover/tilt:border-[#00FF00]/40'}`}
+            className={`relative flex h-full flex-col overflow-hidden rounded-2xl border bg-surface transition-colors duration-300
+                ${mobile && isActive ? 'border-tone/60' : 'border-line group-hover/tilt:border-tone/40'}`}
         >
             {/* browser chrome */}
-            <div className="flex h-8 items-center gap-1.5 border-b border-white/10 bg-[#151515] px-3">
-                <span className="h-2 w-2 rounded-full bg-[#ff5f57]" />
-                <span className="h-2 w-2 rounded-full bg-[#febc2e]" />
-                <span className="h-2 w-2 rounded-full bg-[#28c840]" />
-                <span className="ml-3 truncate rounded bg-white/5 px-2 py-0.5 font-mono text-[10px] text-white/40">
+            <div className="flex h-8 items-center gap-1.5 border-b border-line bg-surface px-3">
+                <span className="h-2 w-2 rounded-full bg-accent" />
+                <span className="h-2 w-2 rounded-full bg-secondary-soft" />
+                <span className="h-2 w-2 rounded-full bg-secondary" />
+                <span className="ml-3 truncate rounded bg-fg/5 px-2 py-0.5 font-mono text-[10px] text-fg-3">
                     {template.id}.{domain}
                 </span>
             </div>
@@ -27,13 +27,13 @@ const TemplateCard = ({ template, index, mobile = false, onPreview, isExpanding,
                     className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover/tilt:scale-110"
                     loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#101010] via-transparent to-transparent" />
-                <span className="absolute left-3 top-3 rounded-full border border-white/15 bg-black/50 px-2.5 py-1 font-mono text-[10px] text-white/80 backdrop-blur">
+                <div className="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent" />
+                <span className="absolute left-3 top-3 rounded-full border border-line bg-canvas/50 px-2.5 py-1 font-mono text-[10px] text-fg/80 backdrop-blur">
                     {String(index + 1).padStart(2, '0')}
                 </span>
                 {!mobile && (
                     <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover/tilt:opacity-100">
-                        <span className="flex items-center gap-2 rounded-full bg-[#00FF00] px-4 py-2 text-sm font-bold text-black shadow-[0_0_30px_rgba(0,255,0,0.6)] translate-y-3 group-hover/tilt:translate-y-0 transition-transform duration-300">
+                        <span className="flex items-center gap-2 rounded-full bg-tone px-4 py-2 text-sm font-bold text-canvas  translate-y-3 group-hover/tilt:translate-y-0 transition-transform duration-300">
                             <Eye className="h-4 w-4" />
                             {previewLabel}
                         </span>
@@ -43,13 +43,13 @@ const TemplateCard = ({ template, index, mobile = false, onPreview, isExpanding,
 
             <div className="flex flex-1 flex-col p-5">
                 <div className="flex items-start justify-between gap-3">
-                    <h3 className="text-xl font-bold text-white">{template.title}</h3>
-                    <ArrowUpRight className="h-5 w-5 flex-shrink-0 text-white/30 transition-all duration-300 group-hover/tilt:rotate-45 group-hover/tilt:text-[#00FF00]" />
+                    <h3 className="text-xl font-bold text-fg">{template.title}</h3>
+                    <ArrowUpRight className="h-5 w-5 flex-shrink-0 text-fg-3 transition-all duration-300 group-hover/tilt:rotate-45 group-hover/tilt:text-tone" />
                 </div>
-                <p className="mt-2 text-sm leading-relaxed text-[#A1A1AA]">{template.description}</p>
+                <p className="mt-2 text-sm leading-relaxed text-fg-2">{template.description}</p>
                 <button
                     onClick={() => onPreview && onPreview(template)}
-                    className={`mt-auto pt-5 inline-flex items-center gap-2 text-sm font-semibold transition-colors ${mobile && isActive ? 'text-[#00FF00]' : 'text-white/70 hover:text-[#00FF00]'}`}
+                    className={`mt-auto pt-5 inline-flex items-center gap-2 text-sm font-semibold transition-colors ${mobile && isActive ? 'text-tone' : 'text-fg/70 hover:text-tone'}`}
                     data-testid={`template-cta-${index}`}
                 >
                     {previewLabel}
@@ -134,10 +134,9 @@ export const Templates = ({ content }) => {
         <section
             id="templates"
             ref={ref}
-            className="py-24 lg:py-36 relative overflow-hidden"
+            className="theme-light py-24 lg:py-36 relative overflow-hidden bg-canvas text-fg"
             data-testid="templates-section"
         >
-            <div className="aurora aurora-cyan w-[560px] h-[560px] -left-60 top-20 opacity-25" />
 
             <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
                 <SectionHeader
@@ -177,7 +176,7 @@ export const Templates = ({ content }) => {
                     {content.list.map((_, i) => (
                         <div
                             key={i}
-                            className={`rounded-full transition-all duration-300 ${i === activeIndex ? 'w-6 h-2 bg-[#00FF00]' : 'w-2 h-2 bg-[#ffffff20]'}`}
+                            className={`rounded-full transition-all duration-300 ${i === activeIndex ? 'w-6 h-2 bg-tone' : 'w-2 h-2 bg-fg/20'}`}
                         />
                     ))}
                 </div>
@@ -206,26 +205,26 @@ export const Templates = ({ content }) => {
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
                             transition={{ duration: 0.35, ease: 'easeInOut' }}
-                            className="fixed inset-0 z-[60] bg-black/80 backdrop-blur-sm"
+                            className="fixed inset-0 z-[60] bg-canvas/80 backdrop-blur-sm"
                             onClick={handleClose}
                         />
 
                         <motion.div
-                            className="fixed z-[61] overflow-hidden rounded-xl border border-[#ffffff1a] bg-[#0a0a0a]"
+                            className="fixed z-[61] overflow-hidden rounded-xl border border-line bg-canvas"
                             style={{ top: '3vh', left: '2.5vw', width: '95vw', height: '94vh' }}
                             initial={{ opacity: 0, y: '100vh' }}
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: '100vh' }}
                             transition={{ duration: 0.65, ease: [0.32, 0.72, 0, 1] }}
                         >
-                            <div className="absolute top-0 left-0 right-0 z-50 flex h-16 items-center justify-center border-b border-[#ffffff14] bg-[#0a0a0a] px-4">
+                            <div className="absolute top-0 left-0 right-0 z-50 flex h-16 items-center justify-center border-b border-line bg-canvas px-4">
                                 <motion.button
                                     initial={{ opacity: 0, x: -8 }}
                                     animate={{ opacity: 1, x: 0 }}
                                     exit={{ opacity: 0, x: -8 }}
                                     transition={{ duration: 0.25, ease: 'easeInOut' }}
                                     onClick={handleClose}
-                                    className="rounded-full border border-[#00FF00]/30 bg-[#121212]/90 px-4 py-2 text-xs font-semibold uppercase tracking-[0.08em] text-[#00FF00] transition-colors hover:bg-[#00FF00] hover:text-[#0a0a0a]"
+                                    className="rounded-full border border-tone/30 bg-surface/90 px-4 py-2 text-xs font-semibold uppercase tracking-[0.08em] text-tone transition-colors hover:bg-tone hover:text-canvas"
                                 >
                                     {content.backToTemplates}
                                 </motion.button>

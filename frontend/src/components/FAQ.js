@@ -18,7 +18,7 @@ export const FAQ = ({ content }) => {
     <section
       id="faq"
       ref={ref}
-      className="py-24 lg:py-32 relative overflow-hidden bg-[#0A0A0A]"
+      className="theme-light py-24 lg:py-32 relative overflow-hidden bg-canvas text-fg"
       data-testid="faq-section"
     >
       <div className="absolute inset-0 grid-bg opacity-30" />
@@ -34,7 +34,7 @@ export const FAQ = ({ content }) => {
           <h2 className="text-headline font-bold mt-4" data-testid="faq-headline">
             {content.headlineStart} <span className="gradient-text">{content.headlineAccent}</span>
           </h2>
-          <p className="text-[#A1A1AA] mt-4">
+          <p className="text-fg-2 mt-4">
             {content.subtitle}
           </p>
         </motion.div>
@@ -52,10 +52,10 @@ export const FAQ = ({ content }) => {
                 className="faq-item pb-4"
                 data-testid={`faq-item-${index}`}
               >
-                <AccordionTrigger className="faq-trigger text-left text-lg font-semibold hover:no-underline py-4 [&[data-state=open]]:text-[#00FF00]">
+                <AccordionTrigger className="faq-trigger text-left text-lg font-semibold hover:no-underline py-4">
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-[#A1A1AA] leading-relaxed pb-4">
+                <AccordionContent className="text-fg-2 leading-relaxed pb-4">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>
@@ -70,12 +70,12 @@ export const FAQ = ({ content }) => {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="mt-12 text-center"
         >
-          <p className="text-[#52525B] mb-4">
+          <p className="text-fg-3 mb-4">
             {content.missingAnswer}
           </p>
           <a
             href="#contact"
-            className="text-[#00FF00] hover:underline font-medium"
+            className="link font-medium"
             data-testid="faq-contact-link"
           >
             {content.contactLink}

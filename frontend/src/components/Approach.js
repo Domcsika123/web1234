@@ -25,25 +25,24 @@ const GoalSelector = ({ content }) => {
               onClick={() => setActive(index)}
               onMouseEnter={() => setActive(index)}
               className={`relative flex items-center gap-4 rounded-2xl border p-4 lg:p-5 text-left transition-colors duration-300 ${
-                isActive ? 'border-[#00FF00]/50 text-white' : 'border-white/10 text-[#A1A1AA] hover:text-white hover:border-white/20'
+                isActive ? 'border-tone/50 text-fg' : 'border-line text-fg-2 hover:text-fg hover:border-line'
               }`}
             >
               {isActive && (
                 <motion.span
                   layoutId="goal-active-bg"
-                  className="absolute inset-0 rounded-2xl bg-gradient-to-r from-[#00FF00]/[0.12] to-transparent"
+                  className="absolute inset-0 rounded-2xl bg-gradient-to-r from-tone/[0.12] to-transparent"
                   transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                 />
               )}
-              <span className={`relative flex h-11 w-11 items-center justify-center rounded-xl transition-colors ${isActive ? 'bg-[#00FF00] text-black' : 'bg-white/5 text-[#00FF00]'}`}>
+              <span className={`relative flex h-11 w-11 items-center justify-center rounded-xl transition-colors ${isActive ? 'bg-tone text-canvas' : 'bg-fg/5 text-tone'}`}>
                 <Icon className="h-5 w-5" />
               </span>
               <span className="relative text-base lg:text-lg font-semibold">{goal}</span>
-              <ArrowRight className={`relative ml-auto h-5 w-5 transition-all ${isActive ? 'opacity-100 translate-x-0 text-[#00FF00]' : 'opacity-0 -translate-x-2'}`} />
+              <ArrowRight className={`relative ml-auto h-5 w-5 transition-all ${isActive ? 'opacity-100 translate-x-0 text-tone' : 'opacity-0 -translate-x-2'}`} />
             </button>
           );
         })}
-        <p className="px-1 pt-1 text-center lg:text-left font-mono text-xs text-white/30">{content.tapHint}</p>
       </div>
 
       <SpotlightCard className="p-6 lg:p-8 min-h-[280px]">
@@ -56,12 +55,12 @@ const GoalSelector = ({ content }) => {
             transition={{ duration: 0.35 }}
           >
             <div className="flex items-center gap-3">
-              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#00FF00]/10">
-                <ActiveIcon className="h-5 w-5 text-[#00FF00]" />
+              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-tone/10">
+                <ActiveIcon className="h-5 w-5 text-tone" />
               </span>
-              <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#00FF00]">{content.weBuild}</span>
+              <span className="font-mono text-xs uppercase tracking-[0.2em] text-tone">{content.weBuild}</span>
             </div>
-            <h4 className="mt-5 text-2xl lg:text-3xl font-bold text-white">{answer.title}</h4>
+            <h4 className="mt-5 text-2xl lg:text-3xl font-bold text-fg">{answer.title}</h4>
             <ul className="mt-6 space-y-3">
               {answer.points.map((point, i) => (
                 <motion.li
@@ -69,10 +68,10 @@ const GoalSelector = ({ content }) => {
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.15 + i * 0.08 }}
-                  className="flex items-start gap-3 text-[#D4D4D8]"
+                  className="flex items-start gap-3 text-fg"
                 >
-                  <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-[#00FF00]/15">
-                    <Check className="h-3 w-3 text-[#00FF00]" />
+                  <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-tone/15">
+                    <Check className="h-3 w-3 text-tone" />
                   </span>
                   {point}
                 </motion.li>
@@ -89,8 +88,7 @@ export const Approach = ({ content }) => {
   const [goalRef, goalInView] = useInView({ triggerOnce: true, threshold: 0.2 });
 
   return (
-    <section id="approach" className="relative pt-10 pb-20 lg:py-32 overflow-hidden" data-testid="approach-section">
-      <div className="aurora aurora-green w-[600px] h-[600px] top-1/2 -right-60 opacity-30" />
+    <section id="approach" className="theme-light bg-canvas text-fg relative py-24 lg:py-32 overflow-hidden" data-testid="approach-section">
       <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
         {/* Interactive goal selector */}
         <div ref={goalRef}>
@@ -101,8 +99,8 @@ export const Approach = ({ content }) => {
             className="mb-10 max-w-3xl mx-auto text-center lg:mx-0 lg:text-left"
           >
             <SectionTag>{content.tag}</SectionTag>
-            <p className="mt-6 font-mono text-sm text-[#71717A]">{content.questionIntro}</p>
-            <h3 className="mt-3 text-2xl lg:text-4xl font-bold gradient-text">{content.question}</h3>
+            <p className="mt-6 font-mono text-sm text-fg-3">{content.questionIntro}</p>
+            <h3 className="mt-3 text-2xl lg:text-4xl font-bold text-fg">{content.question}</h3>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -111,7 +109,7 @@ export const Approach = ({ content }) => {
           >
             <GoalSelector content={content} />
           </motion.div>
-          <p className="mt-8 text-center lg:text-left text-[#A1A1AA]">{content.answerLine}</p>
+          <p className="mt-8 text-center lg:text-left text-fg-2">{content.answerLine}</p>
         </div>
 
         {/* Partner statement */}
@@ -122,12 +120,12 @@ export const Approach = ({ content }) => {
           transition={{ duration: 0.7 }}
           className="relative mt-24 max-w-4xl pl-8 lg:pl-12"
         >
-          <span className="absolute left-0 top-0 h-full w-[3px] rounded-full bg-gradient-to-b from-[#00FF00] via-[#00F0FF] to-transparent" />
-          <span className="absolute -left-2 -top-10 select-none text-[7rem] leading-none text-[#00FF00]/15" style={{ fontFamily: 'Outfit, sans-serif' }}>
+          <span className="absolute left-0 top-0 h-full w-[3px] rounded-full bg-gradient-to-b from-tone via-tone to-transparent" />
+          <span className="absolute -left-2 -top-10 select-none text-[7rem] leading-none text-tone/15" style={{ fontFamily: 'Outfit, sans-serif' }}>
             “
           </span>
-          <p className="text-xl lg:text-3xl leading-snug text-[#D4D4D8]">
-            {content.partnerStart} <span className="text-white font-semibold">{content.partnerAccent}</span>
+          <p className="text-xl lg:text-3xl leading-snug text-fg">
+            {content.partnerStart} <span className="text-fg font-semibold">{content.partnerAccent}</span>
             {content.partnerEnd}
           </p>
         </motion.blockquote>

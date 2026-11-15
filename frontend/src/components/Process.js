@@ -21,8 +21,8 @@ export const Process = ({ content }) => {
   });
 
   return (
-    <section id="process" className="relative pt-24 pb-8 lg:py-36" data-testid="process-section">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0c0c0c] to-transparent" />
+    <section id="process" className="theme-dark bg-canvas text-fg relative pt-24 pb-8 lg:py-36" data-testid="process-section">
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-canvas to-transparent" />
       <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
         <div className="grid lg:grid-cols-[0.85fr_1.15fr] gap-12 lg:gap-20">
           {/* Sticky side */}
@@ -45,7 +45,7 @@ export const Process = ({ content }) => {
                     animate={{ y: 0, opacity: 1 }}
                     exit={{ y: '-100%', opacity: 0 }}
                     transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-                    className="block text-[7rem] font-black leading-none gradient-text"
+                    className="block text-[7rem] font-black leading-none text-tone"
                     style={{ fontFamily: 'Outfit, sans-serif' }}
                   >
                     {steps[active].number}
@@ -53,14 +53,15 @@ export const Process = ({ content }) => {
                 </AnimatePresence>
               </div>
               <div className="pb-4">
-                <p className="font-mono text-sm text-white/30">/ {String(steps.length).padStart(2, '0')}</p>
+                <p className="font-mono text-sm text-fg-3">/ {String(steps.length).padStart(2, '0')}</p>
+                <span aria-hidden="true" className="mt-2 block h-[2px] w-8 rounded-full bg-accent" />
                 <AnimatePresence mode="wait">
                   <motion.p
                     key={active}
                     initial={{ opacity: 0, y: 6 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -6 }}
-                    className="mt-1 text-lg font-semibold text-white"
+                    className="mt-1 text-lg font-semibold text-fg"
                   >
                     {steps[active].title}
                   </motion.p>
@@ -71,9 +72,9 @@ export const Process = ({ content }) => {
 
           {/* Steps */}
           <div ref={listRef} className="relative">
-            <div className="absolute left-[27px] top-2 bottom-2 w-[2px] bg-white/[0.06]" />
+            <div className="absolute left-[27px] top-2 bottom-2 w-[2px] bg-fg/[0.06]" />
             <motion.div
-              className="absolute left-[27px] top-2 bottom-2 w-[2px] origin-top bg-gradient-to-b from-[#00FF00] to-[#00F0FF] shadow-[0_0_12px_rgba(0,255,0,0.7)]"
+              className="absolute left-[27px] top-2 bottom-2 w-[2px] origin-top bg-accent"
               style={{ scaleY: fill }}
             />
 
@@ -81,6 +82,7 @@ export const Process = ({ content }) => {
               {steps.map((step, index) => {
                 const Icon = stepIcons[index] || MessageSquare;
                 const reached = index <= active;
+                const isActive = index === active;
                 return (
                   <motion.div
                     key={step.number}
@@ -94,26 +96,28 @@ export const Process = ({ content }) => {
                     <div className="relative z-10 flex-shrink-0">
                       <div
                         className={`flex h-14 w-14 items-center justify-center rounded-2xl border-2 transition-all duration-500 ${
-                          reached
-                            ? 'border-[#00FF00] bg-[#00FF00] text-black shadow-[0_0_30px_rgba(0,255,0,0.5)]'
-                            : 'border-white/10 bg-[#0c0c0c] text-white/40'
+                          isActive
+                            ? 'border-accent bg-accent text-primary'
+                            : reached
+                              ? 'border-tone bg-tone text-canvas'
+                              : 'border-line bg-canvas text-fg-3'
                         }`}
                       >
                         <Icon className="h-6 w-6" />
                       </div>
                     </div>
                     <div
-                      className={`flex-1 rounded-2xl border p-6 lg:p-7 transition-all duration-500 ${
-                        index === active
-                          ? 'border-[#00FF00]/30 bg-gradient-to-br from-[#00FF00]/[0.07] to-transparent'
-                          : 'border-white/[0.06] bg-white/[0.015]'
+                      className={`flex-1 rounded-2xl border p-6 lg:p-7 transition-colors duration-300 hover:border-accent ${
+                        isActive
+                          ? 'border-accent bg-gradient-to-br from-tone/[0.07] to-transparent'
+                          : 'border-line bg-fg/[0.015]'
                       }`}
                     >
-                      <span className={`font-mono text-sm transition-colors ${reached ? 'text-[#00FF00]' : 'text-white/30'}`}>
+                      <span className={`font-mono text-sm transition-colors ${isActive ? 'text-hot' : reached ? 'text-fg-2' : 'text-fg-3'}`}>
                         {step.number}
                       </span>
-                      <h3 className="mt-2 text-xl lg:text-2xl font-bold text-white">{step.title}</h3>
-                      <p className="mt-2 text-[#A1A1AA] leading-relaxed">{step.description}</p>
+                      <h3 className="mt-2 text-xl lg:text-2xl font-bold text-fg">{step.title}</h3>
+                      <p className="mt-2 text-fg-2 leading-relaxed">{step.description}</p>
                     </div>
                   </motion.div>
                 );

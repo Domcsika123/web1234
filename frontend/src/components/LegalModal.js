@@ -210,21 +210,21 @@ export const LegalModal = ({ type, onClose }) => {
       className="fixed inset-0 z-50 flex items-center justify-center p-4"
       onClick={onClose}
     >
-      <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
+      <div className="absolute inset-0 bg-canvas/80 backdrop-blur-sm" />
       <div
-        className="relative bg-[#161616] border border-[#ffffff15] rounded-2xl w-full max-w-2xl max-h-[85vh] flex flex-col"
+        className="relative bg-surface border border-line rounded-2xl w-full max-w-2xl max-h-[85vh] flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex items-center justify-between px-8 py-5 border-b border-[#ffffff10]">
-          <h2 className="text-lg font-bold text-white">{title}</h2>
+        <div className="flex items-center justify-between px-8 py-5 border-b border-line">
+          <h2 className="text-lg font-bold text-fg">{title}</h2>
           <button
             onClick={onClose}
-            className="text-[#52525B] hover:text-white transition-colors"
+            className="text-fg-3 hover:text-fg transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
-        <div className="overflow-y-auto px-8 py-6 text-[#A1A1AA] text-sm leading-relaxed whitespace-pre-wrap">
+        <div className="overflow-y-auto px-8 py-6 text-fg-2 text-sm leading-relaxed whitespace-pre-wrap">
           {content}
         </div>
       </div>

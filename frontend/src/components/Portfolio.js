@@ -96,7 +96,7 @@ export const Portfolio = () => {
     <section
       id="portfolio"
       ref={ref}
-      className="py-24 lg:py-32 relative overflow-hidden bg-[#0A0A0A]"
+      className="py-24 lg:py-32 relative overflow-hidden bg-canvas"
       data-testid="portfolio-section"
     >
       <div className="absolute inset-0 grid-bg opacity-30" />
@@ -108,14 +108,14 @@ export const Portfolio = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="font-mono text-base text-[#00FF00] tracking-wider">
+          <span className="font-mono text-base text-tone tracking-wider">
             05 // REFERENCIÁK
           </span>
           <h2 className="text-headline font-bold mt-4" data-testid="portfolio-headline">
             Valós projektek,{' '}
             <span className="gradient-text">mérhető eredményekkel</span>
           </h2>
-          <p className="text-[#A1A1AA] mt-4">
+          <p className="text-fg-2 mt-4">
             Ilyen oldalakat készítünk
           </p>
         </motion.div>
@@ -132,10 +132,10 @@ export const Portfolio = () => {
               key={index}
               ref={(el) => (cardRefs.current[index] = el)}
               variants={itemVariants}
-              className={`portfolio-card group rounded-xl overflow-hidden bg-[#121212] border transition-colors flex-shrink-0 w-[80vw] md:w-auto snap-center pointer-events-none md:pointer-events-auto
+              className={`portfolio-card group rounded-xl overflow-hidden bg-surface border transition-colors flex-shrink-0 w-[80vw] md:w-auto snap-center pointer-events-none md:pointer-events-auto
                 ${isMobile && activeIndex === index
-                  ? 'border-[#00FF00]/60 shadow-[0_0_20px_rgba(0,255,0,0.15)]'
-                  : 'border-[#ffffff10] hover:border-[#00FF00]/30'
+                  ? 'border-tone/60'
+                  : 'border-line hover:border-tone/30'
                 }`}
               data-testid={`portfolio-card-${index}`}
             >
@@ -146,8 +146,8 @@ export const Portfolio = () => {
                   alt={project.category}
                   className={`w-full h-full object-cover transition-all duration-500 group-hover:scale-110 group-hover:grayscale-0 ${isMobile && activeIndex === index ? 'scale-110 grayscale-0' : 'grayscale'}`}
                 />
-                <div className={`absolute inset-0 bg-gradient-to-t from-black/90 to-transparent flex items-end p-4 transition-opacity duration-500 group-hover:opacity-100 ${isMobile && activeIndex === index ? 'opacity-100' : 'opacity-0'}`}>
-                  <span className="text-[#00FF00] font-mono text-sm bg-[#0A0A0A]/80 px-3 py-1 rounded-full">
+                <div className={`absolute inset-0 bg-gradient-to-t from-canvas/90 to-transparent flex items-end p-4 transition-opacity duration-500 group-hover:opacity-100 ${isMobile && activeIndex === index ? 'opacity-100' : 'opacity-0'}`}>
+                  <span className="text-tone font-mono text-sm bg-canvas/80 px-3 py-1 rounded-full">
                     {project.result}
                   </span>
                 </div>
@@ -156,20 +156,20 @@ export const Portfolio = () => {
               {/* Content */}
               <div className="p-6">
                 <div className="flex items-center justify-between mb-3">
-                  <h3 className={`text-lg font-bold transition-colors ${isMobile && activeIndex === index ? 'text-[#00FF00]' : ''}`}>
+                  <h3 className={`text-lg font-bold transition-colors ${isMobile && activeIndex === index ? 'text-tone' : ''}`}>
                     {project.category}
                   </h3>
-                  <ArrowUpRight className={`w-5 h-5 transition-colors ${isMobile && activeIndex === index ? 'text-[#00FF00]' : 'text-[#52525B]'}`} />
+                  <ArrowUpRight className={`w-5 h-5 transition-colors ${isMobile && activeIndex === index ? 'text-tone' : 'text-fg-3'}`} />
                 </div>
 
                 <div className="space-y-3 text-sm">
                   <div>
-                    <span className="text-[#52525B] font-mono text-xs">KIHÍVÁS</span>
-                    <p className="text-[#A1A1AA] mt-1">{project.challenge}</p>
+                    <span className="text-fg-3 font-mono text-xs">KIHÍVÁS</span>
+                    <p className="text-fg-2 mt-1">{project.challenge}</p>
                   </div>
                   <div>
-                    <span className="text-[#52525B] font-mono text-xs">MEGOLDÁS</span>
-                    <p className="text-white mt-1">{project.solution}</p>
+                    <span className="text-fg-3 font-mono text-xs">MEGOLDÁS</span>
+                    <p className="text-fg mt-1">{project.solution}</p>
                   </div>
                 </div>
               </div>
@@ -183,8 +183,8 @@ export const Portfolio = () => {
             <div
               key={index}
               className={`rounded-full transition-all duration-300 ${activeIndex === index
-                  ? 'w-4 h-2 bg-[#00FF00]'
-                  : 'w-2 h-2 bg-[#ffffff20]'
+                  ? 'w-4 h-2 bg-tone'
+                  : 'w-2 h-2 bg-fg/20'
                 }`}
             />
           ))}

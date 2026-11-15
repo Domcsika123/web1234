@@ -9,6 +9,7 @@ import { Stats } from "./components/Stats";
 import { Services } from "./components/Services";
 import { Templates } from "./components/Templates";
 import { Process } from "./components/Process";
+import { Pricing } from "./components/Pricing";
 import { FAQ } from "./components/FAQ";
 import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
@@ -45,7 +46,7 @@ function App() {
         <Route
           path="/"
           element={
-            <div className="App bg-[#0A0A0A] min-h-screen">
+            <div className="App bg-canvas min-h-screen">
               <Navbar lang={lang} setLang={setLang} content={copy.navbar} />
               <main>
                 <div className="relative overflow-hidden noise-overlay">
@@ -66,12 +67,13 @@ function App() {
                     ))}
                   </div>
                   <Hero content={copy.hero} />
-                  <Approach content={copy.approach} />
                 </div>
+                <Approach content={copy.approach} />
                 <Stats content={copy.stats} />
                 <Services content={copy.services} />
                 <Templates content={copy.templates} />
                 <Process content={copy.process} />
+                <Pricing content={copy.pricing} />
                 <FAQ content={copy.faq} />
                 <Contact content={copy.contact} />
               </main>

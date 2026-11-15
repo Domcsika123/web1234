@@ -21,8 +21,8 @@
   position: absolute;
   width: 200px;
   height: 200px;
-  border: 2px solid var(--neon-green);
-  background: rgba(0, 255, 0, 0.05);
+  border: 2px solid rgb(var(--tone-rgb) / 0.7);
+  background: rgb(var(--tone-rgb) / 0.04);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -30,7 +30,6 @@
   top: 50%;
   margin-left: -100px;
   margin-top: -100px;
-  box-shadow: 0 0 30px rgba(0, 255, 0, 0.2), inset 0 0 30px rgba(0, 255, 0, 0.1);
 }
 
 .cube-face-front {
@@ -83,7 +82,7 @@
   width: 300px;
   height: 346px;
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-  background: linear-gradient(135deg, rgba(0, 255, 0, 0.1), rgba(0, 240, 255, 0.05));
+  background: rgb(var(--tone-rgb) / 0.08);
   animation: hexagon-pulse 4s ease-in-out infinite;
 }
 
@@ -101,28 +100,6 @@
   }
 }
 
-/* Glowing border effect */
-.glow-border {
-  position: relative;
-}
-
-.glow-border::before {
-  content: '';
-  position: absolute;
-  inset: -2px;
-  background: linear-gradient(90deg, var(--neon-green), var(--electric-cyan), var(--neon-green));
-  background-size: 200% 100%;
-  border-radius: inherit;
-  z-index: -1;
-  animation: gradient-shift 3s linear infinite;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.glow-border:hover::before {
-  opacity: 1;
-}
-
 /* Card hover effects */
 .service-card {
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -130,8 +107,8 @@
 
 .service-card:hover {
   transform: translateY(-8px);
-  border-color: var(--neon-green);
-  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 255, 0, 0.2);
+  border-color: var(--color-secondary);
+  box-shadow: 0 12px 28px -18px rgb(var(--color-primary-rgb) / 0.25);
 }
 
 /* Timeline styles */
@@ -141,7 +118,7 @@
   top: 0;
   bottom: 0;
   width: 2px;
-  background: linear-gradient(to bottom, var(--neon-green), transparent);
+  background: linear-gradient(to bottom, var(--tone), transparent);
 }
 
 .timeline-dot {
@@ -157,9 +134,8 @@
 }
 
 .timeline-dot.active {
-  border-color: var(--neon-green);
-  box-shadow: 0 0 15px var(--neon-green);
-  background: var(--neon-green);
+  border-color: var(--tone);
+  background: var(--tone);
 }
 
 /* Portfolio card styles */
@@ -185,8 +161,8 @@
 
 /* Button styles */
 .btn-primary {
-  background: var(--neon-green);
-  color: var(--bg-base);
+  background: var(--color-accent);
+  color: var(--color-primary);
   font-weight: 600;
   padding: 14px 32px;
   border-radius: 8px;
@@ -199,15 +175,19 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  background: linear-gradient(90deg, transparent, rgb(var(--color-surface-rgb) / 0.3), transparent);
   transform: translateX(-100%);
   transition: transform 0.6s ease;
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(0, 255, 0, 0.4);
+  background: var(--color-accent-hover);
+  color: var(--color-primary-dark);
+  box-shadow: 0 8px 20px -12px rgb(var(--color-primary-rgb) / 0.35);
 }
+
+.btn-primary:active { background: var(--color-accent-hover); color: var(--color-primary-dark); }
 
 .btn-primary:hover::before {
   transform: translateX(100%);
@@ -218,14 +198,14 @@
   color: var(--text-primary);
   font-weight: 500;
   padding: 14px 32px;
-  border: 1px solid var(--border-default);
+  border: 1px solid var(--color-secondary);
   border-radius: 8px;
   transition: all 0.3s ease;
 }
 
 .btn-secondary:hover {
-  border-color: var(--neon-green);
-  color: var(--neon-green);
+  border-color: var(--tone);
+  background: rgb(var(--tone-rgb) / 0.1);
 }
 
 /* Input styles */
@@ -241,7 +221,7 @@
 }
 
 .input-underline:focus {
-  border-bottom-color: var(--neon-green);
+  border-bottom-color: var(--color-secondary);
 }
 
 .input-underline::placeholder {
@@ -270,8 +250,7 @@ section {
   font-weight: 900;
   font-size: clamp(3rem, 10vw, 6rem);
   line-height: 1;
-  color: var(--neon-green);
-  text-shadow: 0 0 40px rgba(0, 255, 0, 0.5);
+  color: var(--hl);
 }
 
 /* FAQ Accordion styles */
@@ -286,11 +265,12 @@ section {
 }
 
 .faq-trigger:hover {
-  color: var(--neon-green);
+  color: var(--tone);
 }
 
-.faq-trigger[data-state="open"] {
-  color: var(--neon-green);
+.faq-trigger[data-state="open"],
+.faq-trigger[data-state="open"] > svg {
+  color: var(--hot);
 }
 
 .nav-link-underline {
@@ -305,7 +285,7 @@ section {
   bottom: 0;
   width: 100%;
   height: 2px;
-  background: var(--neon-green);
+  background: var(--tone);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.3s ease;
@@ -320,7 +300,7 @@ section {
   position: absolute;
   width: 4px;
   height: 4px;
-  background: var(--neon-green);
+  background: var(--tone);
   border-radius: 50%;
   opacity: 0.5;
   animation: particle-float 10s infinite;

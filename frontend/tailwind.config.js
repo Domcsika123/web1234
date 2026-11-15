@@ -13,6 +13,37 @@ module.exports = {
   			sm: 'calc(var(--radius) - 4px)'
   		},
   		colors: {
+  			// AuraCode "Óceán és korall" brand tokens (defined in src/index.css :root)
+  			primary: {
+  				DEFAULT: 'rgb(var(--color-primary-rgb) / <alpha-value>)',
+  				dark: 'rgb(var(--color-primary-dark-rgb) / <alpha-value>)',
+  				foreground: 'rgb(var(--color-text-on-dark-rgb) / <alpha-value>)'
+  			},
+  			secondary: {
+  				DEFAULT: 'rgb(var(--color-secondary-rgb) / <alpha-value>)',
+  				soft: 'rgb(var(--color-secondary-soft-rgb) / <alpha-value>)',
+  				foreground: 'rgb(var(--color-text-on-dark-rgb) / <alpha-value>)'
+  			},
+  			accent: {
+  				DEFAULT: 'rgb(var(--color-accent-rgb) / <alpha-value>)',
+  				hover: 'var(--color-accent-hover)',
+  				foreground: 'rgb(var(--color-primary-rgb) / <alpha-value>)'
+  			},
+  			bg: 'rgb(var(--color-bg-rgb) / <alpha-value>)',
+  			'on-dark': 'rgb(var(--color-text-on-dark-rgb) / <alpha-value>)',
+  			'muted-on-dark': 'rgb(var(--color-muted-on-dark-rgb) / <alpha-value>)',
+  			// Section-theme roles (.theme-dark / .theme-light set these)
+  			canvas: 'rgb(var(--bg-base-rgb) / <alpha-value>)',
+  			surface: 'rgb(var(--bg-surface-rgb) / <alpha-value>)',
+  			panel: 'rgb(var(--bg-card-rgb) / <alpha-value>)',
+  			fg: 'rgb(var(--text-primary-rgb) / <alpha-value>)',
+  			'fg-2': 'rgb(var(--text-secondary-rgb) / <alpha-value>)',
+  			'fg-3': 'rgb(var(--text-muted-rgb) / <alpha-value>)',
+  			tone: 'rgb(var(--tone-rgb) / <alpha-value>)',
+  			line: 'rgb(var(--line-rgb) / <alpha-value>)',
+  			link: 'var(--link)',
+  			'link-hover': 'var(--link-hover)',
+  			hot: 'rgb(var(--hot-rgb) / <alpha-value>)',
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {
@@ -23,21 +54,9 @@ module.exports = {
   				DEFAULT: 'hsl(var(--popover))',
   				foreground: 'hsl(var(--popover-foreground))'
   			},
-  			primary: {
-  				DEFAULT: 'hsl(var(--primary))',
-  				foreground: 'hsl(var(--primary-foreground))'
-  			},
-  			secondary: {
-  				DEFAULT: 'hsl(var(--secondary))',
-  				foreground: 'hsl(var(--secondary-foreground))'
-  			},
   			muted: {
   				DEFAULT: 'hsl(var(--muted))',
   				foreground: 'hsl(var(--muted-foreground))'
-  			},
-  			accent: {
-  				DEFAULT: 'hsl(var(--accent))',
-  				foreground: 'hsl(var(--accent-foreground))'
   			},
   			destructive: {
   				DEFAULT: 'hsl(var(--destructive))',

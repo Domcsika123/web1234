@@ -70,7 +70,7 @@ export const Contact = ({ content }) => {
     <section
       id="contact"
       ref={ref}
-      className="py-24 lg:py-32 relative overflow-hidden bg-[#121212]"
+      className="theme-light py-24 lg:py-32 relative overflow-hidden bg-canvas text-fg"
       data-testid="contact-section"
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
@@ -84,7 +84,7 @@ export const Contact = ({ content }) => {
           <h2 className="text-headline font-bold mt-4" data-testid="contact-headline">
             {content.headlineStart} <span className="gradient-text">{content.headlineAccent}</span>
           </h2>
-          <p className="text-[#A1A1AA] mt-4 max-w-xl mx-auto">
+          <p className="text-fg-2 mt-4 max-w-xl mx-auto">
             {content.subtitle}
           </p>
         </motion.div>
@@ -97,11 +97,11 @@ export const Contact = ({ content }) => {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <h3 className="text-2xl font-bold mb-8">{content.title}</h3>
-            <p className="text-[#A1A1AA] mb-8 leading-relaxed">
+            <p className="text-fg-2 mb-8 leading-relaxed">
               {content.lead}
             </p>
 
-            <div className="divide-y divide-[#ffffff08] mb-12">
+            <div className="divide-y divide-line mb-12">
               {contactInfo.map((info, index) => (
                 <motion.div
                   key={index}
@@ -111,20 +111,20 @@ export const Contact = ({ content }) => {
                   className="flex items-start gap-4 py-5"
                   data-testid={`contact-info-${index}`}
                 >
-                  <div className="p-3 rounded-lg bg-[#00FF00]/10">
-                    <info.icon className="w-5 h-5 text-[#00FF00]" />
+                  <div className="p-3 rounded-lg bg-tone/10">
+                    <info.icon className="w-5 h-5 text-tone" />
                   </div>
                   <div>
-                    <p className="font-mono text-xs text-[#52525B] mb-1">{info.label}</p>
+                    <p className="font-mono text-xs text-fg-3 mb-1">{info.label}</p>
                     {info.href ? (
                       <a
                         href={info.href}
-                        className="text-white hover:text-[#00FF00] transition-colors"
+                        className="text-fg underline-offset-4 hover:text-link-hover hover:underline transition-colors"
                       >
                         {info.value}
                       </a>
                     ) : (
-                      <p className="text-white">{info.value}</p>
+                      <p className="text-fg">{info.value}</p>
                     )}
                   </div>
                 </motion.div>
@@ -132,13 +132,13 @@ export const Contact = ({ content }) => {
             </div>
 
             {/* Trust indicators */}
-            <div className="flex flex-wrap gap-4 text-sm text-[#52525B]">
+            <div className="flex flex-wrap gap-4 text-sm text-fg-3">
               <div className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-[#00FF00]" />
+                <CheckCircle className="w-4 h-4 text-tone" />
                 <span>{content.trust[0]}</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-[#00FF00]" />
+                <CheckCircle className="w-4 h-4 text-tone" />
                 <span>{content.trust[1]}</span>
               </div>
             </div>
@@ -152,7 +152,7 @@ export const Contact = ({ content }) => {
           >
             <form onSubmit={handleSubmit} className="space-y-6" data-testid="contact-form">
               <div>
-                <label className="block font-mono text-xs text-white mb-2">
+                <label className="block font-mono text-xs text-fg mb-2">
                   {content.form.name}
                 </label>
                 <input
@@ -168,7 +168,7 @@ export const Contact = ({ content }) => {
               </div>
 
               <div>
-                <label className="block font-mono text-xs text-white mb-2">
+                <label className="block font-mono text-xs text-fg mb-2">
                   {content.form.email}
                 </label>
                 <input
@@ -184,7 +184,7 @@ export const Contact = ({ content }) => {
               </div>
 
               <div>
-                <label className="block font-mono text-xs text-white mb-2">
+                <label className="block font-mono text-xs text-fg mb-2">
                   {content.form.phone}
                 </label>
                 <input
@@ -199,7 +199,7 @@ export const Contact = ({ content }) => {
               </div>
 
               <div>
-                <label className="block font-mono text-xs text-white mb-2">
+                <label className="block font-mono text-xs text-fg mb-2">
                   {content.form.message}
                 </label>
                 <textarea
@@ -222,14 +222,14 @@ export const Contact = ({ content }) => {
                   checked={formData.privacy}
                   onChange={handleChange}
                   required
-                  className="mt-1 w-4 h-4 rounded border-[#ffffff20] bg-transparent checked:bg-[#00FF00] checked:border-[#00FF00] focus:ring-[#00FF00] focus:ring-offset-0"
+                  className="mt-1 w-4 h-4 rounded border-line bg-transparent checked:bg-tone checked:border-tone focus:ring-tone focus:ring-offset-0"
                   data-testid="contact-checkbox-privacy"
                 />
-                <label htmlFor="privacy" className="text-sm text-[#A1A1AA]">
+                <label htmlFor="privacy" className="text-sm text-fg-2">
                   {content.form.privacyPrefix}{' '}
-                  <button type="button" onClick={() => setModal('privacy')} className="underline hover:text-[#00FF00] transition-colors">{content.form.privacyLink}</button>
+                  <button type="button" onClick={() => setModal('privacy')} className="link">{content.form.privacyLink}</button>
                   {' '}{content.form.privacyMiddle}{' '}
-                  <button type="button" onClick={() => setModal('aszf')} className="underline hover:text-[#00FF00] transition-colors">{content.form.termsLink}</button>
+                  <button type="button" onClick={() => setModal('aszf')} className="link">{content.form.termsLink}</button>
                   {content.form.privacySuffix}
                 </label>
               </div>

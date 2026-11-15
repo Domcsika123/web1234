@@ -12,7 +12,7 @@ export const Footer = ({ content }) => {
   };
 
   return (
-    <footer className="bg-[#0A0A0A] border-t border-[#ffffff10] py-16" data-testid="footer">
+    <footer className="theme-dark bg-canvas text-fg border-t border-line py-16" data-testid="footer">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Brand Column */}
@@ -24,12 +24,10 @@ export const Footer = ({ content }) => {
               data-testid="footer-logo"
             >
               <AuraCodeLogo className="h-[62px] w-[62px]" />
-              <span className="font-black text-xl tracking-tight" style={{ fontWeight: 900, WebkitTextStroke: '0.35px rgba(255,255,255,0.55)' }}>
-                Aura<span className="gradient-text font-black" style={{ fontWeight: 900, WebkitTextStroke: '0.35px rgba(0,255,0,0.4)' }}>Code</span>
-              </span>
+              <span className="font-black text-xl tracking-tight text-on-dark">AuraCode</span>
             </motion.button>
 
-            <p className="text-[#A1A1AA] leading-relaxed max-w-md mb-6">
+            <p className="text-fg-2 leading-relaxed max-w-md mb-6">
               {content.description}
             </p>
 
@@ -37,7 +35,7 @@ export const Footer = ({ content }) => {
               {content.tags.map((tag, index) => (
                 <span
                   key={index}
-                  className="text-xs text-[#52525B] border border-[#ffffff10] px-3 py-1 rounded-full"
+                  className="text-xs text-fg-3 border border-line px-3 py-1 rounded-full"
                 >
                   {tag}
                 </span>
@@ -48,13 +46,13 @@ export const Footer = ({ content }) => {
           {/* Links Columns */}
           {content.columns.map((column, columnIndex) => (
             <div key={columnIndex}>
-              <h4 className="font-bold text-white mb-4">{column.title}</h4>
+              <h4 className="font-bold text-fg mb-4">{column.title}</h4>
               <ul className="space-y-3">
                 {column.links.map((link, linkIndex) => (
                   <li key={linkIndex}>
                     <a
                       href={link.href}
-                      className="text-[#A1A1AA] hover:text-[#00FF00] transition-colors text-sm"
+                      className="text-fg-2 hover:text-link transition-colors text-sm"
                       data-testid={`footer-link-${columnIndex}-${linkIndex}`}
                     >
                       {link.name}
@@ -67,16 +65,16 @@ export const Footer = ({ content }) => {
         </div>
 
         {/* Bottom bar */}
-        <div className="pt-8 border-t border-[#ffffff10] flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-[#52525B] text-sm">
+        <div className="pt-8 border-t border-line flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-fg-3 text-sm">
             © {currentYear} AuraCode. {content.copyright}
           </p>
 
-          <div className="flex gap-6 text-sm text-[#52525B]">
-            <button onClick={() => setModal('privacy')} className="hover:text-[#A1A1AA] transition-colors">
+          <div className="flex gap-6 text-sm text-fg-3">
+            <button onClick={() => setModal('privacy')} className="hover:text-link transition-colors">
               {content.privacy}
             </button>
-            <button onClick={() => setModal('aszf')} className="hover:text-[#A1A1AA] transition-colors">
+            <button onClick={() => setModal('aszf')} className="hover:text-link transition-colors">
               {content.terms}
             </button>
           </div>

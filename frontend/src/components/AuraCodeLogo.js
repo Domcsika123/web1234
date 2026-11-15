@@ -1,14 +1,12 @@
-export const AuraCodeLogo = ({ className = "h-10 w-10", glowEffect = false }) => {
+// Single-colour brand mark: `on-dark` (text-on-dark) for primary sections,
+// `on-light` (primary) for light sections. No glow, per the brand rules.
+export const AuraCodeLogo = ({ className = "h-10 w-10", variant = "on-dark" }) => {
   return (
     <img
-      src={process.env.PUBLIC_URL + "/AuraCode_logo_elenkebb_hatter_nelkuli.png"}
+      src={`${process.env.PUBLIC_URL}/brand/auracode-mark-${variant}.png`}
       alt="AuraCode logo"
       className={className}
-      style={{
-        objectFit: 'contain',
-        width: 'auto',
-        ...(glowEffect ? { filter: 'drop-shadow(0 0 10px rgba(0,255,0,0.6))' } : {}),
-      }}
+      style={{ objectFit: 'contain', width: 'auto' }}
     />
   );
 };

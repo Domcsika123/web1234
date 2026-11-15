@@ -9,17 +9,97 @@ html, body {
 }
 
 :root {
-  --neon-green: #00FF00;
-  --electric-cyan: #00F0FF;
-  --bg-base: #0A0A0A;
-  --bg-surface: #121212;
-  --bg-card: #18181B;
-  --text-primary: #FFFFFF;
-  --text-secondary: #A1A1AA;
-  --text-muted: #52525B;
-  --border-default: rgba(255, 255, 255, 0.1);
-  --border-active: rgba(0, 255, 0, 0.5);
+  /* ── AuraCode "Óceán és korall" tokens (single source of truth) ── */
+  --color-primary: #0F3D3E;        /* hero, header, footer, dark sections */
+  --color-primary-dark: #0A2C2D;   /* hover, deeper dark surfaces */
+  --color-secondary: #2E7977;      /* icons, secondary button borders (spec #2F7A78, darkened 1 step for AA) */
+  --color-secondary-soft: #DCEBEA; /* badge / icon tint on light sections */
+  --color-accent: #FF7A59;         /* coral: ONLY CTAs, links, small highlights */
+  --color-accent-hover: #F2643F;
+  --color-accent-strong: #C04428;  /* coral for small text/numbers on light (4.54:1 on --color-bg) */
+  --color-accent-display: #E0603F; /* coral for large headings on light (3.15:1, AA large) */
+
+  --color-bg: #F4F1EA;             /* light sections */
+  --color-surface: #FFFFFF;        /* cards on light */
+  --color-text: #12302F;
+  --color-text-muted: #5B7371;     /* spec #5C7472, darkened 1 step: 4.44 -> 4.5:1 on --color-bg */
+  --color-text-on-dark: #F4F1EA;
+  --color-muted-on-dark: #9CC7C4;
+  --color-border: #E2DDD2;
+
+  /* RGB channels of the same tokens (Tailwind opacity modifiers) */
+  --color-primary-rgb: 15 61 62;
+  --color-primary-dark-rgb: 10 44 45;
+  --color-secondary-rgb: 46 121 119;
+  --color-secondary-soft-rgb: 220 235 234;
+  --color-accent-rgb: 255 122 89;
+  --color-accent-strong-rgb: 192 68 40;
+  --color-accent-display-rgb: 224 96 63;
+  --color-bg-rgb: 244 241 234;
+  --color-surface-rgb: 255 255 255;
+  --color-text-rgb: 18 48 47;
+  --color-text-muted-rgb: 91 115 113;
+  --color-text-on-dark-rgb: 244 241 234;
+  --color-muted-on-dark-rgb: 156 199 196;
+  --color-border-rgb: 226 221 210;
 }
+
+/* ── Section themes: semantic roles mapped onto the tokens ──
+   Components use the roles (canvas, surface, fg, tone, line...), each
+   section picks a theme. :root / .theme-dark = primary background. */
+:root,
+.theme-dark {
+  --bg-base-rgb: var(--color-primary-rgb);
+  --bg-surface-rgb: var(--color-primary-dark-rgb);
+  --bg-card-rgb: var(--color-primary-dark-rgb);
+  --text-primary-rgb: var(--color-text-on-dark-rgb);
+  --text-secondary-rgb: var(--color-muted-on-dark-rgb);
+  --text-muted-rgb: var(--color-muted-on-dark-rgb);
+  --tone-rgb: var(--color-muted-on-dark-rgb);      /* icons / decor: secondary is too dark on primary (2.4:1) */
+  --line-rgb: var(--color-secondary-rgb);          /* dividers on dark */
+  --link: var(--color-accent);
+  --link-hover: var(--color-accent);
+  --hot-rgb: var(--color-accent-rgb);              /* coral highlight (small text, numbers, icons) */
+  --hl: var(--color-accent);                       /* highlighted headline words */
+  --bg-base: rgb(var(--bg-base-rgb));
+  --bg-surface: rgb(var(--bg-surface-rgb));
+  --bg-card: rgb(var(--bg-card-rgb));
+  --text-primary: rgb(var(--text-primary-rgb));
+  --text-secondary: rgb(var(--text-secondary-rgb));
+  --text-muted: rgb(var(--text-muted-rgb));
+  --tone: rgb(var(--tone-rgb));
+  --hot: rgb(var(--hot-rgb));
+  --border-default: rgb(var(--line-rgb));
+  --border-active: var(--color-secondary);
+}
+
+.theme-light {
+  --bg-base-rgb: var(--color-bg-rgb);
+  --bg-surface-rgb: var(--color-surface-rgb);
+  --bg-card-rgb: var(--color-surface-rgb);
+  --text-primary-rgb: var(--color-text-rgb);
+  --text-secondary-rgb: var(--color-text-muted-rgb);
+  --text-muted-rgb: var(--color-text-muted-rgb);
+  --tone-rgb: var(--color-secondary-rgb);
+  --line-rgb: var(--color-border-rgb);
+  --link: var(--color-primary);
+  --link-hover: var(--color-accent-strong);
+  --hot-rgb: var(--color-accent-strong-rgb);       /* #FF7A59 fails AA on light, so the darker coral */
+  --hl: var(--color-accent-display);               /* large headings only (3.15:1 = AA large) */
+  --bg-base: rgb(var(--bg-base-rgb));
+  --bg-surface: rgb(var(--bg-surface-rgb));
+  --bg-card: rgb(var(--bg-card-rgb));
+  --text-primary: rgb(var(--text-primary-rgb));
+  --text-secondary: rgb(var(--text-secondary-rgb));
+  --text-muted: rgb(var(--text-muted-rgb));
+  --tone: rgb(var(--tone-rgb));
+  --hot: rgb(var(--hot-rgb));
+  --border-default: rgb(var(--line-rgb));
+  --border-active: var(--color-secondary);
+  color: var(--text-primary);
+}
+
+.theme-dark { color: var(--text-primary); }
 
 * {
   margin: 0;
@@ -70,43 +150,38 @@ h6 {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--neon-green);
+  background: var(--color-secondary);
 }
 
 /* Selection */
 ::selection {
-  background: var(--neon-green);
-  color: var(--bg-base);
+  background: var(--color-secondary-soft);
+  color: var(--color-text);
 }
 
 /* Glass morphism utility */
 .glass {
-  background: rgba(18, 18, 18, 0.8);
+  background: rgb(var(--color-primary-dark-rgb) / 0.8);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--border-default);
 }
 
-/* Neon glow effects */
-.neon-glow {
-  box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
-}
-
-.neon-glow-strong {
-  box-shadow: 0 0 30px rgba(0, 255, 0, 0.5), 0 0 60px rgba(0, 255, 0, 0.3);
-}
-
-.neon-text-glow {
-  text-shadow: 0 0 20px rgba(0, 255, 0, 0.5), 0 0 40px rgba(0, 255, 0, 0.3);
-}
-
-/* Gradient text */
+/* Highlighted headline words: solid colour per section theme (no gradient) */
 .gradient-text {
-  background: linear-gradient(135deg, var(--neon-green) 0%, var(--electric-cyan) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--hl);
+  -webkit-text-fill-color: currentColor;
 }
+
+/* Links: primary underlined on light sections, coral on dark (via --link) */
+.link {
+  color: var(--link);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+  transition: text-decoration-thickness 150ms ease, color 150ms ease;
+}
+.link:hover { text-decoration-thickness: 2px; color: var(--link-hover); }
 
 /* Noise texture overlay */
 .noise-overlay::before {
@@ -125,8 +200,8 @@ h6 {
 /* Grid background */
 .grid-bg {
   background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    linear-gradient(to right, rgb(var(--text-primary-rgb) / 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(var(--text-primary-rgb) / 0.04) 1px, transparent 1px);
   background-size: 60px 60px;
 }
 
@@ -140,18 +215,6 @@ h6 {
 
   50% {
     transform: translateY(-20px) rotateX(10deg) rotateY(10deg);
-  }
-}
-
-@keyframes pulse-glow {
-
-  0%,
-  100% {
-    box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
-  }
-
-  50% {
-    box-shadow: 0 0 40px rgba(0, 255, 0, 0.6);
   }
 }
 
@@ -187,24 +250,8 @@ h6 {
   }
 }
 
-@keyframes border-flow {
-
-  0%,
-  100% {
-    border-image: linear-gradient(0deg, var(--neon-green), var(--electric-cyan)) 1;
-  }
-
-  50% {
-    border-image: linear-gradient(180deg, var(--neon-green), var(--electric-cyan)) 1;
-  }
-}
-
 .animate-float {
   animation: float 6s ease-in-out infinite;
-}
-
-.animate-pulse-glow {
-  animation: pulse-glow 2s ease-in-out infinite;
 }
 
 .animate-rotate-slow {
@@ -218,25 +265,26 @@ h6 {
 /* Tailwind overrides for dark mode */
 @layer base {
   :root {
-    --background: 0 0% 4%;
-    --foreground: 0 0% 100%;
-    --card: 0 0% 7%;
-    --card-foreground: 0 0% 100%;
-    --popover: 0 0% 7%;
-    --popover-foreground: 0 0% 100%;
-    --primary: 120 100% 50%;
-    --primary-foreground: 0 0% 0%;
-    --secondary: 0 0% 10%;
-    --secondary-foreground: 0 0% 100%;
-    --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 65%;
-    --accent: 180 100% 50%;
-    --accent-foreground: 0 0% 0%;
+    /* shadcn/ui HSL mirrors of the --color-* tokens */
+    --background: 181 61% 15%;          /* --color-primary */
+    --foreground: 43 31% 94%;           /* --color-text-on-dark */
+    --card: 182 63% 11%;                /* --color-primary-dark */
+    --card-foreground: 43 31% 94%;
+    --popover: 182 63% 11%;
+    --popover-foreground: 43 31% 94%;
+    --primary: 12 100% 67%;             /* --color-accent (CTA) */
+    --primary-foreground: 181 61% 15%;
+    --secondary: 179 45% 33%;           /* --color-secondary */
+    --secondary-foreground: 43 31% 94%;
+    --muted: 182 63% 11%;
+    --muted-foreground: 175 28% 70%;    /* --color-muted-on-dark */
+    --accent: 12 100% 67%;
+    --accent-foreground: 181 61% 15%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-    --border: 0 0% 15%;
-    --input: 0 0% 15%;
-    --ring: 120 100% 50%;
+    --border: 179 45% 33%;
+    --input: 179 45% 33%;
+    --ring: 179 45% 33%;
     --radius: 0.5rem;
   }
 }

@@ -12,12 +12,12 @@ export const Stats = ({ content }) => {
   return (
     <section
       ref={ref}
-      className="py-24 lg:py-32 relative overflow-hidden"
+      className="theme-light py-24 lg:py-32 relative overflow-hidden bg-canvas text-fg"
       data-testid="stats-section"
     >
       {/* Background binary code effect */}
       <div className="absolute inset-0 overflow-hidden opacity-5">
-        <div className="font-mono text-[#00FF00] text-xs whitespace-pre leading-tight animate-marquee">
+        <div className="font-mono text-tone text-xs whitespace-pre leading-tight animate-marquee">
           {Array(50).fill('01001000 01100101 01101100 01101100 01101111 ').join('')}
         </div>
       </div>
@@ -43,9 +43,9 @@ export const Stats = ({ content }) => {
               data-testid={`stat-item-${index}`}
             >
               <div className="relative inline-block">
-                {/* Glow effect on hover */}
+                {/* Hover tint */}
                 <motion.div
-                  className="absolute -inset-4 bg-[#00FF00]/10 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  className="absolute -inset-4 bg-transparent rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                 />
 
                 <div className="stat-number relative">
@@ -60,17 +60,17 @@ export const Stats = ({ content }) => {
                 </div>
               </div>
 
-              <h3 className="text-xl font-bold mt-4 mb-2 text-white">
+              <h3 className="text-xl font-bold mt-4 mb-2 text-fg">
                 {stat.label}
               </h3>
 
-              <p className="text-[#52525B] text-sm">
+              <p className="text-fg-2 text-sm">
                 {stat.description}
               </p>
 
               {/* Decorative line */}
               <motion.div
-                className="w-16 h-[2px] bg-gradient-to-r from-transparent via-[#00FF00] to-transparent mx-auto mt-6"
+                className="w-16 h-[2px] bg-gradient-to-r from-transparent via-tone to-transparent mx-auto mt-6"
                 initial={{ scaleX: 0 }}
                 animate={inView ? { scaleX: 1 } : {}}
                 transition={{ duration: 0.8, delay: 0.8 + index * 0.2 }}
@@ -89,7 +89,7 @@ export const Stats = ({ content }) => {
           {content.tags.map((tag, index) => (
             <span
               key={index}
-              className="px-4 py-2 border border-[#ffffff10] rounded-full text-sm text-[#A1A1AA] font-mono"
+              className="px-4 py-2 border border-line bg-surface rounded-full text-sm text-fg-2 font-mono"
             >
               {tag}
             </span>

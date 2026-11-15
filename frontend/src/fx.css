@@ -2,53 +2,83 @@
    AuraCode — interaction & effect layer
    ───────────────────────────────────────────────────────────── */
 
-/* ── Section tag pill ── */
+/* ── Section index marker ──
+   "02/07 ──── AMIT GARANTÁLUNK": number, a drawn hairline, then the label.
+   Reveals once on scroll; transitions (not keyframes) so it never restarts. */
 .section-tag {
+  --tag-ease: cubic-bezier(0.23, 1, 0.32, 1);
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 7px 14px 7px 12px;
-  border: 1px solid rgba(0, 255, 0, 0.22);
-  border-radius: 999px;
-  background: linear-gradient(90deg, rgba(0, 255, 0, 0.08), rgba(0, 240, 255, 0.04));
+  gap: 18px;
   font-family: 'Space Mono', monospace;
-  font-size: 0.78rem;
-  letter-spacing: 0.08em;
-  color: #9dff9d;
+  line-height: 1;
+}
+
+.section-tag-index {
+  flex: none;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 3px;
+  font-variant-numeric: tabular-nums;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 500ms var(--tag-ease), transform 500ms var(--tag-ease);
+}
+
+.section-tag-num {
+  color: var(--hot);
+  font-size: 1.235rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.section-tag-total {
+  color: var(--text-muted);
+  font-size: 0.91rem;
+  letter-spacing: 0.04em;
+}
+
+.section-tag-line {
+  flex: none;
+  width: 57px;
+  background: linear-gradient(90deg, var(--color-accent) 55%, rgb(var(--color-accent-rgb) / 0.25));
+  height: 1.6px;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 700ms var(--tag-ease) 90ms;
+}
+
+.section-tag-label {
+  color: var(--text-secondary);
+  font-size: 0.936rem;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
+  line-height: 1.5;
+  text-align: start;
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 650ms var(--tag-ease) 180ms;
 }
 
-.section-tag-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 999px;
-  background: var(--neon-green);
-  box-shadow: 0 0 10px var(--neon-green);
-  animation: tag-blink 2s ease-in-out infinite;
+.section-tag[data-shown='true'] .section-tag-index {
+  opacity: 1;
+  transform: none;
 }
 
-@keyframes tag-blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.25; }
+.section-tag[data-shown='true'] .section-tag-line { transform: scaleX(1); }
+
+.section-tag[data-shown='true'] .section-tag-label { clip-path: inset(0 0 0 0); }
+
+@media (max-width: 480px) {
+  .section-tag { gap: 13px; }
+  .section-tag-line { width: 36px; }
+  .section-tag-label { letter-spacing: 0.16em; }
 }
 
 /* ── Animated gradient text ── */
-.gradient-text-animated {
-  background: linear-gradient(100deg, #00ff00 0%, #00f0ff 30%, #7dffb2 50%, #00ff00 70%, #00f0ff 100%);
-  background-size: 250% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: text-shimmer 7s linear infinite;
-}
-
+.gradient-text-animated,
 .gradient-text-animated * {
-  background: inherit;
-  background-size: inherit;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: inherit;
+  color: var(--hl);
+  -webkit-text-fill-color: currentColor;
 }
 
 @keyframes text-shimmer {
@@ -62,8 +92,8 @@
   --my: 50%;
   position: relative;
   isolation: isolate;
-  background: linear-gradient(180deg, rgba(22, 22, 22, 0.9), rgba(12, 12, 12, 0.9));
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
   border-radius: 20px;
   overflow: hidden;
   transition: border-color 0.3s ease, transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
@@ -82,7 +112,7 @@
 
 .spotlight-card::before {
   padding: 1px;
-  background: radial-gradient(380px circle at var(--mx) var(--my), rgba(0, 255, 0, 0.75), rgba(0, 240, 255, 0.25) 30%, transparent 60%);
+  background: radial-gradient(380px circle at var(--mx) var(--my), rgb(var(--tone-rgb) / 0.6), transparent 55%);
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -90,32 +120,13 @@
 }
 
 .spotlight-card::after {
-  background: radial-gradient(520px circle at var(--mx) var(--my), rgba(0, 255, 0, 0.07), transparent 45%);
+  background: none;
   z-index: -1;
 }
 
 .spotlight-card:hover::before,
 .spotlight-card:hover::after {
   opacity: 1;
-}
-
-/* ── Aurora blobs ── */
-.aurora {
-  position: absolute;
-  border-radius: 999px;
-  filter: blur(90px);
-  pointer-events: none;
-  opacity: 0.5;
-  animation: aurora-drift 18s ease-in-out infinite alternate;
-}
-
-.aurora-green { background: radial-gradient(circle, rgba(0, 255, 0, 0.35), transparent 70%); }
-.aurora-cyan { background: radial-gradient(circle, rgba(0, 240, 255, 0.3), transparent 70%); }
-
-@keyframes aurora-drift {
-  0% { transform: translate3d(0, 0, 0) scale(1); }
-  50% { transform: translate3d(60px, -40px, 0) scale(1.15); }
-  100% { transform: translate3d(-40px, 30px, 0) scale(0.95); }
 }
 
 /* ── Accessibility: honour reduced motion ── */

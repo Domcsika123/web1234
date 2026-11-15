@@ -1,16 +1,31 @@
 import { useRef } from 'react';
 import { motion, useMotionValue, useReducedMotion, useSpring, useTransform } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 
 export const isTouchDevice = () =>
   typeof window !== 'undefined' && window.matchMedia('(hover: none), (pointer: coarse)').matches;
 
-/* ── Section tag pill ─────────────────────────────────────────── */
-export const SectionTag = ({ children, className = '' }) => (
-  <span className={`section-tag ${className}`}>
-    <span className="section-tag-dot" />
-    {children}
-  </span>
-);
+/* ── Section index marker: "02/08 ──── AMIT GARANTÁLUNK" ──────── */
+const SECTION_TOTAL = '08';
+
+export const SectionTag = ({ children, className = '' }) => {
+  // Draws itself in once, the first time it scrolls into view
+  const [ref, shown] = useInView({ triggerOnce: true, rootMargin: '0px 0px -60px 0px' });
+  const [, index, label] = String(children).match(/^\s*(\d+)\s*\/\/\s*(.+)$/) || [null, null, String(children)];
+
+  return (
+    <span ref={ref} className={`section-tag ${className}`} data-shown={shown}>
+      {index && (
+        <span className="section-tag-index" aria-hidden="true">
+          <span className="section-tag-num">{index}</span>
+          <span className="section-tag-total">/{SECTION_TOTAL}</span>
+        </span>
+      )}
+      {index && <span className="section-tag-line" aria-hidden="true" />}
+      <span className="section-tag-label">{label}</span>
+    </span>
+  );
+};
 
 /* ── Word-by-word masked reveal ───────────────────────────────── */
 export const RevealWords = ({ text, className = '', delay = 0, inView = true, stagger = 0.045 }) => {
@@ -61,7 +76,7 @@ export const SectionHeader = ({ tag, start, accent, subtitle, inView, align = 'c
           initial={{ opacity: 0, y: 12 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.35 }}
-          className={`text-[#A1A1AA] mt-5 text-lg mx-auto ${centered ? 'max-w-2xl' : 'max-w-xl lg:mx-0'}`}
+          className={`text-fg-2 mt-5 text-lg mx-auto ${centered ? 'max-w-2xl' : 'max-w-xl lg:mx-0'}`}
         >
           {subtitle}
         </motion.p>
@@ -70,7 +85,7 @@ export const SectionHeader = ({ tag, start, accent, subtitle, inView, align = 'c
   );
 };
 
-/* ── Card with a cursor-following border + inner glow ─────────── */
+/* ── Card with a cursor-following border + inner highlight ─────────── */
 export const SpotlightCard = ({ className = '', children, ...rest }) => {
   const ref = useRef(null);
   const handleMove = (e) => {
@@ -131,7 +146,7 @@ export const TiltCard = ({ children, className = '', max = 10, glare = true, sty
   const sry = useSpring(ry, { stiffness: 180, damping: 18 });
   const glareBg = useTransform(
     [gx, gy],
-    ([px, py]) => `radial-gradient(circle at ${px}% ${py}%, rgba(255,255,255,0.14), transparent 55%)`
+    ([px, py]) => `radial-gradient(circle at ${px}% ${py}%, rgb(var(--color-surface-rgb) / 0.14), transparent 55%)`
   );
 
   const handleMove = (e) => {
