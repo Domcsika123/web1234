@@ -110,6 +110,19 @@ export function Hero({ copy }) {
       onPointerMove={onPointerMove}
       onPointerLeave={onPointerLeave}
     >
+      {/* Background photo: Pexels (free licence), graded to the brand palette */}
+      <div className="hero-bg" aria-hidden="true">
+        <img
+          src={asset('/media/hero-bg-2000.webp')}
+          srcSet={`${asset('/media/hero-bg-1000.webp')} 1000w, ${asset('/media/hero-bg-2000.webp')} 2000w`}
+          sizes="100vw"
+          alt=""
+          width="2000"
+          height="1125"
+          fetchPriority="low"
+          decoding="async"
+        />
+      </div>
       <div className="hero-grid blueprint" aria-hidden="true" />
       <motion.div className="hero-core" style={{ x: springX, y: coreY, opacity: scrollFade }} aria-hidden="true">
         <div className="hero-halo" />
